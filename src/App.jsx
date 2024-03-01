@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { ProfilePage } from './pages/ProfilePage';
+import { DiaryPage } from './pages/DiaryPage';
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
 
       <Route path="/profile" element={<ProfilePage />} />
 
-      <Route path="/diary" element={<p>DiaryPage</p>} />
+      <Route path="/diary" element={<DiaryPage />} />
 
       <Route path="/products" element={<p>ProductsPage</p>} />
 
