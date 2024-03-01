@@ -1,9 +1,11 @@
 import { Route, Routes } from 'react-router-dom';
 import { ProfilePage } from './pages/ProfilePage';
+import { DiaryPage } from './pages/DiaryPage';
 import { WelcomePage } from './pages/WelcomePage';
 import { ErrorPage } from './pages/ErrorPage';
 import { SignInPage } from './pages/SignInPage';
 import { SignUpPage } from './pages/SignUpPage';
+
 
 function App() {
   return (
@@ -18,7 +20,7 @@ function App() {
 
       <Route path="/profile" element={<ProfilePage />} />
 
-      <Route path="/diary" element={<p>DiaryPage</p>} />
+      <Route path="/diary" element={<DiaryPage />} />
 
       <Route path="/products" element={<p>ProductsPage</p>} />
 
