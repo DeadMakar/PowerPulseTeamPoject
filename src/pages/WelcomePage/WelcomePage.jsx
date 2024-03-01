@@ -1,23 +1,39 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import {
+  BgWrapper,
+  HeroContainer,
+  HeroSignInLink,
+  HeroSignUpLink,
+  HeroSvg,
+  HeroTitle,
+  HeroWrapper,
+  LinkWrapper,
+} from './WelcomePage.styled';
 import sprite from '../../assets/sprite.svg';
+import { StatisticsInfo } from '../../components/StatisticsInfo/StatisticsInfo';
+/* import { Logo } from '../../../components/Logo/Logo'; */
+import { Container } from '../../styles/GlobalStyles';
+import { StyleSheetManager } from 'styled-components';
+
 const WelcomePage = () => {
   return (
-    <div>
-      <h1>PowerPulse</h1>
-      <ul>
-        <li>
-          <Link to="/signup">SignUp page</Link>
-        </li>
-        <li>
-          <svg>
-            <use href={`${sprite}#icon-pause-square`}></use>
-          </svg>
-          <img src="../../assets/sprite.svg#icon-pause-square" alt="" />
-          <Link to="/signin">SignIn page</Link>
-        </li>
-      </ul>
-    </div>
+    <StyleSheetManager>
+      <Container>
+        <HeroContainer>
+          <HeroWrapper>
+            {/* <Logo /> */}
+            <HeroTitle>Transforming your body shape with Power Pulse</HeroTitle>
+            <HeroSvg>
+              <use href={`${sprite}#icon-line`}></use>
+            </HeroSvg>
+            <LinkWrapper>
+              <HeroSignUpLink to={'/signup'}>Sign Up</HeroSignUpLink>
+              <HeroSignInLink to={'/signin'}>Sign In</HeroSignInLink>
+            </LinkWrapper>
+          </HeroWrapper>
+          <BgWrapper>{<StatisticsInfo />}</BgWrapper>
+        </HeroContainer>
+      </Container>
+    </StyleSheetManager>
   );
 };
 
