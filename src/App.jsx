@@ -1,12 +1,13 @@
 import { Route, Routes } from 'react-router-dom';
 import { ProfilePage } from './pages/ProfilePage';
+import WelcomePage from './pages/WelcomePage/WelcomePage';
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<p>Header</p>} />
 
-      <Route path="/welcome" element={<p>WelcomePage</p>} />
+      <Route path="/welcome" element={<WelcomePage />} />
 
       <Route path="/signup" element={<p>SignUpPage</p>} />
 
