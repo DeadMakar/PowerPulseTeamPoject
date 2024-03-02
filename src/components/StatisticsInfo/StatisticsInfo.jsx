@@ -24,7 +24,7 @@ export const StatisticsInfo = ({ isWelcomePage }) => {
           </SvgPlay>
         </WrapperSvg>
         <div>
-          <VideoNumber>+</VideoNumber>
+          <VideoNumber>350+</VideoNumber>
           <VideoText>Video tutorial</VideoText>
         </div>
       </VideoWrapper>
@@ -38,7 +38,7 @@ export const StatisticsInfo = ({ isWelcomePage }) => {
         </WrapperTextSvg>
         <WrapperDescription>
           <TextNumber></TextNumber>
-          <TextDescription>cal</TextDescription>
+          <TextDescription>500 cal</TextDescription>
         </WrapperDescription>
       </TextWrapper>
     </DivContainer>
