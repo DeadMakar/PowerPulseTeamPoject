@@ -1232,7 +1232,7 @@ button {
 `,cU=E.span`
   color: rgba(239, 237, 232, 0.65);
   font-family: Roboto;
-  font-size: 12px;
+  font-size: 24px;
   font-style: normal;
   font-weight: 700;
   line-height: 16px;
@@ -1241,15 +1241,15 @@ button {
   }
 
   @media screen and (min-width: 768px) {
-    font-size: 16px;
+    font-size: 24px;
     line-height: 24px;
   }
 
   @media screen and (min-width: 1440px) {
-    font-size: 16px;
+    font-size: 24px;
     line-height: 24px;
   }
-`,Zc=({isWelcomePage:e})=>v.jsxs(rU,{isWelcomePage:e,children:[v.jsxs(iU,{children:[v.jsx(nU,{children:v.jsx(aU,{children:v.jsx("use",{href:`${fe}#icon-play`})})}),v.jsxs("div",{children:[v.jsx(oU,{children:"+"}),v.jsx(lU,{children:"Video tutorial"})]})]}),v.jsxs(uU,{children:[v.jsx(dU,{children:v.jsx(sU,{children:v.jsx("use",{href:`${fe}#icon-running-stick-figure-svgrepo-com-1`})})}),v.jsxs(pU,{children:[v.jsx(fU,{}),v.jsx(cU,{children:"cal"})]})]})]}),gU=()=>v.jsx(bc,{children:v.jsx(Tu,{children:v.jsxs(QS,{children:[v.jsxs(KS,{children:[v.jsx(GS,{children:"Transforming your body shape with Power Pulse"}),v.jsx(XS,{children:v.jsx("use",{href:`${fe}#icon-line`})}),v.jsxs(ZS,{children:[v.jsx(JS,{to:"/signup",children:"Sign Up"}),v.jsx(eU,{to:"/signin",children:"Sign In"})]})]}),v.jsx(tU,{children:v.jsx(Zc,{})})]})})}),mU=E.div`
+`,Zc=({isWelcomePage:e})=>v.jsxs(rU,{isWelcomePage:e,children:[v.jsxs(iU,{children:[v.jsx(nU,{children:v.jsx(aU,{children:v.jsx("use",{href:`${fe}#icon-play`})})}),v.jsxs("div",{children:[v.jsx(oU,{children:"350+"}),v.jsx(lU,{children:"Video tutorial"})]})]}),v.jsxs(uU,{children:[v.jsx(dU,{children:v.jsx(sU,{children:v.jsx("use",{href:`${fe}#icon-running-stick-figure-svgrepo-com-1`})})}),v.jsxs(pU,{children:[v.jsx(fU,{}),v.jsx(cU,{children:"500 cal"})]})]})]}),gU=()=>v.jsx(bc,{children:v.jsx(Tu,{children:v.jsxs(QS,{children:[v.jsxs(KS,{children:[v.jsx(GS,{children:"Transforming your body shape with Power Pulse"}),v.jsx(XS,{children:v.jsx("use",{href:`${fe}#icon-line`})}),v.jsxs(ZS,{children:[v.jsx(JS,{to:"/signup",children:"Sign Up"}),v.jsx(eU,{to:"/signin",children:"Sign In"})]})]}),v.jsx(tU,{children:v.jsx(Zc,{})})]})})}),mU=E.div`
   display: flex;
 `,bU=E.div`
   height: 100vh;
@@ -1379,7 +1379,7 @@ button {
 
   @media screen and (min-width: 1440px) {
   }
-`,_U=()=>v.jsxs(mU,{children:[v.jsx(hU,{children:v.jsx(yU,{children:v.jsxs(wU,{children:[v.jsx(vU,{children:"404"}),v.jsx(xU,{children:"Sorry, you have reached a page that we could not find. It seems that you are lost among the numbers and letters of our virtual space. Perhaps this page went on vacation or decided to disappear into another dimension. We apologize for this inconvenience."}),v.jsx(CU,{to:"/",children:"Go Home"})]})})}),v.jsx(bU,{})]}),PU=E.div`
+`,_U=()=>v.jsxs(mU,{children:[v.jsx(hU,{children:v.jsx(yU,{children:v.jsxs(wU,{children:[v.jsx(vU,{children:"404"}),v.jsx(xU,{children:"Sorry, you have reached a page that we could not find. It seems that you are lost among the numbers and letters of our virtual space. Perhaps this page went on vacation or decided to disappear into another dimension. We apologize for this inconvenience."}),v.jsx(CU,{to:"/welcome",children:"Go Home"})]})})}),v.jsx(bU,{})]}),PU=E.div`
   display: flex;
   position: relative;
 
