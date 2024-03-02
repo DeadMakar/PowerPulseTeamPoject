@@ -1,122 +1,56 @@
-import { Field } from 'formik';
 import styled from 'styled-components';
 import { globalColor } from '../../styles/root';
 
-export const LabelInputName = styled.p`
-  font-size: 12px;
-  line-height: 1.5;
-  color: rgba(239, 237, 232, 0.5);
-
-  margin-bottom: 4px;
-
-  @media screen and (min-width: 768px) {
-    font-size: 14px;
-    line-height: 1.29;
-    margin-bottom: 8px;
-  }
-`;
-
-export const InputField = styled(Field)`
-  border: 1px solid rgba(239, 237, 232, 0.3);
-  border-radius: 12px;
-  padding: 14px;
-  width: 335px;
-  height: 46px;
-
-  color: ${globalColor.colorWhite};
-
-  font-size: 14px;
-  line-height: 1.29;
-
-  background-color: transparent;
-  cursor: pointer;
-
-  margin-bottom: 14px;
-
-  @media screen and (min-width: 768px) {
-    width: 341px;
-    height: 52px;
-
-    font-size: 16px;
-    line-height: 1.5;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 341px;
-  }
-`;
-
-export const ParamUserHeight = styled(InputField)`
-  width: 160px;
-  margin: 0;
-
-  @media screen and (min-width: 768px) {
-    width: 168px;
-    height: 52px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 168px;
-  }
-`;
-
-export const ParamUserCurWeight = styled(ParamUserHeight)`
-  width: 161px;
-
-  @media screen and (min-width: 768px) {
-    width: 159px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 159px;
-  }
-`;
-
-export const ParamUserDesWeight = styled(ParamUserHeight)`
-  @media screen and (min-width: 768px) {
-    width: 140px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 140px;
-  }
-`;
-
-export const ParamUserBirthDay = styled(ParamUserHeight)`
-  width: 161px;
-
-  @media screen and (min-width: 768px) {
-    width: 187px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 187px;
-  }
-`;
-
-export const WarningMessage = styled.div`
-  width: 160px;
-  font-size: 10px;
-  line-height: 1.2;
-  color: ${globalColor.colorSecondaryRed};
-`;
-
-export const ParamBox = styled.div`
+export const LabelSection = styled.label`
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 14px;
-  width: 335px;
+  flex-direction: column;
+`;
+
+export const BloodSexBox = styled.div`
+  display: flex;
+
+  gap: 20px;
 
   @media screen and (min-width: 768px) {
-    width: 100%;
+    gap: 30px;
   }
 `;
 
-export const ContactUserParam = styled.div`
+export const BloodSexDiv = styled.div`
+  display: flex;
+  gap: 8px;
+  flex-direction: row;
+`;
+
+export const BloodSexSection = styled.div`
+  margin-top: 20px;
+  margin-bottom: 40px;
+
   @media screen and (min-width: 768px) {
-    display: flex;
-    flex-direction: row;
-    gap: 14px;
+    margin-bottom: 30px;
+  }
+`;
+
+export const ActiveSection = styled.label`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 38px;
+  padding-right: 10px;
+`;
+
+export const Button = styled.button`
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.12;
+  color: rgba(239, 237, 232, 0.6);
+  padding: 12px 40px;
+  border-radius: 12px;
+  border-color: transparent;
+  background-color: ${globalColor.colorOrange};
+
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+    padding: 16px 50px;
   }
 `;

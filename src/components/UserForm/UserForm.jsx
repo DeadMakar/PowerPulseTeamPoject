@@ -1,15 +1,15 @@
 import { Formik, Form } from 'formik';
 import { UserFormSchema } from './UserFormSchema';
+import { UserInput } from './UserInput';
+import { RadioBtn } from './RadioBtn';
+import { LabelInputName, WarningMessage } from './UserInput/UserInput.styled';
 import {
-  ContactUserParam,
-  InputField,
-  LabelInputName,
-  ParamBox,
-  ParamUserBirthDay,
-  ParamUserCurWeight,
-  ParamUserDesWeight,
-  ParamUserHeight,
-  WarningMessage,
+  ActiveSection,
+  BloodSexBox,
+  BloodSexDiv,
+  BloodSexSection,
+  Button,
+  LabelSection,
 } from './UserForm.styled';
 
 export const UserForm = () => {
@@ -19,7 +19,7 @@ export const UserForm = () => {
         initialValues={{
           name: '',
           email: '',
-          height: '',
+          height: 0,
           currentWeight: 0,
           desiredWeight: 0,
           birthday: '2020-01-01',
@@ -28,67 +28,72 @@ export const UserForm = () => {
           levelActivity: 0,
         }}
         validationSchema={UserFormSchema}
-        onSubmit={(values) => {
-          // same shape as initial values
-          console.log(values);
+        onSubmit={() => {
           console.log('Hello');
         }}
       >
         {({ errors, touched }) => (
           <Form>
-            <ContactUserParam>
-              <label>
-                <LabelInputName>Name </LabelInputName>
-                <InputField name="name" type="text" autoComplete="off" />
-                {errors.name && touched.name && (
-                  <WarningMessage>{errors.name}</WarningMessage>
-                )}
-              </label>
-              <label>
-                <LabelInputName>Email </LabelInputName>
-                <InputField
-                  style={{ color: ' rgba(239, 237, 232, 0.6)' }}
-                  name="email"
-                  type="text"
-                  autoComplete="off"
-                />
-                {errors.email && touched.email && (
-                  <WarningMessage>{errors.email}</WarningMessage>
-                )}
-              </label>
-            </ContactUserParam>
-            <ParamBox>
-              <label>
-                <LabelInputName>Height </LabelInputName>
-                <ParamUserHeight name="height" type="number" />
-                {errors.height && touched.height && (
-                  <WarningMessage>{errors.height}</WarningMessage>
-                )}
-              </label>
+            <UserInput errors={errors} touched={touched} />
+            <BloodSexSection>
+              <LabelInputName>Blood</LabelInputName>
+              <BloodSexBox>
+                <LabelSection>
+                  <BloodSexDiv>
+                    <RadioBtn name="blood" value="1" text="1" />
+                    <RadioBtn name="blood" value="2" text="2" />
+                    <RadioBtn name="blood" value="3" text="3" />
+                    <RadioBtn name="blood" value="4" text="4" />
+                  </BloodSexDiv>
+                  {errors.blood && touched.blood && (
+                    <WarningMessage>{errors.blood}</WarningMessage>
+                  )}
+                </LabelSection>
 
-              <label>
-                <LabelInputName>Current Weight </LabelInputName>
-                <ParamUserCurWeight name="currentWeight" type="number" />
-                {errors.currentWeight && touched.currentWeight && (
-                  <WarningMessage>{errors.currentWeight}</WarningMessage>
-                )}
-              </label>
-              <label>
-                <LabelInputName> Desired Weight</LabelInputName>
-                <ParamUserDesWeight name="desiredWeight" type="number" />
-                {errors.desiredWeight && touched.desiredWeight && (
-                  <WarningMessage>{errors.desiredWeight}</WarningMessage>
-                )}
-              </label>
-              <label>
-                <LabelInputName>Date of birth </LabelInputName>
-                <ParamUserBirthDay name="birthday" type="date" />
-                {errors.birthday && touched.birthday && (
-                  <WarningMessage>{errors.birthday}</WarningMessage>
-                )}
-              </label>
-            </ParamBox>
-            <button type="submit">Submit</button>
+                <LabelSection>
+                  <BloodSexDiv>
+                    <RadioBtn name="sex" value="male" text="Male" />
+                    <RadioBtn name="sex" value="female" text="Female" />
+                  </BloodSexDiv>
+                  {errors.sex && touched.sex && (
+                    <WarningMessage>{errors.sex}</WarningMessage>
+                  )}
+                </LabelSection>
+              </BloodSexBox>
+            </BloodSexSection>
+
+            <ActiveSection>
+              <RadioBtn
+                name="levelActivity"
+                value="1"
+                text="Sedentary lifestyle (little or no physical activity)"
+              />
+              <RadioBtn
+                name="levelActivity"
+                value="2"
+                text="Light activity (light exercises/sports 1-3 days per week)"
+              />
+              <RadioBtn
+                name="levelActivity"
+                value="3"
+                text="Moderately active (moderate exercises/sports 3-5 days per week)"
+              />
+              <RadioBtn
+                name="levelActivity"
+                value="4"
+                text="Very active (intense exercises/sports 6-7 days per week)"
+              />
+              <RadioBtn
+                name="levelActivity"
+                value="5"
+                text="Extremely active (very strenuous exercises/sports and physical work)"
+              />
+              {errors.levelActivity && touched.levelActivity && (
+                <WarningMessage>{errors.levelActivity}</WarningMessage>
+              )}
+            </ActiveSection>
+
+            <Button type="submit">Save</Button>
           </Form>
         )}
       </Formik>

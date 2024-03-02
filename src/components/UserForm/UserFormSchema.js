@@ -22,14 +22,14 @@ export const UserFormSchema = Yup.object().shape({
     })
     .required('Birthday is required'),
   blood: Yup.number()
-    .oneOf([1, 2, 3, 4], 'Invalid type of the value')
+    .oneOf([1, 2, 3, 4], 'Please choose your blood type')
     .required('Please choose your blood type'),
 
   sex: Yup.string()
-    .oneOf(['male', 'female'], 'Invalid type of the value')
+    .oneOf(['male', 'female'], 'Please choose your gender')
     .required('Please choose your gender'),
 
   levelActivity: Yup.number()
-    .oneOf([1, 2, 3, 4, 5], 'Invalid type of the value')
+    .oneOf([1, 2, 3, 4, 5], 'Please choose your level activity')
     .required('Please choose your level activity'),
 });
