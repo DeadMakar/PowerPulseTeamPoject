@@ -5,7 +5,7 @@ import { WelcomePage } from './pages/WelcomePage';
 import { ErrorPage } from './pages/ErrorPage';
 import { SignInPage } from './pages/SignInPage';
 import { SignUpPage } from './pages/SignUpPage';
-
+import { ExercisesPage } from './pages/ExercisesPage';
 function App() {
   return (
     <Routes>
@@ -23,10 +23,9 @@ function App() {
 
       <Route path="/products" element={<p>ProductsPage</p>} />
 
-//       <Route path="/exercises" element={<ExercisesPage />} />
+      <Route path="/exercises" element={<ExercisesPage />} />
 
       <Route path="/error" element={<ErrorPage />} />
-
     </Routes>
   );
 }
