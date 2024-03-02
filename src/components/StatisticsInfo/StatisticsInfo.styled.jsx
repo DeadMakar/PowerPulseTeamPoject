@@ -348,7 +348,7 @@ export const TextNumber = styled.p`
 export const TextDescription = styled.span`
   color: rgba(239, 237, 232, 0.65);
   font-family: Roboto;
-  font-size: 12px;
+  font-size: 24px;
   font-style: normal;
   font-weight: 700;
   line-height: 16px;
@@ -357,12 +357,12 @@ export const TextDescription = styled.span`
   }
 
   @media screen and (min-width: 768px) {
-    font-size: 16px;
+    font-size: 24px;
     line-height: 24px;
   }
 
   @media screen and (min-width: 1440px) {
-    font-size: 16px;
+    font-size: 24px;
     line-height: 24px;
   }
 `;
