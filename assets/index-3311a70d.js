@@ -2049,4 +2049,46 @@ button {
   @media screen and (min-width: 1440px) {
     width: 45%;
   }
-`,aq=()=>{const[e,t]=P.useState(!1),[r,i]=P.useState(!1),n=()=>{t(!e),i(!1)},a=Tc({initialValues:{name:"",email:"",password:""},validationSchema:_u().shape({name:gi().required("Name is required"),email:gi().matches(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/,"Example: test@gmail.com").email("Invalid email").required("Email is required"),password:gi().min(6,"Enter a valid Password").required("Password is required")})});return b.jsx(hc,{children:b.jsx(Ou,{children:b.jsxs(QU,{children:[b.jsxs(KU,{children:[b.jsx(GU,{children:"Sign up"}),b.jsx(XU,{children:"Thank you for your interest in our platform. To complete the registration process, please provide us with the following information."}),b.jsxs(ZU,{autoComplete:"off",onSubmit:a.handleSubmit,children:[b.jsxs(JU,{children:[b.jsxs(Td,{children:[b.jsx(Od,{id:"name",name:"name",type:"text",placeholder:"Name",onChange:a.handleChange,value:a.values.name,haserror:!r&&a.touched.name&&a.errors.name,isValidationCompleted:!a.errors.name&&a.touched.name}),a.touched.name&&b.jsx(Md,{style:{color:a.errors.name?"#D80027":"#3CBF61"},children:a.errors.name?b.jsxs(b.Fragment,{children:[b.jsx($n,{children:b.jsx("use",{href:`${fe}#icon-red`})}),`Error name, ${a.errors.name}`]}):b.jsxs(b.Fragment,{children:[b.jsx($n,{children:b.jsx("use",{href:`${fe}#icon-green`})}),"Success name"]})})]}),b.jsxs(Td,{children:[b.jsx(Od,{id:"email",name:"email",type:"email",placeholder:"Email",onChange:a.handleChange,value:a.values.email,haserror:!r&&a.touched.email&&a.errors.email,isValidationCompleted:!a.errors.email&&a.touched.email}),a.touched.email&&b.jsx(Md,{style:{color:a.errors.email?"#D80027":"#3CBF61"},children:a.errors.email?b.jsxs(b.Fragment,{children:[b.jsx($n,{children:b.jsx("use",{href:`${fe}#icon-red`})}),`Error email. ${a.errors.email}`]}):b.jsxs(b.Fragment,{children:[b.jsx($n,{children:b.jsx("use",{href:`${fe}#icon-green`})}),"Success email"]})})]}),b.jsxs(Td,{children:[b.jsx(Od,{id:"password",name:"password",type:e?"text":"password",placeholder:"Password",onChange:a.handleChange,value:a.values.password,haserror:!r&&a.touched.password&&a.errors.password,isValidationCompleted:!a.errors.password&&a.touched.password}),b.jsx(b.Fragment,{children:e?b.jsx(ih,{onClick:n,children:b.jsx("use",{href:`${fe}#icon-eye`})}):b.jsx(ih,{onClick:n,children:b.jsx("use",{href:`${fe}#icon-eye-off`})})}),a.touched.password&&b.jsx(Md,{style:{color:a.errors.password?"#D80027":"#3CBF61"},children:a.errors.password?b.jsxs(b.Fragment,{children:[b.jsx($n,{children:b.jsx("use",{href:`${fe}#icon-red`})}),`Error password, ${a.errors.password}`]}):b.jsxs(b.Fragment,{children:[b.jsx($n,{children:b.jsx("use",{href:`${fe}#icon-green`})}),"Success password"]})})]})]}),b.jsx(eq,{type:"Submit",children:"Sign Up"})]}),b.jsxs(tq,{children:[b.jsx(rq,{children:"Already have an account?"}),b.jsx(iq,{to:"/signin",children:"Sing In"})]})]}),b.jsx(nq,{children:b.jsx(Jc,{})})]})})})},sq=()=>b.jsx(aq,{}),oq=()=>b.jsx("div",{}),lq=()=>b.jsxs("div",{children:[b.jsx(e6,{contentText:"halo"}),b.jsx(oq,{})]});function uq(){return b.jsxs(u3,{children:[b.jsx(sr,{path:"/",element:b.jsx("p",{children:"Header"})}),b.jsx(sr,{path:"/welcome",element:b.jsx(kU,{})}),b.jsx(sr,{path:"/signup",element:b.jsx(sq,{})}),b.jsx(sr,{path:"/signin",element:b.jsx(VU,{})}),b.jsx(sr,{path:"/profile",element:b.jsx(k5,{})}),b.jsx(sr,{path:"/diary",element:b.jsx(nU,{})}),b.jsx(sr,{path:"/products",element:b.jsx("p",{children:"ProductsPage"})}),b.jsx(sr,{path:"/exercises",element:b.jsx(lq,{})}),b.jsx(sr,{path:"/error",element:b.jsx(MU,{})})]})}jd.createRoot(document.getElementById("root")).render(b.jsxs(S.StrictMode,{children:[b.jsx(m3,{basename:"/PowerPulseTeamPoject",children:b.jsx(uq,{})}),b.jsx(iU,{})]}))});export default dq();
+`,aq=()=>{const[e,t]=P.useState(!1),[r,i]=P.useState(!1),n=()=>{t(!e),i(!1)},a=Tc({initialValues:{name:"",email:"",password:""},validationSchema:_u().shape({name:gi().required("Name is required"),email:gi().matches(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/,"Example: test@gmail.com").email("Invalid email").required("Email is required"),password:gi().min(6,"Enter a valid Password").required("Password is required")})});return b.jsx(hc,{children:b.jsx(Ou,{children:b.jsxs(QU,{children:[b.jsxs(KU,{children:[b.jsx(GU,{children:"Sign up"}),b.jsx(XU,{children:"Thank you for your interest in our platform. To complete the registration process, please provide us with the following information."}),b.jsxs(ZU,{autoComplete:"off",onSubmit:a.handleSubmit,children:[b.jsxs(JU,{children:[b.jsxs(Td,{children:[b.jsx(Od,{id:"name",name:"name",type:"text",placeholder:"Name",onChange:a.handleChange,value:a.values.name,haserror:!r&&a.touched.name&&a.errors.name,isValidationCompleted:!a.errors.name&&a.touched.name}),a.touched.name&&b.jsx(Md,{style:{color:a.errors.name?"#D80027":"#3CBF61"},children:a.errors.name?b.jsxs(b.Fragment,{children:[b.jsx($n,{children:b.jsx("use",{href:`${fe}#icon-red`})}),`Error name, ${a.errors.name}`]}):b.jsxs(b.Fragment,{children:[b.jsx($n,{children:b.jsx("use",{href:`${fe}#icon-green`})}),"Success name"]})})]}),b.jsxs(Td,{children:[b.jsx(Od,{id:"email",name:"email",type:"email",placeholder:"Email",onChange:a.handleChange,value:a.values.email,haserror:!r&&a.touched.email&&a.errors.email,isValidationCompleted:!a.errors.email&&a.touched.email}),a.touched.email&&b.jsx(Md,{style:{color:a.errors.email?"#D80027":"#3CBF61"},children:a.errors.email?b.jsxs(b.Fragment,{children:[b.jsx($n,{children:b.jsx("use",{href:`${fe}#icon-red`})}),`Error email. ${a.errors.email}`]}):b.jsxs(b.Fragment,{children:[b.jsx($n,{children:b.jsx("use",{href:`${fe}#icon-green`})}),"Success email"]})})]}),b.jsxs(Td,{children:[b.jsx(Od,{id:"password",name:"password",type:e?"text":"password",placeholder:"Password",onChange:a.handleChange,value:a.values.password,haserror:!r&&a.touched.password&&a.errors.password,isValidationCompleted:!a.errors.password&&a.touched.password}),b.jsx(b.Fragment,{children:e?b.jsx(ih,{onClick:n,children:b.jsx("use",{href:`${fe}#icon-eye`})}):b.jsx(ih,{onClick:n,children:b.jsx("use",{href:`${fe}#icon-eye-off`})})}),a.touched.password&&b.jsx(Md,{style:{color:a.errors.password?"#D80027":"#3CBF61"},children:a.errors.password?b.jsxs(b.Fragment,{children:[b.jsx($n,{children:b.jsx("use",{href:`${fe}#icon-red`})}),`Error password, ${a.errors.password}`]}):b.jsxs(b.Fragment,{children:[b.jsx($n,{children:b.jsx("use",{href:`${fe}#icon-green`})}),"Success password"]})})]})]}),b.jsx(eq,{type:"Submit",children:"Sign Up"})]}),b.jsxs(tq,{children:[b.jsx(rq,{children:"Already have an account?"}),b.jsx(iq,{to:"/signin",children:"Sing In"})]})]}),b.jsx(nq,{children:b.jsx(Jc,{})})]})})})},sq=()=>b.jsx(aq,{}),oq=()=>b.jsx("div",{});D.div`
+  position: relative;
+  width: 335px;
+  height: 206px;
+  border-radius: 12px;
+  border: 1px solid rgba(239, 237, 232, 0.2);
+  @media screen and (min-width: 768px) {
+    width: 224px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 237px;
+  }
+`;D.img`
+  width: 335px;
+  height: 206px;
+  opacity: 0.3;
+  border-radius: 12px;
+  object-fit: cover;
+  @media screen and (min-width: 768px) {
+    width: 224px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 237px;
+  }
+`;D.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+`;D.p`
+  margin-bottom: 2px;
+  font-size: 24px;
+  font-weight: 400;
+  color: rgba(239, 237, 232, 1);
+  text-align: center;
+`;D.p`
+  margin: 0;
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(239, 237, 232, 0.4);
+  text-align: center;
+`;const lq=()=>b.jsxs("div",{children:[b.jsx(e6,{contentText:"halo"}),b.jsx(oq,{})]});function uq(){return b.jsxs(u3,{children:[b.jsx(sr,{path:"/",element:b.jsx("p",{children:"Header"})}),b.jsx(sr,{path:"/welcome",element:b.jsx(kU,{})}),b.jsx(sr,{path:"/signup",element:b.jsx(sq,{})}),b.jsx(sr,{path:"/signin",element:b.jsx(VU,{})}),b.jsx(sr,{path:"/profile",element:b.jsx(k5,{})}),b.jsx(sr,{path:"/diary",element:b.jsx(nU,{})}),b.jsx(sr,{path:"/products",element:b.jsx("p",{children:"ProductsPage"})}),b.jsx(sr,{path:"/exercises",element:b.jsx(lq,{})}),b.jsx(sr,{path:"/error",element:b.jsx(MU,{})})]})}jd.createRoot(document.getElementById("root")).render(b.jsxs(S.StrictMode,{children:[b.jsx(m3,{basename:"/PowerPulseTeamPoject",children:b.jsx(uq,{})}),b.jsx(iU,{})]}))});export default dq();
