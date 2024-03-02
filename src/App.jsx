@@ -24,9 +24,10 @@ function App() {
 
       <Route path="/products" element={<p>ProductsPage</p>} />
 
-      <Route path="/exercises" element={<p>ExercisesPage</p>} />
+//       <Route path="/exercises" element={<ExercisesPage />} />
 
       <Route path="/error" element={<ErrorPage />} />
+
     </Routes>
   );
 }
