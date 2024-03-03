@@ -617,18 +617,20 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   }
 
   > li {
-    &:nth-child(1) {
+    &:nth-child(-n + 2) {
       background-color: ${O.colorOrange};
     }
 
-    &:nth-child(2) {
-      background-color: ${O.colorOrange};
+    &:nth-child(-n + 2) h2 {
+      color: rgba(239, 237, 232, 0.8);
     }
   }
 `,xn=D.li`
-  display: block;
-  width: 157px;
-  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 160px;
+  padding: 14px 10px 14px 14px;
   background-color: ${O.colorDiaryItem};
   border-radius: 12px;
   border: 1px solid #efede833;
@@ -660,12 +662,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   gap: 8px;
   margin-bottom: 28px;
 `,_n=D.h2`
+  font-weight: 400;
   font-size: 12px;
   line-height: 16px;
-  color: rgba(239, 237, 232, 0.8);
+  color: rgba(239, 237, 232, 0.4);
 
   @media screen and (min-width: 768px) {
-    text-wrap: nowrap;
+    white-space: nowrap;
     line-height: 18px;
   }
 `,Pn=D.p`
