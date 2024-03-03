@@ -1,10 +1,16 @@
 import styled from 'styled-components';
 import { globalColor } from '../../styles/root';
 
-export const UserFornContainer = styled.div`
-  /* @media screen and (min-width: 1440px) {
-    width: 700px;
-  } */
+export const UserFormContainer = styled.div`
+  margin-top: 18px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 36px;
+  }
+
+  @media (min-width: 1440px) {
+    margin-top: 0;
+  }
 `;
 
 export const LabelSection = styled.label`
