@@ -1,31 +1,39 @@
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+// import { useSelector } from 'react-redux';
 import MediaQuery from 'react-responsive';
-import { NavLink } from 'react-router-dom';
-import UserBar from '../UserBar/index';
-import sprite from '../../../assets/sprite.svg';
+import { Link } from 'react-router-dom';
+// import UserBar from '../UserBar/index';
+import sprite from '../../assets/sprite.svg';
+import { Logo } from '../Logo';
+import {
+  HeaderContainer,
+  NavWraper,
+  Navigation,
+  NavigationLink,
+  NavigationLinkItem,
+  SecondNavWraper,
+} from './Header.styled';
 const Header = () => {
-  const { profile } = useSelector((state) => state.profile);
+  //   const { profile } = useSelector((state) => state.profile);
 
   return (
-    <div>
-      <nav>
-        <Link to="/">Logo</Link>
+    <HeaderContainer>
+      <Navigation>
+        <Link to="/">
+          <Logo />
+        </Link>
 
-        <div>
+        <SecondNavWraper>
           <MediaQuery minWidth={1440}>
-            {profile === null ? null : (
-              <div>
-                <NavLink to="/">Diary</NavLink>
-                <NavLink to="/">Products</NavLink>
-                <NavLink to="/">Exercises</NavLink>
-              </div>
-            )}
+            <NavWraper>
+              <NavigationLink to="/diary">Diary</NavigationLink>
+              <NavigationLink to="/products">Products</NavigationLink>
+              <NavigationLink to="/exercises">Exercises</NavigationLink>
+            </NavWraper>
           </MediaQuery>
 
-          <Link to="/profile">
-            <UserBar />
-          </Link>
+          <NavigationLinkItem to="/profile">
+            {/* <UserBar /> */}
+          </NavigationLinkItem>
           <MediaQuery minWidth={1440}>
             <Link onClick to="/">
               <span>Logout</span>
@@ -39,9 +47,12 @@ const Header = () => {
               <use href={`${sprite}#icon-menu`} />
             </svg>
           </MediaQuery>
-        </div>
-      </nav>
-    </div>
+        </SecondNavWraper>
+      </Navigation>
+      {/* <div>
+        modal
+      </div> */}
+    </HeaderContainer>
   );
 };
 export default Header;
