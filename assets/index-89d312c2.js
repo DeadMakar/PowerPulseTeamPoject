@@ -1320,8 +1320,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     height: 1005px;
     background-position: left;
     position: absolute;
-    margin-left: 300px;
-    margin-top: 100px;
+    margin-left: 331px;
+    margin-top: 131px;
 
     @media screen and (min-device-pixel-radio: 2) and (min-width: 768px),
       screen and (min-resolution: 192dpi) and (min-width: 768px),
@@ -1356,7 +1356,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           rgba(4, 4, 4, 0) 68.17%
         ),
         url(${Ww});
-      background-position: right;
+      /* background-position: right -152px; */
       margin: 0;
     }
   }
@@ -1510,7 +1510,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 
   @media screen and (min-width: 1440px) {
     top: 65%;
-    right: 5%;
+    right: 10%;
     width: 180px;
     height: 110px;
     margin-top: 0;
