@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 import { globalColor } from '../../styles/root';
 
+export const UserFornContainer = styled.div`
+  /* @media screen and (min-width: 1440px) {
+    width: 700px;
+  } */
+`;
+
 export const LabelSection = styled.label`
   display: flex;
   flex-direction: column;
