@@ -37,8 +37,8 @@ export const StatisticsInfo = ({ isWelcomePage }) => {
           </Svg>
         </WrapperTextSvg>
         <WrapperDescription>
-          <TextNumber></TextNumber>
-          <TextDescription>500 cal</TextDescription>
+          <TextNumber>500</TextNumber>
+          <TextDescription>cal</TextDescription>
         </WrapperDescription>
       </TextWrapper>
     </DivContainer>

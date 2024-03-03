@@ -38,20 +38,22 @@ export const ListStyled = styled.ul`
   }
 
   > li {
-    &:nth-child(1) {
+    &:nth-child(-n + 2) {
       background-color: ${globalColor.colorOrange};
     }
 
-    &:nth-child(2) {
-      background-color: ${globalColor.colorOrange};
+    &:nth-child(-n + 2) h2 {
+      color: rgba(239, 237, 232, 0.8);
     }
   }
 `;
 
 export const ItemListStyled = styled.li`
-  display: block;
-  width: 157px;
-  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 160px;
+  padding: 14px 10px 14px 14px;
   background-color: ${globalColor.colorDiaryItem};
   border-radius: 12px;
   border: 1px solid #efede833;
@@ -87,12 +89,13 @@ export const TitleStyledWrapper = styled.div`
 `;
 
 export const TitleStyled = styled.h2`
+  font-weight: 400;
   font-size: 12px;
   line-height: 16px;
-  color: rgba(239, 237, 232, 0.8);
+  color: rgba(239, 237, 232, 0.4);
 
   @media screen and (min-width: 768px) {
-    text-wrap: nowrap;
+    white-space: nowrap;
     line-height: 18px;
   }
 `;

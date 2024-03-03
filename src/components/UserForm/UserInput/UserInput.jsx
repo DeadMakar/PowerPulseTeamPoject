@@ -28,6 +28,10 @@ const UserInput = ({ errors, touched }) => {
             name="email"
             type="text"
             autoComplete="off"
+            disabled
+            value="@gmail.com"
+
+            // From user data
           />
           {errors.email && touched.email && (
             <WarningMessage>{errors.email}</WarningMessage>
