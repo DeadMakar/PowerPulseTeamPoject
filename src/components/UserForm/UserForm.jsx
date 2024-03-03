@@ -10,30 +10,61 @@ import {
   BloodSexSection,
   Button,
   LabelSection,
+  UserFornContainer,
 } from './UserForm.styled';
+import { useState } from 'react';
+
+// const initialValues = {
+//   name: '',
+//   email: '',
+//   height: 0,
+//   currentWeight: 0,
+//   desiredWeight: 0,
+//   birthday: '2020-01-01',
+//   blood: 1,
+//   sex: '',
+//   levelActivity: 1,
+// };
 
 export const UserForm = () => {
+  const userInfo = {
+    name: 'Katy',
+    email: '@gmail.com',
+    height: 170,
+    currentWeight: 50,
+    desiredWeight: 40,
+    birthday: '2000-01-01',
+    blood: '1',
+    sex: 'female',
+    levelActivity: '3',
+  };
+
+  const [isInfoChanged, setIsInfoChanged] = useState(true);
+
+  const ifUserInfoChanged = (values) => {
+    const isInfoChanged = Object.keys(values).some(
+      (key) => values[key] !== userInfo[key]
+    );
+    setIsInfoChanged(!isInfoChanged);
+
+    console.log(values);
+  };
+
+  const handleUpdateUserInfo = (newInfo) => {
+    console.log(newInfo);
+  };
+
   return (
-    <>
+    <UserFornContainer>
       <Formik
-        initialValues={{
-          name: '',
-          email: '',
-          height: 0,
-          currentWeight: 0,
-          desiredWeight: 0,
-          birthday: '2020-01-01',
-          blood: 0,
-          sex: '',
-          levelActivity: 0,
-        }}
+        initialValues={userInfo}
         validationSchema={UserFormSchema}
-        onSubmit={() => {
-          console.log('Hello');
+        onSubmit={(values) => {
+          handleUpdateUserInfo(values);
         }}
       >
         {({ errors, touched }) => (
-          <Form>
+          <Form onChange={(values) => ifUserInfoChanged(values)}>
             <UserInput errors={errors} touched={touched} />
             <BloodSexSection>
               <LabelInputName>Blood</LabelInputName>
@@ -93,10 +124,12 @@ export const UserForm = () => {
               )}
             </ActiveSection>
 
-            <Button type="submit">Save</Button>
+            <Button type="submit" disabled={isInfoChanged}>
+              Save
+            </Button>
           </Form>
         )}
       </Formik>
-    </>
+    </UserFornContainer>
   );
 };
