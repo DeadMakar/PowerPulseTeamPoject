@@ -6,10 +6,12 @@ import { ErrorPage } from './pages/ErrorPage';
 import { SignInPage } from './pages/SignInPage';
 import { SignUpPage } from './pages/SignUpPage';
 import { ExercisesPage } from './pages/ExercisesPage';
+import { Header } from './components/Header';
+
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<p>Header</p>} />
+      <Route path="/" element={<Header />} />
 
       <Route path="/welcome" element={<WelcomePage />} />
 

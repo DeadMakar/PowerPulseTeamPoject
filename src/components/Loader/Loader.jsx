@@ -1,23 +1,25 @@
-import { FidgetSpinner } from 'react-loader-spinner';
+// import {
+//   StyledDrop,
+//   StyledDropContainer,
+//   StyledH1,
+//   StyledLetter,
+// } from './Loader.styled';
 
-const Loader = ({ isLoading }) => {
-  return (
-    <FidgetSpinner
-      visible={isLoading}
-      height="80"
-      width="80"
-      ariaLabel="dna-loading"
-      wrapperStyle={{
-        display: 'block',
-        marginTop: '6px',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-      }}
-      wrapperClass="dna-wrapper"
-      ballColors={['#ff0000', '#00ff00', '#0000ff']}
-      backgroundColor="#F4442E"
-    />
-  );
-};
-
-export default Loader;
+// const Loader = () => {
+//   return (
+//     <StyledDrop>
+//       {' '}
+//       <StyledDropContainer>
+//         {' '}
+//         <StyledH1>
+//           {' '}
+//           <StyledLetter>l</StyledLetter> <StyledLetter>o</StyledLetter>{' '}
+//           <StyledLetter>a</StyledLetter> <StyledLetter>d</StyledLetter>{' '}
+//           <StyledLetter>i</StyledLetter> <StyledLetter>n</StyledLetter>{' '}
+//           <StyledLetter>g</StyledLetter>{' '}
+//         </StyledH1>{' '}
+//       </StyledDropContainer>{' '}
+//     </StyledDrop>
+//   );
+// };
+// export default Loader;
