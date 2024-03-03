@@ -61,6 +61,7 @@ export const ItemListStyled = styled.li`
   @media screen and (max-width: 374px) {
     margin: 0 auto;
     height: 96px;
+    width: 100%;
     :not(:last-of-type) {
       margin-bottom: 20px;
     }
