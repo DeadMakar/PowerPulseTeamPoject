@@ -1,12 +1,19 @@
 import { TitlePage } from '../../components/TitlePage';
+import { UserCard } from '../../components/UserCard';
 import { UserForm } from '../../components/UserForm/UserForm';
+import { Container } from '../../styles/GlobalStyles';
+import { PrifileContentBox } from './ProfilePage.styled';
 
 const ProfilePage = () => {
   return (
-    <div>
+    <Container>
       <TitlePage contentText="Profile Settings" />
-      <UserForm />
-    </div>
+      <PrifileContentBox>
+        <UserCard />
+
+        <UserForm />
+      </PrifileContentBox>
+    </Container>
   );
 };
 
