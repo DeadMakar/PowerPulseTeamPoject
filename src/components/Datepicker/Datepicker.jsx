@@ -16,6 +16,11 @@ const Datepicker = ({
   const today = changeDate(new Date());
 
   const handleDateChange = (date) => {
+    console.log('selectedDate:', selectedDate);
+    console.log('today:', today);
+    console.log('formattedDate:', formattedDate);
+    console.log('userDateRegistration:', userDateRegistration);
+
     const formattedDate = changeDate(date);
     if (today >= formattedDate && formattedDate >= userDateRegistration) {
       setSelectedDate(date);

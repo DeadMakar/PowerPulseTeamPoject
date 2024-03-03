@@ -94,9 +94,7 @@ const DayDashboard = () => {
       <TextWrapper>
         <SvgWrapperText>
           <ExclamationSvg>
-            <use
-              href={sprite + '#icon-running-stick-figure-svgrepo-com-1'}
-            ></use>
+            <use href={sprite + '#icon-exclamation-mark'}></use>
           </ExclamationSvg>
         </SvgWrapperText>
         <TextStyled>
