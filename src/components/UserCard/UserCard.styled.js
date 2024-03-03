@@ -5,13 +5,89 @@ export const UserCardContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
 
-  /* @media screen and (min-width: 1440px) {
-    width: 440px;
-  } */
+export const AvatarBox = styled.div`
+  position: relative;
+  width: 90px;
+  height: 90px;
+  background-color: rgba(48, 48, 48, 0.3);
+  border-radius: 100%;
+
+  stroke-width: 1px;
+
+  border: 1px solid ${globalColor.colorOrange};
+
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    border: 2px solid ${globalColor.colorBeige};
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 150px;
+    height: 150px;
+  }
+`;
+
+export const InputAvatar = styled.input`
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+
+  cursor: pointer;
+`;
+
+export const LabelAvatar = styled.label`
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
+`;
+
+export const SvgAddAvatar = styled.svg`
+  width: 24px;
+  height: 24px;
+  bottom: 0;
+  right: 50%;
+  z-index: 5;
+
+  transition: stroke 0.3s ease;
+
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    stroke: ${globalColor.colorBeige};
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 32px;
+    height: 32px;
+  }
+`;
+
+export const AvatarImg = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 100%;
+  width: 100%;
+  height: 100%;
 `;
 
 export const UserNameRole = styled.div`
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -49,15 +125,6 @@ export const ListStyled = styled.ul`
     gap: 16px;
     justify-content: center;
   }
-
-  /* @media screen and (min-width: 768px) and (max-width: 1439px) {
-    height: 252px;
-    flex-direction: column;
-  }
-
-  @media screen and (min-width: 1440px) {
-    margin-bottom: 48px;
-  } */
 `;
 
 export const ItemListStyled = styled.li`

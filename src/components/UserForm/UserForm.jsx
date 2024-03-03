@@ -10,7 +10,7 @@ import {
   BloodSexSection,
   Button,
   LabelSection,
-  UserFornContainer,
+  UserFormContainer,
 } from './UserForm.styled';
 import { useState } from 'react';
 
@@ -55,7 +55,7 @@ export const UserForm = () => {
   };
 
   return (
-    <UserFornContainer>
+    <UserFormContainer>
       <Formik
         initialValues={userInfo}
         validationSchema={UserFormSchema}
@@ -130,6 +130,6 @@ export const UserForm = () => {
           </Form>
         )}
       </Formik>
-    </UserFornContainer>
+    </UserFormContainer>
   );
 };
