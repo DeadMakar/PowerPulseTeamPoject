@@ -21,9 +21,9 @@ import { useState } from 'react';
 //   currentWeight: 0,
 //   desiredWeight: 0,
 //   birthday: '2020-01-01',
-//   blood: 1,
+//   blood: 0,
 //   sex: '',
-//   levelActivity: 1,
+//   levelActivity: 0,
 // };
 
 export const UserForm = () => {

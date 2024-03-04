@@ -82,8 +82,7 @@ export const AvatarImg = styled.img`
   top: 0;
   left: 0;
   border-radius: 100%;
-  width: 100%;
-  height: 100%;
+  object-fit: cover;
 `;
 
 export const UserNameRole = styled.div`
@@ -93,7 +92,8 @@ export const UserNameRole = styled.div`
   align-items: center;
   gap: 4px;
 
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 768px) {
+    margin-top: 32px;
     gap: 8px;
   }
 `;

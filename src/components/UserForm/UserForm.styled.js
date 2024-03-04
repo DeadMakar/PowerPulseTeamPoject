@@ -61,6 +61,16 @@ export const Button = styled.button`
   border-color: transparent;
   background-color: ${globalColor.colorOrange};
 
+  &:hover,
+  &:focus {
+    color: ${globalColor.colorWhite};
+  }
+  &:disabled {
+    background-color: ${globalColor.colorBlack};
+    border: 1px solid rgba(239, 237, 232, 0.3);
+    color: rgba(239, 237, 232, 0.6);
+  }
+
   @media screen and (min-width: 768px) {
     font-size: 20px;
     padding: 16px 50px;

@@ -1,4 +1,6 @@
+import { useEffect, useState } from 'react';
 import sprite from '../../assets/sprite.svg';
+import defaultAvatar from '../../assets/images/profile/gridicons_user.jpg';
 
 import {
   AvatarBox,
@@ -21,10 +23,28 @@ import {
   UserNameRole,
   UserRole,
 } from './UserCard.styled';
+// import { useDispatch } from 'react-redux';
 
 const UserCard = () => {
-  const avatar =
-    'https://thumbs.dreamstime.com/b/unknown-male-avatar-profile-image-businessman-vector-unknown-male-avatar-profile-image-businessman-vector-profile-179373829.jpg';
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [imageUrl, setImageUrl] = useState(defaultAvatar);
+
+  useEffect(() => {
+    if (selectedImage) {
+      setImageUrl(URL.createObjectURL(selectedImage));
+    }
+  }, [selectedImage]);
+
+  // const dispatch = useDispatch();
+
+  // const [selectedImage, setSelectedImage] = useState(null);
+  // const [imageUrl, setImageUrl] = useState(null);
+
+  // useEffect(() => {
+  //   if (selectedImage) {
+  //     dispatch(updateAvatar(URL.createObjectURL(selectedImage)));
+  //   }
+  // }, [selectedImage]);
 
   return (
     <UserCardContainer>
@@ -34,11 +54,9 @@ const UserCard = () => {
           id="image-file"
           type="file"
           accept="image/*"
-          src={avatar}
+          src={imageUrl}
           alt="User avatar image"
-          onClick={(e) => {
-            console.log(e);
-          }}
+          onChange={(e) => setSelectedImage(e.target.files[0])}
         />
 
         <LabelAvatar htmlFor="image-file">
@@ -46,7 +64,7 @@ const UserCard = () => {
             <use href={`${sprite}#icon-check-mark-1`} />
           </SvgAddAvatar>
         </LabelAvatar>
-        <AvatarImg src={avatar} alt="User avatar image" />
+        <AvatarImg src={imageUrl} alt="User avatar image" />
       </AvatarBox>
 
       <UserNameRole>
