@@ -13,18 +13,20 @@ import {
   DataValue,
 } from './DayDashboard.styled';
 import sprite from '../../assets/sprite.svg';
+import { selectDiaryError } from '../../redux/diary/selectors';
+import { useSelector } from 'react-redux';
 
-import data from '../../../DB/exercises.json';
-
-const DayDashboard = () => {
+const DayDashboard = ({ userDiaryInformation, bmr }) => {
   const {
     burnedCalories,
     consumedCalories,
     remainingCalories,
     remainingSports,
-  } = data;
+  } = userDiaryInformation || {};
 
   const [isOverThan, setIsOverThan] = useState(false);
+
+  const error = useSelector(selectDiaryError);
 
   useEffect(() => {
     if (remainingCalories < 0) {
@@ -38,11 +40,11 @@ const DayDashboard = () => {
         <ItemListStyled>
           <TitleStyledWrapper>
             <SvgStyled>
-              <use href={`${sprite}#icon-fluent_food-24-filled`}></use>
+              <use href={sprite + '#icon-fluent_food-24-filled'}></use>
             </SvgStyled>
             <TitleStyled>Daily calory intake</TitleStyled>
           </TitleStyledWrapper>
-          <DataValue>{2200}</DataValue>
+          <DataValue>{bmr && bmr !== null && bmr !== 0 ? bmr : 2200}</DataValue>
         </ItemListStyled>
         <ItemListStyled>
           <TitleStyledWrapper>
@@ -60,7 +62,9 @@ const DayDashboard = () => {
             </SvgStyled>
             <TitleStyled>Calories consumed</TitleStyled>
           </TitleStyledWrapper>
-          <DataValue>{consumedCalories ? consumedCalories : 0}</DataValue>
+          <DataValue>
+            {consumedCalories && !error ? consumedCalories : 0}
+          </DataValue>
         </ItemListStyled>
         <ItemListStyled>
           <TitleStyledWrapper>
@@ -69,7 +73,7 @@ const DayDashboard = () => {
             </SvgStyled>
             <TitleStyled>Calories burned</TitleStyled>
           </TitleStyledWrapper>
-          <DataValue>{burnedCalories ? burnedCalories : 0}</DataValue>
+          <DataValue>{burnedCalories && !error ? burnedCalories : 0}</DataValue>
         </ItemListStyled>
         <ItemListStyled className={isOverThan ? 'redBg' : ''}>
           <TitleStyledWrapper>
@@ -78,7 +82,9 @@ const DayDashboard = () => {
             </SvgStyled>
             <TitleStyled>The rest of the calories</TitleStyled>
           </TitleStyledWrapper>
-          <DataValue>{remainingCalories ? remainingCalories : 0}</DataValue>
+          <DataValue>
+            {remainingCalories && !error ? remainingCalories : bmr ? bmr : 0}
+          </DataValue>
         </ItemListStyled>
         <ItemListStyled className={isOverThan ? 'greenBg' : ''}>
           <TitleStyledWrapper>
@@ -87,7 +93,9 @@ const DayDashboard = () => {
             </SvgStyled>
             <TitleStyled>The rest of sports</TitleStyled>
           </TitleStyledWrapper>
-          <DataValue>{remainingSports ? remainingSports : 110} min</DataValue>
+          <DataValue>
+            {remainingSports && !error ? remainingSports : 110} min
+          </DataValue>
         </ItemListStyled>
       </ListStyled>
 
