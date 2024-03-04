@@ -1,1 +1,1 @@
-import { defult as DayProducts } from './DayProducts';
+export { default as DayProducts } from './DayProducts';

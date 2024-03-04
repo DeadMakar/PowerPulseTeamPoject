@@ -1,1 +1,1 @@
-import { defult as DayExercises } from './DayExercises';
+export { default as DayExercises } from './DayExercises';
