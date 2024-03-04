@@ -1,9 +1,9 @@
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 import DatePicker from 'react-datepicker';
-import { Wrapper } from './Datepicker.styled';
-import { CalendarGlobalStyles } from '../../styles/CalendarGlobalStyles';
 import { toast } from 'react-toastify';
 import changeDate from '../../helpers/helpers';
+import { Wrapper } from './Datepicker.styled';
+import { CalendarGlobalStyles } from '../../styles/CalendarGlobalStyles';
 
 const Datepicker = ({
   selectedDate,
@@ -16,11 +16,6 @@ const Datepicker = ({
   const today = changeDate(new Date());
 
   const handleDateChange = (date) => {
-    console.log('selectedDate:', selectedDate);
-    console.log('today:', today);
-    console.log('formattedDate:', formattedDate);
-    console.log('userDateRegistration:', userDateRegistration);
-
     const formattedDate = changeDate(date);
     if (today >= formattedDate && formattedDate >= userDateRegistration) {
       setSelectedDate(date);
@@ -28,7 +23,7 @@ const Datepicker = ({
       onClose();
     } else {
       toast.error(
-        `You can view information only from the day of registration: ${userDateRegistration} up to today: ${today}. `,
+        `You can review the information from the day of your registration: ${userDateRegistration} up to today: ${today}. `,
         {
           theme: 'dark',
         }

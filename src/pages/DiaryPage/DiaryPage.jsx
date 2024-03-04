@@ -1,6 +1,5 @@
 import { DaySwitch } from '../../components/DaySwitch';
 import { DayDashboard } from '../../components/DayDashboard';
-import { Logo } from '../../components/Logo';
 import {
   DiaryConteiner,
   InfoContainer,
@@ -14,9 +13,6 @@ import { TitlePage } from '../../components/TitlePage';
 const DiaryPage = () => {
   return (
     <Container>
-      <Link to="/">
-        <Logo />
-      </Link>
       <DiaryConteiner>
         <TitleAndSwitch>
           <TitlePage contentText="Diary" />
