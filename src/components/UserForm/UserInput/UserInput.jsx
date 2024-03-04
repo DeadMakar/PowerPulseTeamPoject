@@ -68,6 +68,8 @@ const UserInput = ({ errors, touched }) => {
             <WarningMessage>{errors.birthday}</WarningMessage>
           )}
         </label>
+
+        {/* <Datepicker /> */}
       </ParamBox>
     </>
   );
