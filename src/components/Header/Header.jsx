@@ -1,28 +1,23 @@
 import MediaQuery from 'react-responsive';
 import { Link } from 'react-router-dom';
-// import UserBar from '../UserBar/index';
+
 import sprite from '../../assets/sprite.svg';
 import { Logo } from '../Logo';
 import {
+  BurgerBtn,
   HeaderContainer,
-  LogoutIconHeder,
   NavWraper,
   Navigation,
   NavigationLink,
   NavigationLinkItem,
   SecondNavWraper,
 } from './Header.styled';
-import { LogoutStyled } from '../LogOutBtn/LogOutBtn.styled';
-// import { logOut } from '../../redux/auth/operations';
+
 // import { useDispatch } from 'react-redux';
+import LogOutBtn from '../LogOutBtn/LogOutBtn';
+import UserBar from '../UserBar/UserBar';
 const Header = () => {
   // const dispatch = useDispatch();
-
-  //   const { profile } = useSelector((state) => state.profile);
-
-  // const handleLogOut = () => {
-  //   dispatch(logOut());
-  // };
 
   return (
     <HeaderContainer>
@@ -41,20 +36,15 @@ const Header = () => {
           </MediaQuery>
 
           <NavigationLinkItem to="/profile">
-            {/* <UserBar /> */}
+            <UserBar />
           </NavigationLinkItem>
           <MediaQuery minWidth={1440}>
-            <LogoutStyled onClick to="/welcome">
-              <span>Logout</span>
-              <LogoutIconHeder>
-                <use href={`${sprite}#icon-log-out-01`} />
-              </LogoutIconHeder>
-            </LogoutStyled>
+            <LogOutBtn />
           </MediaQuery>
           <MediaQuery maxWidth={1439}>
-            <svg>
+            <BurgerBtn>
               <use href={`${sprite}#icon-menu`} />
-            </svg>
+            </BurgerBtn>
           </MediaQuery>
         </SecondNavWraper>
       </Navigation>

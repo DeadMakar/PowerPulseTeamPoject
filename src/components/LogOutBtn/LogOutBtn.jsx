@@ -1,7 +1,7 @@
 import sprite from '../../assets/sprite.svg';
 import { useDispatch } from 'react-redux';
 import { logOut } from '../../redux/auth/operations';
-import { LogoutIcon, LogoutStyled } from './LogOutBtn.styled';
+import { LogoutIcon, LogoutStyled, SpanText } from './LogOutBtn.styled';
 
 const LogOutBtn = ({ onClick }) => {
   const dispatch = useDispatch();
@@ -13,9 +13,9 @@ const LogOutBtn = ({ onClick }) => {
 
   return (
     <LogoutStyled to="/welcome" onClick={handleCloseClick}>
-      <span>Logout</span>
+      <SpanText>Logout</SpanText>
       <LogoutIcon>
-        <use href={`${sprite}#icon-logout`} />
+        <use href={`${sprite}#icon-log-out-01`} />
       </LogoutIcon>
     </LogoutStyled>
   );

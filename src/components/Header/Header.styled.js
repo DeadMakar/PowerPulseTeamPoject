@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { LogoutIcon } from '../LogOutBtn/LogOutBtn.styled';
+import { globalColor } from '../../styles/root';
 
 export const HeaderContainer = styled.div`
   border-bottom: 1px solid rgba(239, 237, 232, 0.2);
@@ -54,10 +54,10 @@ export const NavigationLink = styled(NavLink)`
 
   &:hover,
   &:focus {
-    background-color: #e6533c;
+    background-color: ${globalColor.colorOrange};
   }
   &.active {
-    background-color: #e6533c;
+    background-color: ${globalColor.colorOrange};
   }
 `;
 
@@ -70,6 +70,17 @@ export const NavigationLinkItem = styled(Link)`
   border-radius: 12px;
 `;
 
-export const LogoutIconHeder = styled(LogoutIcon)`
-  stroke: #e6533c;
+export const BurgerBtn = styled.svg`
+  width: ${(props) => props.size || '28px'};
+  height: ${(props) => props.size || '28px'};
+  fill: ${(props) => props.color || 'none'};
+  stroke: ${(props) => props.color || 'rgba(239, 237, 232, 0.3)'};
+  stroke-width: 1.5px;
+  display: block;
+
+  transition: stroke 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover,
+  &:focus {
+    stroke: ${globalColor.colorOrange};
+  }
 `;
