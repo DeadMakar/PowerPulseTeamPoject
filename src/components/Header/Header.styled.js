@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { LogoutIcon } from '../LogOutBtn/LogOutBtn.styled';
 
 export const HeaderContainer = styled.div`
   border-bottom: 1px solid rgba(239, 237, 232, 0.2);
@@ -67,4 +68,8 @@ export const NavigationLinkItem = styled(Link)`
   color: rgba(239, 237, 232, 1);
   background-color: transparent;
   border-radius: 12px;
+`;
+
+export const LogoutIconHeder = styled(LogoutIcon)`
+  stroke: #e6533c;
 `;

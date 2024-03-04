@@ -1,4 +1,3 @@
-// import { useSelector } from 'react-redux';
 import MediaQuery from 'react-responsive';
 import { Link } from 'react-router-dom';
 // import UserBar from '../UserBar/index';
@@ -6,14 +5,24 @@ import sprite from '../../assets/sprite.svg';
 import { Logo } from '../Logo';
 import {
   HeaderContainer,
+  LogoutIconHeder,
   NavWraper,
   Navigation,
   NavigationLink,
   NavigationLinkItem,
   SecondNavWraper,
 } from './Header.styled';
+import { LogoutStyled } from '../LogOutBtn/LogOutBtn.styled';
+// import { logOut } from '../../redux/auth/operations';
+// import { useDispatch } from 'react-redux';
 const Header = () => {
+  // const dispatch = useDispatch();
+
   //   const { profile } = useSelector((state) => state.profile);
+
+  // const handleLogOut = () => {
+  //   dispatch(logOut());
+  // };
 
   return (
     <HeaderContainer>
@@ -35,12 +44,12 @@ const Header = () => {
             {/* <UserBar /> */}
           </NavigationLinkItem>
           <MediaQuery minWidth={1440}>
-            <Link onClick to="/">
+            <LogoutStyled onClick to="/welcome">
               <span>Logout</span>
-              <svg>
+              <LogoutIconHeder>
                 <use href={`${sprite}#icon-log-out-01`} />
-              </svg>
-            </Link>
+              </LogoutIconHeder>
+            </LogoutStyled>
           </MediaQuery>
           <MediaQuery maxWidth={1439}>
             <svg>
