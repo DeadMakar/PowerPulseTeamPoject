@@ -9,6 +9,7 @@ import {
 } from './DiaryPage.styled';
 import { Container } from '../../styles/GlobalStyles';
 import { Link } from 'react-router-dom';
+import { TitlePage } from '../../components/TitlePage';
 
 const DiaryPage = () => {
   return (
@@ -18,8 +19,10 @@ const DiaryPage = () => {
       </Link>
       <DiaryConteiner>
         <TitleAndSwitch>
+          <TitlePage contentText="Diary" />
           <DaySwitch />
         </TitleAndSwitch>
+
         <InfoContainer>
           <DayDashboard />
           <ProdAndExercise></ProdAndExercise>
