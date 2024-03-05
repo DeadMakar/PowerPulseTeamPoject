@@ -37,6 +37,7 @@ export const DateLabel = styled.p`
   color: ${globalColor.colorWhite};
   font-weight: 700;
   transition: color 0.3s ease;
+  margin-right: 8px;
 
   &:hover {
     color: ${globalColor.colorOrange1};
@@ -83,7 +84,6 @@ export const CalendarBtn = styled.button`
 
 export const BtnPrev = styled.button`
   display: flex;
-  margin: 0 6px 0 0;
   padding: 0;
   background-color: transparent;
   width: 16px;
