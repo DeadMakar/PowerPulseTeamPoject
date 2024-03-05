@@ -1,13 +1,12 @@
 import { useState } from 'react';
-import { format } from 'date-fns';
-import changeDate from '../../helpers/helpers';
+// import { format } from 'date-fns';
+import { changeDate } from '../../helpers';
 import sprite from '../../assets/sprite.svg';
 import {
   BtnNext,
   BtnPrev,
   CalendarBtn,
   CalendarIconSvg,
-  DateLabel,
   SvgPrev,
   SvgNext,
   ContainerWrap,
@@ -15,12 +14,14 @@ import {
 import { Datepicker } from '../Datepicker';
 import { toast } from 'react-toastify';
 
-const DaySwitch = ({ currentDate, setCurrentDate, userDateRegistration }) => {
+const DaySwitch = () => {
+  const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(currentDate);
   const [isCalendarOpen, setCalendarOpen] = useState(false);
   const [isActivePrev, setIsActivePrev] = useState(false);
   const [isActiveNext, setIsActiveNext] = useState(false);
 
+  const userDateRegistration = '01/02/2024';
   const openCalendar = () => {
     setCalendarOpen(!isCalendarOpen);
   };
@@ -36,7 +37,7 @@ const DaySwitch = ({ currentDate, setCurrentDate, userDateRegistration }) => {
       setIsActivePrev(false);
     } else {
       toast.error(
-        `The date you choose cannot be earlier than the date of registration: ${userDateRegistration}.`,
+        `SORRY!!! Selected date cannot be earlier than the registration date: ${userDateRegistration}.`,
         {
           theme: 'dark',
         }
@@ -52,7 +53,7 @@ const DaySwitch = ({ currentDate, setCurrentDate, userDateRegistration }) => {
     nextDay.setDate(selectedDate.getDate() + 1);
     if (nextDay > new Date()) {
       toast.error(
-        `The date you have chosen cannot be later than today: ${today}.`,
+        `SORRY!!! Selected date cannot be later than today's date: ${today}.`,
         {
           theme: 'dark',
         }
@@ -69,35 +70,18 @@ const DaySwitch = ({ currentDate, setCurrentDate, userDateRegistration }) => {
     setCalendarOpen(false);
   };
 
-  const isValidDate = (date) => {
-    const dateObject = new Date(date);
-    return !isNaN(dateObject.getTime());
-  };
-
-  if (!isValidDate(currentDate) || !isValidDate(userDateRegistration)) {
-    console.error(
-      'One of the dates is invalid:',
-      currentDate,
-      userDateRegistration
-    );
-    return null;
-  }
-
   return (
     <ContainerWrap>
       <CalendarBtn onClick={openCalendar}>
-        <DateLabel>{format(selectedDate, 'dd/mm/yyyy')}</DateLabel>
         <CalendarIconSvg>
           <use href={sprite + '#icon-calendar'} />
         </CalendarIconSvg>
       </CalendarBtn>
-
       <BtnPrev type="button" onClick={goToPreviousDay}>
         <SvgPrev className={isActivePrev ? 'passivePrev' : ''}>
           <use href={sprite + '#icon-chevron-left'} />
         </SvgPrev>
       </BtnPrev>
-
       <BtnNext type="button" onClick={goToNextDay}>
         <SvgNext className={isActiveNext ? 'passiveNext' : ''}>
           <use href={sprite + '#icon-chevron-right'} />
@@ -106,11 +90,13 @@ const DaySwitch = ({ currentDate, setCurrentDate, userDateRegistration }) => {
 
       <Datepicker
         selectedDate={selectedDate}
+        dateFormat="dd/MM/yyyy"
         setSelectedDate={setSelectedDate}
         isOpen={isCalendarOpen}
         onClose={closeCalendar}
         setCurrentDate={setCurrentDate}
         userDateRegistration={userDateRegistration}
+        minDate={new Date(userDateRegistration)}
       />
     </ContainerWrap>
   );
