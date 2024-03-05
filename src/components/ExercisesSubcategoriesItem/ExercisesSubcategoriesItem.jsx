@@ -1,21 +1,17 @@
 import {
-  ContainerItem,
-  Img,
-  TextItem,
-  NameImg,
-  NameCategory,
+  Block,
+  SubCategoryName,
+  CategoryTitle,
 } from './ExercisesSubcategoriesItem.styled';
 
-const ExercisesSubcategoriesItem = ({ nameImg, category, fig }) => {
+const ExercisesSubcategoriesItem = ({ category: { filter, name, imgURL } }) => {
   return (
-    <ContainerItem>
-      <Img src={fig} />
-      <TextItem>
-        <NameImg>{nameImg}</NameImg>
-        <NameCategory>{category}</NameCategory>
-      </TextItem>
-    </ContainerItem>
+    <Block
+      style={{ backgroundImage: `url(${imgURL})`, backgroundSize: 'cover' }}
+    >
+      <SubCategoryName>{name}</SubCategoryName>
+      <CategoryTitle>{filter}</CategoryTitle>
+    </Block>
   );
 };
-
 export default ExercisesSubcategoriesItem;

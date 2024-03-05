@@ -1,1 +1,1 @@
-export { default as ExercisesCategories } from './ExercisesCategories';
+export { default as ExerciseCategories } from './ExercisesCategories.jsx';
