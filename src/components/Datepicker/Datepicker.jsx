@@ -1,48 +1,50 @@
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 import DatePicker from 'react-datepicker';
-import { toast } from 'react-toastify';
-import changeDate from '../../helpers/helpers';
+// import { toast } from 'react-toastify';
 import { Wrapper } from './Datepicker.styled';
 import { CalendarGlobalStyles } from '../../styles/CalendarGlobalStyles';
+import { DateLabel } from '../DaySwitch/DaySwitch.styled';
+import { format } from 'date-fns';
 
 const Datepicker = ({
   selectedDate,
-  setSelectedDate,
+  // setSelectedDate,
   isOpen,
-  onClose,
-  setCurrentDate,
+  // onClose,
+  // setCurrentDate,
   userDateRegistration,
+  dateFormat,
 }) => {
-  const today = changeDate(new Date());
+  const today = new Date();
 
-  const handleDateChange = (date) => {
-    const formattedDate = changeDate(date);
-    if (today >= formattedDate && formattedDate >= userDateRegistration) {
-      setSelectedDate(date);
-      setCurrentDate(date);
-      onClose();
-    } else {
-      toast.error(
-        `You can review the information from the day of your registration: ${userDateRegistration} up to today: ${today}. `,
-        {
-          theme: 'dark',
-        }
-      );
-    }
-  };
+  // const handleDateChange = (date) => {
+  //   if (date >= userDateRegistration && date <= today) {
+  //     setSelectedDate(date);
+  //     setCurrentDate(date);
+  //     onClose();
+  //   } else {
+  //     toast.error(
+  //       `You can review the information from the day of your registration: ${userDateRegistration} up to today: ${today}. `,
+  //       {
+  //         theme: 'dark',
+  //       }
+  //     );
+  //   }
+  // };
 
   return (
     <Wrapper>
+      <DateLabel>{format(selectedDate, 'dd/mm/yyyy')}</DateLabel>
       <DatePicker
         selected={selectedDate}
-        dateFormat="dd/MM/yyyy"
+        dateFormat={dateFormat}
         calendarStartDay={1}
         formatWeekDay={(day) => day.substr(0, 1)}
         open={isOpen}
         customInput={<div style={{ display: 'none' }} />}
-        onChange={handleDateChange}
+        // onChange={handleDateChange}
         minDate={new Date(userDateRegistration)}
-        maxDate={new Date(today)}
+        maxDate={today}
       />
       <CalendarGlobalStyles />
     </Wrapper>

@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
+axios.defaults.baseURL = 'https://powerpulseback.onrender.com/';
 
 // const setAuthToken = (token) => {
 //   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
