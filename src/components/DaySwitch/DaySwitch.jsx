@@ -1,5 +1,4 @@
 import { useState } from 'react';
-// import { format } from 'date-fns';
 import { changeDate } from '../../helpers';
 import sprite from '../../assets/sprite.svg';
 import {
@@ -10,9 +9,11 @@ import {
   SvgPrev,
   SvgNext,
   ContainerWrap,
+  DateLabel,
 } from './DaySwitch.styled';
 import { Datepicker } from '../Datepicker';
 import { toast } from 'react-toastify';
+import { format } from 'date-fns';
 
 const DaySwitch = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -72,6 +73,9 @@ const DaySwitch = () => {
 
   return (
     <ContainerWrap>
+      <DateLabel onClick={openCalendar}>
+        {format(selectedDate, 'dd/mm/yyyy')}
+      </DateLabel>
       <CalendarBtn onClick={openCalendar}>
         <CalendarIconSvg>
           <use href={sprite + '#icon-calendar'} />

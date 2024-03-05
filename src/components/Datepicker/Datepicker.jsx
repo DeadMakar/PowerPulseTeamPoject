@@ -1,40 +1,37 @@
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 import DatePicker from 'react-datepicker';
-// import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { Wrapper } from './Datepicker.styled';
 import { CalendarGlobalStyles } from '../../styles/CalendarGlobalStyles';
-import { DateLabel } from '../DaySwitch/DaySwitch.styled';
-import { format } from 'date-fns';
 
 const Datepicker = ({
   selectedDate,
-  // setSelectedDate,
+  setSelectedDate,
   isOpen,
-  // onClose,
-  // setCurrentDate,
+  onClose,
+  setCurrentDate,
   userDateRegistration,
   dateFormat,
 }) => {
   const today = new Date();
 
-  // const handleDateChange = (date) => {
-  //   if (date >= userDateRegistration && date <= today) {
-  //     setSelectedDate(date);
-  //     setCurrentDate(date);
-  //     onClose();
-  //   } else {
-  //     toast.error(
-  //       `You can review the information from the day of your registration: ${userDateRegistration} up to today: ${today}. `,
-  //       {
-  //         theme: 'dark',
-  //       }
-  //     );
-  //   }
-  // };
+  const handleDateChange = (date) => {
+    if (date >= userDateRegistration && date <= today) {
+      setSelectedDate(date);
+      setCurrentDate(date);
+      onClose();
+    } else {
+      toast.error(
+        `You can review the information from the day of your registration: ${userDateRegistration} up to today: ${today}. `,
+        {
+          theme: 'dark',
+        }
+      );
+    }
+  };
 
   return (
     <Wrapper>
-      <DateLabel>{format(selectedDate, 'dd/mm/yyyy')}</DateLabel>
       <DatePicker
         selected={selectedDate}
         dateFormat={dateFormat}
@@ -42,7 +39,7 @@ const Datepicker = ({
         formatWeekDay={(day) => day.substr(0, 1)}
         open={isOpen}
         customInput={<div style={{ display: 'none' }} />}
-        // onChange={handleDateChange}
+        onChange={handleDateChange}
         minDate={new Date(userDateRegistration)}
         maxDate={today}
       />
