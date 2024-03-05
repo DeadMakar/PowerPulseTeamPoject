@@ -213,3 +213,14 @@ export const TextWrapper = styled.div`
     width: 439px;
   }
 `;
+
+export const LogOutBox = styled.div`
+  display: flex;
+  align-items: end;
+  justify-content: end;
+  margin-top: 57px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 30px;
+  }
+`;

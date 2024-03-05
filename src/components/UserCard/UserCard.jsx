@@ -11,6 +11,7 @@ import {
   ItemListStyled,
   LabelAvatar,
   ListStyled,
+  LogOutBox,
   SvgAddAvatar,
   SvgStyled,
   SvgWrapperText,
@@ -23,15 +24,28 @@ import {
   UserNameRole,
   UserRole,
 } from './UserCard.styled';
+import { LogOutBtn } from '../LogOutBtn';
 // import { useDispatch } from 'react-redux';
 
 const UserCard = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [imageUrl, setImageUrl] = useState(defaultAvatar);
 
+  const fileReader = new FileReader();
+  fileReader.onloadend = () => {
+    setImageUrl(fileReader.result);
+  };
+
   useEffect(() => {
     if (selectedImage) {
       setImageUrl(URL.createObjectURL(selectedImage));
+      fileReader.readAsDataURL(selectedImage);
+
+      console.log(fileReader);
+      const formData = new FormData();
+      formData.append('avatar', fileReader);
+
+      console.log(formData);
     }
   }, [selectedImage]);
 
@@ -92,19 +106,22 @@ const UserCard = () => {
           <DataValue>0 min</DataValue>
         </ItemListStyled>
       </ListStyled>
-      <TextWrapper>
-        <SvgWrapperText>
-          <ExclamationSvg>
-            <use href={sprite + '#icon-exclamation-mark'}></use>
-          </ExclamationSvg>
-        </SvgWrapperText>
-        <TextStyled>
-          We understand that each individual is unique, so the entire approach
-          to diet is relative and tailored to your unique body and goals.
-        </TextStyled>
-      </TextWrapper>
-
-      {/* BUTTON */}
+      <div>
+        <TextWrapper>
+          <SvgWrapperText>
+            <ExclamationSvg>
+              <use href={sprite + '#icon-exclamation-mark'}></use>
+            </ExclamationSvg>
+          </SvgWrapperText>
+          <TextStyled>
+            We understand that each individual is unique, so the entire approach
+            to diet is relative and tailored to your unique body and goals.
+          </TextStyled>
+        </TextWrapper>
+        <LogOutBox>
+          <LogOutBtn colorSvg="#E6533C" />
+        </LogOutBox>
+      </div>
     </UserCardContainer>
   );
 };

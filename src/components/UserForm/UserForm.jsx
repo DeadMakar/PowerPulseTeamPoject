@@ -39,6 +39,31 @@ export const UserForm = () => {
     levelActivity: '3',
   };
 
+  const [birthdayDate, setBirthdayDate] = useState('0000-00-00');
+
+  const onDateChange = (date) => {
+    const isoDateString = date.toISOString();
+    const formattedDateString = isoDateString.slice(0, 10);
+    // set formatting date
+    setBirthdayDate(formattedDateString);
+
+    // check the age
+
+    const birthdayDate = new Date(formattedDateString);
+    const currentDate = new Date();
+
+    const ageInMillis = currentDate - birthdayDate;
+
+    const millisecondsInYear = 1000 * 60 * 60 * 24 * 365.25;
+
+    const ageInYears = ageInMillis / millisecondsInYear;
+
+    if (ageInYears < 18) {
+      // notification
+      console.log('Sorry, but only adults can use our app.');
+    }
+  };
+
   const [isInfoChanged, setIsInfoChanged] = useState(true);
 
   const ifUserInfoChanged = (values) => {
@@ -65,7 +90,11 @@ export const UserForm = () => {
       >
         {({ errors, touched }) => (
           <Form onChange={(values) => ifUserInfoChanged(values)}>
-            <UserInput errors={errors} touched={touched} />
+            <UserInput
+              errors={errors}
+              touched={touched}
+              onDateChange={onDateChange}
+            />
             <BloodSexSection>
               <LabelInputName>Blood</LabelInputName>
               <BloodSexBox>
