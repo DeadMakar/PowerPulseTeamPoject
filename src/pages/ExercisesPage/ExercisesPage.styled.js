@@ -4,6 +4,8 @@ import { globalColor } from '../../styles/root';
 import bgDesktop1 from '../../assets/images/exercises/trainingGym-1.jpg';
 import bgDesktop2 from '../../assets/images/exercises/trainingGym-1@2x.jpg';
 
+import { NavLink } from 'react-router-dom';
+
 export const ContainerExPage = styled.div`
   /* border: 2px solid red;
   position: relative; */
@@ -112,5 +114,40 @@ export const BackGroundStyle = styled.div`
     screen and (min-resolution: 2dppx) and (min-width: 1440px) {
     background-image: linear-gradient(89deg, #040404 0%, rgba(4, 4, 4, 0) 100%),
       url(${bgDesktop2});
+  }
+`;
+
+export const ChaptersWrapper = styled.ul`
+  display: flex;
+  gap: 28px;
+  margin-top: 20px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 0;
+  }
+  @media screen and (min-width: 1440px) {
+    justify-content: end;
+  }
+`;
+
+export const LinkStyled = styled(NavLink)`
+  position: relative;
+  display: block;
+  color: rgba(239, 237, 232, 0.4);
+
+  &.active {
+    color: var(--color-text);
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      bottom: -8px;
+      width: 100%;
+      height: 4px;
+      background-color: var(--color-main-one);
+      border-radius: 2px;
+    }
   }
 `;

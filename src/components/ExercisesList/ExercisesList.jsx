@@ -19,7 +19,7 @@ import Loader from '../Loader/Loader';
 import {
   ChaptersWrapper,
   LinkStyled,
-} from '../../pages/Exercises/Exercises.styled';
+} from '../../pages/ExercisesPage/ExercisesPage.styled';
 import ChapterTemplate from '../ChapterTemplate/ChapterTemplate';
 
 const ExercisesList = () => {
