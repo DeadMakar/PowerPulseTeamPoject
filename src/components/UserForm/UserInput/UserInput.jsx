@@ -3,14 +3,15 @@ import {
   InputField,
   LabelInputName,
   ParamBox,
-  ParamUserBirthDay,
   ParamUserCurWeight,
   ParamUserDesWeight,
   ParamUserHeight,
   WarningMessage,
 } from './UserInput.styled';
 
-const UserInput = ({ errors, touched }) => {
+import BirthdayCalendar from '../../UserCard/DirthdayCalendar/BirthdayCalendar';
+
+const UserInput = ({ errors, touched, onDateChange }) => {
   return (
     <>
       <ContactUserParam>
@@ -63,10 +64,7 @@ const UserInput = ({ errors, touched }) => {
         </label>
         <label>
           <LabelInputName>Date of birth </LabelInputName>
-          <ParamUserBirthDay name="birthday" type="date" />
-          {errors.birthday && touched.birthday && (
-            <WarningMessage>{errors.birthday}</WarningMessage>
-          )}
+          <BirthdayCalendar name="birthday" onDateChange={onDateChange} />
         </label>
 
         {/* <Datepicker /> */}
