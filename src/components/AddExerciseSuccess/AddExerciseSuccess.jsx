@@ -1,13 +1,35 @@
+import thumbUp from '../../assets/images/exercises/thumbUp.png';
+import {
+  ImgStyled,
+  LinkBtnStyled,
+  LinkStyled,
+  SpanStyled,
+  SvgArrow,
+  TextStyled,
+  TitleStyled,
+  WrapperDiv,
+} from './AddExerciseSuccess.styled';
+import sprite from '../../assets/sprite.svg';
+
 const AddExerciseSuccess = ({ exerciseTime, caloriesBurned }) => {
   return (
-    <>
-      <img src="#" /> {/* палец вверх, прописать правильній путь к нему */}
-      <h2>Well done</h2>
-      <p>Your time: {exerciseTime}</p>
-      <p>Burned calories: {caloriesBurned}</p>
-      <a href="">Next product</a> {/* ссылка в виде кнопки Next product */}
-      <a href="">to the Diary</a>
-    </>
+    <WrapperDiv>
+      <ImgStyled src={thumbUp} />
+      <TitleStyled>Well done</TitleStyled>
+      <TextStyled>
+        Your time: <SpanStyled>3 {exerciseTime} minutes</SpanStyled>
+      </TextStyled>
+      <TextStyled>
+        Burned calories: <SpanStyled> 150 {caloriesBurned} </SpanStyled>
+      </TextStyled>
+      <LinkBtnStyled href="">Next product</LinkBtnStyled>{' '}
+      <LinkStyled href="">
+        to the Diary{' '}
+        <SvgArrow>
+          <use href={`${sprite}#icon-arrow`}></use>
+        </SvgArrow>
+      </LinkStyled>
+    </WrapperDiv>
   );
 };
 

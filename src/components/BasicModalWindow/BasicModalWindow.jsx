@@ -1,4 +1,8 @@
-import { ModalBackdrop, ModalWindow } from './BasicModalWindow.styled';
+import {
+  CloseBtn,
+  ModalBackdrop,
+  ModalWindow,
+} from './BasicModalWindow.styled';
 import { AddProductForm } from '../AddProductForm';
 import { AddExerciseSuccess } from '../AddExerciseSuccess';
 import { AddProductSuccess } from '../AddProductSuccess';
@@ -14,7 +18,7 @@ const BasicModalWindow = ({ children }) => {
   return (
     <ModalBackdrop>
       <ModalWindow>
-        <closeBtn />
+        <CloseBtn/>
         {children}
         {/* умова для рендерингу: */}
         {/* <AddProductForm /> */}

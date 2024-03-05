@@ -1,17 +1,54 @@
-const AddProductForm = ({ caloriesPlus }) => {
+import { Formik } from 'formik';
+import * as Yup from 'yup';
+import {
+  Form,
+  Field,
+  FieldWrapper,
+  SpanStyled,
+  TextStyled,
+  BtnWrapper,
+  BtnOrange,
+  BtnCancel,
+  CloseSvgBtn,
+} from './AddProductForm.styled';
+import sprite from '../../assets/sprite.svg';
+
+const productValidation = Yup.object().shape({
+  // name: Yup.string().required('Required'),
+  // mass: Yup.number().required('Required'),
+});
+
+export const AddProductForm = ({ caloriesPlus, onAddProduct }) => {
   return (
     <>
-      {/* Формик, поля: Product, Calories+ */}
-      <p>Calories: {caloriesPlus}</p>
-      {/* <AddBtn>Add to diary </AddBtn> */}
-      {/* <CancelBtn>Cancel </CancelBtn> */}
+      <CloseSvgBtn>
+        <use href={`${sprite}#icon-x`}></use>
+      </CloseSvgBtn>
+
+      <Formik
+        initialValues={{ name: '', mass: '' }}
+        validationSchema={productValidation}
+        onSubmit={(values, actions) => {
+          // console.log('values :>> ', values);
+          onAddProduct(values);
+          actions.resetForm();
+        }}
+      >
+        <Form>
+          <FieldWrapper>
+            <Field type="text" name="name" placeholder="Banana" />
+            <Field type="text" name="mass" placeholder="grams" />
+          </FieldWrapper>
+          <TextStyled>
+            Calories: <SpanStyled>96 {caloriesPlus}</SpanStyled>
+          </TextStyled>
+          <BtnWrapper>
+            <BtnOrange type="submit">Add to diary</BtnOrange>
+            <BtnCancel type="button">Cancel </BtnCancel>
+          </BtnWrapper>
+        </Form>
+      </Formik>
     </>
   );
 };
-
-// export так и оставить или прописать export default
-// Формик форма, 2 поля: название продукта, количество (грамм)
-// компонент AddBtn (взять из общих компонентов или сделать самому)
-// компонент CloseBtn (взять из общих компонентов или сделать самому)
-
 export default AddProductForm;
