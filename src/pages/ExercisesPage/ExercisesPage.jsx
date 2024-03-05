@@ -1,13 +1,30 @@
+import React from 'react';
 import { ExercisesCategories } from '../../components/ExercisesCategories';
-import { ExercisesSubcategoriesItem } from '../../components/ExercisesSubcategoriesItem';
 import { TitlePage } from '../../components/TitlePage';
+import { Container } from '../../../styles/GlobalStyles';
+import {
+  ContainerExPage,
+  BackGroundStyle,
+  MixContainer,
+  BackButton 
+} from './ExercisesPage.styled';
 
 const ExercisesPage = () => {
   return (
-    <div>
-      <TitlePage contentText="halo" />
-      <ExercisesCategories />
-    </div>
+    <BackGroundStyle>
+      <Container>
+        <MixContainer>
+          <div>
+            <BackButton />
+            <ContainerExPage>
+              <TitlePage contentText="halo" />
+              <ExercisesCategories />
+            </ContainerExPage>
+          </div>
+        </MixContainer>
+      </Container>
+    </BackGroundStyle>
   );
 };
+
 export default ExercisesPage;
