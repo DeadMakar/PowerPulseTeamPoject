@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { globalColor } from '../../styles/root';
 
 const ModalBackdrop = styled.div`
   position: fixed;
@@ -8,58 +9,28 @@ const ModalBackdrop = styled.div`
   width: 100vw;
   height: 100vh;
 
-  background-color: #04040466;
+  /* background-color: #04040466; */
+  color: grey;
 `;
 
 const ModalWindow = styled.div`
   position: absolute;
+  position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  color: grey;
 `;
 
-export { ModalBackdrop, ModalWindow };
+const CloseBtn = styled.svg`
+  position: absolute;
+  top: 10;
+  right: 10;
+  width: 14px;
+  height: 14px;
+  stroke: ${globalColor.colorWhite};
+  fill: ${globalColor.colorWhite};
+  outline: red;
+`;
 
-// import styled from 'styled-components';
-
-// export const ModalContainer = styled.div`
-//   position: absolute;
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -50%);
-//   padding: 14px;
-//   min-width: 335px;
-//   background-color: var(--color-back-one);
-//   border: 1px solid #efede833;
-//   border-radius: 12px;
-
-//   @media screen and (min-width: 768px) {
-//     padding: 16px;
-//   }
-// `;
-// export const CloseBtnWrapper = styled.svg`
-//   position: absolute;
-//   cursor: pointer;
-//   width: 22px;
-//   height: 22px;
-//   stroke: var(--color-text);
-//   top: 14px;
-//   right: 14px;
-//   cursor: pointer;
-// `;
-// export const ModalChildrenWrapper = styled.div`
-//   margin: 0 auto;
-//   text-align: center;
-//   z-index: 1;
-// `;
-
-// export const BackdropModal = styled.div`
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-
-//   width: 100vw;
-//   height: 100vh;
-
-//   background-color: #04040466;
-// `;
+export { ModalBackdrop, ModalWindow, CloseBtn };

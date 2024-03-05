@@ -1,12 +1,33 @@
+import avocado from '../../assets/images/products/avocado.png';
+import {
+  ImgStyled,
+  LinkBtnStyled,
+  LinkStyled,
+  SpanStyled,
+  SvgArrow,
+  TextStyled,
+  TitleStyled,
+  WrapperDiv,
+} from './AddProductSuccess.styled';
+import sprite from '../../assets/sprite.svg';
+
 const AddProductSuccess = ({ caloriesPlus }) => {
   return (
-    <>
-      <img src="../../assets/images/products/avocado.png" />
-      <h2>Well done</h2>
-      <p>Calories: {caloriesPlus}</p>
-      <a href="">Next product</a> {/* ссылка в виде кнопки Next product */}
-      <a href="">to the Diary</a>
-    </>
+    <WrapperDiv>
+      <ImgStyled src={avocado} />
+      <TitleStyled>Well done</TitleStyled>
+      <TextStyled>
+        Calories: <SpanStyled>96 {caloriesPlus}</SpanStyled>
+      </TextStyled>
+      <LinkBtnStyled href="">Next product</LinkBtnStyled>{' '}
+      {/* ссылка в виде кнопки Next product */}
+      <LinkStyled href="">
+        to the Diary{' '}
+        <SvgArrow>
+          <use href={`${sprite}#icon-arrow`}></use>
+        </SvgArrow>
+      </LinkStyled>
+    </WrapperDiv>
   );
 };
 
