@@ -117,6 +117,7 @@ export const BackGroundStyle = styled.div`
   }
 `;
 
+// относиться к 'ExercisesList' <--
 export const ChaptersWrapper = styled.ul`
   display: flex;
   gap: 28px;
@@ -149,5 +150,17 @@ export const LinkStyled = styled(NavLink)`
       background-color: var(--color-main-one);
       border-radius: 2px;
     }
+  }
+`;
+
+export const DesctopWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 `;

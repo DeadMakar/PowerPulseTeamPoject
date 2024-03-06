@@ -11,6 +11,19 @@ const clearAuthToken = () => {
   axios.defaults.headers.common.Authorization = '';
 };
 
+export const instance = axios.create({
+  baseURL: 'https://powerpulse-t5-backend.onrender.com/api/',
+});
+
+export const token = {
+  set: (token) => {
+    instance.defaults.headers['Authorization'] = `Bearer ${token}`;
+  },
+  clear: () => {
+    instance.defaults.headers['Authorization'] = '';
+  },
+};
+
 export const register = createAsyncThunk(
   'auth/register',
   async (userData, thunkAPI) => {
