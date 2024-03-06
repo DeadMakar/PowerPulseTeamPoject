@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { changeDate } from '../../helpers';
 import sprite from '../../assets/sprite.svg';
 import {
   BtnNext,
@@ -22,7 +21,7 @@ const DaySwitch = () => {
   const [isActivePrev, setIsActivePrev] = useState(false);
   const [isActiveNext, setIsActiveNext] = useState(false);
 
-  const userDateRegistration = '01/02/2024';
+  const userDateRegistration = new Date('2024-02-01');
   const openCalendar = () => {
     setCalendarOpen(!isCalendarOpen);
   };
@@ -30,15 +29,14 @@ const DaySwitch = () => {
   const goToPreviousDay = () => {
     setIsActivePrev(true);
     const previousDay = new Date(currentDate);
-    const formattedPreviousDay = changeDate(previousDay);
-    if (formattedPreviousDay > userDateRegistration) {
+    if (previousDay > userDateRegistration) {
       previousDay.setDate(previousDay.getDate() - 1);
       setCurrentDate(previousDay);
       setSelectedDate(previousDay);
       setIsActivePrev(false);
     } else {
       toast.error(
-        `SORRY!!! Selected date cannot be earlier than the registration date: ${userDateRegistration}.`,
+        `SORRY!!! Selected date cannot be earlier than the registration date: ${userDateRegistration.toLocaleDateString()}.`,
         {
           theme: 'dark',
         }
@@ -49,21 +47,21 @@ const DaySwitch = () => {
 
   const goToNextDay = () => {
     setIsActiveNext(true);
-    const today = changeDate(new Date());
+    const today = new Date();
     const nextDay = new Date(selectedDate);
     nextDay.setDate(selectedDate.getDate() + 1);
-    if (nextDay > new Date()) {
+    if (nextDay <= today) {
+      setCurrentDate(nextDay);
+      setSelectedDate(nextDay);
+      setIsActiveNext(false);
+    } else {
       toast.error(
-        `SORRY!!! Selected date cannot be later than today's date: ${today}.`,
+        `SORRY!!! Selected date cannot be later than today's date: ${today.toLocaleDateString()}.`,
         {
           theme: 'dark',
         }
       );
       setIsActiveNext(true);
-    } else {
-      setCurrentDate(nextDay);
-      setSelectedDate(nextDay);
-      setIsActiveNext(false);
     }
   };
 
@@ -74,7 +72,7 @@ const DaySwitch = () => {
   return (
     <ContainerWrap>
       <DateLabel onClick={openCalendar}>
-        {format(selectedDate, 'dd/mm/yyyy')}
+        {format(selectedDate, 'dd/MM/yyyy')}
       </DateLabel>
       <CalendarBtn onClick={openCalendar}>
         <CalendarIconSvg>
@@ -100,7 +98,7 @@ const DaySwitch = () => {
         onClose={closeCalendar}
         setCurrentDate={setCurrentDate}
         userDateRegistration={userDateRegistration}
-        minDate={new Date(userDateRegistration)}
+        minDate={userDateRegistration}
       />
     </ContainerWrap>
   );
