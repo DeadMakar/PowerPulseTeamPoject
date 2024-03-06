@@ -1,53 +1,58 @@
 import styled from 'styled-components';
 
-export const ContainerItem = styled.div`
-  position: relative;
-  width: 335px;
+export const Block = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 280px;
   height: 206px;
-  border-radius: 12px;
-  border: 1px solid rgba(239, 237, 232, 0.2);
-  @media screen and (min-width: 768px) {
+  border: 1px solid white;
+  border-radius: 5px;
+  transform: scale(0.98);
+  opacity: 0.8;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+
+  &:hover {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  @media (min-width: 375px) {
+    width: 335px;
+  }
+
+  @media (min-width: 768px) {
     width: 224px;
+    font-size: 32px;
+    line-height: 1.375;
   }
-  @media screen and (min-width: 1440px) {
-    width: 237px;
+
+  @media (min-width: 1440px) {
+    width: 236px;
+    gap: 15px;
   }
 `;
 
-export const Img = styled.img`
-  width: 335px;
-  height: 206px;
-  opacity: 0.3;
-  border-radius: 12px;
-  object-fit: cover;
-  @media screen and (min-width: 768px) {
-    width: 224px;
-  }
-  @media screen and (min-width: 1440px) {
-    width: 237px;
-  }
-`;
-
-export const TextItem = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 18px;
-`;
-
-export const NameImg = styled.p`
-  margin-bottom: 2px;
-  font-size: 24px;
-  font-weight: 400;
+export const SubCategoryName = styled.h2`
   color: rgba(239, 237, 232, 1);
-  text-align: center;
-`;
-
-export const NameCategory = styled.p`
-  margin: 0;
-  font-size: 12px;
   font-weight: 400;
+  font-size: 20px;
+  line-height: 1.2;
+
+  &:first-letter {
+    text-transform: capitalize;
+  }
+`;
+export const CategoryTitle = styled.span`
   color: rgba(239, 237, 232, 0.4);
-  text-align: center;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.5;
+
+  &:first-letter {
+    text-transform: capitalize;
+  }
 `;

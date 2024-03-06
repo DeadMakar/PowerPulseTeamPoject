@@ -6,28 +6,29 @@ import { ErrorPage } from './pages/ErrorPage';
 import { SignInPage } from './pages/SignInPage';
 import { SignUpPage } from './pages/SignUpPage';
 import { ExercisesPage } from './pages/ExercisesPage';
-import { Header } from './components/Header';
+import { ProductsPage } from './pages/ProductsPage';
+import { Layout } from './components/Layout';
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Header />} />
+      <Route path="/" element={<Layout />}>
+        <Route path="/welcome" element={<WelcomePage />} />
 
-      <Route path="/welcome" element={<WelcomePage />} />
+        <Route path="/signup" element={<SignUpPage />} />
 
-      <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/signin" element={<SignInPage />} />
 
-      <Route path="/signin" element={<SignInPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
 
-      <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/diary" element={<DiaryPage />} />
 
-      <Route path="/diary" element={<DiaryPage />} />
+        <Route path="/products" element={<ProductsPage />} />
 
-      <Route path="/products" element={<p>ProductsPage</p>} />
+        <Route path="/exercises" element={<ExercisesPage />} />
 
-      <Route path="/exercises" element={<ExercisesPage />} />
-
-      <Route path="/error" element={<ErrorPage />} />
+        <Route path="/error" element={<ErrorPage />} />
+      </Route>
     </Routes>
   );
 }

@@ -1,17 +1,25 @@
 import styled from 'styled-components';
 
-export const WrapperStyled = styled.div`
+export const SubCatItems = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 20px;
   flex-wrap: wrap;
-  margin-top: 40px;
-  align-items: center;
-  @media screen and (min-width: 768px) {
-    flex-direction: row;
-    gap: 16px;
+  gap: 20px;
+  & > div {
+    height: 150rem;
   }
-  @media screen and (min-width: 1440px) {
-    width: 1300px;
+
+  @media (min-width: 768px) {
+    gap: 16px;
+    & > div {
+      height: 45rem;
+      margin-bottom: 32px;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    font-size: 18px;
+    & > div {
+      height: 30rem;
+    }
   }
 `;

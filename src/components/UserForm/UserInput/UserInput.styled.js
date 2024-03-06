@@ -82,18 +82,6 @@ export const ParamUserDesWeight = styled(ParamUserHeight)`
   }
 `;
 
-export const ParamUserBirthDay = styled(ParamUserHeight)`
-  width: 161px;
-
-  @media screen and (min-width: 768px) {
-    width: 187px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 187px;
-  }
-`;
-
 export const WarningMessage = styled.div`
   width: 160px;
   font-size: 10px;

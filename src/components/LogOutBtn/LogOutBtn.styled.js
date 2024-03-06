@@ -11,12 +11,12 @@ export const SpanText = styled.span`
 
 export const LogoutIcon = styled.svg`
   fill: transparent;
-  stroke: rgba(239, 237, 232, 1);
+  stroke: ${(props) => props.$colorSvg};
   width: 20px;
   height: 20px;
-  @media (min-width: 1440px) {
+  /* @media (min-width: 1440px) {
     stroke: ${globalColor.colorOrange};
-  }
+  } */
 `;
 export const LogoutStyled = styled(Link)`
   display: flex;

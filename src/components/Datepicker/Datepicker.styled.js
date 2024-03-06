@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   left: -50%;
   top: 90%;
   transform: translate(0%, 0%);
-  z-index: 999;
+  z-index: 10;
 `;
 
 export const TitleWrapper = styled.button`
