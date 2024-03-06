@@ -10,16 +10,30 @@ const ModalBackdrop = styled.div`
   height: 100vh;
 
   /* background-color: #04040466; */
-  color: grey;
 `;
 
 const ModalWindow = styled.div`
   position: absolute;
-  position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: grey;
+
+  @media screen and (max-width: 374px) {
+    /* margin: 0 auto; */
+    /* width: 100; */
+    min-width: 300px;
+    min-height: 362px;
+  }
+
+  @media screen and (min-width: 375px) {
+    min-width: 335px;
+    min-height: 362px;
+  }
+
+  @media screen and (min-width: 768px) {
+    min-width: 430px;
+    min-height: 428px;
+  }
 `;
 
 const CloseBtn = styled.svg`

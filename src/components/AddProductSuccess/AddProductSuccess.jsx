@@ -1,4 +1,3 @@
-import avocado from '../../assets/images/products/avocado.png';
 import {
   ImgStyled,
   LinkBtnStyled,
@@ -10,6 +9,7 @@ import {
   WrapperDiv,
 } from './AddProductSuccess.styled';
 import sprite from '../../assets/sprite.svg';
+import avocado from '../../assets/images/products/avocado.png';
 
 const AddProductSuccess = ({ caloriesPlus }) => {
   return (

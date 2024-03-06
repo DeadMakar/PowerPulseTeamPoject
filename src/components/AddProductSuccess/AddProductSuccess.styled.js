@@ -11,13 +11,28 @@ export const WrapperDiv = styled.div`
 
   border: 1px solid rgba(239, 237, 232, 0.2);
   border-radius: 12px;
-  min-width: 335px;
-  min-height: 362px;
+
+  padding: 48px 0;
+
+  @media screen and (min-width: 768px) {
+    padding: 64px 0;
+  }
+
+  /* @media screen and (max-width: 374px) {
+    
+    min-width: 300px;
+    min-height: 362px;
+  }
+
+  @media screen and (min-width: 375px) {
+    min-width: 335px;
+    min-height: 362px;
+  }
 
   @media screen and (min-width: 768px) {
     min-width: 430px;
     min-height: 428px;
-  }
+  } */
 `;
 
 export const ImgStyled = styled.img`
