@@ -13,6 +13,9 @@ import {
   UserFormContainer,
 } from './UserForm.styled';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../redux/profile/selectors';
+// import { updateSettings } from '../../redux/profile/operations';
 
 // const initialValues = {
 //   name: '',
@@ -27,40 +30,68 @@ import { useState } from 'react';
 // };
 
 export const UserForm = () => {
-  const userInfo = {
-    name: 'Katy',
-    email: '@gmail.com',
-    height: 170,
-    currentWeight: 50,
-    desiredWeight: 40,
-    birthday: '2000-01-01',
-    blood: '1',
-    sex: 'female',
-    levelActivity: '3',
+  const {
+    name,
+    email,
+    height,
+    currentWeight,
+    desiredWeight,
+    birthday,
+    blood,
+    sex,
+    levelActivity,
+  } = useSelector(selectUser);
+
+  const initialValue = {
+    name,
+    email,
+    height,
+    currentWeight,
+    desiredWeight,
+    birthday,
+    blood: blood.toString(),
+    sex,
+    levelActivity: levelActivity.toString(),
   };
 
-  const [birthdayDate, setBirthdayDate] = useState('0000-00-00');
+  const [birthdayNew, setBirthdayDate] = useState(birthday);
+
+  const formatDate = (date) => {
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+
+    const formattedDay = day < 10 ? '0' + day : day;
+    const formattedMonth = month < 10 ? '0' + month : month;
+
+    return `${formattedDay}.${formattedMonth}.${year}`;
+  };
+
+  const mathFullYear = (birthday) => {
+    const [day, month, year] = birthday.split('.');
+
+    const birthDate = new Date(year, month - 1, day);
+
+    const currentDate = new Date();
+
+    const age = currentDate.getFullYear() - birthDate.getFullYear();
+
+    return age;
+  };
 
   const onDateChange = (date) => {
-    const isoDateString = date.toISOString();
-    const formattedDateString = isoDateString.slice(0, 10);
-    // set formatting date
-    setBirthdayDate(formattedDateString);
+    const formatedDate = formatDate(date);
+
+    setBirthdayDate(formatedDate);
 
     // check the age
 
-    const birthdayDate = new Date(formattedDateString);
-    const currentDate = new Date();
+    const fullYear = mathFullYear(formatedDate);
 
-    const ageInMillis = currentDate - birthdayDate;
-
-    const millisecondsInYear = 1000 * 60 * 60 * 24 * 365.25;
-
-    const ageInYears = ageInMillis / millisecondsInYear;
-
-    if (ageInYears < 18) {
+    if (fullYear < 18) {
       // notification
       console.log('Sorry, but only adults can use our app.');
+      setIsInfoChanged(true);
     }
   };
 
@@ -68,7 +99,7 @@ export const UserForm = () => {
 
   const ifUserInfoChanged = (values) => {
     const isInfoChanged = Object.keys(values).some(
-      (key) => values[key] !== userInfo[key]
+      (key) => values[key] !== initialValue[key]
     );
     setIsInfoChanged(!isInfoChanged);
 
@@ -76,13 +107,47 @@ export const UserForm = () => {
   };
 
   const handleUpdateUserInfo = (newInfo) => {
-    console.log(newInfo);
+    const {
+      name,
+      height,
+      currentWeight,
+      desiredWeight,
+      blood,
+      sex,
+      levelActivity,
+    } = newInfo;
+
+    const toUpdateDate = {
+      name,
+      height,
+      currentWeight,
+      desiredWeight,
+      birthdayNew,
+      blood: Number(blood),
+      sex,
+      levelActivity: Number(levelActivity),
+    };
+
+    // dispatchEvent(
+    //   updateSettings({
+    //     name,
+    //     height,
+    //     currentWeight,
+    //     desiredWeight,
+    //     birthday,
+    //     blood : Number(blood),
+    //     sex,
+    //     levelActivity: Number(levelActivity),
+    //   })
+    // );
+
+    console.log(toUpdateDate);
   };
 
   return (
     <UserFormContainer>
       <Formik
-        initialValues={userInfo}
+        initialValues={initialValue}
         validationSchema={UserFormSchema}
         onSubmit={(values) => {
           handleUpdateUserInfo(values);
@@ -94,6 +159,8 @@ export const UserForm = () => {
               errors={errors}
               touched={touched}
               onDateChange={onDateChange}
+              savedBirthday={birthday}
+              userEmail={email}
             />
             <BloodSexSection>
               <LabelInputName>Blood</LabelInputName>

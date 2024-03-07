@@ -1,5 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getCurrentUser, updateAvatar, updateSettings } from './operations';
+import {
+  // createSettings,
+  getCurrentUser,
+  updateAvatar,
+  updateSettings,
+} from './operations';
+
+import defaultAvatar from '../../assets/images/profile/gridicons_user.jpg';
 
 const initialState = {
   user: {
@@ -8,17 +15,20 @@ const initialState = {
     height: 0,
     currentWeight: 0,
     desiredWeight: 0,
-    birthday: '0000-00-00',
+    birthday: '00.00.0000',
     blood: 0,
     sex: '',
     levelActivity: 0,
+    avatar: defaultAvatar,
+    bmr: 0,
+    trainingTime: 110,
   },
   isLoading: false,
   error: null,
 };
 
 const profileSlice = createSlice({
-  name: 'profile',
+  name: 'prifileSettings',
   initialState,
   extraReducers: (builder) => {
     builder
@@ -27,6 +37,9 @@ const profileSlice = createSlice({
       })
 
       .addCase(getCurrentUser.fulfilled, (state, action) => {
+        console.log(action.payload.user);
+        console.log(action.payload.user.bmr);
+
         state.isLoading = false;
         state.error = null;
         state.user = action.payload;
@@ -36,6 +49,21 @@ const profileSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
+
+      // .addCase(createSettings.pending, (state) => {
+      //   state.isLoading = true;
+      // })
+
+      // .addCase(createSettings.fulfilled, (state, action) => {
+      //   state.isLoading = false;
+      //   state.error = null;
+      //   state.user = action.payload;
+      // })
+
+      // .addCase(createSettings.rejected, (state, action) => {
+      //   state.isLoading = false;
+      //   state.error = action.payload;
+      // })
 
       .addCase(updateSettings.pending, (state) => {
         state.isLoading = true;

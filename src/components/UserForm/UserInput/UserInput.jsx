@@ -9,9 +9,15 @@ import {
   WarningMessage,
 } from './UserInput.styled';
 
-import BirthdayCalendar from '../../UserCard/DirthdayCalendar/BirthdayCalendar';
+import BirthdayCalendar from '../../UserCard/BirthdayCalendar/BirthdayCalendar';
 
-const UserInput = ({ errors, touched, onDateChange }) => {
+const UserInput = ({
+  errors,
+  touched,
+  onDateChange,
+  savedBirthday,
+  userEmail,
+}) => {
   return (
     <>
       <ContactUserParam>
@@ -30,7 +36,7 @@ const UserInput = ({ errors, touched, onDateChange }) => {
             type="text"
             autoComplete="off"
             disabled
-            value="@gmail.com"
+            value={userEmail}
 
             // From user data
           />
@@ -64,7 +70,11 @@ const UserInput = ({ errors, touched, onDateChange }) => {
         </label>
         <label>
           <LabelInputName>Date of birth </LabelInputName>
-          <BirthdayCalendar name="birthday" onDateChange={onDateChange} />
+          <BirthdayCalendar
+            savedBirthday={savedBirthday}
+            name="birthday"
+            onDateChange={onDateChange}
+          />
         </label>
 
         {/* <Datepicker /> */}
