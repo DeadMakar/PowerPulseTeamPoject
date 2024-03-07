@@ -5,7 +5,7 @@ import sprite from '../../../assets/sprite.svg';
 import range from 'lodash/range';
 import {
   CalendarBox,
-  CalendarGlobalStylesAddition,
+  CalendarBirthdayStyles,
   HeaderBox,
   HeaderData,
   MonthYearText,
@@ -14,10 +14,11 @@ import {
   SvgHeader,
   TitleBtn,
 } from './BirthdayCalendar.styled';
-import { CalendarGlobalStyles } from '../../../styles/CalendarGlobalStyles';
 
-const BirthdayCalendar = ({ onDateChange }) => {
-  const [startDate, setStartDate] = useState(new Date());
+const BirthdayCalendar = ({ onDateChange, savedBirthday }) => {
+  const [startDate, setStartDate] = useState(
+    savedBirthday === '00.00.0000' ? new Date() : new Date(savedBirthday)
+  );
   const years = range(1950, getYear(new Date()) + 1, 1);
   const months = [
     'January',
@@ -82,7 +83,7 @@ const BirthdayCalendar = ({ onDateChange }) => {
   const CustomInput = forwardRef(({ onClick }, ref) => {
     return (
       <CalendarBox>
-        <TitleBtn onClick={onClick} ref={ref}>
+        <TitleBtn type="button" onClick={onClick} ref={ref}>
           {format(startDate, 'dd.MM.yyyy')}
           <SvgCalendar onClick={onClick} ref={ref}>
             <use href={`${sprite}#icon-calendar`} />
@@ -106,10 +107,11 @@ const BirthdayCalendar = ({ onDateChange }) => {
         dateFormat={'dd.MM.yyyy'}
         calendarStartDay={1}
         formatWeekDay={(day) => day.substr(0, 2)}
-        renderCustomHeader={(props) => <CustomHeader {...props} />}
+        renderCustomHeader={(props) => (
+          <CustomHeader {...props} value={savedBirthday} />
+        )}
       />
-      <CalendarGlobalStyles />
-      <CalendarGlobalStylesAddition />
+      <CalendarBirthdayStyles />
     </>
   );
 };

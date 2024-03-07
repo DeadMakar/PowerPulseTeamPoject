@@ -25,15 +25,20 @@ import { StatisticsInfo } from '../StatisticsInfo/StatisticsInfo';
 import sprite from '../../assets/sprite.svg';
 /* import { Logo } from '../../Logo/Logo'; */
 import { Container } from '../../styles/GlobalStyles';
+import { register } from '../../redux/auth/operations';
+import { useDispatch } from 'react-redux';
 
 export const SignUpForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isValidationCompleted, setIsValidationCompleted] = useState(false);
-
+  const shouldForwardProp = (prop) =>
+    !['isValidationCompleted', 'haserror'].includes(prop);
   const toggleCheckboxChange = () => {
     setShowPassword(!showPassword);
     setIsValidationCompleted(false);
   };
+
+  const dispatch = useDispatch();
 
   const formik = useFormik({
     initialValues: {
@@ -52,17 +57,20 @@ export const SignUpForm = () => {
         .required('Password is required'),
     }),
 
-    /* onSubmit: (values) => {
-      register({
-        name: values.name,
-        email: values.email,
-        password: values.password,
-      });
-    }, */
+    onSubmit: (values) => {
+      console.log(values);
+      dispatch(
+        register({
+          name: values.name,
+          email: values.email,
+          password: values.password,
+        })
+      );
+    },
   });
 
   return (
-    <StyleSheetManager /* shouldForwardProp={shouldForwardProp} */>
+    <StyleSheetManager shouldForwardProp={shouldForwardProp}>
       <Container>
         <FormContainer>
           <FormWrapper>

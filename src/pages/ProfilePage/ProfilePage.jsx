@@ -1,22 +1,18 @@
-// import { useEffect } from 'react';
+import { useEffect } from 'react';
 import { TitlePage } from '../../components/TitlePage';
 import { UserCard } from '../../components/UserCard';
 import { UserForm } from '../../components/UserForm/UserForm';
 import { Container } from '../../styles/GlobalStyles';
 import { ProfileContentBox } from './ProfilePage.styled';
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { getCurrentUser } from '../../redux/profile/operations';
 
 const ProfilePage = () => {
-  // useEffect - відправляти запит для отримання інформації юзера,
-  //  можна передавати обрахунки пропсами в компонент UserCard
+  const dispatch = useDispatch();
 
-  // const {bmr = 0 , time = 110} = useSelector
-
-  //   const dispatch = useDispatch();
-
-  //   useEffect(() => {
-  //     dispatch(getCurrentUserData);
-  //   }, [dispatch]);
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, []);
 
   return (
     <Container>

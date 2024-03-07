@@ -1,1 +1,1 @@
-export { default as ExercisesList } from './SectionTemplate';
+export { default as SectionTemplate } from './SectionTemplate';

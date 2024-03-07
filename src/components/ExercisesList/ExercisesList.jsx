@@ -1,9 +1,9 @@
 import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import ExercisesItem from '../ExercisesItem/ExercisesItem';
+import { ExercisesItem } from '../ExercisesItem';
 import { useParams } from 'react-router-dom';
-import { getExercisesFilter } from '../../redux/exercises/exeOperation';
+import { getExercisesFilter } from '../../redux/exercises/operations';
 import {
   NameExercises,
   WrapperExercises,
@@ -12,15 +12,15 @@ import {
   IconWrapperBack,
   WrapperNav,
 } from './ExercisesList.styled';
-import SectionTemplate from '../SectionTemplate';
+import { SectionTemplate } from '../SectionTemplate';
 import sprite from '../../assets/sprite.svg';
-import Loader from '../Loader/Loader';
+import { Loader } from '../Loader';
 
 import {
   ChaptersWrapper,
   LinkStyled,
 } from '../../pages/ExercisesPage/ExercisesPage.styled';
-import ChapterTemplate from '../ChapterTemplate/ChapterTemplate';
+import { ChapterTemplate } from '../ChapterTemplate';
 
 const ExercisesList = () => {
   const dispatch = useDispatch();

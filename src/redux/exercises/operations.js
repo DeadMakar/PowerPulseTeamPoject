@@ -48,3 +48,19 @@ export const addExercises = createAsyncThunk(
     }
   }
 );
+
+export const getExercisesFilter = createAsyncThunk(
+  'exercises/getExercisesFilter',
+  async (paramsExe, thunkAPI) => {
+    try {
+      const response = await axios(
+        `/exercises?filter=${paramsExe.filter}&name=${paramsExe.name}`
+      );
+      return response.data;
+    } catch (e) {
+      console.log(e.message);
+      toast.error(`Oops! Something was wrong.... ${e.message}`);
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);

@@ -14,13 +14,13 @@ export const UserFormSchema = Yup.object().shape({
     .min(35, 'Desired weight must be minimum 35 kg')
     .max(270, 'Desired weight must be no more then 270 kg')
     .required('Please fill your desired weight'),
-  birthday: Yup.date()
-    .test('isAdult', 'You must be 18 years or older', function (value) {
-      const today = new Date();
-      const age = today.getFullYear() - new Date(value).getFullYear();
-      return age >= 18;
-    })
-    .required('Birthday is required'),
+  // birthday: Yup.date()
+  //   .test('isAdult', 'You must be 18 years or older', function (value) {
+  //     const today = new Date();
+  //     const age = today.getFullYear() - new Date(value).getFullYear();
+  //     return age >= 18;
+  //   })
+  //   .required('Birthday is required'),
   blood: Yup.number()
     .oneOf([1, 2, 3, 4], 'Please choose your blood type')
     .required('Please choose your blood type'),
