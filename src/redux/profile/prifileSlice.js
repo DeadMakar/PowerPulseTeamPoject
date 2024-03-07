@@ -6,8 +6,6 @@ import {
   updateSettings,
 } from './operations';
 
-import defaultAvatar from '../../assets/images/profile/gridicons_user.jpg';
-
 const initialState = {
   user: {
     name: '',
@@ -19,9 +17,11 @@ const initialState = {
     blood: 0,
     sex: '',
     levelActivity: 0,
-    avatar: defaultAvatar,
+    avatar: '',
     bmr: 0,
     trainingTime: 110,
+
+    userMetrics: false,
   },
   isLoading: false,
   error: null,
@@ -37,12 +37,21 @@ const profileSlice = createSlice({
       })
 
       .addCase(getCurrentUser.fulfilled, (state, action) => {
-        console.log(action.payload.user);
-        console.log(action.payload.user.bmr);
-
         state.isLoading = false;
         state.error = null;
-        state.user = action.payload;
+
+        state.user.name = action.payload[0].name;
+        state.user.email = action.payload[0].email;
+        // state.user.height = action.payload[0].height;
+        // state.user.currentWeight = action.payload[0].currentWeight;
+        // state.user.desiredWeight = action.payload[0].desiredWeight;
+        // state.user.birthday = action.payload[0].birthday;
+        // state.user.blood = action.payload[0].blood;
+        // state.user.levelActivity = action.payload[0].levelActivity;
+        // state.user.avatar = action.payload[0].avatar;
+        // state.user.bmr = action.payload[0].bmr;
+        // state.user.trainingTime = action.payload[0].trainingTime;
+        state.user.userMetrics = action.payload[0].userMetrics;
       })
 
       .addCase(getCurrentUser.rejected, (state, action) => {
