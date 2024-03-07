@@ -15,7 +15,6 @@ export const getCurrentUser = createAsyncThunk(
       setAuthHeader(persistedToken);
 
       const response = await axios.get('users/current');
-
       return response.data;
     } catch (error) {
       console.log(error);
@@ -40,6 +39,11 @@ export const updateSettings = createAsyncThunk(
   'prifileSettings/updateSettings',
   async (credentials, thunkAPI) => {
     try {
+      const state = thunkAPI.getState();
+      const persistedToken = state.auth.token;
+      setAuthHeader(persistedToken);
+
+      console.log(credentials);
       const response = await axios.patch('users/metrics', credentials);
       console.log(response);
       return response.data;

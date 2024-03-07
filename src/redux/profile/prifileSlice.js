@@ -42,15 +42,15 @@ const profileSlice = createSlice({
 
         state.user.name = action.payload[0].name;
         state.user.email = action.payload[0].email;
-        // state.user.height = action.payload[0].height;
-        // state.user.currentWeight = action.payload[0].currentWeight;
-        // state.user.desiredWeight = action.payload[0].desiredWeight;
-        // state.user.birthday = action.payload[0].birthday;
-        // state.user.blood = action.payload[0].blood;
-        // state.user.levelActivity = action.payload[0].levelActivity;
-        // state.user.avatar = action.payload[0].avatar;
-        // state.user.bmr = action.payload[0].bmr;
-        // state.user.trainingTime = action.payload[0].trainingTime;
+        state.user.height = action?.payload[1]?.height ?? 0;
+        state.user.currentWeight = action?.payload[1]?.currentWeight ?? 0;
+        state.user.desiredWeight = action?.payload[1]?.desiredWeight ?? 0;
+        state.user.birthday = action?.payload[1]?.birthday ?? '00.00.0000';
+        state.user.blood = action?.payload[1]?.blood ?? 0;
+        state.user.levelActivity = action?.payload[1]?.levelActivity ?? 0;
+        state.user.avatar = action?.payload[0].avatar ?? '';
+        state.user.bmr = action?.payload[1]?.resultBMR ?? 0;
+        state.user.trainingTime = action?.payload[1]?.trainingTime ?? 110;
         state.user.userMetrics = action.payload[0].userMetrics;
       })
 
@@ -58,21 +58,6 @@ const profileSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
-
-      // .addCase(createSettings.pending, (state) => {
-      //   state.isLoading = true;
-      // })
-
-      // .addCase(createSettings.fulfilled, (state, action) => {
-      //   state.isLoading = false;
-      //   state.error = null;
-      //   state.user = action.payload;
-      // })
-
-      // .addCase(createSettings.rejected, (state, action) => {
-      //   state.isLoading = false;
-      //   state.error = action.payload;
-      // })
 
       .addCase(updateSettings.pending, (state) => {
         state.isLoading = true;
