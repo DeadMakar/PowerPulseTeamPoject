@@ -8,7 +8,7 @@
 import { SectionTemplate } from '../../components/SectionTemplate';
 import { ProductsFilters } from '../../components/ProductsFilters';
 import { TitlePage } from '../../components/TitlePage';
-import { ProductsList } from '../../components/ProductsList';
+/* import { ProductsList } from '../../components/ProductsList'; */
 import { ProductWrapTitle, ProductWrapper, Span } from './ProductsPage.styled';
 
 const ProductsPage = () => {
@@ -20,7 +20,7 @@ const ProductsPage = () => {
           <TitlePage>Products</TitlePage>
         </ProductWrapTitle>
         <ProductsFilters />
-        <ProductsList />
+        {/* <ProductsList /> */}
       </ProductWrapper>
     </SectionTemplate>
   );
