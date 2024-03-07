@@ -26,12 +26,15 @@ import { StyleSheetManager } from 'styled-components';
 import { logIn } from '../../redux/auth/operations';
 /* import { Logo } from '../../Logo/Logo'; */
 import { Container } from '../../styles/GlobalStyles';
+import { useDispatch } from 'react-redux';
 
 export const SignInForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isValidationCompleted, setIsValidationCompleted] = useState(false);
 
   const shouldForwardProp = (prop) => !['isValidationCompleted'].includes(prop);
+
+  const dispatch = useDispatch();
 
   const toggleCheckboxChange = () => {
     setShowPassword(!showPassword);
@@ -54,10 +57,12 @@ export const SignInForm = () => {
     }),
 
     onSubmit: (values) => {
-      logIn({
-        email: values.email,
-        password: values.password,
-      });
+      dispatch(
+        logIn({
+          email: values.email,
+          password: values.password,
+        })
+      );
       formik.resetForm();
     },
   });

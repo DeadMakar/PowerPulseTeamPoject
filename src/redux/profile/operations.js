@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://powerpulseback.onrender.com/';
+// axios.defaults.baseURL = 'https://powerpulseback.onrender.com/';
 
 export const getCurrentUser = createAsyncThunk(
   'prifileSettings/getCurrentUser',
