@@ -28,6 +28,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../../redux/profile/selectors';
 import { updateAvatar } from '../../redux/profile/operations';
 // import { useDispatch } from 'react-redux';
+import defaultAvatar from '../../assets/images/profile/gridicons_user.jpg';
 
 const UserCard = () => {
   const dispatch = useDispatch();
@@ -35,7 +36,9 @@ const UserCard = () => {
   const user = useSelector(selectUser);
 
   const [selectedImage, setSelectedImage] = useState(null);
-  const [imageUrl, setImageUrl] = useState(user.avatar);
+  const [imageUrl, setImageUrl] = useState(
+    user.avatar === '' ? defaultAvatar : user.avatar
+  );
 
   const fileReader = new FileReader();
   fileReader.onloadend = () => {
@@ -74,7 +77,7 @@ const UserCard = () => {
       </AvatarBox>
 
       <UserNameRole>
-        <UserName> {user.userName}</UserName>
+        <UserName> {user.name}</UserName>
         <UserRole>User</UserRole>
       </UserNameRole>
 

@@ -2,14 +2,19 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 // axios.defaults.baseURL = 'https://powerpulseback.onrender.com/';
+const setAuthHeader = (token) => {
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
 
 export const getCurrentUser = createAsyncThunk(
   'prifileSettings/getCurrentUser',
   async (_, thunkAPI) => {
     try {
+      const state = thunkAPI.getState();
+      const persistedToken = state.auth.token;
+      setAuthHeader(persistedToken);
+
       const response = await axios.get('users/current');
-      //
-      console.log(response);
 
       return response.data;
     } catch (error) {

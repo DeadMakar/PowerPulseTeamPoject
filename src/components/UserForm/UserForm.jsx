@@ -55,6 +55,8 @@ export const UserForm = () => {
     levelActivity: levelActivity.toString(),
   };
 
+  console.log(initialValue.name);
+
   const [birthdayNew, setBirthdayDate] = useState(birthday);
 
   const formatDate = (date) => {
@@ -118,16 +120,16 @@ export const UserForm = () => {
       levelActivity,
     } = newInfo;
 
-    const toUpdateDate = {
-      name,
-      height,
-      currentWeight,
-      desiredWeight,
-      birthdayNew,
-      blood: Number(blood),
-      sex,
-      levelActivity: Number(levelActivity),
-    };
+    // const toUpdateDate = {
+    //   name,
+    //   height,
+    //   currentWeight,
+    //   desiredWeight,
+    //   birthdayNew,
+    //   blood: Number(blood),
+    //   sex,
+    //   levelActivity: Number(levelActivity),
+    // };
 
     dispatchEvent(
       updateSettings({
@@ -142,7 +144,7 @@ export const UserForm = () => {
       })
     );
 
-    console.log(toUpdateDate);
+    // console.log(toUpdateDate);
   };
 
   return (
