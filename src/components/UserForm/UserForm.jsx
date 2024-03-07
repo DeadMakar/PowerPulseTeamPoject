@@ -15,6 +15,7 @@ import {
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../redux/profile/selectors';
+import { updateSettings } from '../../redux/profile/operations';
 // import { updateSettings } from '../../redux/profile/operations';
 
 // const initialValues = {
@@ -53,6 +54,8 @@ export const UserForm = () => {
     sex,
     levelActivity: levelActivity.toString(),
   };
+
+  console.log(initialValue.name);
 
   const [birthdayNew, setBirthdayDate] = useState(birthday);
 
@@ -117,31 +120,31 @@ export const UserForm = () => {
       levelActivity,
     } = newInfo;
 
-    const toUpdateDate = {
-      name,
-      height,
-      currentWeight,
-      desiredWeight,
-      birthdayNew,
-      blood: Number(blood),
-      sex,
-      levelActivity: Number(levelActivity),
-    };
+    // const toUpdateDate = {
+    //   name,
+    //   height,
+    //   currentWeight,
+    //   desiredWeight,
+    //   birthdayNew,
+    //   blood: Number(blood),
+    //   sex,
+    //   levelActivity: Number(levelActivity),
+    // };
 
-    // dispatchEvent(
-    //   updateSettings({
-    //     name,
-    //     height,
-    //     currentWeight,
-    //     desiredWeight,
-    //     birthday,
-    //     blood : Number(blood),
-    //     sex,
-    //     levelActivity: Number(levelActivity),
-    //   })
-    // );
+    dispatchEvent(
+      updateSettings({
+        name,
+        height,
+        currentWeight,
+        desiredWeight,
+        birthday,
+        blood: Number(blood),
+        sex,
+        levelActivity: Number(levelActivity),
+      })
+    );
 
-    console.log(toUpdateDate);
+    // console.log(toUpdateDate);
   };
 
   return (

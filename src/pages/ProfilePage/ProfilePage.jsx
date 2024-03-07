@@ -11,8 +11,8 @@ const ProfilePage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getCurrentUser);
-  }, [dispatch]);
+    dispatch(getCurrentUser());
+  }, []);
 
   return (
     <Container>
