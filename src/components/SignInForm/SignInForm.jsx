@@ -23,7 +23,7 @@ import { useState } from 'react';
 import { StatisticsInfo } from '../StatisticsInfo/StatisticsInfo';
 import sprite from '../../assets/sprite.svg';
 import { StyleSheetManager } from 'styled-components';
-/* import { logIn } from '../../../redux/auth/operations'; */
+import { logIn } from '../../redux/auth/operations';
 /* import { Logo } from '../../Logo/Logo'; */
 import { Container } from '../../styles/GlobalStyles';
 
@@ -54,7 +54,7 @@ export const SignInForm = () => {
     }),
 
     onSubmit: (values) => {
-      /* logIn */ ({
+      logIn({
         email: values.email,
         password: values.password,
       });
