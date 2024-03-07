@@ -13,11 +13,16 @@ import {
   SecondNavWraper,
 } from './Header.styled';
 
-// import { useDispatch } from 'react-redux';
 import LogOutBtn from '../LogOutBtn/LogOutBtn';
 import UserBar from '../UserBar/UserBar';
+import { MobileMenu } from '../MobileMenu';
+import { useState } from 'react';
+
 const Header = () => {
-  // const dispatch = useDispatch();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const toggleMenu = () => {
+    setIsMenuOpen((prevState) => !prevState);
+  };
 
   return (
     <HeaderContainer>
@@ -42,15 +47,15 @@ const Header = () => {
             <LogOutBtn />
           </MediaQuery>
           <MediaQuery maxWidth={1439}>
-            <BurgerBtn>
+            <BurgerBtn onClick={toggleMenu}>
               <use href={`${sprite}#icon-menu`} />
             </BurgerBtn>
           </MediaQuery>
         </SecondNavWraper>
       </Navigation>
-      {/* <div>
-        modal
-      </div> */}
+      <MediaQuery maxWidth={1439}>
+        {isMenuOpen && <MobileMenu onClick={toggleMenu} />}
+      </MediaQuery>
     </HeaderContainer>
   );
 };
