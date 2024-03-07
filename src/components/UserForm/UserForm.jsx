@@ -15,6 +15,7 @@ import {
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../redux/profile/selectors';
+import { updateSettings } from '../../redux/profile/operations';
 // import { updateSettings } from '../../redux/profile/operations';
 
 // const initialValues = {
@@ -128,18 +129,18 @@ export const UserForm = () => {
       levelActivity: Number(levelActivity),
     };
 
-    // dispatchEvent(
-    //   updateSettings({
-    //     name,
-    //     height,
-    //     currentWeight,
-    //     desiredWeight,
-    //     birthday,
-    //     blood : Number(blood),
-    //     sex,
-    //     levelActivity: Number(levelActivity),
-    //   })
-    // );
+    dispatchEvent(
+      updateSettings({
+        name,
+        height,
+        currentWeight,
+        desiredWeight,
+        birthday,
+        blood: Number(blood),
+        sex,
+        levelActivity: Number(levelActivity),
+      })
+    );
 
     console.log(toUpdateDate);
   };

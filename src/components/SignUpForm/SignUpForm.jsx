@@ -26,6 +26,7 @@ import sprite from '../../assets/sprite.svg';
 /* import { Logo } from '../../Logo/Logo'; */
 import { Container } from '../../styles/GlobalStyles';
 import { register } from '../../redux/auth/operations';
+import { useDispatch } from 'react-redux';
 
 export const SignUpForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -36,6 +37,8 @@ export const SignUpForm = () => {
     setShowPassword(!showPassword);
     setIsValidationCompleted(false);
   };
+
+  const dispatch = useDispatch();
 
   const formik = useFormik({
     initialValues: {
@@ -55,11 +58,14 @@ export const SignUpForm = () => {
     }),
 
     onSubmit: (values) => {
-      register({
-        name: values.name,
-        email: values.email,
-        password: values.password,
-      });
+      console.log(values);
+      dispatch(
+        register({
+          name: values.name,
+          email: values.email,
+          password: values.password,
+        })
+      );
     },
   });
 
