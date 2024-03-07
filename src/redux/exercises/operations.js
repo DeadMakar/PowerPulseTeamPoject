@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { instance, token } from '../auth/operations';
 
 export const fetchExercisesCategories = createAsyncThunk(
   '/exercises/filter',
@@ -45,6 +46,26 @@ export const addExercises = createAsyncThunk(
       return responce.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getExercisesFilter = createAsyncThunk(
+  'exercises/getExercisesFilter',
+  async (paramsExe, thunkAPI) => {
+    try {
+      const state = thunkAPI.getState();
+      const persistedToken = state.auth.token;
+      token.set(persistedToken);
+
+      const response = await instance.get(
+        `/exercises?filter=${paramsExe.filter}&name=${paramsExe.name}`
+      );
+      return response.data;
+    } catch (e) {
+      console.log(e.message);
+      toast.error(`Oops! Something was wrong.... ${e.message}`);
+      return thunkAPI.rejectWithValue(e.message);
     }
   }
 );

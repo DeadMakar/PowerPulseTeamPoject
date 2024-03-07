@@ -18,7 +18,7 @@ import {
   ExercisesTitle,
 } from './ExercisesItem.styled.js';
 import sprite from '../../assets/sprite.svg';
-import AddExerciseForm from '../../components/AddExerciseForm/index';
+import { AddExerciseForm } from '../AddExerciseForm';
 import BasicModalWindow from '../BasicModalWindow/BasicModalWindow.jsx';
 
 import AddExerciseSuccess from '../AddExerciseSuccess/AddExerciseSuccess.jsx';
