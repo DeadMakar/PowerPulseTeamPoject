@@ -3,12 +3,13 @@ import { useEffect } from 'react';
 import {
   selectProducts,
   //   selectProductsTotal,
+  selectProductsIsLoading,
   selectQueryFilter,
   selectCategoryFilter,
   selectRecommendedFilter,
   selectUserBlood,
-  selectProductsIsLoading,
 } from '../../redux/selectors';
+
 import { getProducts } from '../../redux/products/productsOperations';
 
 import { ProductsItem } from '../ProductsItem';
