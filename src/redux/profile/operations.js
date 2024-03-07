@@ -3,35 +3,40 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://powerpulseback.onrender.com/';
 
-// const setAuthToken = (token) => {
-//   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-// };
-
-// const clearAuthToken = () => {
-//   axios.defaults.headers.common.Authorization = '';
-// };
-
 export const getCurrentUser = createAsyncThunk(
-  'profile/getCurrentUser',
+  'prifileSettings/getCurrentUser',
   async (_, thunkAPI) => {
     try {
-      const state = thunkAPI.getState();
-      const userToken = state.auth.token;
-      if (userToken) {
-        const response = await axios.get('user-data');
-        return response.data;
-      }
+      const response = await axios.get('users/current');
+      //
+      console.log(response);
+
+      return response.data;
     } catch (error) {
+      console.log(error);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
+// export const createSettings = createAsyncThunk(
+//   'prifileSettings/createSettings',
+//   async (credentials, thunkAPI) => {
+//     try {
+//       const response = await axios.post('users/metrics', credentials);
+//       return response.data;
+//     } catch (e) {
+//       return thunkAPI.rejectWithValue(e.message);
+//     }
+//   }
+// );
+
 export const updateSettings = createAsyncThunk(
-  'profile/updateSettings',
+  'prifileSettings/updateSettings',
   async (credentials, thunkAPI) => {
     try {
-      const response = await axios.post('user-data-update', credentials);
+      const response = await axios.patch('users/metrics', credentials);
+      console.log(response);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -40,12 +45,12 @@ export const updateSettings = createAsyncThunk(
 );
 
 export const updateAvatar = createAsyncThunk(
-  'profile/updateAvatar',
+  'prifileSettings/updateAvatar',
   async (imageUrl, thunkApi) => {
     try {
       const formData = new FormData();
       formData.append('avatar', imageUrl);
-      const res = await axios.patch('user-data-update', formData);
+      const res = await axios.patch('users/metrics', formData);
       return res.data;
     } catch (e) {
       return thunkApi.rejectWithValue(e.message);
