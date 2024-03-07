@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { instance, token } from '../auth/operations';
 
 export const fetchExercisesCategories = createAsyncThunk(
   '/exercises/filter',
@@ -54,11 +53,7 @@ export const getExercisesFilter = createAsyncThunk(
   'exercises/getExercisesFilter',
   async (paramsExe, thunkAPI) => {
     try {
-      const state = thunkAPI.getState();
-      const persistedToken = state.auth.token;
-      token.set(persistedToken);
-
-      const response = await instance.get(
+      const response = await axios(
         `/exercises?filter=${paramsExe.filter}&name=${paramsExe.name}`
       );
       return response.data;
