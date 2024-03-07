@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import sprite from '../../assets/sprite.svg';
-import BasicModalWindow from '../BasicModalWindow/BasicModalWindow';
-import AddProductForm from '../AddProductForm/AddProductForm';
-import AddProductSuccess from '../AddProductSuccess/AddProductSuccess';
+import { BasicModalWindow } from '../BasicModalWindow';
+import { AddProductForm } from '../AddProductForm';
+import { AddProductSuccess } from '../AddProductSuccess';
 import {
   ProductItemContainer,
   TopLineWrapper,

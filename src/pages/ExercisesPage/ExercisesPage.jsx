@@ -81,7 +81,10 @@
 // export default ExercisesPage;
 
 import { useState, Suspense } from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
+import {
+  Outlet,
+  // useNavigate
+} from 'react-router-dom';
 import { SectionTemplate } from '../../components/SectionTemplate';
 import { TitlePage } from '../../components/TitlePage';
 import { ChapterTemplate } from '../../components/ChapterTemplate';
@@ -92,15 +95,15 @@ import {
   LinkStyled,
   DesctopWrapper,
   BackGroundStyle,
-  BackButton,
+  // BackButton,
 } from './ExercisesPage.styled';
 
-import sprite from '../../assets/sprite.svg';
+// import sprite from '../../assets/sprite.svg';
 
 const ExercisesPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const toggleModal = () => {
     setIsModalOpen((prevState) => !prevState);
@@ -109,14 +112,14 @@ const ExercisesPage = () => {
   return (
     <BackGroundStyle>
       <SectionTemplate>
+        {/* <BackButton onClick={() => navigate(-1)}>
+          <svg style={{ fill: 'none' }}>
+            <use href={sprite + '#icon-arrow-left'} />
+          </svg>
+          Back{' '}
+        </BackButton> */}
         <DesctopWrapper>
           <TitlePage>Exercises</TitlePage>
-          <BackButton onClick={() => navigate(-1)}>
-            <svg style={{ fill: 'none' }}>
-              <use href={sprite + '#icon-arrow-left'} />
-            </svg>
-            Back{' '}
-          </BackButton>
           <ChaptersWrapper>
             <li>
               <LinkStyled to="body parts">
