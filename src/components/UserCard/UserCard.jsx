@@ -26,7 +26,6 @@ import {
 import { LogOutBtn } from '../LogOutBtn';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateAvatar } from '../../redux/profile/operations';
-// import { useDispatch } from 'react-redux';
 import defaultAvatar from '../../assets/images/profile/gridicons_user.jpg';
 import { selectUser } from '../../redux/auth/selectors';
 

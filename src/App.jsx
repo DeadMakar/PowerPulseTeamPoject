@@ -9,7 +9,6 @@ import { GlobalStyles } from './styles/GlobalStyles';
 import { refreshUser } from './redux/auth/operations';
 import { CalendarGlobalStyles } from './styles/CalendarGlobalStyles';
 
-
 const Layout = lazy(() => import('./components/Layout/Layout'));
 const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
 const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage'));
@@ -55,14 +54,14 @@ function App() {
           <Route
             path="/signin"
             element={
-              isLoggedIn && !userMetrics ? (
+              !userMetrics ? (
                 <RestrictedRoute
-                  redirectTo="/diary"
+                  redirectTo="/profile"
                   component={<SignInPage />}
                 />
               ) : (
                 <RestrictedRoute
-                  redirectTo="/profile"
+                  redirectTo="/dairy"
                   component={<SignInPage />}
                 />
               )

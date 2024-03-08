@@ -31,3 +31,11 @@ export const ProfileContentBox = styled.div`
     padding-bottom: 44px;
   }
 `;
+
+export const ProfileContainer = styled.div`
+  margin-top: 40px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 70px;
+  }
+`;

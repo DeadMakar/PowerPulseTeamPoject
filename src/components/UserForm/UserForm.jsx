@@ -16,6 +16,9 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateSettings } from '../../redux/profile/operations';
 import { selectUser } from '../../redux/auth/selectors';
+import { refreshUser } from '../../redux/auth/operations';
+
+import { toast } from 'react-toastify';
 
 export const UserForm = () => {
   const dispatch = useDispatch();
@@ -72,16 +75,14 @@ export const UserForm = () => {
 
   const onDateChange = (date) => {
     const formatedDate = formatDate(date);
-
     setBirthdayDate(formatedDate);
-
-    // check the age
-
     const fullYear = mathFullYear(formatedDate);
 
     if (fullYear < 18) {
       // notification
-      console.log('Sorry, but only adults can use our app.');
+      toast.error('Sorry, but only adults can use our app.', {
+        theme: 'dark',
+      });
       setIsInfoChanged(true);
     }
   };
@@ -93,8 +94,6 @@ export const UserForm = () => {
       (key) => values[key] !== initialValue[key]
     );
     setIsInfoChanged(!isInfoChanged);
-
-    console.log(values);
   };
 
   const handleUpdateUserInfo = (newInfo) => {
@@ -107,17 +106,6 @@ export const UserForm = () => {
       sex,
       levelActivity,
     } = newInfo;
-
-    const toUpdateDate = {
-      name,
-      height,
-      currentWeight,
-      desiredWeight,
-      birthdayNew,
-      blood: Number(blood),
-      sex,
-      levelActivity: Number(levelActivity),
-    };
 
     dispatch(
       updateSettings({
@@ -132,7 +120,7 @@ export const UserForm = () => {
       })
     );
 
-    console.log(toUpdateDate);
+    dispatch(refreshUser);
   };
 
   return (
