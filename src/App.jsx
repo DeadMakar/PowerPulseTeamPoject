@@ -1,11 +1,11 @@
-import { lazy, useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { default as RestrictedRoute } from './RestrictedRoute';
 import { default as PrivateRoute } from './PrivateRoute';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCurrentUser } from './redux/profile/operations';
 import { selectUser } from './redux/profile/selectors';
-import { selectIsLoggedIn, selectIsRefreshing } from './redux/auth/selectors';
+import { selectIsLoggedIn } from './redux/auth/selectors';
 import { Loader } from './components/Loader';
 import { GlobalStyles } from './styles/GlobalStyles';
 
@@ -28,15 +28,18 @@ function App() {
 
   const { userMetrics } = useSelector(selectUser);
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  const loading = useSelector(selectIsRefreshing);
+  // const loading = useSelector(selectIsRefreshing);
 
-  return loading ? (
-    <Loader />
-  ) : (
-    <>
+  return (
+    <Suspense fallback={<Loader />}>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={isLoggedIn ? <DiaryPage /> : <WelcomePage />} />
+          <Route
+            index
+            element={
+              isLoggedIn && userMetrics ? <DiaryPage /> : <WelcomePage />
+            }
+          />
           <Route path="/welcome" element={<WelcomePage />} />
           <Route
             path="/signup"
@@ -50,7 +53,7 @@ function App() {
           <Route
             path="/signin"
             element={
-              !userMetrics ? (
+              isLoggedIn && !userMetrics ? (
                 <RestrictedRoute
                   redirectTo="/diary"
                   component={<SignInPage />}
@@ -116,7 +119,7 @@ function App() {
         </Route>
       </Routes>
       <GlobalStyles />
-    </>
+    </Suspense>
   );
 }
 
