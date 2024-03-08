@@ -25,10 +25,10 @@ import {
   MobileItemsHolder4,
   ListMobileArray,
 } from './DayProducts.styled';
-
+import { selectUser } from '../../redux/profile/selectors';
 import { globalColor } from '../../styles/root';
-import { selectUser } from '../../redux/auth/selectors';
 import { useDispatch, useSelector } from 'react-redux';
+
 import {
   deleteDiaryProducts,
   getAllDiaryInformation,
