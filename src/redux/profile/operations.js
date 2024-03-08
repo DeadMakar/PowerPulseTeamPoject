@@ -6,44 +6,30 @@ const setAuthHeader = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
-export const getCurrentUser = createAsyncThunk(
-  'prifileSettings/getCurrentUser',
-  async (_, thunkAPI) => {
-    try {
-      const state = thunkAPI.getState();
-      const persistedToken = state.auth.token;
-      setAuthHeader(persistedToken);
-
-      const response = await axios.get('users/current');
-      return response.data;
-    } catch (error) {
-      console.log(error);
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
-// export const createSettings = createAsyncThunk(
-//   'prifileSettings/createSettings',
-//   async (credentials, thunkAPI) => {
+// export const getCurrentUser = createAsyncThunk(
+//   'profileSettings/getCurrentUser',
+//   async (_, thunkAPI) => {
 //     try {
-//       const response = await axios.post('users/metrics', credentials);
+//       const state = thunkAPI.getState();
+//       const persistedToken = state.auth.token;
+//       setAuthHeader(persistedToken);
+
+//       const response = await axios.get('users/current');
 //       return response.data;
-//     } catch (e) {
-//       return thunkAPI.rejectWithValue(e.message);
+//     } catch (error) {
+//       console.log(error);
+//       return thunkAPI.rejectWithValue(error.message);
 //     }
 //   }
 // );
 
 export const updateSettings = createAsyncThunk(
-  'prifileSettings/updateSettings',
+  'profileSettings/updateSettings',
   async (credentials, thunkAPI) => {
     try {
       const state = thunkAPI.getState();
       const persistedToken = state.auth.token;
       setAuthHeader(persistedToken);
-
-      console.log(credentials);
       const response = await axios.patch('users/metrics', credentials);
       console.log(response);
       return response.data;
@@ -54,7 +40,7 @@ export const updateSettings = createAsyncThunk(
 );
 
 export const updateAvatar = createAsyncThunk(
-  'prifileSettings/updateAvatar',
+  'profileSettings/updateAvatar',
   async (imageUrl, thunkApi) => {
     try {
       const formData = new FormData();

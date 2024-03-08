@@ -58,7 +58,6 @@ export const SignUpForm = () => {
     }),
 
     onSubmit: (values) => {
-      console.log(values);
       dispatch(
         register({
           name: values.name,
