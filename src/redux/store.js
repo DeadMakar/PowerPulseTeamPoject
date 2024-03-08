@@ -15,7 +15,7 @@ import { productsReducer } from './products/slice';
 import { exercisesReducer } from './exercises/exercisesSlice';
 import { categoriesReducer } from './exercises/categoriesSlice';
 import storage from 'redux-persist/lib/storage';
-import { profileReducer } from './profile/prifileSlice';
+import { profileReducer } from './profile/profileSlice';
 
 const authPersistConfig = {
   key: 'auth',
@@ -30,7 +30,7 @@ export const store = configureStore({
     products: productsReducer,
     exercises: exercisesReducer,
     categories: categoriesReducer,
-    prifileSettings: profileReducer,
+    profileSettings: profileReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

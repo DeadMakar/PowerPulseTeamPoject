@@ -14,8 +14,8 @@ import {
 } from './UserForm.styled';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUser } from '../../redux/profile/selectors';
 import { updateSettings } from '../../redux/profile/operations';
+import { selectUser } from '../../redux/auth/selectors';
 
 export const UserForm = () => {
   const dispatch = useDispatch();
@@ -37,18 +37,15 @@ export const UserForm = () => {
   const initialValue = {
     name,
     email,
-    height,
-    currentWeight,
-    desiredWeight,
-    birthday,
-    blood: blood.toString(),
-    sex,
-    levelActivity: levelActivity.toString(),
+    height: height ?? 0,
+    currentWeight: currentWeight ?? 0,
+    desiredWeight: desiredWeight ?? 0,
+    blood: blood ? blood.toString() : 0,
+    sex: sex ?? 0,
+    levelActivity: levelActivity ? levelActivity.toString() : 0,
   };
 
-  console.log(initialValue.name);
-
-  const [birthdayNew, setBirthdayDate] = useState(birthday);
+  const [birthdayNew, setBirthdayDate] = useState(birthday || '00.00.0000');
 
   const formatDate = (date) => {
     const day = date.getDate();
@@ -153,7 +150,7 @@ export const UserForm = () => {
               errors={errors}
               touched={touched}
               onDateChange={onDateChange}
-              savedBirthday={birthday}
+              savedBirthday={birthdayNew}
               userEmail={email}
             />
             <BloodSexSection>

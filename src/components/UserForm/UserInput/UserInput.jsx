@@ -76,8 +76,6 @@ const UserInput = ({
             onDateChange={onDateChange}
           />
         </label>
-
-        {/* <Datepicker /> */}
       </ParamBox>
     </>
   );

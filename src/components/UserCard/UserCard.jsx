@@ -25,10 +25,10 @@ import {
 } from './UserCard.styled';
 import { LogOutBtn } from '../LogOutBtn';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUser } from '../../redux/profile/selectors';
 import { updateAvatar } from '../../redux/profile/operations';
 // import { useDispatch } from 'react-redux';
 import defaultAvatar from '../../assets/images/profile/gridicons_user.jpg';
+import { selectUser } from '../../redux/auth/selectors';
 
 const UserCard = () => {
   const dispatch = useDispatch();
@@ -36,9 +36,7 @@ const UserCard = () => {
   const user = useSelector(selectUser);
 
   const [selectedImage, setSelectedImage] = useState(null);
-  const [imageUrl, setImageUrl] = useState(
-    user.avatar === '' ? defaultAvatar : user.avatar
-  );
+  const [imageUrl, setImageUrl] = useState(user.avatar ?? defaultAvatar);
 
   const fileReader = new FileReader();
   fileReader.onloadend = () => {
@@ -89,7 +87,7 @@ const UserCard = () => {
             </SvgStyled>
             <TitleStyled>Daily calorie intake</TitleStyled>
           </TitleStyledWrapper>
-          <DataValue>{user.bmr}</DataValue>
+          <DataValue>{user.bmr ?? '0'}</DataValue>
         </ItemListStyled>
         <ItemListStyled>
           <TitleStyledWrapper>
@@ -98,7 +96,7 @@ const UserCard = () => {
             </SvgStyled>
             <TitleStyled>Daily physical activity</TitleStyled>
           </TitleStyledWrapper>
-          <DataValue>{user.trainingTime} min</DataValue>
+          <DataValue>{user.trainingTime ?? '110'} min</DataValue>
         </ItemListStyled>
       </ListStyled>
       <div>

@@ -3,11 +3,10 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 import { default as RestrictedRoute } from './RestrictedRoute';
 import { default as PrivateRoute } from './PrivateRoute';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCurrentUser } from './redux/profile/operations';
-import { selectUser } from './redux/profile/selectors';
-import { selectIsLoggedIn } from './redux/auth/selectors';
+import { selectIsLoggedIn, selectUser } from './redux/auth/selectors';
 import { Loader } from './components/Loader';
 import { GlobalStyles } from './styles/GlobalStyles';
+import { refreshUser } from './redux/auth/operations';
 
 const Layout = lazy(() => import('./components/Layout/Layout'));
 const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
@@ -23,10 +22,11 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getCurrentUser());
+    dispatch(refreshUser());
   }, [dispatch]);
 
-  const { userMetrics } = useSelector(selectUser);
+  const user = useSelector(selectUser);
+  const { userMetrics } = user;
   const isLoggedIn = useSelector(selectIsLoggedIn);
   // const loading = useSelector(selectIsRefreshing);
 
@@ -102,10 +102,7 @@ function App() {
               )
             }
           >
-            <Route
-              index
-              element={<Navigate to="/exercises/Body parts" replace />}
-            />
+            <Route index element={<Navigate to="/exercises" replace />} />
             {/* <Route
               path="/exercises/:filter"
               element={<ExercisesSubcategoriesList />}
