@@ -1,12 +1,9 @@
 import {
-  CloseBtn,
+  CloseModalBtn,
   ModalBackdrop,
   ModalWindow,
 } from './BasicModalWindow.styled';
-import { AddProductForm } from '../AddProductForm';
-import { AddExerciseSuccess } from '../AddExerciseSuccess';
-import { AddProductSuccess } from '../AddProductSuccess';
-import { AddExerciseForm } from '../AddExerciseForm';
+import sprite from '../../assets/sprite.svg';
 
 const BasicModalWindow = ({ children }) => {
   // прописать функции закрытия окна:
@@ -18,13 +15,10 @@ const BasicModalWindow = ({ children }) => {
   return (
     <ModalBackdrop>
       <ModalWindow>
-        <CloseBtn/>
+        <CloseModalBtn>
+          <use href={`${sprite}#icon-x`}></use>
+        </CloseModalBtn>
         {children}
-        {/* умова для рендерингу: */}
-        {/* <AddProductForm /> */}
-        {/* <AddProductSuccess /> */}
-        {/* <AddExerciseForm />
-        <AddExerciseSuccess /> */}
       </ModalWindow>
     </ModalBackdrop>
   );

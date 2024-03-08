@@ -1,34 +1,21 @@
 import styled from 'styled-components';
 import { globalColor } from '../../styles/root';
 
-// как оставить рамку если менее 375 пикселей
-
 export const WrapperDiv = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  border: 1px solid rgba(239, 237, 232, 0.2);
-  border-radius: 12px;
-  /* min-width: 335px;
-  min-height: 362px; */
-
-  padding: 48px 0;
+  padding: 48px 89px;
 
   @media screen and (min-width: 768px) {
-    padding: 64px 0;
+    padding: 64px 134px;
   }
-
-  /* @media screen and (min-width: 768px) {
-    min-width: 430px;
-    min-height: 428px;
-  } */
 `;
 
 export const ImgStyled = styled.img`
   width: 118px;
-  margin-bottom: 13px;
+  margin-bottom: 27px;
 
   @media screen and (min-width: 768px) {
     margin-bottom: 32px;
@@ -48,15 +35,16 @@ export const TextStyled = styled.p`
   font-size: 14px;
   line-height: 1.29;
   color: rgba(239, 237, 232, 0.3);
-  margin-bottom: 24px;
-  /* &:not(:last-child) {
-    margin-bottom: 4px;
-  }
-  &:last-child {
-  } */
+`;
+
+export const TextWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  /* margin-bottom: 24px; */
 
   @media screen and (min-width: 768px) {
-    margin-bottom: 32px;
+    /* margin-bottom: 32px; */
   }
 `;
 
@@ -76,9 +64,15 @@ export const LinkBtnStyled = styled.a`
   padding: 12px 32px;
   width: 157px;
   height: 42px;
-  color: white;
+  color: ${globalColor.colorWhite};
   background-color: ${globalColor.colorOrange};
   margin-bottom: 16px;
+
+  margin-top: 24px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 32px;
+  }
 
   @media screen and (min-width: 768px) {
     padding: 14px 32px;

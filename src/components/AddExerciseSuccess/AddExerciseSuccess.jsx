@@ -6,6 +6,7 @@ import {
   SpanStyled,
   SvgArrow,
   TextStyled,
+  TextWrapper,
   TitleStyled,
   WrapperDiv,
 } from './AddExerciseSuccess.styled';
@@ -16,12 +17,14 @@ const AddExerciseSuccess = ({ exerciseTime, caloriesBurned }) => {
     <WrapperDiv>
       <ImgStyled src={thumbUp} />
       <TitleStyled>Well done</TitleStyled>
+      <TextWrapper />
       <TextStyled>
         Your time: <SpanStyled>3 {exerciseTime} minutes</SpanStyled>
       </TextStyled>
       <TextStyled>
         Burned calories: <SpanStyled> 150 {caloriesBurned} </SpanStyled>
       </TextStyled>
+      <TextWrapper />
       <LinkBtnStyled href="">Next product</LinkBtnStyled>{' '}
       <LinkStyled href="">
         to the Diary{' '}

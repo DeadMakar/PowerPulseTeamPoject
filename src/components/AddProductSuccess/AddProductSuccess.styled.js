@@ -1,43 +1,21 @@
 import styled from 'styled-components';
 import { globalColor } from '../../styles/root';
 
-// как оставить рамку если менее 375 пикселей
-
 export const WrapperDiv = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  border: 1px solid rgba(239, 237, 232, 0.2);
-  border-radius: 12px;
-
-  padding: 48px 0;
+  padding: 48px 89px;
 
   @media screen and (min-width: 768px) {
-    padding: 64px 0;
+    padding: 64px 137px;
   }
-
-  /* @media screen and (max-width: 374px) {
-    
-    min-width: 300px;
-    min-height: 362px;
-  }
-
-  @media screen and (min-width: 375px) {
-    min-width: 335px;
-    min-height: 362px;
-  }
-
-  @media screen and (min-width: 768px) {
-    min-width: 430px;
-    min-height: 428px;
-  } */
 `;
 
 export const ImgStyled = styled.img`
   width: 123px;
-  margin-bottom: 13px;
+  margin-bottom: 16px;
 
   @media screen and (min-width: 768px) {
     margin-bottom: 32px;
@@ -80,7 +58,7 @@ export const LinkBtnStyled = styled.a`
   padding: 12px 32px;
   width: 157px;
   height: 42px;
-  color: white;
+  color: ${globalColor.colorWhite};
   background-color: ${globalColor.colorOrange};
   margin-bottom: 16px;
 
@@ -105,9 +83,3 @@ export const SvgArrow = styled.svg`
   height: 16px;
   margin-left: 8px;
 `;
-
-//   &:hover,
-//   &:focus {
-//     background-color: ${globalColor.colorOrange1};
-//   }
-// `;

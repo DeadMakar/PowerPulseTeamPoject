@@ -20,9 +20,8 @@ const AddProductSuccess = ({ caloriesPlus }) => {
         Calories: <SpanStyled>96 {caloriesPlus}</SpanStyled>
       </TextStyled>
       <LinkBtnStyled href="">Next product</LinkBtnStyled>{' '}
-      {/* ссылка в виде кнопки Next product */}
       <LinkStyled href="">
-        to the Diary{' '}
+        to the Diary
         <SvgArrow>
           <use href={`${sprite}#icon-arrow`}></use>
         </SvgArrow>

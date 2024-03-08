@@ -5,11 +5,12 @@ const ModalBackdrop = styled.div`
   position: fixed;
   top: 0;
   left: 0;
+  padding: 0 20px;
 
   width: 100vw;
   height: 100vh;
 
-  /* background-color: #04040466; */
+  /* background-color: #10100f; */
 `;
 
 const ModalWindow = styled.div`
@@ -18,33 +19,48 @@ const ModalWindow = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
 
-  @media screen and (max-width: 374px) {
-    /* margin: 0 auto; */
-    /* width: 100; */
+  border: 1px solid rgba(239, 237, 232, 0.2);
+  border-radius: 12px;
+  background-color: #10100f;
+
+  /* padding: 48px 24px; */
+
+  /* @media screen and (max-width: 374px) {
     min-width: 300px;
     min-height: 362px;
-  }
+  } */
 
-  @media screen and (min-width: 375px) {
+  /* @media screen and (min-width: 375px) {
     min-width: 335px;
     min-height: 362px;
-  }
+  } */
 
-  @media screen and (min-width: 768px) {
+  /* @media screen and (min-width: 768px) {
     min-width: 430px;
     min-height: 428px;
+    padding: 64px 24px;
+  } */
+`;
+
+const CloseModalBtn = styled.svg`
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 22px;
+  height: 22px;
+  stroke: ${globalColor.colorWhite};
+
+  @media (min-width: 768px) {
+    top: 16px;
+    right: 16px;
+    width: 26px;
+    height: 26px;
+  }
+
+  &:hover,
+  &:focus {
+    stroke: ${globalColor.colorOrange};
   }
 `;
 
-const CloseBtn = styled.svg`
-  position: absolute;
-  top: 10;
-  right: 10;
-  width: 14px;
-  height: 14px;
-  stroke: ${globalColor.colorWhite};
-  fill: ${globalColor.colorWhite};
-  outline: red;
-`;
-
-export { ModalBackdrop, ModalWindow, CloseBtn };
+export { ModalBackdrop, ModalWindow, CloseModalBtn };

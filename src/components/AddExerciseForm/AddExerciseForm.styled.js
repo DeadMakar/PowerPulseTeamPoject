@@ -16,6 +16,8 @@ export const WrapperDiv = styled.div`
   justify-content: center;
   align-items: center;
 
+  padding: 48px 32px;
+
   /* border: 1px solid rgba(239, 237, 232, 0.2);
   border-radius: 12px;
   min-width: 335px;
@@ -34,9 +36,6 @@ export const ImgStyled = styled.img`
   width: 270px;
   height: 226px;
   margin-bottom: 32px;
-
-  @media screen and (min-width: 768px) {
-  }
 `;
 
 export const TextStyled = styled.p`
@@ -84,8 +83,9 @@ export const ItemStyled = styled.li`
   border-radius: 12px;
   /* padding: 12px 80px 12px 18px; */
   padding: 12px;
-  min-width: 147px;
-  min-height: 62px;
+  width: 147px;
+  /* height: 62px; */
+  overflow: hidden;
   background-color: rgba(239, 237, 232, 0.05);
 `;
 
