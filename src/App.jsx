@@ -7,6 +7,8 @@ import { selectIsLoggedIn, selectUser } from './redux/auth/selectors';
 import { Loader } from './components/Loader';
 import { GlobalStyles } from './styles/GlobalStyles';
 import { refreshUser } from './redux/auth/operations';
+import { CalendarGlobalStyles } from './styles/CalendarGlobalStyles';
+
 
 const Layout = lazy(() => import('./components/Layout/Layout'));
 const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
@@ -116,6 +118,7 @@ function App() {
         </Route>
       </Routes>
       <GlobalStyles />
+      <CalendarGlobalStyles />
     </Suspense>
   );
 }
