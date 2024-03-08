@@ -15,6 +15,14 @@ const Datepicker = ({
 }) => {
   const today = new Date();
 
+  const isDateDisabled = (date) => {
+    return date < new Date(userDateRegistration) || date > today;
+  };
+
+  const dayClassName = (date) => {
+    return isDateDisabled(date) ? 'disabled-day' : null;
+  };
+
   const handleDateChange = (date) => {
     if (date >= userDateRegistration && date <= today) {
       setSelectedDate(date);
@@ -31,20 +39,23 @@ const Datepicker = ({
   };
 
   return (
-    <Wrapper>
-      <DatePicker
-        selected={selectedDate}
-        dateFormat={dateFormat}
-        calendarStartDay={1}
-        formatWeekDay={(day) => day.substr(0, 1)}
-        open={isOpen}
-        customInput={<div style={{ display: 'none' }} />}
-        onChange={handleDateChange}
-        minDate={new Date(userDateRegistration)}
-        maxDate={today}
-      />
-      <CalendarGlobalStyles />
-    </Wrapper>
+    <>
+      <Wrapper>
+        <DatePicker
+          selected={selectedDate}
+          dateFormat={dateFormat}
+          calendarStartDay={1}
+          formatWeekDay={(day) => day.substr(0, 1)}
+          open={isOpen}
+          customInput={<div style={{ display: 'none' }} />}
+          onChange={handleDateChange}
+          minDate={new Date(userDateRegistration)}
+          maxDate={today}
+          dayClassName={dayClassName}
+        />
+        <CalendarGlobalStyles />
+      </Wrapper>
+    </>
   );
 };
 
