@@ -40,8 +40,8 @@ export const TextStyled = styled.p`
 export const TextWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  /* margin-bottom: 24px; */
+  gap: 24px;
+  margin-bottom: 24px;
 
   @media screen and (min-width: 768px) {
     /* margin-bottom: 32px; */
@@ -68,7 +68,7 @@ export const LinkBtnStyled = styled.a`
   background-color: ${globalColor.colorOrange};
   margin-bottom: 16px;
 
-  margin-top: 24px;
+  /* margin-top: 24px; */
 
   @media screen and (min-width: 768px) {
     margin-top: 32px;
