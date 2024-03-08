@@ -1,27 +1,29 @@
-// import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { TitlePage } from '../../components/TitlePage';
 import { UserCard } from '../../components/UserCard';
 import { UserForm } from '../../components/UserForm/UserForm';
 import { Container } from '../../styles/GlobalStyles';
-import { ProfileContentBox } from './ProfilePage.styled';
-// import { useDispatch } from 'react-redux';
-// import { refreshUser } from '../../redux/auth/operations';
+import { ProfileContainer, ProfileContentBox } from './ProfilePage.styled';
+import { useEffect } from 'react';
+import { refreshUser } from '../../redux/auth/operations';
 
 const ProfilePage = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(refreshUser());
-  // }, []);
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
 
   return (
     <Container>
-      <TitlePage contentText="Profile Settings" />
-      <ProfileContentBox>
-        <UserCard />
+      <ProfileContainer>
+        <TitlePage contentText="Profile Settings" />
+        <ProfileContentBox>
+          <UserCard />
 
-        <UserForm />
-      </ProfileContentBox>
+          <UserForm />
+        </ProfileContentBox>
+      </ProfileContainer>
     </Container>
   );
 };

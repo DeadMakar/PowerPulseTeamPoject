@@ -1,27 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
-// axios.defaults.baseURL = 'https://powerpulseback.onrender.com/';
 const setAuthHeader = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
-
-// export const getCurrentUser = createAsyncThunk(
-//   'profileSettings/getCurrentUser',
-//   async (_, thunkAPI) => {
-//     try {
-//       const state = thunkAPI.getState();
-//       const persistedToken = state.auth.token;
-//       setAuthHeader(persistedToken);
-
-//       const response = await axios.get('users/current');
-//       return response.data;
-//     } catch (error) {
-//       console.log(error);
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
 
 export const updateSettings = createAsyncThunk(
   'profileSettings/updateSettings',
@@ -32,8 +15,15 @@ export const updateSettings = createAsyncThunk(
       setAuthHeader(persistedToken);
       const response = await axios.patch('users/metrics', credentials);
       console.log(response);
+      toast.success('Your data has been updated successfully!', {
+        theme: 'dark',
+      });
+
       return response.data;
     } catch (e) {
+      toast.error('Sorry, something went wrong, please try again', {
+        theme: 'dark',
+      });
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -46,8 +36,14 @@ export const updateAvatar = createAsyncThunk(
       const formData = new FormData();
       formData.append('avatar', imageUrl);
       const res = await axios.patch('users/metrics', formData);
+      toast.success('Your avatar has been updated successfully!', {
+        theme: 'dark',
+      });
       return res.data;
     } catch (e) {
+      toast.error('Sorry, something went wrong, please try again', {
+        theme: 'dark',
+      });
       return thunkApi.rejectWithValue(e.message);
     }
   }
