@@ -1,9 +1,9 @@
-import{u as i,N as o,j as e}from"./index-0bf735f7.js";import{g as n}from"./root-786e29f7.js";import{b as t,a as d,c as r,d as a,e as s,f as p}from"./bgMobile@2x-c00288ab.js";const l=i.div`
+import{u as i,a as n,N as o,j as e}from"./index-4eb7badc.js";import{b as d,a as t,c as a,d as r,e as s,f as p}from"./bgMobile@2x-c00288ab.js";const l=i.div`
   display: flex;
 `,c=i.div`
   height: 100vh;
   width: 36%;
-  background-image: url(${t});
+  background-image: url(${d});
   background-repeat: no-repeat;
   background-size: contain;
   background-position: right bottom;
@@ -11,17 +11,17 @@ import{u as i,N as o,j as e}from"./index-0bf735f7.js";import{g as n}from"./root-
   @media screen and (min-device-pixel-radio: 2) and (min-width: 320px),
     screen and (min-resolution: 192dpi) and (min-width: 320px),
     screen and (min-resolution: 2dppx) and (min-width: 320px) {
-    background-image: url(${d});
+    background-image: url(${t});
   }
 
   @media screen and (min-width: 768px) {
-    background-image: url(${r});
+    background-image: url(${a});
     width: 45%;
 
     @media screen and (min-device-pixel-radio: 2) and (min-width: 768px),
       screen and (min-resolution: 192dpi) and (min-width: 768px),
       screen and (min-resolution: 2dppx) and (min-width: 768px) {
-      background-image: url(${a});
+      background-image: url(${r});
     }
   }
 
@@ -35,11 +35,11 @@ import{u as i,N as o,j as e}from"./index-0bf735f7.js";import{g as n}from"./root-
       background-image: url(${p});
     }
   }
-`,m=i.div`
+`,x=i.div`
   background-color: ${n.colorOrange};
   height: 100vh;
   flex: 1;
-`,x=i.div`
+`,m=i.div`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -128,4 +128,4 @@ import{u as i,N as o,j as e}from"./index-0bf735f7.js";import{g as n}from"./root-
 
   @media screen and (min-width: 1440px) {
   }
-`,k=()=>e.jsxs(l,{children:[e.jsx(m,{children:e.jsx(x,{children:e.jsxs(h,{children:[e.jsx(g,{children:"404"}),e.jsx(u,{children:"Sorry, you have reached a page that we could not find. It seems that you are lost among the numbers and letters of our virtual space. Perhaps this page went on vacation or decided to disappear into another dimension. We apologize for this inconvenience."}),e.jsx(b,{to:"/welcome",children:"Go Home"})]})})}),e.jsx(c,{})]});export{k as default};
+`,v=()=>e.jsxs(l,{children:[e.jsx(x,{children:e.jsx(m,{children:e.jsxs(h,{children:[e.jsx(g,{children:"404"}),e.jsx(u,{children:"Sorry, you have reached a page that we could not find. It seems that you are lost among the numbers and letters of our virtual space. Perhaps this page went on vacation or decided to disappear into another dimension. We apologize for this inconvenience."}),e.jsx(b,{to:"/welcome",children:"Go Home"})]})})}),e.jsx(c,{})]});export{v as default};

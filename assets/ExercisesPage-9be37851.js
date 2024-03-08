@@ -1,4 +1,4 @@
-import{u as e,j as t,N as u,r as g,O as m}from"./index-0bf735f7.js";import{n as r,b as n,a as c,S as h}from"./SectionTemplate-d3d166c7.js";import{T as y}from"./TitlePage-656fa80d.js";import{g as i}from"./root-786e29f7.js";import{s as w}from"./sprite-8de2d76c.js";import{e as q,F as $,c as C}from"./index.esm-522fd79b.js";import"./emotion-element-c39617d8.browser.esm-52e4bd35.js";import"./hoist-non-react-statics.cjs-3f8ebaa8.js";const P=e.h3`
+import{u as e,j as t,a as i,N as u,r as g,O as m}from"./index-4eb7badc.js";import{n as r,b as n,a as c,S as h}from"./SectionTemplate-eb52a948.js";import{T as y}from"./TitlePage-59b92ee7.js";import{s as w}from"./sprite-6c03d295.js";import{e as q,F as $,c as C}from"./index.esm-45f2ed87.js";import"./emotion-element-c39617d8.browser.esm-6cef5375.js";import"./hoist-non-react-statics.cjs-3f8ebaa8.js";const P=e.h3`
   color: inherit;
   font-size: 14px;
   font-style: normal;
@@ -484,4 +484,4 @@ import{u as e,j as t,N as u,r as g,O as m}from"./index-0bf735f7.js";import{n as 
     justify-content: space-between;
     align-items: center;
   }
-`,K=()=>{const[s,a]=g.useState(!1),l=()=>{a(o=>!o)};return t.jsx(D,{children:t.jsxs(h,{children:[t.jsxs(I,{children:[t.jsx(y,{children:"Exercises"}),t.jsxs(L,{children:[t.jsx("li",{children:t.jsx(f,{to:"body parts",children:t.jsx(d,{children:"Body parts"})})}),t.jsx("li",{children:t.jsx(f,{to:"muscles",children:t.jsx(d,{children:"Muscles"})})}),t.jsx("li",{children:t.jsx(f,{to:"equipment",children:t.jsx(d,{children:"Equipment"})})})]})]}),t.jsxs(g.Suspense,{fallback:t.jsx("p",{children:"Loader"}),children:[s&&t.jsx(T,{onClick:l,children:t.jsx(W,{onClick:l})}),t.jsx(m,{})]})]})})};export{K as default};
+`,J=()=>{const[s,a]=g.useState(!1),l=()=>{a(o=>!o)};return t.jsx(D,{children:t.jsxs(h,{children:[t.jsxs(I,{children:[t.jsx(y,{children:"Exercises"}),t.jsxs(L,{children:[t.jsx("li",{children:t.jsx(f,{to:"body parts",children:t.jsx(d,{children:"Body parts"})})}),t.jsx("li",{children:t.jsx(f,{to:"muscles",children:t.jsx(d,{children:"Muscles"})})}),t.jsx("li",{children:t.jsx(f,{to:"equipment",children:t.jsx(d,{children:"Equipment"})})})]})]}),t.jsxs(g.Suspense,{fallback:t.jsx("p",{children:"Loader"}),children:[s&&t.jsx(T,{onClick:l,children:t.jsx(W,{onClick:l})}),t.jsx(m,{})]})]})})};export{J as default};

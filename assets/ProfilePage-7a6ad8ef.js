@@ -1,4 +1,4 @@
-import{u as r,a as O,h as re,s as ne,r as b,i as ue,j as t,c as $,g as fe,k as be,m as ye,n as ve,C as je}from"./index-0bf735f7.js";import{T as we}from"./TitlePage-656fa80d.js";import{s as v}from"./sprite-8de2d76c.js";import{g as a}from"./root-786e29f7.js";import{b as ke}from"./LogOutBtn-07cb907e.js";import{c as Ae,a as F,b as W,F as ae,d as Se,e as We}from"./index.esm-522fd79b.js";import{g as L,f as _e,i as Ce,a as $e}from"./index-0723721f.js";import"./hoist-non-react-statics.cjs-3f8ebaa8.js";const ze=r.div`
+import{u as r,a,b as O,i as re,s as ne,r as b,k as ue,j as t,c as $,g as fe,m as be,n as ye,o as ve,C as je}from"./index-4eb7badc.js";import{T as we}from"./TitlePage-59b92ee7.js";import{s as v}from"./sprite-6c03d295.js";import{b as ke}from"./LogOutBtn-0a091a63.js";import{c as Ae,a as F,b as W,F as ae,d as Se,e as We}from"./index.esm-45f2ed87.js";import{g as L,f as _e,i as Ce,a as $e}from"./index-49a42871.js";import"./hoist-non-react-statics.cjs-3f8ebaa8.js";const ze=r.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -679,4 +679,4 @@ import{u as r,a as O,h as re,s as ne,r as b,i as ue,j as t,c as $,g as fe,k as b
     position: relative;
     padding-bottom: 44px;
   }
-`,rr=()=>{const e=O();return b.useEffect(()=>{e(ve())},[]),t.jsxs(je,{children:[t.jsx(we,{contentText:"Profile Settings"}),t.jsxs(Qi,{children:[t.jsx(Ge,{}),t.jsx(Hi,{})]})]})};export{rr as default};
+`,ir=()=>{const e=O();return b.useEffect(()=>{e(ve())},[]),t.jsxs(je,{children:[t.jsx(we,{contentText:"Profile Settings"}),t.jsxs(Qi,{children:[t.jsx(Ge,{}),t.jsx(Hi,{})]})]})};export{ir as default};
