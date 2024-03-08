@@ -1,35 +1,126 @@
-import { Route, Routes } from 'react-router-dom';
-import { ProfilePage } from './pages/ProfilePage';
-import { DiaryPage } from './pages/DiaryPage';
-import { WelcomePage } from './pages/WelcomePage';
-import { ErrorPage } from './pages/ErrorPage';
-import { SignInPage } from './pages/SignInPage';
-import { SignUpPage } from './pages/SignUpPage';
-import { ExercisesPage } from './pages/ExercisesPage';
-import { ProductsPage } from './pages/ProductsPage';
-import { Layout } from './components/Layout';
+import { lazy, Suspense, useEffect } from 'react';
+import { Route, Routes, Navigate } from 'react-router-dom';
+import { default as RestrictedRoute } from './RestrictedRoute';
+import { default as PrivateRoute } from './PrivateRoute';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsLoggedIn, selectUser } from './redux/auth/selectors';
+import { Loader } from './components/Loader';
+import { GlobalStyles } from './styles/GlobalStyles';
+import { refreshUser } from './redux/auth/operations';
+import { CalendarGlobalStyles } from './styles/CalendarGlobalStyles';
+
+
+const Layout = lazy(() => import('./components/Layout/Layout'));
+const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
+const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage'));
+const SignInPage = lazy(() => import('./pages/SignInPage/SignInPage'));
+const ProfilePage = lazy(() => import('./pages/ProfilePage/ProfilePage'));
+const DiaryPage = lazy(() => import('./pages/DiaryPage/DiaryPage'));
+const ProductsPage = lazy(() => import('./pages/ProductsPage/ProductsPage'));
+const ExercisesPage = lazy(() => import('./pages/ExercisesPage/ExercisesPage'));
+const ErrorPage = lazy(() => import('./pages/ErrorPage/ErrorPage'));
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  const user = useSelector(selectUser);
+  const { userMetrics } = user;
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  // const loading = useSelector(selectIsRefreshing);
+
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route path="/welcome" element={<WelcomePage />} />
-
-        <Route path="/signup" element={<SignUpPage />} />
-
-        <Route path="/signin" element={<SignInPage />} />
-
-        <Route path="/profile" element={<ProfilePage />} />
-
-        <Route path="/diary" element={<DiaryPage />} />
-
-        <Route path="/products" element={<ProductsPage />} />
-
-        <Route path="/exercises" element={<ExercisesPage />} />
-
-        <Route path="/error" element={<ErrorPage />} />
-      </Route>
-    </Routes>
+    <Suspense fallback={<Loader />}>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route
+            index
+            element={
+              isLoggedIn && userMetrics ? <DiaryPage /> : <WelcomePage />
+            }
+          />
+          <Route path="/welcome" element={<WelcomePage />} />
+          <Route
+            path="/signup"
+            element={
+              <RestrictedRoute
+                redirectTo="/profile"
+                component={<SignUpPage />}
+              />
+            }
+          />
+          <Route
+            path="/signin"
+            element={
+              isLoggedIn && !userMetrics ? (
+                <RestrictedRoute
+                  redirectTo="/diary"
+                  component={<SignInPage />}
+                />
+              ) : (
+                <RestrictedRoute
+                  redirectTo="/profile"
+                  component={<SignInPage />}
+                />
+              )
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <PrivateRoute redirectTo="/" component={<ProfilePage />} />
+            }
+          />
+          <Route
+            path="/diary"
+            element={
+              userMetrics ? (
+                <Navigate to="/profile" replace />
+              ) : (
+                <PrivateRoute redirectTo="/" component={<DiaryPage />} />
+              )
+            }
+          />
+          <Route
+            path="/products"
+            element={
+              userMetrics ? (
+                <Navigate to="/profile" replace />
+              ) : (
+                <PrivateRoute redirectTo="/" component={<ProductsPage />} />
+              )
+            }
+          />
+          <Route
+            path="/exercises"
+            element={
+              userMetrics ? (
+                <Navigate to="/profile" replace />
+              ) : (
+                <PrivateRoute redirectTo="/" component={<ExercisesPage />} />
+              )
+            }
+          >
+            <Route index element={<Navigate to="/exercises" replace />} />
+            {/* <Route
+              path="/exercises/:filter"
+              element={<ExercisesSubcategoriesList />}
+            />
+            <Route
+              path="/exercises/:filter/:filterList"
+              element={<ExercisesList />}
+            /> */}
+          </Route>
+          <Route path="*" element={<ErrorPage />} />
+        </Route>
+      </Routes>
+      <GlobalStyles />
+      <CalendarGlobalStyles />
+    </Suspense>
   );
 }
+
 export default App;

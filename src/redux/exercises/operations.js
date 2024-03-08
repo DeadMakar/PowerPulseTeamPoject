@@ -53,7 +53,7 @@ export const getExercisesFilter = createAsyncThunk(
   'exercises/getExercisesFilter',
   async (paramsExe, thunkAPI) => {
     try {
-      const response = await axios(
+      const response = await axios.get(
         `/exercises?filter=${paramsExe.filter}&name=${paramsExe.name}`
       );
       return response.data;

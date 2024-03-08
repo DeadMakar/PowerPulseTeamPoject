@@ -1,18 +1,18 @@
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import { TitlePage } from '../../components/TitlePage';
 import { UserCard } from '../../components/UserCard';
 import { UserForm } from '../../components/UserForm/UserForm';
 import { Container } from '../../styles/GlobalStyles';
 import { ProfileContentBox } from './ProfilePage.styled';
-import { useDispatch } from 'react-redux';
-import { getCurrentUser } from '../../redux/profile/operations';
+// import { useDispatch } from 'react-redux';
+// import { refreshUser } from '../../redux/auth/operations';
 
 const ProfilePage = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getCurrentUser());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(refreshUser());
+  // }, []);
 
   return (
     <Container>

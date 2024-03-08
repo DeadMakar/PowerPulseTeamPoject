@@ -14,7 +14,6 @@ export const CalendarGlobalStyles = createGlobalStyle`
     display: flex;
     flex-direction: column;
     align-items: center;
-
     padding: 9px 18px;
     background-color: ${globalColor.colorOrange1};
     font-family: 'Roboto';
@@ -147,8 +146,8 @@ export const CalendarGlobalStyles = createGlobalStyle`
   }
   .react-datepicker__day--keyboard-selected {
     border-radius: 50%;
-    background-color:${globalColor.colorWhite};
-    color:#3e85f3;
+    background-color: transparent;
+    color: ${globalColor.colorWhite};
   }
   .react-datepicker__day--weekend {
     opacity: 50%;
@@ -163,5 +162,9 @@ export const CalendarGlobalStyles = createGlobalStyle`
   }
   .react-datepicker__triangle {
    display: none;
+  }
+  .disabled-day {
+    color: red !important;
+    pointer-events: none;
   }
 `;

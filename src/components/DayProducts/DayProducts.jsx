@@ -25,16 +25,16 @@ import {
   MobileItemsHolder4,
   ListMobileArray,
 } from './DayProducts.styled';
-
 import { globalColor } from '../../styles/root';
-import { selectUser } from '../../redux/auth/selectors';
 import { useDispatch, useSelector } from 'react-redux';
+
 import {
   deleteDiaryProducts,
   getAllDiaryInformation,
 } from '../../redux/diary/operations';
 import { toast } from 'react-toastify';
 import { selectDiaryError } from '../../redux/diary/selectors';
+import { selectUser } from '../../redux/auth/selectors';
 
 const DayProducts = ({ productsArray, date }) => {
   const dispatch = useDispatch();

@@ -13,24 +13,15 @@ import {
   UserFormContainer,
 } from './UserForm.styled';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { selectUser } from '../../redux/profile/selectors';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateSettings } from '../../redux/profile/operations';
-// import { updateSettings } from '../../redux/profile/operations';
-
-// const initialValues = {
-//   name: '',
-//   email: '',
-//   height: 0,
-//   currentWeight: 0,
-//   desiredWeight: 0,
-//   birthday: '2020-01-01',
-//   blood: 0,
-//   sex: '',
-//   levelActivity: 0,
-// };
+import { selectUser } from '../../redux/auth/selectors';
 
 export const UserForm = () => {
+  const dispatch = useDispatch();
+
+  const user = useSelector(selectUser);
+
   const {
     name,
     email,
@@ -41,23 +32,20 @@ export const UserForm = () => {
     blood,
     sex,
     levelActivity,
-  } = useSelector(selectUser);
+  } = user;
 
   const initialValue = {
     name,
     email,
-    height,
-    currentWeight,
-    desiredWeight,
-    birthday,
-    blood: blood.toString(),
-    sex,
-    levelActivity: levelActivity.toString(),
+    height: height ?? 0,
+    currentWeight: currentWeight ?? 0,
+    desiredWeight: desiredWeight ?? 0,
+    blood: blood ? blood.toString() : 0,
+    sex: sex ?? 0,
+    levelActivity: levelActivity ? levelActivity.toString() : 0,
   };
 
-  console.log(initialValue.name);
-
-  const [birthdayNew, setBirthdayDate] = useState(birthday);
+  const [birthdayNew, setBirthdayDate] = useState(birthday || '00.00.0000');
 
   const formatDate = (date) => {
     const day = date.getDate();
@@ -120,31 +108,31 @@ export const UserForm = () => {
       levelActivity,
     } = newInfo;
 
-    // const toUpdateDate = {
-    //   name,
-    //   height,
-    //   currentWeight,
-    //   desiredWeight,
-    //   birthdayNew,
-    //   blood: Number(blood),
-    //   sex,
-    //   levelActivity: Number(levelActivity),
-    // };
+    const toUpdateDate = {
+      name,
+      height,
+      currentWeight,
+      desiredWeight,
+      birthdayNew,
+      blood: Number(blood),
+      sex,
+      levelActivity: Number(levelActivity),
+    };
 
-    dispatchEvent(
+    dispatch(
       updateSettings({
         name,
         height,
         currentWeight,
         desiredWeight,
-        birthday,
+        birthday: birthdayNew,
         blood: Number(blood),
         sex,
         levelActivity: Number(levelActivity),
       })
     );
 
-    // console.log(toUpdateDate);
+    console.log(toUpdateDate);
   };
 
   return (
@@ -162,7 +150,7 @@ export const UserForm = () => {
               errors={errors}
               touched={touched}
               onDateChange={onDateChange}
-              savedBirthday={birthday}
+              savedBirthday={birthdayNew}
               userEmail={email}
             />
             <BloodSexSection>
