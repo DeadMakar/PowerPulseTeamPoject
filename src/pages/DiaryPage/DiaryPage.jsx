@@ -36,7 +36,7 @@ const DiaryPage = () => {
   const { addProducts, addExercises } = userData;
   const [currentDate, setCurrentDate] = useState(new Date());
   const user = useSelector(selectUser);
-  const userDataRegistration = user.createdAt;
+  const userDataRegistration = user ? user.createdAt : null;
   const formattedCurrentDate = changeDate(currentDate);
   const formattedUserDateRegistration = changeDate(userDataRegistration);
 
