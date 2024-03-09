@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { globalColor } from '../../styles/root';
 
 export const ProductsListWrapper = styled.ul`
   display: flex;
@@ -25,7 +26,7 @@ export const ProductsListWrapper = styled.ul`
     }
 
     &::-webkit-scrollbar-thumb {
-      background-color: var(--color-main-two);
+      background-color: ${globalColor.colorOrange1};
       border-radius: 12px;
       /* height: 20px; */
     }
