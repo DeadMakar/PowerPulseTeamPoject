@@ -34,7 +34,7 @@ export const AddProductForm = ({ caloriesPlus, onAddProduct }) => {
           <Field type="text" name="name" placeholder="Banana" />
           <FieldGramsWrapper>
             <Field type="text" name="mass" />
-            <GramTxt>gram</GramTxt>
+            <GramTxt>grams</GramTxt>
           </FieldGramsWrapper>
         </FieldWrapper>
         <TextStyled>
