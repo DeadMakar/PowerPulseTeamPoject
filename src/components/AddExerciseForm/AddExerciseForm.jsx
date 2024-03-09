@@ -38,11 +38,11 @@ export const AddExerciseForm = ({ caloriesBurned }) => {
             duration={15}
             // colorsTime={[7, 5, 2, 0]}
             size={124}
-            // strokeWidth={5}
+            strokeWidth={5}
             colors={[['#303030']]}
             trailColor={[['#E6533C']]}
           >
-            {({ remainingTime }) => remainingTime}
+            {({ elapsedTime }) => elapsedTime}
           </CountdownCircleTimer>
         </TimerBlock>
         <PlayTimerBtn>
