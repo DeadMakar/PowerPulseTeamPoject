@@ -1,3 +1,4 @@
+// App.jsx
 import { lazy, Suspense, useEffect } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -30,10 +31,19 @@ function App() {
   const user = useSelector(selectUser);
   const userMetrics = isLoggedIn && user?.userMetrics ? true : false;
 
+  const shouldShowLayout = (pathname) => {
+    return !['/', '/welcome', '/signup', '/signin', '/error'].includes(
+      pathname
+    );
+  };
+
   return (
     <Suspense fallback={<Loader />}>
       <Routes>
-        <Route path="/" element={<WelcomePage />}>
+        <Route
+          path="/"
+          element={<Layout showHeader={shouldShowLayout(location.pathname)} />}
+        >
           <Route index element={isLoggedIn ? <DiaryPage /> : <WelcomePage />} />
           <Route path="/welcome" element={<WelcomePage />} />
           <Route
