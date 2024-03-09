@@ -36,7 +36,7 @@ const UserCard = () => {
   const user = useSelector(selectUser);
 
   const [selectedImage, setSelectedImage] = useState(null);
-  const [imageUrl, setImageUrl] = useState(user.avatarURL ?? defaultAvatar);
+  const [imageUrl, setImageUrl] = useState(user?.avatarURL ?? defaultAvatar);
 
   const fileReader = new FileReader();
   fileReader.onloadend = () => {
@@ -75,7 +75,7 @@ const UserCard = () => {
       </AvatarBox>
 
       <UserNameRole>
-        <UserName> {user.userName}</UserName>
+        <UserName> {user?.userName}</UserName>
         <UserRole>User</UserRole>
       </UserNameRole>
 
@@ -87,7 +87,7 @@ const UserCard = () => {
             </SvgStyled>
             <TitleStyled>Daily calorie intake</TitleStyled>
           </TitleStyledWrapper>
-          <DataValue>{user.resultBMR ?? '0'}</DataValue>
+          <DataValue>{user?.resultBMR ?? '0'}</DataValue>
         </ItemListStyled>
         <ItemListStyled>
           <TitleStyledWrapper>
@@ -96,7 +96,7 @@ const UserCard = () => {
             </SvgStyled>
             <TitleStyled>Daily physical activity</TitleStyled>
           </TitleStyledWrapper>
-          <DataValue>{user.trainingTime ?? '110'} min</DataValue>
+          <DataValue>{user?.trainingTime ?? '110'} min</DataValue>
         </ItemListStyled>
       </ListStyled>
       <div>

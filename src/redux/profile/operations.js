@@ -14,7 +14,6 @@ export const updateSettings = createAsyncThunk(
       const persistedToken = state.auth.token;
       setAuthHeader(persistedToken);
       const response = await axios.put('users/metrics', credentials);
-      console.log(response);
       toast.success('Your data has been updated successfully!', {
         theme: 'dark',
       });

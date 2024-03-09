@@ -27,32 +27,22 @@ export const UserForm = () => {
 
   // Users initial info
 
-  const {
-    userName,
-    email,
-    height,
-    currentWeight,
-    desiredWeight,
-    birthday,
-    blood,
-    sex,
-    levelActivity,
-  } = user;
-
   const initialValue = {
-    name: userName ?? '',
-    email,
-    height: height ?? 0,
-    currentWeight: currentWeight ?? 0,
-    desiredWeight: desiredWeight ?? 0,
-    blood: blood ? blood.toString() : 0,
-    sex: sex ?? 0,
-    levelActivity: levelActivity ? levelActivity.toString() : 0,
+    name: user?.userName ?? '',
+    email: user?.email,
+    height: user?.height ?? 0,
+    currentWeight: user?.currentWeight ?? 0,
+    desiredWeight: user?.desiredWeight ?? 0,
+    blood: user?.blood ? user?.blood.toString() : 0,
+    sex: user?.sex ?? 0,
+    levelActivity: user?.levelActivity ? user?.levelActivity.toString() : 0,
   };
 
   //  STATE
 
-  const [birthdayNew, setBirthdayDate] = useState(birthday || '00.00.0000');
+  const [birthdayNew, setBirthdayDate] = useState(
+    user?.birthday || '00.00.0000'
+  );
 
   const [isInfoChanged, setIsInfoChanged] = useState(true);
 
@@ -107,41 +97,35 @@ export const UserForm = () => {
       levelActivity,
     } = newInfo;
 
-    try {
-      dispatch(
-        updateSettings({
-          userName: name,
-          height,
-          currentWeight,
-          desiredWeight,
-          birthday: birthdayNew,
-          blood: Number(blood),
-          sex,
-          levelActivity: Number(levelActivity),
-        })
-      );
+    // check age
+    const fullYear = mathFullYear(birthdayNew);
 
-      // check age
-      const fullYear = mathFullYear(birthdayNew);
-
-      if (fullYear < 18) {
-        // notification
-        toast.error('Sorry, but only adults can use our app.', {
-          theme: 'dark',
-        });
-        setIsInfoChanged(true);
-      }
-
-      setIsInfoChanged(false);
-
-      dispatch(refreshUser());
-    } catch (error) {
-      toast.error('Sorry, something went wrong, please try again', {
+    if (fullYear < 18) {
+      // notification
+      toast.error('Sorry, but only adults can use our app.', {
         theme: 'dark',
       });
-
       setIsInfoChanged(true);
+      return;
     }
+
+    // try {
+    dispatch(
+      updateSettings({
+        userName: name,
+        height,
+        currentWeight,
+        desiredWeight,
+        birthday: birthdayNew,
+        blood: Number(blood),
+        sex,
+        levelActivity: Number(levelActivity),
+      })
+    );
+
+    setIsInfoChanged(true);
+
+    dispatch(refreshUser());
   };
 
   return (
@@ -160,7 +144,7 @@ export const UserForm = () => {
               touched={touched}
               onDateChange={onDateChange}
               savedBirthday={birthdayNew}
-              userEmail={email}
+              userEmail={initialValue.email}
             />
             <BloodSexSection>
               <LabelInputName>Blood</LabelInputName>
