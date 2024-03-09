@@ -102,14 +102,15 @@ function App() {
           >
             <Route index element={<Navigate to="/exercises" replace />} />
             {/* <Route
-              path="/exercises/:filter"
-              element={<ExercisesSubcategoriesList />}
-            />
-            <Route
-              path="/exercises/:filter/:filterList"
-              element={<ExercisesList />}
-            /> */}
+    path="/exercises/:filter"
+    element={<ExercisesSubcategoriesList />}
+  />
+  <Route
+    path="/exercises/:filter/:filterList"
+    element={<ExercisesList />}
+  /> */}
           </Route>
+
           <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
