@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import { globalColor } from '../../styles/root';
 
 export const ProductItemContainer = styled.li`
   min-width: 280px;
   padding: 15px;
-  background-color: rgba(239, 237, 232, 0.05);
+  background-color: color: ${globalColor.colorDiaryItem};
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.2);
 
@@ -27,7 +28,7 @@ export const TopLineWrapper = styled.div`
 `;
 export const LeftTopLabelWrapper = styled.div`
   padding: 5px 7.5px;
-  background-color: rgba(239, 237, 232, 0.05);
+  background-color: color: ${globalColor.colorDiaryItem};
   border-radius: 4px;
   > p {
     margin: 0;
@@ -43,8 +44,8 @@ export const RightTopBlockWrapper = styled.div`
   > div {
     background-color: ${(props) =>
       props.color === 'true'
-        ? 'var(--color-approved-two)'
-        : 'var(--color-wrong-two)'};
+        ? `${globalColor.colorGreen}`
+        : `${globalColor.colorReв}`};
     display: block;
     width: 14px;
     height: 14px;
@@ -70,7 +71,7 @@ export const AddButton = styled.button`
   > span {
     font-size: 14px;
     line-height: 1.3;
-    color: var(--color-main-one);
+    color: ${globalColor.colorOrange};
 
     @media screen and (min-width: 768px) {
       font-size: 16px;
@@ -81,7 +82,7 @@ export const AddButton = styled.button`
   > svg {
     width: 16px;
     height: 16px;
-    stroke: var(--color-main-one);
+    stroke: ${globalColor.colorOrange};
   }
 `;
 
@@ -126,14 +127,14 @@ export const RunIconWrapper = styled.div`
   align-items: center;
   width: 24px;
   height: 24px;
-  background-color: var(--color-main-three);
+  background-color: ${globalColor.colorBeige};
   border-radius: 50%;
   flex-shrink: 0;
 
   > svg {
     width: 14px;
     height: 16px;
-    fill: var(--color-text);
+    fill: ${globalColor.colorWhite};
   }
 `;
 
@@ -150,7 +151,7 @@ export const InfoLineWrapper = styled.ul`
 
     > span {
       margin-left: 4px;
-      color: var(--color-text);
+      color: ${globalColor.colorWhite};
     }
   }
 `;
