@@ -27,20 +27,17 @@ function App() {
   }, [dispatch]);
 
   const user = useSelector(selectUser);
-  const { userMetrics } = user;
+  // const { userMetrics } = user;
   const isLoggedIn = useSelector(selectIsLoggedIn);
   // const loading = useSelector(selectIsRefreshing);
+
+  const userMetrics = isLoggedIn && user ? true : false;
 
   return (
     <Suspense fallback={<Loader />}>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route
-            index
-            element={
-              isLoggedIn && userMetrics ? <DiaryPage /> : <WelcomePage />
-            }
-          />
+          <Route index element={isLoggedIn ? <DiaryPage /> : <WelcomePage />} />
           <Route path="/welcome" element={<WelcomePage />} />
           <Route
             path="/signup"
@@ -61,7 +58,7 @@ function App() {
                 />
               ) : (
                 <RestrictedRoute
-                  redirectTo="/dairy"
+                  redirectTo="/diary"
                   component={<SignInPage />}
                 />
               )
@@ -76,7 +73,7 @@ function App() {
           <Route
             path="/diary"
             element={
-              userMetrics ? (
+              !userMetrics ? (
                 <Navigate to="/profile" replace />
               ) : (
                 <PrivateRoute redirectTo="/" component={<DiaryPage />} />
@@ -86,7 +83,7 @@ function App() {
           <Route
             path="/products"
             element={
-              userMetrics ? (
+              !userMetrics ? (
                 <Navigate to="/profile" replace />
               ) : (
                 <PrivateRoute redirectTo="/" component={<ProductsPage />} />
@@ -96,7 +93,7 @@ function App() {
           <Route
             path="/exercises"
             element={
-              userMetrics ? (
+              !userMetrics ? (
                 <Navigate to="/profile" replace />
               ) : (
                 <PrivateRoute redirectTo="/" component={<ExercisesPage />} />

@@ -28,6 +28,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateAvatar } from '../../redux/profile/operations';
 import defaultAvatar from '../../assets/images/profile/gridicons_user.jpg';
 import { selectUser } from '../../redux/auth/selectors';
+import { refreshUser } from '../../redux/auth/operations';
 
 const UserCard = () => {
   const dispatch = useDispatch();
@@ -35,7 +36,7 @@ const UserCard = () => {
   const user = useSelector(selectUser);
 
   const [selectedImage, setSelectedImage] = useState(null);
-  const [imageUrl, setImageUrl] = useState(user.avatar ?? defaultAvatar);
+  const [imageUrl, setImageUrl] = useState(user.avatarURL ?? defaultAvatar);
 
   const fileReader = new FileReader();
   fileReader.onloadend = () => {
@@ -49,7 +50,7 @@ const UserCard = () => {
 
       dispatch(updateAvatar(selectedImage));
 
-      console.log(123);
+      dispatch(refreshUser());
     }
   }, [selectedImage]);
 
@@ -74,7 +75,7 @@ const UserCard = () => {
       </AvatarBox>
 
       <UserNameRole>
-        <UserName> {user.name}</UserName>
+        <UserName> {user.userName}</UserName>
         <UserRole>User</UserRole>
       </UserNameRole>
 
@@ -86,7 +87,7 @@ const UserCard = () => {
             </SvgStyled>
             <TitleStyled>Daily calorie intake</TitleStyled>
           </TitleStyledWrapper>
-          <DataValue>{user.bmr ?? '0'}</DataValue>
+          <DataValue>{user.resultBMR ?? '0'}</DataValue>
         </ItemListStyled>
         <ItemListStyled>
           <TitleStyledWrapper>
