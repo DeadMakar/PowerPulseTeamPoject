@@ -20,7 +20,7 @@ const AddProductSuccess = ({ caloriesPlus }) => {
         Calories: <SpanStyled>96 {caloriesPlus}</SpanStyled>
       </TextStyled>
       <LinkBtnStyled href="">Next product</LinkBtnStyled>{' '}
-      <LinkStyled href="">
+      <LinkStyled href="/PowerPulseTeamPoject/diary">
         to the Diary
         <SvgArrow>
           <use href={`${sprite}#icon-arrow`}></use>

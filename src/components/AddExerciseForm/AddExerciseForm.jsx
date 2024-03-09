@@ -18,6 +18,7 @@ import {
   // CloseSvgBtn,
 } from './AddExerciseForm.styled';
 import sprite from '../../assets/sprite.svg';
+import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 
 import dbExercises from '../../../DB/exercises.json';
 const data = dbExercises[1];
@@ -29,18 +30,31 @@ export const AddExerciseForm = ({ caloriesBurned }) => {
     <WrapperDiv>
       <WrapperPart1>
         <ImgStyled src={gifUrl} alt="Exercise gif-photo" />
-        {/* таймер */} <TimeTextStyled>Time</TimeTextStyled>
-        <TimerBlock />
+        <TimeTextStyled>Time</TimeTextStyled>
+        <TimerBlock>
+          <CountdownCircleTimer
+            isPlaying
+            // isGrowing
+            duration={15}
+            // colorsTime={[7, 5, 2, 0]}
+            size={124}
+            // strokeWidth={5}
+            colors={[['#303030']]}
+            trailColor={[['#E6533C']]}
+          >
+            {({ remainingTime }) => remainingTime}
+          </CountdownCircleTimer>
+        </TimerBlock>
         <PlayTimerBtn>
           <SvgStyled>
             <use href={`${sprite}#icon-play`}></use>
           </SvgStyled>
         </PlayTimerBtn>
-        <PauseTimerBtn>
+        {/* <PauseTimerBtn>
           <SvgStyled>
             <use href={`${sprite}#icon-pause-square`}></use>
           </SvgStyled>
-        </PauseTimerBtn>
+        </PauseTimerBtn> */}
         <TextStyled>
           Burned calories:<SpanStyled> 150 {caloriesBurned}</SpanStyled>
         </TextStyled>
