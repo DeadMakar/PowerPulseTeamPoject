@@ -1,13 +1,13 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
-import { default as RestrictedRoute } from './RestrictedRoute';
-import { default as PrivateRoute } from './PrivateRoute';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLoggedIn, selectUser } from './redux/auth/selectors';
 import { Loader } from './components/Loader';
 import { GlobalStyles } from './styles/GlobalStyles';
 import { refreshUser } from './redux/auth/operations';
 import { CalendarGlobalStyles } from './styles/CalendarGlobalStyles';
+import { default as PrivateRoute } from './PrivateRoute';
+import { default as RestrictedRoute } from './RestrictedRoute';
 
 const Layout = lazy(() => import('./components/Layout/Layout'));
 const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
@@ -26,24 +26,21 @@ function App() {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  const user = useSelector(selectUser);
-  // const { userMetrics } = user;
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  // const loading = useSelector(selectIsRefreshing);
-
+  const user = useSelector(selectUser);
   const userMetrics = isLoggedIn && user?.userMetrics ? true : false;
 
   return (
     <Suspense fallback={<Loader />}>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/" element={<WelcomePage />}>
           <Route index element={isLoggedIn ? <DiaryPage /> : <WelcomePage />} />
           <Route path="/welcome" element={<WelcomePage />} />
           <Route
             path="/signup"
             element={
               <RestrictedRoute
-                redirectTo="/profile"
+                redirectTo="/singin"
                 component={<SignUpPage />}
               />
             }
@@ -51,17 +48,7 @@ function App() {
           <Route
             path="/signin"
             element={
-              !userMetrics ? (
-                <RestrictedRoute
-                  redirectTo="/profile"
-                  component={<SignInPage />}
-                />
-              ) : (
-                <RestrictedRoute
-                  redirectTo="/diary"
-                  component={<SignInPage />}
-                />
-              )
+              !isLoggedIn ? <SignInPage /> : <Navigate to="/diary" replace />
             }
           />
           <Route
@@ -73,44 +60,29 @@ function App() {
           <Route
             path="/diary"
             element={
-              !userMetrics ? (
-                <Navigate to="/profile" replace />
-              ) : (
-                <PrivateRoute redirectTo="/" component={<DiaryPage />} />
-              )
+              userMetrics ? <DiaryPage /> : <Navigate to="/profile" replace />
             }
           />
           <Route
             path="/products"
             element={
-              !userMetrics ? (
-                <Navigate to="/profile" replace />
+              userMetrics ? (
+                <ProductsPage />
               ) : (
-                <PrivateRoute redirectTo="/" component={<ProductsPage />} />
+                <Navigate to="/profile" replace />
               )
             }
           />
           <Route
             path="/exercises"
             element={
-              !userMetrics ? (
-                <Navigate to="/profile" replace />
+              userMetrics ? (
+                <ExercisesPage />
               ) : (
-                <PrivateRoute redirectTo="/" component={<ExercisesPage />} />
+                <Navigate to="/profile" replace />
               )
             }
-          >
-            <Route index element={<Navigate to="/exercises" replace />} />
-            {/* <Route
-    path="/exercises/:filter"
-    element={<ExercisesSubcategoriesList />}
-  />
-  <Route
-    path="/exercises/:filter/:filterList"
-    element={<ExercisesList />}
-  /> */}
-          </Route>
-
+          />
           <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
