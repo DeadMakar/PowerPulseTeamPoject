@@ -27,7 +27,7 @@ const AddExerciseSuccess = ({ exerciseTime, caloriesBurned }) => {
       </TextWrapper>
       <LinkBtnStyled href="">Next product</LinkBtnStyled>{' '}
       <LinkStyled href="">
-        to the Diary{' '}
+        to the Diary
         <SvgArrow>
           <use href={`${sprite}#icon-arrow`}></use>
         </SvgArrow>

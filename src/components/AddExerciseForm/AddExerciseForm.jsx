@@ -6,10 +6,18 @@ import {
   ListStyled,
   ItemStyled,
   WrapperDiv,
-  SpanStyled2,
+  SpanItemsStyled,
+  WrapperPart1,
+  WrapperPart2,
+  TimeTextStyled,
+  TimerBlock,
+  PlayTimerBtn,
+  PauseTimerBtn,
+  SvgStyled,
+  ItemTextStyled,
   // CloseSvgBtn,
 } from './AddExerciseForm.styled';
-// import sprite from '../../assets/sprite.svg';
+import sprite from '../../assets/sprite.svg';
 
 import dbExercises from '../../../DB/exercises.json';
 const data = dbExercises[1];
@@ -19,27 +27,46 @@ console.log('data', data);
 export const AddExerciseForm = ({ caloriesBurned }) => {
   return (
     <WrapperDiv>
-      <ImgStyled src={gifUrl} alt="Exercise gif-photo" />
-      {/* таймер */} <h2>Timer</h2>
-      <TextStyled>
-        Burned calories:<SpanStyled> 150 {caloriesBurned}</SpanStyled>
-      </TextStyled>
-      {/* поля: Name, Target, Body Part, Equipment */}
-      <ListStyled>
-        <ItemStyled>
-          Name <SpanStyled2> {name}</SpanStyled2>
-        </ItemStyled>
-        <ItemStyled>
-          Target <SpanStyled2>{target}</SpanStyled2>
-        </ItemStyled>
-        <ItemStyled>
-          Body Part <SpanStyled2> {bodyPart}</SpanStyled2>
-        </ItemStyled>
-        <ItemStyled>
-          Equipment <SpanStyled2>{equipment}</SpanStyled2>
-        </ItemStyled>
-      </ListStyled>
-      <BtnOrange type="submit">Add to diary</BtnOrange>
+      <WrapperPart1>
+        <ImgStyled src={gifUrl} alt="Exercise gif-photo" />
+        {/* таймер */} <TimeTextStyled>Time</TimeTextStyled>
+        <TimerBlock />
+        <PlayTimerBtn>
+          <SvgStyled>
+            <use href={`${sprite}#icon-play`}></use>
+          </SvgStyled>
+        </PlayTimerBtn>
+        <PauseTimerBtn>
+          <SvgStyled>
+            <use href={`${sprite}#icon-pause-square`}></use>
+          </SvgStyled>
+        </PauseTimerBtn>
+        <TextStyled>
+          Burned calories:<SpanStyled> 150 {caloriesBurned}</SpanStyled>
+        </TextStyled>
+        {/* поля: Name, Target, Body Part, Equipment */}
+      </WrapperPart1>
+      <WrapperPart2>
+        <ListStyled>
+          <ItemStyled>
+            <ItemTextStyled>Name</ItemTextStyled>
+            <SpanItemsStyled> {name}</SpanItemsStyled>
+          </ItemStyled>
+          <ItemStyled>
+            <ItemTextStyled>Target</ItemTextStyled>{' '}
+            <SpanItemsStyled>{target}</SpanItemsStyled>
+          </ItemStyled>
+          <ItemStyled>
+            <ItemTextStyled>Body Part</ItemTextStyled>{' '}
+            <SpanItemsStyled> {bodyPart}</SpanItemsStyled>
+          </ItemStyled>
+          <ItemStyled>
+            <ItemTextStyled>Equipment</ItemTextStyled>{' '}
+            <SpanItemsStyled>{equipment}</SpanItemsStyled>
+          </ItemStyled>
+        </ListStyled>
+        <BtnOrange type="submit">Add to diary</BtnOrange>
+      </WrapperPart2>
     </WrapperDiv>
   );
 };

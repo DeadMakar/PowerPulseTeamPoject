@@ -4,6 +4,7 @@ import {
   ModalWindow,
 } from './BasicModalWindow.styled';
 import sprite from '../../assets/sprite.svg';
+import { Container } from '../../styles/GlobalStyles';
 
 const BasicModalWindow = ({ children }) => {
   // прописать функции закрытия окна:
@@ -14,12 +15,14 @@ const BasicModalWindow = ({ children }) => {
 
   return (
     <ModalBackdrop>
+      {/* <Container> */}
       <ModalWindow>
         <CloseModalBtn>
           <use href={`${sprite}#icon-x`}></use>
         </CloseModalBtn>
         {children}
       </ModalWindow>
+      {/* </Container> */}
     </ModalBackdrop>
   );
 };

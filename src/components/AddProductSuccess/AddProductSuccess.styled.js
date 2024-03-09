@@ -56,8 +56,8 @@ export const LinkBtnStyled = styled.a`
 
   border-radius: 12px;
   padding: 12px 32px;
-  width: 157px;
-  height: 42px;
+  min-width: 157px;
+  /* height: 42px; */
   color: ${globalColor.colorWhite};
   background-color: ${globalColor.colorOrange};
   margin-bottom: 16px;
