@@ -1,4 +1,4 @@
-import{u as l,L as u,I as x,H as g,j as e,a,N as f,b,d as p,J as w,K as v,M as j,r as c,C as k,z as d,O as y,P as E,B as C}from"./index-177682cf.js";import{s as L}from"./sprite-caa4e47f.js";import{n as i,b as $,a as z}from"./trainingGym-1@2x-1910c19e.js";import{T as B}from"./TitlePage-9fd79e79.js";import"./emotion-element-c39617d8.browser.esm-44546543.js";const P=l.ul`
+import{u as l,L as u,I as x,H as g,j as e,a,N as f,b,d as p,J as w,K as v,M as j,r as c,C as k,z as d,O as y,P as E,B as C}from"./index-91091c4e.js";import{s as L}from"./sprite-9ded670b.js";import{n as i,b as $,a as z}from"./trainingGym-1@2x-92a18ebb.js";import{T as B}from"./TitlePage-0b7c4a70.js";import"./emotion-element-c39617d8.browser.esm-f026bf7b.js";const P=l.ul`
   display: flex;
   margin-top: 28px;
   gap: 28px;
