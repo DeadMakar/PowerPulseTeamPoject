@@ -1,4 +1,4 @@
-import{u as i,j as e,a as t,N as m,r as p,O as g}from"./index-26a99380.js";import{n,b as u,a as f,S as w}from"./SectionTemplate-9b09ae22.js";import{T as b}from"./TitlePage-a43f4c47.js";import{s as c}from"./sprite-1743e200.js";import"./emotion-element-c39617d8.browser.esm-70869f07.js";const j=i.h3`
+import{u as i,j as e,a as t,N as m,r as p,O as g}from"./index-5dac9af9.js";import{n,b as u,a as f,S as w}from"./SectionTemplate-47510a4c.js";import{T as b}from"./TitlePage-fa169201.js";import{s as c}from"./sprite-44110a0b.js";import"./emotion-element-c39617d8.browser.esm-ec82c8d4.js";const j=i.h3`
   color: inherit;
   font-size: 14px;
   font-style: normal;
