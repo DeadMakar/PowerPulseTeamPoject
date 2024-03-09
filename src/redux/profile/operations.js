@@ -13,7 +13,7 @@ export const updateSettings = createAsyncThunk(
       const state = thunkAPI.getState();
       const persistedToken = state.auth.token;
       setAuthHeader(persistedToken);
-      const response = await axios.patch('users/metrics', credentials);
+      const response = await axios.put('users/metrics', credentials);
       console.log(response);
       toast.success('Your data has been updated successfully!', {
         theme: 'dark',
@@ -35,7 +35,7 @@ export const updateAvatar = createAsyncThunk(
     try {
       const formData = new FormData();
       formData.append('avatar', imageUrl);
-      const res = await axios.patch('users/metrics', formData);
+      const res = await axios.post('users/avatars', formData);
       toast.success('Your avatar has been updated successfully!', {
         theme: 'dark',
       });

@@ -25,8 +25,10 @@ export const UserForm = () => {
 
   const user = useSelector(selectUser);
 
+  // Users initial info
+
   const {
-    name,
+    userName,
     email,
     height,
     currentWeight,
@@ -38,7 +40,7 @@ export const UserForm = () => {
   } = user;
 
   const initialValue = {
-    name,
+    name: userName ?? '',
     email,
     height: height ?? 0,
     currentWeight: currentWeight ?? 0,
@@ -48,28 +50,28 @@ export const UserForm = () => {
     levelActivity: levelActivity ? levelActivity.toString() : 0,
   };
 
+  //  STATE
+
   const [birthdayNew, setBirthdayDate] = useState(birthday || '00.00.0000');
+
+  const [isInfoChanged, setIsInfoChanged] = useState(true);
+
+  //  fanc to check age
 
   const formatDate = (date) => {
     const day = date.getDate();
     const month = date.getMonth() + 1;
     const year = date.getFullYear();
-
     const formattedDay = day < 10 ? '0' + day : day;
     const formattedMonth = month < 10 ? '0' + month : month;
-
     return `${formattedDay}.${formattedMonth}.${year}`;
   };
 
   const mathFullYear = (birthday) => {
     const [day, month, year] = birthday.split('.');
-
     const birthDate = new Date(year, month - 1, day);
-
     const currentDate = new Date();
-
     const age = currentDate.getFullYear() - birthDate.getFullYear();
-
     return age;
   };
 
@@ -86,8 +88,6 @@ export const UserForm = () => {
       setIsInfoChanged(true);
     }
   };
-
-  const [isInfoChanged, setIsInfoChanged] = useState(true);
 
   const ifUserInfoChanged = (values) => {
     const isInfoChanged = Object.keys(values).some(
@@ -107,20 +107,41 @@ export const UserForm = () => {
       levelActivity,
     } = newInfo;
 
-    dispatch(
-      updateSettings({
-        name,
-        height,
-        currentWeight,
-        desiredWeight,
-        birthday: birthdayNew,
-        blood: Number(blood),
-        sex,
-        levelActivity: Number(levelActivity),
-      })
-    );
+    try {
+      dispatch(
+        updateSettings({
+          userName: name,
+          height,
+          currentWeight,
+          desiredWeight,
+          birthday: birthdayNew,
+          blood: Number(blood),
+          sex,
+          levelActivity: Number(levelActivity),
+        })
+      );
 
-    dispatch(refreshUser);
+      // check age
+      const fullYear = mathFullYear(birthdayNew);
+
+      if (fullYear < 18) {
+        // notification
+        toast.error('Sorry, but only adults can use our app.', {
+          theme: 'dark',
+        });
+        setIsInfoChanged(true);
+      }
+
+      setIsInfoChanged(false);
+
+      dispatch(refreshUser());
+    } catch (error) {
+      toast.error('Sorry, something went wrong, please try again', {
+        theme: 'dark',
+      });
+
+      setIsInfoChanged(true);
+    }
   };
 
   return (
