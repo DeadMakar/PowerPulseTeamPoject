@@ -31,7 +31,7 @@ function App() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   // const loading = useSelector(selectIsRefreshing);
 
-  const userMetrics = isLoggedIn && user ? true : false;
+  const userMetrics = isLoggedIn && user.userMetrics ? true : false;
 
   return (
     <Suspense fallback={<Loader />}>

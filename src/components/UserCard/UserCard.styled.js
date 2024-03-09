@@ -119,6 +119,7 @@ export const ListStyled = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
+  justify-content: center;
 
   @media screen and (min-width: 768px) {
     margin: 32px 0;
@@ -138,6 +139,10 @@ export const ItemListStyled = styled.li`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media screen and (max-width: 374px) {
+    width: 100%;
+  }
 
   @media screen and (min-width: 768px) {
     width: 214px;

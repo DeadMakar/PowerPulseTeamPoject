@@ -107,41 +107,35 @@ export const UserForm = () => {
       levelActivity,
     } = newInfo;
 
-    try {
-      dispatch(
-        updateSettings({
-          userName: name,
-          height,
-          currentWeight,
-          desiredWeight,
-          birthday: birthdayNew,
-          blood: Number(blood),
-          sex,
-          levelActivity: Number(levelActivity),
-        })
-      );
+    // check age
+    const fullYear = mathFullYear(birthdayNew);
 
-      // check age
-      const fullYear = mathFullYear(birthdayNew);
-
-      if (fullYear < 18) {
-        // notification
-        toast.error('Sorry, but only adults can use our app.', {
-          theme: 'dark',
-        });
-        setIsInfoChanged(true);
-      }
-
-      setIsInfoChanged(false);
-
-      dispatch(refreshUser());
-    } catch (error) {
-      toast.error('Sorry, something went wrong, please try again', {
+    if (fullYear < 18) {
+      // notification
+      toast.error('Sorry, but only adults can use our app.', {
         theme: 'dark',
       });
-
       setIsInfoChanged(true);
+      return;
     }
+
+    // try {
+    dispatch(
+      updateSettings({
+        userName: name,
+        height,
+        currentWeight,
+        desiredWeight,
+        birthday: birthdayNew,
+        blood: Number(blood),
+        sex,
+        levelActivity: Number(levelActivity),
+      })
+    );
+
+    setIsInfoChanged(true);
+
+    dispatch(refreshUser());
   };
 
   return (
