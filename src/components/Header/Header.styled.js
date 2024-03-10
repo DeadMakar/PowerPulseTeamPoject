@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { globalColor } from '../../styles/root';
 
 export const HeaderContainer = styled.div`
@@ -63,7 +63,7 @@ export const NavigationLink = styled(NavLink)`
   }
 `;
 
-export const NavigationLinkItem = styled(Link)`
+export const NavigationLinkItem = styled(NavLink)`
   display: flex;
   align-items: center;
   gap: 14px;

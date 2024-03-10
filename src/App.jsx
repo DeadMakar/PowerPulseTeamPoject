@@ -9,6 +9,8 @@ import { CalendarGlobalStyles } from './styles/CalendarGlobalStyles';
 import { default as PrivateRoute } from './PrivateRoute';
 import { default as RestrictedRoute } from './RestrictedRoute';
 import { RouterProvider } from './helpers/RouterContext';
+import { ExercisesSubcategoriesList } from './components/ExercisesSubcategoriesList';
+import { ExercisesList } from './components/ExercisesList';
 
 const Layout = lazy(() => import('./components/Layout/Layout'));
 const WelcomePage = lazy(() => import('./pages/WelcomePage/WelcomePage'));
@@ -45,7 +47,7 @@ function App() {
               path="/signup"
               element={
                 <RestrictedRoute
-                  redirectTo="/singin"
+                  redirectTo="/signin"
                   component={<SignUpPage />}
                 />
               }
@@ -87,6 +89,18 @@ function App() {
                   <Navigate to="/profile" replace />
                 )
               }
+            />
+            <Route
+              index
+              element={<Navigate to="/exercises/Body parts" replace />}
+            />
+            <Route
+              path="/exercises/:filter"
+              element={<ExercisesSubcategoriesList />}
+            />
+            <Route
+              path="/exercises/:filter/:filterList"
+              element={<ExercisesList />}
             />
             <Route path="*" element={<ErrorPage />} />
           </Route>

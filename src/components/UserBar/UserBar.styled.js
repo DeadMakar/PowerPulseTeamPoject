@@ -41,16 +41,15 @@ export const IconUser = styled.svg`
 `;
 export const Img = styled.img`
   border-radius: 50%;
-
-  width: 21px;
-  height: 21px;
+  width: 100%;
+  height: 100%;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   object-fit: cover;
   @media screen and (min-width: 768px) {
-    width: 24px;
-    height: 24px;
+    width: 100%;
+    height: 100%;
   }
 `;
