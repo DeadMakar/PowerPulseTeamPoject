@@ -228,7 +228,7 @@ export const VideoNumber = styled.p`
   margin-bottom: 8px;
   color: ${globalColor.colorWhite};
   font-family: Roboto;
-  font-size: 16px;
+  font-size: 44px;
   font-style: normal;
   font-weight: 700;
   line-height: 18px;
@@ -237,7 +237,7 @@ export const VideoNumber = styled.p`
   }
 
   @media screen and (min-width: 768px) {
-    font-size: 24px;
+    font-size: 44px;
     line-height: 24px;
   }
 
@@ -251,7 +251,7 @@ export const VideoText = styled.p`
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
-  line-height: 16px;
+  line-height: 24px;
 
   @media screen and (min-width: 375px) {
   }
