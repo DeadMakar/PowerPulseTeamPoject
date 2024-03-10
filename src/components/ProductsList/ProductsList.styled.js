@@ -1,39 +1,60 @@
 import styled from 'styled-components';
 import { globalColor } from '../../styles/root';
 
-export const ProductsListWrapper = styled.ul`
+export const ProductsListStyled = styled.ul`
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  @media (min-width: 768px) {
+    gap: 32px 16px;
+  }
+`;
+
+export const Nothing = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  margin-bottom: 80px;
+  gap: 16px;
+  width: 100%;
+  margin-top: 64px;
 
-  @media screen and (min-width: 768px) {
-    flex-direction: row;
-    flex-wrap: wrap;
-    column-gap: 16px;
-    row-gap: 32px;
-    width: 704px;
-    max-height: 660px;
-    overflow-y: scroll;
-
-    &::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    &::-webkit-scrollbar-track {
-      background-color: rgba(239, 237, 232, 0.1);
-      border-radius: 12px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background-color: ${globalColor.colorOrange1};
-      border-radius: 12px;
-      /* height: 20px; */
-    }
+  @media (min-width: 375px) {
+    width: 335px;
   }
 
-  @media screen and (min-width: 1440px) {
-    width: 850px;
-    max-height: 487px;
+  @media (min-width: 768px) {
+    margin-top: 132px;
+    width: 580px;
+  }
+
+  @media (min-width: 1440px) {
+    margin-top: 136px;
+  }
+`;
+
+export const Paragraph1 = styled.p`
+  line-height: 1.2857;
+  word-wrap: break-word;
+  color: ${globalColor.colorInput};
+
+  > span {
+    color: ${globalColor.colorOrange};
+  }
+
+  @media (min-width: 768px) {
+    line-height: 1.5;
+    font-weight: 16px;
+  }
+`;
+
+export const Paragraph2 = styled.p`
+  line-height: 1.2857;
+  word-wrap: break-word;
+  color: ${globalColor.colorOrange};
+
+  @media (min-width: 768px) {
+    line-height: 1.5;
+    font-weight: 16px;
   }
 `;

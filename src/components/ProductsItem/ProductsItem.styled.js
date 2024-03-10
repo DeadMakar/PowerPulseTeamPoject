@@ -1,172 +1,151 @@
 import styled from 'styled-components';
 import { globalColor } from '../../styles/root';
 
-export const ProductItemContainer = styled.li`
-  min-width: 280px;
-  padding: 15px;
-  background-color: color: ${globalColor.colorDiaryItem};
+export const ProductsItemStyled = styled.li`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  background: rgba(239, 237, 232, 0.05);
   border-radius: 12px;
-  border: 1px solid rgba(239, 237, 232, 0.2);
+  border: 1px rgba(239, 237, 232, 0.2) solid;
 
-  @media screen and (min-width: 375px) {
+  @media (min-width: 320px) {
+    width: 87vw;
+  }
+
+  @media (min-width: 375px) {
     width: 335px;
   }
 
-  @media screen and (min-width: 768px) {
-    width: calc((100% - 34px) / 2);
+  @media (min-width: 1440px) {
+    width: 405px;
   }
+`;
 
-  @media screen and (min-width: 1440px) {
-    /* width: 405px; */
-    width: calc((100% - 40px) / 2);
-  }
-`;
-export const TopLineWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-export const LeftTopLabelWrapper = styled.div`
+export const DietSpan = styled.div`
+  position: absolute;
   padding: 5px 7.5px;
-  background-color: color: ${globalColor.colorDiaryItem};
+  background: rgba(239, 237, 232, 0.05);
   border-radius: 4px;
-  > p {
-    margin: 0;
-    font-weight: 700;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  word-wrap: break-word;
+`;
+
+export const SvgWrapper = styled.svg`
+  width: 14px;
+  height: 14px;
+`;
+
+export const Text = styled.p`
+  > span {
+    color: rgba(239, 237, 232, 0.4);
+  }
+
+  display: flex;
+  gap: 4px;
+  color: ${globalColor.colorWhite};
+  font-size: 12px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  white-space: nowrap;
+`;
+
+export const TextCategory = styled.p`
+  > span {
+    color: rgba(239, 237, 232, 0.4);
+  }
+
+  display: flex;
+  gap: 4px;
+  color: ${globalColor.colorWhite};
+  font-size: 12px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  white-space: nowrap;
+
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    display: none;
   }
 `;
 
-export const RightTopBlockWrapper = styled.div`
-  display: flex;
-  gap: 8px;
-  align-items: center;
+export const Title = styled.h2`
+  color: ${globalColor.colorWhite};
+  font-size: 20px;
+  line-height: 1.2;
+  word-wrap: break-word;
+  white-space: nowrap;
+  overflow: auto;
 
-  > div {
-    background-color: ${(props) =>
-      props.color === 'true'
-        ? `${globalColor.colorGreen}`
-        : `${globalColor.colorReв}`};
-    display: block;
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
+  @media (min-width: 768px) {
+    font-size: 24px;
+    line-height: 1.33;
   }
 
-  > p {
-    padding-right: 8px;
-    margin: 0;
-    line-height: 1.5;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    display: none;
   }
 `;
 
-export const AddButton = styled.button`
+export const Button = styled.button`
   display: flex;
-  gap: 8px;
   align-items: center;
+  cursor: pointer;
+  color: ${globalColor.colorOrange};
+  gap: 8px;
+  width: 49px;
+  height: 18px;
   padding: 0;
   margin: 0;
-  background-color: transparent;
   border: none;
+  background: transparent;
 
-  > span {
-    font-size: 14px;
-    line-height: 1.3;
-    color: ${globalColor.colorOrange};
+  font-size: 14px;
+  line-height: 1.2857;
+  word-wrap: break-word;
 
-    @media screen and (min-width: 768px) {
-      font-size: 16px;
-      line-height: 1.5;
-    }
-  }
-
-  > svg {
-    width: 16px;
-    height: 16px;
-    stroke: ${globalColor.colorOrange};
-  }
-`;
-
-export const MiddleLineWrapper = styled.div`
-  display: flex;
-  gap: 16px;
-  align-items: center;
-  margin-top: 35px;
-  margin-bottom: 8px;
-  margin-right: 5px;
-
-  @media screen and (min-width: 768px) {
-    margin-top: 27px;
-  }
-
-  > h2 {
-    margin: 0;
-    width: 100%;
-    height: 24px;
-    font-size: 20px;
-    line-height: 1.2;
-    font-weight: 400;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-
-    @media screen and (min-width: 768px) {
-      height: 32px;
-      font-size: 24px;
-      line-height: 1.3;
-    }
-  }
-
-  > h2::first-letter {
-    text-transform: uppercase;
-  }
-`;
-
-export const RunIconWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 24px;
-  height: 24px;
-  background-color: ${globalColor.colorBeige};
-  border-radius: 50%;
-  flex-shrink: 0;
-
-  > svg {
-    width: 14px;
-    height: 16px;
-    fill: ${globalColor.colorWhite};
-  }
-`;
-
-export const InfoLineWrapper = styled.ul`
-  display: flex;
-  gap: 16px;
-  align-items: center;
-  margin-right: 10px;
-
-  p {
-    margin: 0;
+  @media (min-width: 768px) {
+    width: 53px;
+    font-size: 16px;
     line-height: 1.5;
-    color: rgba(239, 237, 232, 0.4);
+  }
 
-    > span {
-      margin-left: 4px;
-      color: ${globalColor.colorWhite};
-    }
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: ${globalColor.colorOrange1};
   }
 `;
 
-export const CategoryWrapper = styled.p`
+export const WrapperTitle = styled.div`
   display: flex;
-  span {
-    width: 100%;
-    height: 18px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    /* white-space: nowrap; */
+  gap: 16px;
+  margin-top: 41px;
+  align-items: center;
 
-    /* @media screen and (min-width: 1440px) {
-      width: 146px;
-    } */
+  @media (min-width: 768px) {
+    margin-top: 30px;
   }
+
+  @media (max-width: 335px) {
+    flex-wrap: wrap;
+  }
+`;
+
+export const WrapperText = styled.div`
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+  align-items: center;
 `;

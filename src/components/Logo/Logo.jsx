@@ -1,5 +1,6 @@
 import sprite from '../../assets/sprite.svg';
 import { IconWrapper, LogoBox, SecondIconWrapper } from './Logo.styled';
+
 const Logo = ({ fill }) => {
   return (
     <LogoBox>
