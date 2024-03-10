@@ -1,17 +1,15 @@
 import sprite from '../../assets/sprite.svg';
 import { IconWrapper, LogoBox, SecondIconWrapper } from './Logo.styled';
-
-const Logo = () => {
+const Logo = ({ fill }) => {
   return (
     <LogoBox>
-      <IconWrapper>
+      <IconWrapper style={{ fill: fill }}>
         <use href={`${sprite}#icon-Vector`} />
       </IconWrapper>
-      <SecondIconWrapper>
+      <SecondIconWrapper style={{ fill: fill }}>
         <use href={`${sprite}#icon-PowerPulse`} />
       </SecondIconWrapper>
     </LogoBox>
   );
 };
-
 export default Logo;

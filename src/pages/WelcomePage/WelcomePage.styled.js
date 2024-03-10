@@ -171,7 +171,7 @@ export const HeroSignInLink = styled(NavLink)`
     padding: 16px 60px;
     font-size: 20px;
     line-height: 24px;
-    width: 184px;
+    width: 190px;
     height: 56px;
   }
 
