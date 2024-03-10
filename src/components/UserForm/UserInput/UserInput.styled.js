@@ -50,6 +50,13 @@ export const ParamUserHeight = styled(InputField)`
   width: 160px;
   margin: 0;
 
+  &::placeholder {
+    color: ${globalColor.colorWhite};
+
+    font-size: 14px;
+    line-height: 1.29;
+  }
+
   @media screen and (min-width: 768px) {
     width: 168px;
     height: 52px;

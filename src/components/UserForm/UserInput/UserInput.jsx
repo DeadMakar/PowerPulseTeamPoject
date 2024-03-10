@@ -11,13 +11,7 @@ import {
 
 import BirthdayCalendar from '../../UserCard/BirthdayCalendar/BirthdayCalendar';
 
-const UserInput = ({
-  errors,
-  touched,
-  onDateChange,
-  savedBirthday,
-  userEmail,
-}) => {
+const UserInput = ({ errors, touched, onDateChange, savedBirthday }) => {
   return (
     <>
       <ContactUserParam>
@@ -36,9 +30,6 @@ const UserInput = ({
             type="text"
             autoComplete="off"
             disabled
-            value={userEmail}
-
-            // From user data
           />
           {errors.email && touched.email && (
             <WarningMessage>{errors.email}</WarningMessage>
@@ -48,7 +39,7 @@ const UserInput = ({
       <ParamBox>
         <label>
           <LabelInputName>Height </LabelInputName>
-          <ParamUserHeight name="height" type="number" />
+          <ParamUserHeight name="height" type="number" placeholder="0" />
           {errors.height && touched.height && (
             <WarningMessage>{errors.height}</WarningMessage>
           )}
@@ -56,14 +47,22 @@ const UserInput = ({
 
         <label>
           <LabelInputName>Current Weight </LabelInputName>
-          <ParamUserCurWeight name="currentWeight" type="number" />
+          <ParamUserCurWeight
+            name="currentWeight"
+            type="number"
+            placeholder="0"
+          />
           {errors.currentWeight && touched.currentWeight && (
             <WarningMessage>{errors.currentWeight}</WarningMessage>
           )}
         </label>
         <label>
           <LabelInputName> Desired Weight</LabelInputName>
-          <ParamUserDesWeight name="desiredWeight" type="number" />
+          <ParamUserDesWeight
+            name="desiredWeight"
+            type="number"
+            placeholder="0"
+          />
           {errors.desiredWeight && touched.desiredWeight && (
             <WarningMessage>{errors.desiredWeight}</WarningMessage>
           )}
