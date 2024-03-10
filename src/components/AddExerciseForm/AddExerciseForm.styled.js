@@ -6,7 +6,7 @@ export const WrapperDiv = styled.div`
   padding-top: 48px;
 
   @media screen and (min-width: 768px) {
-    min-width: 694px;
+    width: 694px;
     display: flex;
   }
 `;
@@ -123,11 +123,6 @@ export const ItemStyled = styled.li`
 
   @media screen and (min-width: 768px) {
     width: 168px;
-  }
-
-  @media screen and (min-width: 1740px) {
-    width: 250px;
-    gap: 12px;
   }
 `;
 

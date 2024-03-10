@@ -8,10 +8,12 @@ import {
 } from './AddExerciseForm.styled';
 
 export const TimerComponent = ({ fullExerciseTime, setTimeOfTimer }) => {
+  // в пропсах есть timeOfTimer, а тут нет
   const [isPlaying, setIsPlaying] = useState(false);
 
   const onTimerBtnToogle = (currentTime) => {
     setIsPlaying(!isPlaying);
+
     if (isPlaying) {
       setTimeOfTimer(currentTime);
     }
@@ -26,6 +28,7 @@ export const TimerComponent = ({ fullExerciseTime, setTimeOfTimer }) => {
   };
 
   let currentTime = 0;
+  //   let realBurnedCalories = 0;
 
   return (
     <>
@@ -50,6 +53,20 @@ export const TimerComponent = ({ fullExerciseTime, setTimeOfTimer }) => {
           let timeOfTimer = fullExerciseTime * 60 - remainingTime;
 
           currentTime = timeOfTimer;
+
+          const timeDifference = currentTime - fullExerciseTime * 60;
+
+          //   if (timeDifference < 0) {
+          //     return timeFormat(timeOfTimer);
+          //   }
+          //   realBurnedCalories = burnedCalories;
+          //   onTimerBtnToogle(currentTime);
+          //   return 'Exercise done!';
+
+          if (timeDifference === 0) {
+            // onTimerBtnToogle(currentTime);
+            return 'Exercise done!';
+          }
 
           return timeFormat(timeOfTimer);
         }}

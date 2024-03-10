@@ -31,8 +31,11 @@ export const AddExerciseForm = () => {
     equipment,
     gifUrl,
     burnedCalories,
-    time,
+    time: fullExerciseTime,
   } = dbExercises[1];
+
+  // дістати значення з бекенду або з іншох сторінки
+
   // console.log('data', data);
   // console.log('time', data.time);
   // console.log('timeOfTimer', timeOfTimer);
@@ -40,9 +43,15 @@ export const AddExerciseForm = () => {
   // записую коли на паузу або завершився час
 
   useEffect(() => {
-    const reallyCalories = (timeOfTimer / (time * 60)) * burnedCalories;
+    const reallyCalories =
+      (timeOfTimer / (fullExerciseTime * 60)) * burnedCalories;
+
     setReallyBurnedCalories(reallyCalories.toFixed(0));
-  }, [burnedCalories, time, timeOfTimer]);
+
+    // if (timeOfTimer >= fullExerciseTime * 60) {
+    //   setReallyBurnedCalories(burnedCalories);
+    // }
+  }, [burnedCalories, fullExerciseTime, timeOfTimer]);
 
   return (
     <WrapperDiv>
@@ -52,8 +61,8 @@ export const AddExerciseForm = () => {
         {/* <TimerBlock /> */}
         <TimerComponent
           setTimeOfTimer={setTimeOfTimer}
-          fullExerciseTime={time}
-          timeOfTimer={timeOfTimer}
+          fullExerciseTime={fullExerciseTime}
+          // timeOfTimer={timeOfTimer}
         />
         <TextStyled>
           Burned calories:<SpanStyled> {reallyBurnedCalories}</SpanStyled>

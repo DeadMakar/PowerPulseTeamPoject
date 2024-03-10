@@ -1,5 +1,5 @@
 import { Formik } from 'formik';
-// import * as Yup from 'yup';
+import * as Yup from 'yup';
 import {
   Form,
   Field,
@@ -13,16 +13,23 @@ import {
   FieldGramsWrapper,
 } from './AddProductForm.styled';
 
-// const productValidation = Yup.object().shape({
-//   // name: Yup.string().required('Required'),
-//   // mass: Yup.number().required('Required'),
-// });
+const productValidation = Yup.object().shape({
+  // name: Yup.string().required('Required'),
+  // mass: Yup.number().required('Required'),
+});
 
-export const AddProductForm = ({ caloriesPlus, onAddProduct }) => {
+export const AddProductForm = ({
+  productID,
+  productName,
+  caloriesPlus,
+  onAddProduct,
+}) => {
+  // использовать productID и из него достать имя продукта?
+
   return (
     <Formik
       // initialValues={{ name: '', mass: '' }}
-      // validationSchema={productValidation}
+      validationSchema={productValidation}
       onSubmit={(values, actions) => {
         // console.log('values :>> ', values);
         onAddProduct(values);
@@ -31,7 +38,12 @@ export const AddProductForm = ({ caloriesPlus, onAddProduct }) => {
     >
       <Form>
         <FieldWrapper>
-          <Field type="text" name="name" placeholder="Banana" />
+          <Field
+            type="text"
+            name="name"
+            value={productName}
+            placeholder="Product"
+          />
           <FieldGramsWrapper>
             <Field type="text" name="mass" />
             <GramTxt>grams</GramTxt>
@@ -41,6 +53,7 @@ export const AddProductForm = ({ caloriesPlus, onAddProduct }) => {
           Calories: <SpanStyled>96 {caloriesPlus}</SpanStyled>
         </TextStyled>
         <BtnWrapper>
+          {/* в редаксе !!! */}
           <BtnOrange type="submit">Add to diary</BtnOrange>
           {/* <BtnOrange type="submit">Add to diary</BtnOrange> */}
           <BtnCancel type="button">Cancel </BtnCancel>
