@@ -1,4 +1,4 @@
-import{u as i,j as e}from"./index-7a87f269.js";import{s}from"./sprite-2052518c.js";const r=i.div`
+import{u as i,j as e}from"./index-0fc1e04c.js";import{s}from"./sprite-85ef65ae.js";const r=i.div`
   display: flex;
 `,o=i.svg`
   width: 36px;
