@@ -1,4 +1,4 @@
-import{u as i,a as n,N as o,j as e}from"./index-dfe625f8.js";import{L as t}from"./Logo-c659eaea.js";import{b as d,a as r,c as a,d as s,e as p,f as l}from"./bgMobile@2x-c00288ab.js";import"./sprite-ecd86371.js";const c=i.div`
+import{u as i,a as n,N as o,j as e}from"./index-1e801f3e.js";import{L as t}from"./Logo-04e472b0.js";import{b as d,a as r,c as a,d as s,e as p,f as l}from"./bgMobile@2x-c00288ab.js";import"./sprite-492061c2.js";const c=i.div`
   display: flex;
 `,x=i.div`
   height: 100vh;
@@ -132,4 +132,4 @@ import{u as i,a as n,N as o,j as e}from"./index-dfe625f8.js";import{L as t}from"
   width: 14px;
   height: 14px;
   fill: ${n.colorWhite};
-`;const j=()=>e.jsxs(c,{children:[e.jsx(h,{children:e.jsxs(m,{children:[e.jsx(t,{fill:"#EFEDE8"})," ",e.jsxs(g,{children:[e.jsx(u,{children:"404"}),e.jsx(b,{children:"Sorry, you have reached a page that we could not find. It seems that you are lost among the numbers and letters of our virtual space. Perhaps this page went on vacation or decided to disappear into another dimension. We apologize for this inconvenience."}),e.jsx(w,{to:"/welcome",children:"Go Home"})]})]})}),e.jsx(x,{})]});export{j as default};
+`;const j=()=>e.jsxs(c,{children:[e.jsx(h,{children:e.jsxs(m,{children:[e.jsx(t,{fill:"#EFEDE8"}),e.jsxs(g,{children:[e.jsx(u,{children:"404"}),e.jsx(b,{children:"Sorry, you have reached a page that we could not find. It seems that you are lost among the numbers and letters of our virtual space. Perhaps this page went on vacation or decided to disappear into another dimension. We apologize for this inconvenience."}),e.jsx(w,{to:"/welcome",children:"Go Home"})]})]})}),e.jsx(x,{})]});export{j as default};
