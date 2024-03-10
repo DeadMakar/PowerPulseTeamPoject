@@ -72,12 +72,12 @@ export const HeroSvg = styled.svg`
   @media screen and (min-width: 320px) {
     width: 92px;
     height: 30px;
-    top: 156px;
+    top: 172px;
     left: -13px;
   }
 
   @media screen and (min-width: 375px) {
-    top: 157px;
+    top: 175px;
     left: -8px;
     width: 98px;
     height: 35px;
@@ -86,14 +86,14 @@ export const HeroSvg = styled.svg`
   @media screen and (min-width: 768px) and (max-width: 1439px) {
     width: 185px;
     height: 67px;
-    top: 258px;
+    top: 274px;
     left: -18px;
   }
 
   @media screen and (min-width: 1440px) {
     width: 185px;
     height: 67px;
-    top: 270px;
+    top: 284px;
     left: -17px;
   }
 `;

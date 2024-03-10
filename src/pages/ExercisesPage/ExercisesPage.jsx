@@ -11,7 +11,9 @@ import {
   BackButton,
   BackGroundStyle,
   MixContainer,
-} from './ExercisesPage.Styled';
+
+} from './ExercisesPage.styled';
+
 import { TitlePage } from '../../components/TitlePage';
 import { Loader } from '../../components/Loader';
 import { toast } from 'react-toastify';

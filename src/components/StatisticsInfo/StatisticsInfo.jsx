@@ -13,8 +13,24 @@ import {
   SvgPlay,
 } from './StatisticsInfo.styled';
 import sprite from '../../assets/sprite.svg';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectStatistics } from '../../redux/statistics/statisticsSelectors';
+import { useEffect } from 'react';
+import { getStatistics } from '../../redux/statistics/statisticsOperations';
 
 export const StatisticsInfo = ({ isWelcomePage }) => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getStatistics());
+  }, [dispatch]);
+
+  const statisticsData = useSelector(selectStatistics);
+  console.log(statisticsData);
+  const totalUsers = statisticsData?.totalUsers || 'Loading...';
+
+  const totalBurnedCalories =
+    statisticsData?.totalBurnedCalories || 'Loading...';
+
   return (
     <DivContainer isWelcomePage={isWelcomePage}>
       <VideoWrapper>
@@ -26,7 +42,7 @@ export const StatisticsInfo = ({ isWelcomePage }) => {
           </SvgPlay>
         </WrapperSvg>
         <div>
-          <VideoNumber>350+</VideoNumber>
+          <VideoNumber>{totalUsers}</VideoNumber>
           <VideoText>Users</VideoText>
         </div>
       </VideoWrapper>
@@ -37,12 +53,10 @@ export const StatisticsInfo = ({ isWelcomePage }) => {
           </Svg>
         </WrapperTextSvg>
         <WrapperDescription>
-          <TextNumber>500</TextNumber>
+          <TextNumber>{totalBurnedCalories}</TextNumber>
           <TextDescription>cal</TextDescription>
         </WrapperDescription>
       </TextWrapper>
     </DivContainer>
   );
 };
-
-export default StatisticsInfo;
