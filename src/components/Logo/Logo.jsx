@@ -13,5 +13,4 @@ const Logo = ({ fill }) => {
     </LogoBox>
   );
 };
-
 export default Logo;
