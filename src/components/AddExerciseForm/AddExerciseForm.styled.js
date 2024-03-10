@@ -1,14 +1,5 @@
 import styled from 'styled-components';
 import { globalColor } from '../../styles/root';
-// import { CountdownCircleTimer } from 'react-countdown-circle-timer';
-// export const CloseSvgBtn = styled.svg`
-//   position: absolute;
-//   top: 10;
-//   right: 10;
-//   width: 14px;
-//   height: 14px;
-//   stroke: ${globalColor.colorWhite};
-// `;
 
 export const WrapperDiv = styled.div`
   min-width: 335px;
@@ -51,7 +42,6 @@ export const ImgStyled = styled.img`
   width: 270px;
   height: 226px;
   margin-bottom: 14px;
-  /* margin-bottom: 32px; */
 `;
 
 export const TimeTextStyled = styled.p`
