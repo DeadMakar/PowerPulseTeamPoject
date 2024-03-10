@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 import { globalColor } from '../../styles/root';
-
-export const CloseSvgBtn = styled.svg`
-  position: absolute;
-  top: 10;
-  right: 10;
-  width: 14px;
-  height: 14px;
-  stroke: ${globalColor.colorWhite};
-`;
+// import { CountdownCircleTimer } from 'react-countdown-circle-timer';
+// export const CloseSvgBtn = styled.svg`
+//   position: absolute;
+//   top: 10;
+//   right: 10;
+//   width: 14px;
+//   height: 14px;
+//   stroke: ${globalColor.colorWhite};
+// `;
 
 export const WrapperDiv = styled.div`
   min-width: 335px;
@@ -25,9 +25,10 @@ export const WrapperPart1 = styled.div`
   flex-direction: column;
   align-items: center;
   margin-bottom: 40px;
-  padding-left: 32px;
 
   @media screen and (min-width: 768px) {
+    margin-bottom: 48px;
+    padding-left: 32px;
   }
 `;
 
@@ -40,6 +41,7 @@ export const WrapperPart2 = styled.div`
     align-items: end;
     padding-left: 16px;
     padding-right: 32px;
+    margin-bottom: 48px;
   }
 `;
 
@@ -60,22 +62,35 @@ export const TimeTextStyled = styled.p`
   margin-bottom: 4px;
 `;
 
-export const TimerBlock = styled.div`
-  width: 125px;
-  height: 124px;
-  outline: 2px solid orange;
-  margin-bottom: 14px;
-`;
+// export const TimerBlock = styled(CountdownCircleTimer)`
+//   /* width: 125px;
+//   height: 124px; */
+//   /* outline: 2px solid ${globalColor.colorOrange}; */
+//   margin-bottom: 14px;
+// `;
+
+// export const TimerBlock = styled.div`
+//   width: 125px;
+//   height: 124px;
+//   outline: 2px solid ${globalColor.colorOrange};
+//   margin-bottom: 14px;
+// `;
 
 export const PlayTimerBtn = styled.button`
+  display: block;
+  margin-top: 14px;
   margin-bottom: 8px;
+  border: none;
+  background-color: transparent;
+  padding: 0;
 `;
 
 export const PauseTimerBtn = styled(PlayTimerBtn)``;
 
 export const SvgStyled = styled.svg`
-  width: 32px;
-  height: 32px;
+  width: 25px;
+  height: 26px;
+  fill: ${globalColor.colorOrange};
 `;
 
 export const TextStyled = styled.p`
@@ -84,9 +99,9 @@ export const TextStyled = styled.p`
   line-height: 1.29;
   color: rgba(239, 237, 232, 0.3);
 
-  @media screen and (min-width: 768px) {
+  /* @media screen and (min-width: 768px) {
     margin-bottom: 32px;
-  }
+  } */
 `;
 
 export const SpanStyled = styled.span`
@@ -118,6 +133,11 @@ export const ItemStyled = styled.li`
 
   @media screen and (min-width: 768px) {
     width: 168px;
+  }
+
+  @media screen and (min-width: 1740px) {
+    width: 250px;
+    gap: 12px;
   }
 `;
 

@@ -10,37 +10,90 @@ import {
   WrapperPart1,
   WrapperPart2,
   TimeTextStyled,
-  TimerBlock,
+  // TimerBlock,
   PlayTimerBtn,
   PauseTimerBtn,
   SvgStyled,
   ItemTextStyled,
-  // CloseSvgBtn,
 } from './AddExerciseForm.styled';
 import sprite from '../../assets/sprite.svg';
+import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 
 import dbExercises from '../../../DB/exercises.json';
+import { useState } from 'react';
+
 const data = dbExercises[1];
 const { name, target, bodyPart, equipment, gifUrl, _id } = dbExercises[1];
-console.log('data', data);
+// console.log('data', data);
 
 export const AddExerciseForm = ({ caloriesBurned }) => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [timeOfTimer, setTimeOfTimer] = useState(0);
+
+  const TimerComponent = () => (
+    <CountdownCircleTimer
+      isPlaying={isPlaying}
+      duration={60}
+      size={124}
+      colors="#E6533C"
+      rotation="clockwise"
+      strokeWidth={4}
+      trailStrokeWidth={5}
+      // strokeLinecap
+      strokeLinecap="round"
+      // isGrowing
+      // trailColor
+      // children
+      // onUpdate
+      onComplete={() => ({
+        shouldRepeat: false,
+        // delay: 1,
+      })}
+
+      // onComplete={() => {
+      //   // do your stuff here
+      //   return { shouldRepeat: true, delay: 1.5 }; // repeat animation in 1.5 seconds
+      // }}
+    >
+      {({ remainingTime }) => {
+        const timeOfTimer = 60 - remainingTime;
+        // setTimeOfTimer(timeOfTimer);
+        return timeOfTimer;
+      }}
+      {/* {({ elapsedTime }) => elapsedTime} */}
+    </CountdownCircleTimer>
+  );
+
+  const onTimerBtnToogle = () => {
+    setIsPlaying(!isPlaying);
+    if (!isPlaying) {
+    }
+  };
+
+  const PlayBtn = (
+    <PlayTimerBtn type="button" onClick={onTimerBtnToogle}>
+      <SvgStyled>
+        <use href={`${sprite}#icon-play`}></use>
+      </SvgStyled>
+    </PlayTimerBtn>
+  );
+
+  const PauseBtn = (
+    <PauseTimerBtn type="button" onClick={onTimerBtnToogle}>
+      <SvgStyled>
+        <use href={`${sprite}#icon-pause-square`}></use>
+      </SvgStyled>
+    </PauseTimerBtn>
+  );
+
   return (
     <WrapperDiv>
       <WrapperPart1>
         <ImgStyled src={gifUrl} alt="Exercise gif-photo" />
-        {/* таймер */} <TimeTextStyled>Time</TimeTextStyled>
-        <TimerBlock />
-        <PlayTimerBtn>
-          <SvgStyled>
-            <use href={`${sprite}#icon-play`}></use>
-          </SvgStyled>
-        </PlayTimerBtn>
-        <PauseTimerBtn>
-          <SvgStyled>
-            <use href={`${sprite}#icon-pause-square`}></use>
-          </SvgStyled>
-        </PauseTimerBtn>
+        <TimeTextStyled>Time</TimeTextStyled>
+        {/* <TimerBlock /> */}
+        <TimerComponent />
+        {isPlaying ? PauseBtn : PlayBtn}
         <TextStyled>
           Burned calories:<SpanStyled> 150 {caloriesBurned}</SpanStyled>
         </TextStyled>
