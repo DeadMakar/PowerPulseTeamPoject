@@ -15,24 +15,40 @@ import {
 import sprite from '../../assets/sprite.svg';
 import { selectDiaryError } from '../../redux/diary/selectors';
 import { useSelector } from 'react-redux';
+import { selectUser } from '../../redux/auth/selectors';
+import { getAllDiaryInformation } from '../../redux/diary/operations';
 
-const DayDashboard = ({ userDiaryInformation, bmr }) => {
-  const {
-    burnedCalories,
-    consumedCalories,
-    remainingCalories,
-    remainingSports,
-  } = userDiaryInformation || {};
-
+const DayDashboard = (userDiaryInformation) => {
+  const consumedCalories =
+    userDiaryInformation?.userDiaryInformation[0]?.consumedCalories;
+  const burnedCalories =
+    userDiaryInformation?.userDiaryInformation[1]?.burnedCalories;
+  const totalExerciseTime =
+    userDiaryInformation?.userDiaryInformation[1]?.totalExerciseTime;
+  const user = useSelector(selectUser);
+  const resultBMR = user?.resultBMR;
   const [isOverThan, setIsOverThan] = useState(false);
-
+  const [isTimeOver, setTimeOver] = useState(false);
   const error = useSelector(selectDiaryError);
 
   useEffect(() => {
-    if (remainingCalories < 0) {
+    const shlapa = async () => {
+      await getAllDiaryInformation();
+    };
+    shlapa();
+  }, []);
+
+  const remaining = resultBMR - consumedCalories;
+  const restTime = 110 - totalExerciseTime;
+
+  useEffect(() => {
+    if (remaining < 0) {
       setIsOverThan(true);
     }
-  }, [remainingCalories]);
+    if (restTime < 0) {
+      setTimeOver(true);
+    }
+  }, [remaining, restTime]);
 
   return (
     <ContainerWrap>
@@ -44,7 +60,7 @@ const DayDashboard = ({ userDiaryInformation, bmr }) => {
             </SvgStyled>
             <TitleStyled>Daily calory intake</TitleStyled>
           </TitleStyledWrapper>
-          <DataValue>{bmr && bmr !== null && bmr !== 0 ? bmr : 2200}</DataValue>
+          <DataValue>{resultBMR || '2200'}</DataValue>
         </ItemListStyled>
         <ItemListStyled>
           <TitleStyledWrapper>
@@ -62,9 +78,7 @@ const DayDashboard = ({ userDiaryInformation, bmr }) => {
             </SvgStyled>
             <TitleStyled>Calories consumed</TitleStyled>
           </TitleStyledWrapper>
-          <DataValue>
-            {consumedCalories && !error ? consumedCalories : 0}
-          </DataValue>
+          <DataValue>{!error ? consumedCalories : 0}</DataValue>
         </ItemListStyled>
         <ItemListStyled>
           <TitleStyledWrapper>
@@ -82,20 +96,16 @@ const DayDashboard = ({ userDiaryInformation, bmr }) => {
             </SvgStyled>
             <TitleStyled>The rest of the calories</TitleStyled>
           </TitleStyledWrapper>
-          <DataValue>
-            {remainingCalories && !error ? remainingCalories : bmr ? bmr : 0}
-          </DataValue>
+          <DataValue>{remaining || '0'}</DataValue>
         </ItemListStyled>
-        <ItemListStyled className={isOverThan ? 'greenBg' : ''}>
+        <ItemListStyled className={isTimeOver ? 'greenBg' : ''}>
           <TitleStyledWrapper>
             <SvgStyled>
               <use href={sprite + '#icon-running-figure'}></use>
             </SvgStyled>
             <TitleStyled>The rest of sports</TitleStyled>
           </TitleStyledWrapper>
-          <DataValue>
-            {remainingSports && !error ? remainingSports : 110} min
-          </DataValue>
+          <DataValue>{restTime || '110'} min</DataValue>
         </ItemListStyled>
       </ListStyled>
 

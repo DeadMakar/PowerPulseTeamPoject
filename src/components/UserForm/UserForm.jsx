@@ -12,7 +12,7 @@ import {
   LabelSection,
   UserFormContainer,
 } from './UserForm.styled';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateSettings } from '../../redux/profile/operations';
 
@@ -23,6 +23,9 @@ import { toast } from 'react-toastify';
 export const UserForm = ({ user }) => {
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
   // Users initial info
 
   const initialValueForForm = {

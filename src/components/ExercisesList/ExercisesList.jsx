@@ -1,117 +1,57 @@
-import { useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { ExercisesItem } from '../ExercisesItem';
+import {
+  getExercises,
+  getIsLoading,
+  getError,
+} from '../../redux/exercises/exercisesSlice';
 import { useParams } from 'react-router-dom';
-import { getExercisesFilter } from '../../redux/exercises/operations';
-import {
-  NameExercises,
-  WrapperExercises,
-  ButtonGoBack,
-  LinkBtn,
-  IconWrapperBack,
-  WrapperNav,
-} from './ExercisesList.styled';
-import { SectionTemplate } from '../SectionTemplate';
-import sprite from '../../assets/sprite.svg';
+import { useEffect } from 'react';
+import { fetchExercisesList } from '../../redux/exercises/operations';
+import { ExercisesItem } from '../ExercisesItem';
+import { ExercisesListWrapper, Wrapper } from './ExercisesList.styled';
 import { Loader } from '../Loader';
-
-import {
-  ChaptersWrapper,
-  LinkStyled,
-} from '../../pages/ExercisesPage/ExercisesPage.styled';
-import { ChapterTemplate } from '../ChapterTemplate';
+import { ProductsItemStyled } from '../ProductsItem/ProductsItem.styled';
 
 const ExercisesList = () => {
   const dispatch = useDispatch();
-  const location = useLocation();
-  const backLinkLocation = useRef(location.state?.from ?? '/exercises');
-  const backLinkBodyparts = useRef(
-    location.state?.from ?? '/exercises/body parts'
-  );
-  const backLinkMuscles = useRef(location.state?.from ?? '/exercises/muscles');
-  const backLinkEquipment = useRef(
-    location.state?.from ?? '/exercises/equipment'
-  );
-  const { exeFilter, isLoading } = useSelector((state) => state.exercises);
-
-  const params = useParams();
-  const current = params.id;
+  const exercises = useSelector(getExercises);
+  const isLoading = useSelector(getIsLoading);
+  const error = useSelector(getError);
+  const { filterList } = useParams();
 
   useEffect(() => {
-    const paramsExe = {
-      filter: params.filter,
-      name: params.id,
+    const gettingExercisesList = async () => {
+      if (!filterList) {
+        console.error('Invalid filterList');
+        return;
+      } else {
+        dispatch(fetchExercisesList({ filterList: filterList }));
+      }
     };
-    if (paramsExe) {
-      dispatch(getExercisesFilter(paramsExe));
-    }
-  }, [dispatch]);
-
-  const ucFirst = (str) => {
-    if (!str) return str;
-    return str[0].toUpperCase() + str.slice(1);
-  };
+    gettingExercisesList();
+  }, [dispatch, filterList]);
 
   return (
-    <SectionTemplate>
-      <ButtonGoBack>
-        <IconWrapperBack>
-          <use href={`${sprite}#icon-arrow`} />
-        </IconWrapperBack>
-        <LinkBtn to={backLinkLocation.current}>Back</LinkBtn>
-      </ButtonGoBack>
-      <WrapperNav>
-        {isLoading && <Loader />}
-        <NameExercises>{ucFirst(current)}</NameExercises>
-
-        <ChaptersWrapper>
-          <li>
-            <LinkStyled to={backLinkBodyparts.current}>
-              <ChapterTemplate>Body parts</ChapterTemplate>
-            </LinkStyled>
-          </li>
-          <li>
-            <LinkStyled to={backLinkMuscles.current}>
-              <ChapterTemplate>Muscles</ChapterTemplate>
-            </LinkStyled>
-          </li>
-          <li>
-            <LinkStyled to={backLinkEquipment.current}>
-              <ChapterTemplate>Equipment</ChapterTemplate>
-            </LinkStyled>
-          </li>
-        </ChaptersWrapper>
-      </WrapperNav>
-
-      <WrapperExercises>
-        {exeFilter.data?.map(
-          ({
-            bodyPart,
-            name,
-            target,
-            _id,
-            burnedCalories,
-            equipment,
-            gifUrl,
-          }) => {
-            return (
-              <ExercisesItem
-                key={_id}
-                calories={burnedCalories}
-                target={ucFirst(target)}
-                NameBodyPart={ucFirst(bodyPart)}
-                name={ucFirst(name)}
-                equipment={equipment}
-                gifUrl={gifUrl}
-                burnedCalories={burnedCalories}
-                exeId={_id}
-              />
-            );
-          }
+    <div>
+      <div>
+        {isLoading && !error && <Loader />}
+        {!exercises ? (
+          <p>you do not have any exersise category</p>
+        ) : isLoading ? (
+          <Loader />
+        ) : (
+          <Wrapper>
+            <ExercisesListWrapper>
+              {exercises.map((exercise) => (
+                <ProductsItemStyled key={exercise._id}>
+                  <ExercisesItem exercise={exercise} />
+                </ProductsItemStyled>
+              ))}
+            </ExercisesListWrapper>
+          </Wrapper>
         )}
-      </WrapperExercises>
-    </SectionTemplate>
+      </div>
+    </div>
   );
 };
 

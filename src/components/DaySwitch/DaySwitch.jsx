@@ -13,6 +13,8 @@ import {
 import { Datepicker } from '../Datepicker';
 import { toast } from 'react-toastify';
 import { format } from 'date-fns';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../redux/auth/selectors';
 
 const DaySwitch = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -20,8 +22,9 @@ const DaySwitch = () => {
   const [isCalendarOpen, setCalendarOpen] = useState(false);
   const [isActivePrev, setIsActivePrev] = useState(false);
   const [isActiveNext, setIsActiveNext] = useState(false);
+  const { createdAt } = useSelector(selectUser);
+  const userDateRegistration = createdAt;
 
-  const userDateRegistration = new Date('2024-02-01');
   const openCalendar = () => {
     setCalendarOpen(!isCalendarOpen);
   };
