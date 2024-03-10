@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { globalColor } from '../../styles/root';
-import { CountdownCircleTimer } from 'react-countdown-circle-timer';
+// import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 // export const CloseSvgBtn = styled.svg`
 //   position: absolute;
 //   top: 10;
@@ -25,10 +25,10 @@ export const WrapperPart1 = styled.div`
   flex-direction: column;
   align-items: center;
   margin-bottom: 40px;
-  padding-left: 32px;
 
   @media screen and (min-width: 768px) {
     margin-bottom: 48px;
+    padding-left: 32px;
   }
 `;
 
@@ -62,14 +62,23 @@ export const TimeTextStyled = styled.p`
   margin-bottom: 4px;
 `;
 
-export const TimerBlock = styled(CountdownCircleTimer)`
-  /* width: 125px;
-  height: 124px; */
-  /* outline: 2px solid ${globalColor.colorOrange}; */
-  margin-bottom: 14px;
-`;
+// export const TimerBlock = styled(CountdownCircleTimer)`
+//   /* width: 125px;
+//   height: 124px; */
+//   /* outline: 2px solid ${globalColor.colorOrange}; */
+//   margin-bottom: 14px;
+// `;
+
+// export const TimerBlock = styled.div`
+//   width: 125px;
+//   height: 124px;
+//   outline: 2px solid ${globalColor.colorOrange};
+//   margin-bottom: 14px;
+// `;
 
 export const PlayTimerBtn = styled.button`
+  display: block;
+  margin-top: 14px;
   margin-bottom: 8px;
   border: none;
   background-color: transparent;
