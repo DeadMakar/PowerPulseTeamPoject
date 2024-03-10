@@ -1,15 +1,15 @@
-import{u as e,h as a,a as n,j as i}from"./index-2745eb54.js";import{b as r,a as t,c as o,d as x,e as g,f as s}from"./bgMobile@2x-c00288ab.js";import{s as p}from"./sprite-8a1d2f14.js";const h=e.div`
+import{u as e,i as r,a as n,d as h,r as c,n as m,b as l,j as i,s as p}from"./index-d9f6c06a.js";import{b as o,a as x,c as w,d as b,e as u,f}from"./bgMobile@2x-c00288ab.js";const k=e.div`
   display: flex;
 
   @media screen and (min-width: 320px) {
-    ${({isWelcomePage:d})=>d?a`
+    ${({isWelcomePage:a})=>a?r`
             background-image: linear-gradient(
                 170deg,
                 #040404 3.66%,
                 rgba(4, 4, 4, 0) 19.15%
               ),
               linear-gradient(73deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%),
-              url(${r});
+              url(${o});
             background-repeat: no-repeat;
             background-size: contain;
             background-position: top;
@@ -25,9 +25,9 @@ import{u as e,h as a,a as n,j as i}from"./index-2745eb54.js";import{b as r,a as 
                   rgba(4, 4, 4, 0) 19.15%
                 ),
                 linear-gradient(73deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%),
-                url(${t});
+                url(${x});
             }
-          `:a`
+          `:r`
             background-image: linear-gradient(
                 168deg,
                 rgb(4, 4, 4) 14.75%,
@@ -38,7 +38,7 @@ import{u as e,h as a,a as n,j as i}from"./index-2745eb54.js";import{b as r,a as 
                 rgb(4, 4, 4) 6.11%,
                 rgba(4, 4, 4, 0) 66.68%
               ),
-              url(${r});
+              url(${o});
             background-repeat: no-repeat;
             background-size: contain;
             background-position: top;
@@ -54,7 +54,7 @@ import{u as e,h as a,a as n,j as i}from"./index-2745eb54.js";import{b as r,a as 
                   rgba(4, 4, 4, 0) 52.97%
                 ),
                 linear-gradient(73deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%),
-                url(${t});
+                url(${x});
             }
           `}
   }
@@ -69,7 +69,7 @@ import{u as e,h as a,a as n,j as i}from"./index-2745eb54.js";import{b as r,a as 
         rgba(4, 4, 4, 0) 19.15%
       ),
       linear-gradient(73deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%),
-      url(${o});
+      url(${w});
     background-repeat: no-repeat;
     background-size: contain;
     width: 670px;
@@ -88,7 +88,7 @@ import{u as e,h as a,a as n,j as i}from"./index-2745eb54.js";import{b as r,a as 
           rgba(4, 4, 4, 0) 52.97%
         ),
         linear-gradient(73deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%),
-        url(${x});
+        url(${b});
     }
   }
 
@@ -98,7 +98,7 @@ import{u as e,h as a,a as n,j as i}from"./index-2745eb54.js";import{b as r,a as 
         #040404 -2.45%,
         rgba(4, 4, 4, 0) 68.17%
       ),
-      url(${g});
+      url(${u});
     width: 670px;
     height: 800px;
     margin: 0;
@@ -111,12 +111,12 @@ import{u as e,h as a,a as n,j as i}from"./index-2745eb54.js";import{b as r,a as 
           #040404 -2.45%,
           rgba(4, 4, 4, 0) 68.17%
         ),
-        url(${s});
+        url(${f});
       /* background-position: right -152px; */
       margin: 0;
     }
   }
-`,m=e.div`
+`,v=e.div`
   position: absolute;
   display: flex;
   width: 146px;
@@ -148,7 +148,7 @@ import{u as e,h as a,a as n,j as i}from"./index-2745eb54.js";import{b as r,a as 
     margin-top: 0;
     margin-left: 0;
   }
-`,c=e.div`
+`,$=e.div`
   padding: 8px;
   border-radius: 50%;
   width: 30px;
@@ -174,7 +174,7 @@ import{u as e,h as a,a as n,j as i}from"./index-2745eb54.js";import{b as r,a as 
     margin-right: 12px;
     padding: 10px;
   }
-`,l=e.svg`
+`,j=e.svg`
   width: 14px;
   height: 14px;
   fill: ${n.colorWhite};
@@ -191,7 +191,7 @@ import{u as e,h as a,a as n,j as i}from"./index-2745eb54.js";import{b as r,a as 
     width: 20px;
     height: 20px;
   }
-`,w=e.svg`
+`,y=e.svg`
   @media screen and (min-width: 320px) {
     width: 12px;
     height: 12px;
@@ -202,11 +202,11 @@ import{u as e,h as a,a as n,j as i}from"./index-2745eb54.js";import{b as r,a as 
     width: 16px;
     height: 16px;
   }
-`,b=e.p`
+`,z=e.p`
   margin-bottom: 8px;
   color: ${n.colorWhite};
   font-family: Roboto;
-  font-size: 16px;
+  font-size: 44px;
   font-style: normal;
   font-weight: 700;
   line-height: 18px;
@@ -215,19 +215,19 @@ import{u as e,h as a,a as n,j as i}from"./index-2745eb54.js";import{b as r,a as 
   }
 
   @media screen and (min-width: 768px) {
-    font-size: 24px;
+    font-size: 44px;
     line-height: 24px;
   }
 
   @media screen and (min-width: 1440px) {
   }
-`,u=e.p`
+`,S=e.p`
   color: rgba(239, 237, 232, 0.65);
   font-family: Roboto;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
-  line-height: 16px;
+  line-height: 24px;
 
   @media screen and (min-width: 375px) {
   }
@@ -239,7 +239,7 @@ import{u as e,h as a,a as n,j as i}from"./index-2745eb54.js";import{b as r,a as 
 
   @media screen and (min-width: 1440px) {
   }
-`,f=e.div`
+`,W=e.div`
   @media screen and (min-width: 320px) {
     position: absolute;
     width: 100px;
@@ -272,7 +272,7 @@ import{u as e,h as a,a as n,j as i}from"./index-2745eb54.js";import{b as r,a as 
     margin-top: 0;
     margin-left: 0;
   }
-`,k=e.div`
+`,T=e.div`
   width: 20px;
   height: 20px;
   border-radius: 50%;
@@ -286,11 +286,11 @@ import{u as e,h as a,a as n,j as i}from"./index-2745eb54.js";import{b as r,a as 
     width: 24px;
     height: 24px;
   }
-`,v=e.div`
+`,R=e.div`
   display: flex;
   align-items: baseline;
   gap: 11px;
-`,$=e.p`
+`,C=e.p`
   color: ${n.colorWhite};
   font-family: Roboto;
   font-size: 24px;
@@ -311,7 +311,7 @@ import{u as e,h as a,a as n,j as i}from"./index-2745eb54.js";import{b as r,a as 
 
   @media screen and (min-width: 1440px) {
   }
-`,j=e.span`
+`,B=e.span`
   color: rgba(239, 237, 232, 0.65);
   font-family: Roboto;
   font-size: 24px;
@@ -331,4 +331,4 @@ import{u as e,h as a,a as n,j as i}from"./index-2745eb54.js";import{b as r,a as 
     font-size: 24px;
     line-height: 24px;
   }
-`,S=({isWelcomePage:d})=>i.jsxs(h,{isWelcomePage:d,children:[i.jsxs(m,{children:[i.jsx(c,{children:i.jsx(l,{children:i.jsx("use",{href:`${p}#icon-running-stick-figure-svgrepo-com-1`})})}),i.jsxs("div",{children:[i.jsx(b,{children:"350+"}),i.jsx(u,{children:"Users"})]})]}),i.jsxs(f,{children:[i.jsx(k,{children:i.jsx(w,{children:i.jsx("use",{href:`${p}#icon-calories-1`})})}),i.jsxs(v,{children:[i.jsx($,{children:"500"}),i.jsx(j,{children:"cal"})]})]})]});export{S};
+`,D=a=>a.statistics.statistics,V=({isWelcomePage:a})=>{const t=h();c.useEffect(()=>{t(m())},[t]);const d=l(D);console.log(d);const s=(d==null?void 0:d.totalUsers)||"Loading...",g=(d==null?void 0:d.totalBurnedCalories)||"Loading...";return i.jsxs(k,{isWelcomePage:a,children:[i.jsxs(v,{children:[i.jsx($,{children:i.jsx(j,{children:i.jsx("use",{href:`${p}#icon-running-stick-figure-svgrepo-com-1`})})}),i.jsxs("div",{children:[i.jsx(z,{children:s}),i.jsx(S,{children:"Users"})]})]}),i.jsxs(W,{children:[i.jsx(T,{children:i.jsx(y,{children:i.jsx("use",{href:`${p}#icon-calories-1`})})}),i.jsxs(R,{children:[i.jsx(C,{children:g}),i.jsx(B,{children:"cal"})]})]})]})};export{V as S};
