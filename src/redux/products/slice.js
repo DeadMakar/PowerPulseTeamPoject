@@ -24,6 +24,7 @@ const handleFetchProductsFulfilled = (state, action) => {
   state.isLoadingProducts = false;
   state.error = null;
   state.productsArray = action.payload;
+  // console.log(action.payload);
 };
 
 const handleFetchAllProductsCategoriesFulfilled = (state, action) => {

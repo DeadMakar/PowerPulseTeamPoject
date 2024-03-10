@@ -6,7 +6,7 @@ export const fetchAllProductsCategories = createAsyncThunk(
   '/user/products/categories/fetchAllProductsCategory',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get('/products/categories');
+      const response = await axios.get('products/categories');
       return response.data;
     } catch (error) {
       toast.error('Sorry, something went wrong, please try again', {
@@ -20,7 +20,7 @@ export const fetchAllProductsCategories = createAsyncThunk(
 export const fetchProducts = createAsyncThunk(
   'user/products/fetchProducts',
   async (formData, thunkAPI) => {
-    const { title, category, filter } = formData;
+    const { title, category, groupBloodNotAllowed } = formData;
     const params = {};
 
     if (title) {
@@ -33,17 +33,16 @@ export const fetchProducts = createAsyncThunk(
       params.category = category;
     }
 
-    if (filter) {
-      params.filter = filter;
+    if (groupBloodNotAllowed) {
+      params.groupBloodNotAllowed = groupBloodNotAllowed;
     }
 
     try {
-      const response = await axios.get(`/products/filter`, {
+      const response = await axios.get(`products/filters`, {
         params,
       });
-      return response.data.dataUser;
+      return response.data;
     } catch (error) {
-      console.log(error);
       toast.error('Sorry, something went wrong, please try again', {
         theme: 'dark',
       });

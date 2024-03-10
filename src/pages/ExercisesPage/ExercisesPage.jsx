@@ -2,8 +2,8 @@ import { Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
 import sprite from '../../assets/sprite.svg';
-import { getError, getIsLoading } from '../../redux/exercises/categoriesSlice';
-import ExercisesCategories from '../../components/ExercisesCategories/ExercisesCategories';
+import { getError, getIsLoading } from '../../redux/exercises/exercisesSlice';
+import { ExerciseCategories } from '../../components/ExercisesCategories';
 import { fetchExercisesCategories } from '../../redux/exercises/operations';
 import { Container } from '../../styles/GlobalStyles';
 import {
@@ -11,6 +11,7 @@ import {
   BackButton,
   BackGroundStyle,
   MixContainer,
+
 } from './ExercisesPage.styled';
 
 import { TitlePage } from '../../components/TitlePage';
@@ -27,21 +28,18 @@ const ExercisesPage = () => {
 
   useEffect(() => {
     const gettingExercisesFilters = async () => {
-      if (
-        filter !== undefined &&
-        filterList !== undefined &&
-        filterList.trim() !== ''
-      ) {
-        dispatch(fetchExercisesCategories({ filter: filter }));
+      if (filter === undefined) {
+        {
+          toast.info('You have not entered any data', {
+            theme: 'dark',
+          });
+        }
       } else {
-        toast.info('We are still awaiting for data', {
-          theme: 'dark',
-        });
+        dispatch(fetchExercisesCategories({ filter: filter }));
       }
     };
     gettingExercisesFilters();
-  }, [dispatch, filter, filterList]);
-
+  }, [dispatch, filter]);
   return (
     <BackGroundStyle>
       <Container>
@@ -56,18 +54,22 @@ const ExercisesPage = () => {
                   <svg style={{ fill: 'none' }}>
                     <use href={sprite + '#icon-arrow-left'} />
                   </svg>
-                  Back
+                  Back{' '}
                 </BackButton>
               )}
               <ContainerExPage>
-                <TitlePage contentText="Exercises" />
-                <ExercisesCategories />
+                <TitlePage
+                  title={filterList ? filterList.split(' ')[0] : 'Exercises'}
+                />
+                <ExerciseCategories />
               </ContainerExPage>
 
               {isLoading && !error && <Loader />}
-              <Suspense fallback={<Loader />}>
-                <Outlet />
-              </Suspense>
+              <>
+                <Suspense>
+                  <Outlet />
+                </Suspense>
+              </>
             </div>
           )}
         </MixContainer>

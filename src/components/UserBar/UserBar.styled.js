@@ -39,3 +39,17 @@ export const IconUser = styled.svg`
   bottom: 50%;
   right: 50%;
 `;
+export const Img = styled.img`
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  @media screen and (min-width: 768px) {
+    width: 100%;
+    height: 100%;
+  }
+`;

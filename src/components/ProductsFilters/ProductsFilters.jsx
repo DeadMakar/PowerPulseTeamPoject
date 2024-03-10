@@ -1,112 +1,190 @@
-import { useState } from 'react';
-import sprite from '../../assets/sprite.svg';
-import { FormLabel } from '@mui/material';
+import { Suspense, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Outlet } from 'react-router-dom';
+import Select from 'react-select';
+import { nanoid } from 'nanoid';
+import { fetchProducts } from '../../redux/products/operations';
 import {
-  BtnClose,
-  InputSearch,
-  SearchBtn,
-  SearchSvg,
-  SvgClose,
-} from '../../components/ProductsFilters/ProductsFilters.styled';
+  StyledForm,
+  InputStyled,
+  InputPartWrapper,
+  SvgWrapper,
+  SvgCleanWrapper,
+  ButtonWrapper,
+  DropdownSelectPartWrapper,
+  categoriesStyles,
+  typesStyles,
+  ErrorMessage,
+} from './ProductsFilters.styled';
+import sprite from '../../assets/sprite.svg';
+import { toast } from 'react-toastify';
+import { Loader } from '../Loader';
 
-const categories = [
-  'alcoholic drinks',
-  'berries',
-  'cereals',
-  'dairy',
-  'dried fruits',
-  'eggs',
-  'fish',
-  'flour',
-  'fruits',
-  'meat',
-  'mushrooms',
-  'nuts',
-  'oils and fats',
-  'poppy',
-  'sausage',
-  'seeds',
-  'sesame',
-  'soft drinks',
-  'vegetables and herbs',
-];
+const ProductsFilters = ({ categories }) => {
+  const dispatch = useDispatch();
 
-const ProductsFilters = () => {
-  const [searchWord, setSearchWord] = useState('');
+  const [isActive, setIsActive] = useState(false);
+  const [error, setError] = useState('');
+  const [isError, setIsError] = useState(false);
+  const [searchByProductTitle, setSearchByProductTitle] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedType, setSelectedType] = useState(null);
 
-  const onChangeSearchWord = (e) => {
-    const { value } = e.target;
-    setSearchWord(value);
+  const categoriesArrayFormatted = categories.map(
+    (el) => el[0].toUpperCase() + el.slice(1).toLowerCase()
+  );
+
+  const formattedOptions = (options) => {
+    return [...options.map((option) => ({ value: option, label: option }))];
   };
 
-  const submitSearch = (e) => {
-    e.preventDefault();
-    const searchItem = e.target.elements[0].value;
+  const typesArray = [
+    { value: 'all', label: 'All' },
+    { value: 'recommended', label: 'Recommended' },
+    { value: 'not-recommended', label: 'Not recommended' },
+  ];
 
-    //   request to change filter (dispatch)
-    setSearchWord(searchItem);
+  const applyFilter = (e) => {
+    if (e) {
+      e.preventDefault();
+    }
+
+    const formData = {
+      title: searchByProductTitle || '',
+      category: selectedCategory || null,
+      groupBloodNotAllowed: selectedType || 'all',
+    };
+    const isTitleValid = searchByProductTitle.length <= 40;
+
+    if (!isTitleValid) {
+      setError(
+        `Please enter up to 30 characters, now ${searchByProductTitle.length}`
+      );
+      setIsError(true);
+    } else {
+      setError('');
+      setIsError(false);
+
+      try {
+        dispatch(fetchProducts(formData));
+      } catch (error) {
+        toast.error('Sorry, something went wrong, please try again', {
+          theme: 'dark',
+        });
+      }
+    }
   };
 
-  const cleanSearchInput = () => {
-    setSearchWord('');
+  const handleInputChange = (e) => {
+    const text = e.target.value;
+    setIsActive(text.length > 0);
+    setSearchByProductTitle(text);
   };
 
-  //
-  console.log(searchWord);
-  //
+  const handleCleanButton = () => {
+    setIsActive(false);
+    setSearchByProductTitle('');
+
+    const formData = {
+      title: '',
+      category: selectedCategory || null,
+      groupBloodNotAllowed: selectedType || 'all',
+    };
+    dispatch(fetchProducts(formData));
+  };
+
+  const handleCategoryChange = (selectedOption) => {
+    const value = selectedOption ? selectedOption.value : null;
+    setSelectedCategory(value);
+
+    const formData = {
+      title: searchByProductTitle || '',
+      category: value,
+      groupBloodNotAllowed: selectedType || 'all',
+    };
+    dispatch(fetchProducts(formData));
+  };
+
+  const handleTypeChange = (selectedOption) => {
+    const value = selectedOption ? selectedOption.value.toLowerCase() : 'all';
+    setSelectedType(value);
+
+    const formData = {
+      title: searchByProductTitle || '',
+      category: selectedCategory || null,
+      groupBloodNotAllowed: value,
+    };
+    dispatch(fetchProducts(formData));
+  };
 
   return (
-    <form onSubmit={submitSearch}>
-      <FormLabel>
-        <InputSearch
-          type="text"
-          name="searchItem"
-          value={searchWord}
-          onChange={onChangeSearchWord}
-          placeholder="Search"
-        />
+    <>
+      <StyledForm onSubmit={applyFilter} noValidate>
+        <InputPartWrapper>
+          <InputStyled
+            type="text"
+            name="title"
+            placeholder="Search"
+            value={searchByProductTitle}
+            onChange={handleInputChange}
+          />
+          <ButtonWrapper>
+            {isActive && (
+              <button type="button" onClick={handleCleanButton}>
+                <SvgCleanWrapper>
+                  <use href={sprite + '#icon-x'} />
+                </SvgCleanWrapper>
+              </button>
+            )}
+            <button type="submit">
+              <SvgWrapper>
+                <use href={sprite + '#icon-search'} />
+              </SvgWrapper>
+            </button>
+          </ButtonWrapper>
 
-        {searchWord && (
-          <BtnClose type="button" onClick={cleanSearchInput}>
-            <SvgClose>
-              <use href={sprite + '#icon-x'} />
-            </SvgClose>
-          </BtnClose>
-        )}
-        <SearchBtn type="submit" onSubmit={submitSearch}>
-          <SearchSvg>
-            <use href={sprite + '#icon-search'} />
-          </SearchSvg>
-        </SearchBtn>
-      </FormLabel>
+          {isError && (
+            <ErrorMessage>
+              <svg>
+                <use href={sprite + '#icon-checkbox-circle-fill'} />
+              </svg>
+              {error}
+            </ErrorMessage>
+          )}
+        </InputPartWrapper>
+        <DropdownSelectPartWrapper>
+          <Select
+            id={nanoid()}
+            options={formattedOptions(categoriesArrayFormatted)}
+            value={formattedOptions(categoriesArrayFormatted).find(
+              (option) => option.value === selectedCategory
+            )}
+            isSearchable={false}
+            isMulti={false}
+            isClearable
+            onChange={handleCategoryChange}
+            placeholder={'Categories'}
+            styles={categoriesStyles}
+          />
 
-      <select
-        name="categories"
-        id="categories"
-        size={8}
-        placeholder="Categories"
-      >
-        {categories.map((item, index) => (
-          <option key={index} value={item}>
-            {item}
-          </option>
-        ))}
-      </select>
-    </form>
+          <Select
+            id={nanoid()}
+            options={typesArray}
+            value={typesArray.find((option) => option.value === selectedType)}
+            isSearchable={false}
+            isMulti={false}
+            isClearable
+            onChange={handleTypeChange}
+            placeholder={'All'}
+            styles={typesStyles}
+          />
+        </DropdownSelectPartWrapper>
+      </StyledForm>
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense>
+    </>
   );
 };
 
 export default ProductsFilters;
-
-// ProductsFilters містить в собі:
-// - поле для пошуку продуктів по вмісту ключового слова в назві.
-//  Якщо поле для пошуку заповнене - поряд з іконкою лупи повинна
-//  зʼявлятись кнопка з іконкою хрестика, по clickу на яку поле для
-//  пошуку має бути очищене.Пошук продуктів відбувається по
-//  події submit або  clickу на іконку лупи
-//     - поле з випадаючим списком категорій продуктів.
-//   Пошук продуктів відбувається при виборі категорії
-//     - поле з випадаючим списком типів продуктів.
-//   Пошук продуктів відбувається при виборі типу
-
-// Запит на backend має відправлятися з урахуванням усіх параметрів пошуку.

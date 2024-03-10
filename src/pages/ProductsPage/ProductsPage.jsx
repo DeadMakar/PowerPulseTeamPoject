@@ -1,28 +1,73 @@
-// import { ProductsFilters } from '../../components/ProductsFilters';
-// import { TitlePage } from '../../components/TitlePage';
-// <>
-//   <TitlePage contentText="Products" />
-//   <ProductsFilters />
-// </>
-
-import { SectionTemplate } from '../../components/SectionTemplate';
-import { ProductsFilters } from '../../components/ProductsFilters';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+import {
+  Wrapper,
+  TitleAndFilterWrapper,
+  ProductsListWrapper,
+} from './ProductsPage.styled';
+import {
+  selectProducts,
+  selectProductsCategories,
+  selectProductsIsLoading,
+} from '../../redux/products/selectors';
+import {
+  fetchAllProductsCategories,
+  fetchProducts,
+} from '../../redux/products/operations';
+import { Container } from '../../styles/GlobalStyles';
 import { TitlePage } from '../../components/TitlePage';
-/* import { ProductsList } from '../../components/ProductsList'; */
-import { ProductWrapTitle, ProductWrapper, Span } from './ProductsPage.styled';
+import { Loader } from '../../components/Loader';
+import { ProductsFilters } from '../../components/ProductsFilters';
+import { ProductsList } from '../../components/ProductsList';
 
 const ProductsPage = () => {
+  const dispatch = useDispatch();
+
+  const isLoadingProducts = useSelector(selectProductsIsLoading);
+  const categoriesArray = useSelector(selectProductsCategories);
+  const productsArray = useSelector(selectProducts);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const formData = {
+          title: '',
+          category: null,
+          groupBloodNotAllowed: 'all',
+        };
+        await dispatch(fetchProducts(formData));
+      } catch (error) {
+        toast.error('Sorry, something went wrong, please try again', {
+          theme: 'dark',
+        });
+      }
+    };
+
+    fetchData();
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchAllProductsCategories());
+  }, [dispatch]);
+
   return (
-    <SectionTemplate>
-      <ProductWrapper>
-        <Span>Filters</Span>
-        <ProductWrapTitle>
-          <TitlePage>Products</TitlePage>
-        </ProductWrapTitle>
-        <ProductsFilters />
-        {/* <ProductsList /> */}
-      </ProductWrapper>
-    </SectionTemplate>
+    <Wrapper>
+      <Container>
+        <TitleAndFilterWrapper>
+          <TitlePage title={'Products Page'} />
+          <ProductsFilters categories={categoriesArray} />
+        </TitleAndFilterWrapper>
+
+        {isLoadingProducts ? (
+          <Loader />
+        ) : (
+          <ProductsListWrapper>
+            <ProductsList products={productsArray} />
+          </ProductsListWrapper>
+        )}
+      </Container>
+    </Wrapper>
   );
 };
 

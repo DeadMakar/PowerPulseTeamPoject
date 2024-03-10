@@ -15,7 +15,9 @@ const ErrorPage = () => {
     <ErrorContainer>
       <BgText>
         <Wrapper>
-          <Logo fill="#EFEDE8" />{' '}
+
+          <Logo fill="#EFEDE8" />
+
           <Content>
             <TitleError>404</TitleError>
             <DescriptionError>

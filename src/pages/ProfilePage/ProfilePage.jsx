@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { TitlePage } from '../../components/TitlePage';
 import { UserCard } from '../../components/UserCard';
 import { UserForm } from '../../components/UserForm/UserForm';
@@ -6,6 +6,7 @@ import { Container } from '../../styles/GlobalStyles';
 import { ProfileContainer, ProfileContentBox } from './ProfilePage.styled';
 import { useEffect } from 'react';
 import { refreshUser } from '../../redux/auth/operations';
+import { selectUser } from '../../redux/auth/selectors';
 
 const ProfilePage = () => {
   const dispatch = useDispatch();
@@ -14,14 +15,16 @@ const ProfilePage = () => {
     dispatch(refreshUser());
   }, [dispatch]);
 
+  const user = useSelector(selectUser);
+
   return (
     <Container>
       <ProfileContainer>
         <TitlePage contentText="Profile Settings" />
         <ProfileContentBox>
-          <UserCard />
+          <UserCard user={user} />
 
-          <UserForm />
+          <UserForm user={user} />
         </ProfileContentBox>
       </ProfileContainer>
     </Container>

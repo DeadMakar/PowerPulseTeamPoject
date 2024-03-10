@@ -12,30 +12,31 @@ import {
   LabelSection,
   UserFormContainer,
 } from './UserForm.styled';
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { updateSettings } from '../../redux/profile/operations';
-import { selectUser } from '../../redux/auth/selectors';
+
 import { refreshUser } from '../../redux/auth/operations';
 
 import { toast } from 'react-toastify';
 
-export const UserForm = () => {
+export const UserForm = ({ user }) => {
   const dispatch = useDispatch();
 
-  const user = useSelector(selectUser);
-
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
   // Users initial info
 
-  const initialValue = {
-    name: user?.userName ?? '',
+  const initialValueForForm = {
+    name: user?.userName,
     email: user?.email,
-    height: user?.height ?? 0,
-    currentWeight: user?.currentWeight ?? 0,
-    desiredWeight: user?.desiredWeight ?? 0,
-    blood: user?.blood ? user?.blood.toString() : 0,
-    sex: user?.sex ?? 0,
-    levelActivity: user?.levelActivity ? user?.levelActivity.toString() : 0,
+    height: user?.height,
+    currentWeight: user?.currentWeight,
+    desiredWeight: user?.desiredWeight,
+    blood: user?.blood && user?.blood.toString(),
+    sex: user?.sex,
+    levelActivity: user?.levelActivity && user?.levelActivity.toString(),
   };
 
   //  STATE
@@ -81,7 +82,7 @@ export const UserForm = () => {
 
   const ifUserInfoChanged = (values) => {
     const isInfoChanged = Object.keys(values).some(
-      (key) => values[key] !== initialValue[key]
+      (key) => values[key] !== initialValueForForm[key]
     );
     setIsInfoChanged(!isInfoChanged);
   };
@@ -131,7 +132,7 @@ export const UserForm = () => {
   return (
     <UserFormContainer>
       <Formik
-        initialValues={initialValue}
+        initialValues={initialValueForForm}
         validationSchema={UserFormSchema}
         onSubmit={(values) => {
           handleUpdateUserInfo(values);
@@ -144,7 +145,6 @@ export const UserForm = () => {
               touched={touched}
               onDateChange={onDateChange}
               savedBirthday={birthdayNew}
-              userEmail={initialValue.email}
             />
             <BloodSexSection>
               <LabelInputName>Blood</LabelInputName>
