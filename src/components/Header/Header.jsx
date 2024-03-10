@@ -33,16 +33,34 @@ const Header = () => {
   return (
     <HeaderContainer>
       <Navigation>
-        <Link to="/">
+        <Link to="/diary">
           <Logo />
         </Link>
         {isLoggedIn && userMetrics && (
           <SecondNavWraper>
             <MediaQuery minWidth={1440}>
               <NavWraper>
-                <NavigationLink to="/diary">Diary</NavigationLink>
-                <NavigationLink to="/products">Products</NavigationLink>
-                <NavigationLink to="/exercises">Exercises</NavigationLink>
+                <NavigationLink
+                  to="/diary"
+                  activeclassname="active"
+                  exact="true"
+                >
+                  Diary
+                </NavigationLink>
+                <NavigationLink
+                  to="/products"
+                  activeclassname="active"
+                  exact="true"
+                >
+                  Products
+                </NavigationLink>
+                <NavigationLink
+                  to="/exercises"
+                  activeclassname="active"
+                  exact="true"
+                >
+                  Exercises
+                </NavigationLink>
               </NavWraper>
             </MediaQuery>
 

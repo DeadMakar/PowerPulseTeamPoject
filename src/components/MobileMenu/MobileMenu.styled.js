@@ -11,8 +11,9 @@ export const BackdropMenu = styled.div`
   width: 100vw;
   height: 100vh;
 
-  background-color: ${globalColor.colorBlack};
+  background-color: background-color: rgba(0, 0, 0, 0.5);
   z-index: 1000;
+  
 `;
 
 export const MenuContainer = styled.div`
