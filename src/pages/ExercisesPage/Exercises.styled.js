@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import { globalColor } from '../../styles/root';
 
 export const ChaptersWrapper = styled.ul`
   display: flex;
@@ -28,10 +29,10 @@ export const DesctopWrapper = styled.div`
 export const LinkStyled = styled(NavLink)`
   position: relative;
   display: block;
-  color: rgba(239, 237, 232, 0.4);
+  color: ${globalColor.colorInput};
 
   &.active {
-    color: var(--color-text);
+    color: ${globalColor.colorWhite};
 
     &::before {
       content: '';
@@ -41,7 +42,7 @@ export const LinkStyled = styled(NavLink)`
       bottom: -8px;
       width: 100%;
       height: 4px;
-      background-color: var(--color-main-one);
+      background-color: ${globalColor.colorOrange};
       border-radius: 2px;
     }
   }

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { globalColor } from '../../styles/root';
 
 export const Indexes = styled.div`
   display: flex;
@@ -6,7 +7,7 @@ export const Indexes = styled.div`
 `;
 
 export const ExercisesTitle = styled.p`
-  color: #fff;
+  color: ${globalColor.colorWiteF};
   font-family: Roboto;
   font-size: 12px;
   font-style: normal;
@@ -136,5 +137,5 @@ export const WrapperStart = styled.button`
 export const IconWrapperStart = styled.svg`
   width: 13px;
   height: 13px;
-  stroke: var(--color-main-one);
+  stroke: ${globalColor.colorOrange};
 `;
