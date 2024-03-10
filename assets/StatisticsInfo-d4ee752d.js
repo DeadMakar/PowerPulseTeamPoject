@@ -1,4 +1,4 @@
-import{u as e,h as a,a as n,j as i}from"./index-0fc1e04c.js";import{b as t,a as r,c as o,d as x,e as g,f as s}from"./bgMobile@2x-c00288ab.js";import{s as p}from"./sprite-85ef65ae.js";const h=e.div`
+import{u as e,h as a,a as n,j as i}from"./index-5bae170c.js";import{b as r,a as t,c as o,d as x,e as g,f as s}from"./bgMobile@2x-c00288ab.js";import{s as p}from"./sprite-fc391070.js";const h=e.div`
   display: flex;
 
   @media screen and (min-width: 320px) {
@@ -9,7 +9,7 @@ import{u as e,h as a,a as n,j as i}from"./index-0fc1e04c.js";import{b as t,a as 
                 rgba(4, 4, 4, 0) 19.15%
               ),
               linear-gradient(73deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%),
-              url(${t});
+              url(${r});
             background-repeat: no-repeat;
             background-size: contain;
             background-position: top;
@@ -25,7 +25,7 @@ import{u as e,h as a,a as n,j as i}from"./index-0fc1e04c.js";import{b as t,a as 
                   rgba(4, 4, 4, 0) 19.15%
                 ),
                 linear-gradient(73deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%),
-                url(${r});
+                url(${t});
             }
           `:a`
             background-image: linear-gradient(
@@ -38,7 +38,7 @@ import{u as e,h as a,a as n,j as i}from"./index-0fc1e04c.js";import{b as t,a as 
                 rgb(4, 4, 4) 6.11%,
                 rgba(4, 4, 4, 0) 66.68%
               ),
-              url(${t});
+              url(${r});
             background-repeat: no-repeat;
             background-size: contain;
             background-position: top;
@@ -54,7 +54,7 @@ import{u as e,h as a,a as n,j as i}from"./index-0fc1e04c.js";import{b as t,a as 
                   rgba(4, 4, 4, 0) 52.97%
                 ),
                 linear-gradient(73deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%),
-                url(${r});
+                url(${t});
             }
           `}
   }
@@ -331,4 +331,4 @@ import{u as e,h as a,a as n,j as i}from"./index-0fc1e04c.js";import{b as t,a as 
     font-size: 24px;
     line-height: 24px;
   }
-`,S=({isWelcomePage:d})=>i.jsxs(h,{isWelcomePage:d,children:[i.jsxs(m,{children:[i.jsx(c,{children:i.jsx(l,{children:i.jsx("use",{href:`${p}#icon-play`})})}),i.jsxs("div",{children:[i.jsx(b,{children:"350+"}),i.jsx(u,{children:"Video tutorial"})]})]}),i.jsxs(f,{children:[i.jsx(k,{children:i.jsx(w,{children:i.jsx("use",{href:`${p}#icon-running-stick-figure-svgrepo-com-1`})})}),i.jsxs(v,{children:[i.jsx($,{children:"500"}),i.jsx(j,{children:"cal"})]})]})]});export{S};
+`,S=({isWelcomePage:d})=>i.jsxs(h,{isWelcomePage:d,children:[i.jsxs(m,{children:[i.jsx(c,{children:i.jsx(l,{children:i.jsx("use",{href:`${p}#icon-running-stick-figure-svgrepo-com-1`})})}),i.jsxs("div",{children:[i.jsx(b,{children:"350+"}),i.jsx(u,{children:"Users"})]})]}),i.jsxs(f,{children:[i.jsx(k,{children:i.jsx(w,{children:i.jsx("use",{href:`${p}#icon-calories-1`})})}),i.jsxs(v,{children:[i.jsx($,{children:"500"}),i.jsx(j,{children:"cal"})]})]})]});export{S};
