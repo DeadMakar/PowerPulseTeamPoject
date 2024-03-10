@@ -35,59 +35,61 @@ function App() {
     <RouterProvider>
       <Suspense fallback={<Loader />}>
         <Routes>
-          <Route
-            path="/"
-            element={isLoggedIn ? <DiaryPage /> : <WelcomePage />}
-          />
-          <Route path="/welcome" element={<WelcomePage />} />
-          <Route
-            path="/signup"
-            element={
-              <RestrictedRoute
-                redirectTo="/singin"
-                component={<SignUpPage />}
-              />
-            }
-          />
-          <Route
-            path="/signin"
-            element={
-              !isLoggedIn ? <SignInPage /> : <Navigate to="/diary" replace />
-            }
-          />
-          <Route
-            path="/profile"
-            element={
-              <Layout>
-                <ProfilePage />
-              </Layout>
-            }
-          />
-          <Route
-            path="/diary"
-            element={
-              <Layout>
-                <DiaryPage />
-              </Layout>
-            }
-          />
-          <Route
-            path="/products"
-            element={
-              <Layout>
-                <ProductsPage />
-              </Layout>
-            }
-          />
-          <Route
-            path="/exercises"
-            element={
-              <Layout>
-                <ExercisesPage />
-              </Layout>
-            }
-          />
-          <Route path="*" element={<ErrorPage />} />
+          <Route path="/" element={<Layout />}>
+            <Route
+              index
+              element={isLoggedIn ? <DiaryPage /> : <WelcomePage />}
+            />
+            <Route path="/welcome" element={<WelcomePage />} />
+            <Route
+              path="/signup"
+              element={
+                <RestrictedRoute
+                  redirectTo="/singin"
+                  component={<SignUpPage />}
+                />
+              }
+            />
+            <Route
+              path="/signin"
+              element={
+                !isLoggedIn ? <SignInPage /> : <Navigate to="/diary" replace />
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <PrivateRoute redirectTo="/" component={<ProfilePage />} />
+              }
+            />
+            <Route
+              path="/diary"
+              element={
+                userMetrics ? <DiaryPage /> : <Navigate to="/profile" replace />
+              }
+            />
+            <Route
+              path="/products"
+              element={
+                userMetrics ? (
+                  <ProductsPage />
+                ) : (
+                  <Navigate to="/profile" replace />
+                )
+              }
+            />
+            <Route
+              path="/exercises"
+              element={
+                userMetrics ? (
+                  <ExercisesPage />
+                ) : (
+                  <Navigate to="/profile" replace />
+                )
+              }
+            />
+            <Route path="*" element={<ErrorPage />} />
+          </Route>
         </Routes>
       </Suspense>
       <GlobalStyles />
