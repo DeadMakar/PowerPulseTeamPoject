@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import sprite from '../../assets/sprite.svg';
 import {
@@ -7,7 +7,13 @@ import {
   SvgStyled,
 } from './AddExerciseForm.styled';
 
-export const TimerComponent = ({ fullExerciseTime, setTimeOfTimer }) => {
+export const TimerComponent = ({
+  fullExerciseTime,
+  setTimeOfTimer,
+  timeOfTimer,
+  burnedCalories,
+  setReallyBurnedCalories,
+}) => {
   // в пропсах есть timeOfTimer, а тут нет
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -26,6 +32,26 @@ export const TimerComponent = ({ fullExerciseTime, setTimeOfTimer }) => {
     const seconds = (time % 60).toString().padStart(2, '0');
     return `${minutes}:${seconds}`;
   };
+
+  useEffect(() => {
+    const timeDifference = timeOfTimer - fullExerciseTime * 60;
+
+    if (timeDifference === 0) {
+      setTimeOfTimer(timeOfTimer);
+      setReallyBurnedCalories(burnedCalories);
+    }
+  }, [fullExerciseTime, setTimeOfTimer, timeOfTimer]);
+
+  useEffect(() => {
+    const reallyCalories =
+      (timeOfTimer / (fullExerciseTime * 60)) * burnedCalories;
+
+    setReallyBurnedCalories(reallyCalories.toFixed(0));
+
+    // if (timeOfTimer >= fullExerciseTime * 60) {
+    //   setReallyBurnedCalories(burnedCalories);
+    // }
+  }, [burnedCalories, fullExerciseTime, setReallyBurnedCalories, timeOfTimer]);
 
   let currentTime = 0;
   //   let realBurnedCalories = 0;
@@ -65,6 +91,7 @@ export const TimerComponent = ({ fullExerciseTime, setTimeOfTimer }) => {
 
           if (timeDifference === 0) {
             // onTimerBtnToogle(currentTime);
+            // setReallyBurnedCalories(burnedCalories);
             return 'Exercise done!';
           }
 

@@ -21,8 +21,7 @@ import { TimerComponent } from './Timer';
 export const AddExerciseForm = () => {
   const [timeOfTimer, setTimeOfTimer] = useState(0);
   const [reallyBurnedCalories, setReallyBurnedCalories] = useState(0);
-
-  const data = dbExercises[1];
+  // const data = dbExercises[1];
   const {
     _id,
     name,
@@ -42,17 +41,6 @@ export const AddExerciseForm = () => {
 
   // записую коли на паузу або завершився час
 
-  useEffect(() => {
-    const reallyCalories =
-      (timeOfTimer / (fullExerciseTime * 60)) * burnedCalories;
-
-    setReallyBurnedCalories(reallyCalories.toFixed(0));
-
-    // if (timeOfTimer >= fullExerciseTime * 60) {
-    //   setReallyBurnedCalories(burnedCalories);
-    // }
-  }, [burnedCalories, fullExerciseTime, timeOfTimer]);
-
   return (
     <WrapperDiv>
       <WrapperPart1>
@@ -62,7 +50,9 @@ export const AddExerciseForm = () => {
         <TimerComponent
           setTimeOfTimer={setTimeOfTimer}
           fullExerciseTime={fullExerciseTime}
-          // timeOfTimer={timeOfTimer}
+          timeOfTimer={timeOfTimer}
+          burnedCalories={burnedCalories}
+          setReallyBurnedCalories={setReallyBurnedCalories}
         />
         <TextStyled>
           Burned calories:<SpanStyled> {reallyBurnedCalories}</SpanStyled>
