@@ -11,80 +11,38 @@ import {
   WrapperPart2,
   TimeTextStyled,
   // TimerBlock,
-  PlayTimerBtn,
-  PauseTimerBtn,
-  SvgStyled,
   ItemTextStyled,
 } from './AddExerciseForm.styled';
-import sprite from '../../assets/sprite.svg';
-import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 
 import dbExercises from '../../../DB/exercises.json';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { TimerComponent } from './Timer';
 
-const data = dbExercises[1];
-const { name, target, bodyPart, equipment, gifUrl, _id } = dbExercises[1];
-// console.log('data', data);
-
-export const AddExerciseForm = ({ caloriesBurned }) => {
-  const [isPlaying, setIsPlaying] = useState(false);
+export const AddExerciseForm = () => {
   const [timeOfTimer, setTimeOfTimer] = useState(0);
+  const [reallyBurnedCalories, setReallyBurnedCalories] = useState(0);
 
-  const TimerComponent = () => (
-    <CountdownCircleTimer
-      isPlaying={isPlaying}
-      duration={60}
-      size={124}
-      colors="#E6533C"
-      rotation="clockwise"
-      strokeWidth={4}
-      trailStrokeWidth={5}
-      // strokeLinecap
-      strokeLinecap="round"
-      // isGrowing
-      // trailColor
-      // children
-      // onUpdate
-      onComplete={() => ({
-        shouldRepeat: false,
-        // delay: 1,
-      })}
+  const data = dbExercises[1];
+  const {
+    _id,
+    name,
+    target,
+    bodyPart,
+    equipment,
+    gifUrl,
+    burnedCalories,
+    time,
+  } = dbExercises[1];
+  // console.log('data', data);
+  // console.log('time', data.time);
+  // console.log('timeOfTimer', timeOfTimer);
 
-      // onComplete={() => {
-      //   // do your stuff here
-      //   return { shouldRepeat: true, delay: 1.5 }; // repeat animation in 1.5 seconds
-      // }}
-    >
-      {({ remainingTime }) => {
-        const timeOfTimer = 60 - remainingTime;
-        // setTimeOfTimer(timeOfTimer);
-        return timeOfTimer;
-      }}
-      {/* {({ elapsedTime }) => elapsedTime} */}
-    </CountdownCircleTimer>
-  );
+  // записую коли на паузу або завершився час
 
-  const onTimerBtnToogle = () => {
-    setIsPlaying(!isPlaying);
-    if (!isPlaying) {
-    }
-  };
-
-  const PlayBtn = (
-    <PlayTimerBtn type="button" onClick={onTimerBtnToogle}>
-      <SvgStyled>
-        <use href={`${sprite}#icon-play`}></use>
-      </SvgStyled>
-    </PlayTimerBtn>
-  );
-
-  const PauseBtn = (
-    <PauseTimerBtn type="button" onClick={onTimerBtnToogle}>
-      <SvgStyled>
-        <use href={`${sprite}#icon-pause-square`}></use>
-      </SvgStyled>
-    </PauseTimerBtn>
-  );
+  useEffect(() => {
+    const reallyCalories = (timeOfTimer / (time * 60)) * burnedCalories;
+    setReallyBurnedCalories(reallyCalories.toFixed(0));
+  }, [burnedCalories, time, timeOfTimer]);
 
   return (
     <WrapperDiv>
@@ -92,12 +50,14 @@ export const AddExerciseForm = ({ caloriesBurned }) => {
         <ImgStyled src={gifUrl} alt="Exercise gif-photo" />
         <TimeTextStyled>Time</TimeTextStyled>
         {/* <TimerBlock /> */}
-        <TimerComponent />
-        {isPlaying ? PauseBtn : PlayBtn}
+        <TimerComponent
+          setTimeOfTimer={setTimeOfTimer}
+          fullExerciseTime={time}
+          timeOfTimer={timeOfTimer}
+        />
         <TextStyled>
-          Burned calories:<SpanStyled> 150 {caloriesBurned}</SpanStyled>
+          Burned calories:<SpanStyled> {reallyBurnedCalories}</SpanStyled>
         </TextStyled>
-        {/* поля: Name, Target, Body Part, Equipment */}
       </WrapperPart1>
       <WrapperPart2>
         <ListStyled>
