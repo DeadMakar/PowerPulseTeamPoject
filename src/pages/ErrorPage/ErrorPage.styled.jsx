@@ -153,3 +153,8 @@ export const ErrorNavlinkGoHome = styled(NavLink)`
   @media screen and (min-width: 1440px) {
   }
 `;
+export const SvgGym = styled(styled.svg)`
+  width: 14px;
+  height: 14px;
+  fill: ${globalColor.colorWhite};
+`;

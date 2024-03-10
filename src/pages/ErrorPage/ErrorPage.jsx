@@ -1,3 +1,4 @@
+import { Logo } from '../../components/Logo';
 import {
   BgImage,
   BgText,
@@ -8,15 +9,12 @@ import {
   TitleError,
   Content,
 } from './ErrorPage.styled';
-/* import { Logo } from '../../components/Logo/Logo'; */
-/* import { useAuth } from '../../hooks/useAuth';
- */
 const ErrorPage = () => {
   return (
     <ErrorContainer>
       <BgText>
         <Wrapper>
-          {/*  <Logo /> */}
+          {<Logo />}
           <Content>
             <TitleError>404</TitleError>
             <DescriptionError>
