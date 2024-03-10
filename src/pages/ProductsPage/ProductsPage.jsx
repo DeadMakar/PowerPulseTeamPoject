@@ -34,7 +34,7 @@ const ProductsPage = () => {
         const formData = {
           title: '',
           category: null,
-          filter: 'all',
+          groupBloodNotAllowed: 'all',
         };
         await dispatch(fetchProducts(formData));
       } catch (error) {
@@ -56,9 +56,7 @@ const ProductsPage = () => {
       <Container>
         <TitleAndFilterWrapper>
           <TitlePage title={'Products Page'} />
-          <ProductsFilters
-            categories={categoriesArray.map((item) => item.title)}
-          />
+          <ProductsFilters categories={categoriesArray} />
         </TitleAndFilterWrapper>
 
         {isLoadingProducts ? (
