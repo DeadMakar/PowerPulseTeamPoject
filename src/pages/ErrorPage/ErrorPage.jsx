@@ -9,12 +9,15 @@ import {
   TitleError,
   Content,
 } from './ErrorPage.styled';
+
 const ErrorPage = () => {
   return (
     <ErrorContainer>
       <BgText>
         <Wrapper>
-          {<Logo />}
+
+          <Logo fill="#EFEDE8" />
+
           <Content>
             <TitleError>404</TitleError>
             <DescriptionError>

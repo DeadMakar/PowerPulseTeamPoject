@@ -6,7 +6,7 @@ export const fetchAllProductsCategories = createAsyncThunk(
   '/user/products/categories/fetchAllProductsCategory',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get('/products/categories');
+      const response = await axios.get('products/categories');
       return response.data;
     } catch (error) {
       toast.error('Sorry, something went wrong, please try again', {
@@ -38,10 +38,11 @@ export const fetchProducts = createAsyncThunk(
     }
 
     try {
-      const response = await axios.get(`/products/filter`, {
+      const response = await axios.get(`products/filters`, {
         params,
       });
-      return response.data.dataUser;
+
+      return response.data;
     } catch (error) {
       console.log(error);
       toast.error('Sorry, something went wrong, please try again', {

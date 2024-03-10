@@ -1,72 +1,90 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { selectProductsIsLoading } from '../../redux/products/selectors';
 import {
-  selectProducts,
-  //   selectProductsTotal,
-  selectProductsIsLoading,
-  selectQueryFilter,
-  selectCategoryFilter,
-  selectRecommendedFilter,
-  selectUserBlood,
-} from '../../redux/selectors';
-
-import { getProducts } from '../../redux/products/productsOperations';
-
+  ProductsListStyled,
+  Nothing,
+  Paragraph1,
+  Paragraph2,
+} from './ProductsList.styled';
+import { selectUser } from '../../redux/auth/selectors';
+import { Loader } from '../Loader';
 import { ProductsItem } from '../ProductsItem';
-import NoProductSearchResult from '../NoProductSearchResults';
+import { BasicModalWindow } from '../BasicModalWindow';
+import { AddProductForm } from '../AddProductForm';
+import { AddProductSuccess } from '../AddProductSuccess';
 
-import { ProductsListWrapper } from './ProductsList.styled';
+const ProductsList = ({ products }) => {
+  const isLoading = useSelector(selectProductsIsLoading);
 
-const capitalizeString = (string) => {
-  return `${string[0].toUpperCase()}${string.slice(1)}`;
-};
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [modalIsOpen, setIsOpen] = useState(false);
 
-const ProductsList = () => {
-  const dispatch = useDispatch();
+  const [modalData, setModalData] = useState(null);
 
-  const query = useSelector(selectQueryFilter);
-  const category = useSelector(selectCategoryFilter);
-  const recommended = useSelector(selectRecommendedFilter);
-  const blood = useSelector(selectUserBlood);
+  const handleOpenModal = (product) => {
+    setIsOpen(true);
+    setSelectedProduct(product);
+    setModalData(product);
+  };
 
-  const products = useSelector(selectProducts);
-  //   const total = useSelector(selectProductsTotal);
-  const isLoadingProducts = useSelector(selectProductsIsLoading);
+  const handleCloseModal = () => {
+    if (modalIsOpen) setIsOpen(false);
+    setSelectedProduct(null);
+    setModalData(null);
+  };
 
-  useEffect(() => {
-    dispatch(
-      getProducts({
-        recommended: recommended.value,
-        category: category.value,
-        query,
-      })
-    );
-  }, [recommended, category, query, dispatch]);
+  const currentUser = useSelector(selectUser);
+  const userBloodType = currentUser.blood;
 
   return (
     <>
-      {products.length > 0 && (
-        <ProductsListWrapper>
+      {isLoading && <Loader />}
+      {!isLoading && products.length > 0 && (
+        <ProductsListStyled>
           {products.map((product) => (
             <ProductsItem
               key={product._id}
-              id={product._id}
-              title={product.title}
-              calories={product.calories}
-              category={capitalizeString(product.category.name)}
-              weight={product.weight}
-              recommended={
-                blood
-                  ? product.groupBloodNotAllowed[blood]
-                    ? false
-                    : true
-                  : false
-              }
+              product={product}
+              type={product.groupBloodNotAllowed[userBloodType]}
+              handleOpenModal={handleOpenModal}
             />
           ))}
-        </ProductsListWrapper>
+        </ProductsListStyled>
       )}
-      {products.length === 0 && !isLoadingProducts && <NoProductSearchResult />}
+      {!isLoading && products.length <= 0 && (
+        <Nothing>
+          <Paragraph1>
+            <span>Sorry, no results were found</span> for the product filters
+            you selected. You may want to consider other search options to find
+            the product you want. Our range is wide and you have the opportunity
+            to find more options that suit your needs.
+          </Paragraph1>
+          <Paragraph2>Try changing the search parameters.</Paragraph2>
+        </Nothing>
+      )}
+      {selectedProduct && (
+        <BasicModalWindow
+          isOpen={modalIsOpen}
+          onRequestClose={handleCloseModal}
+        >
+          {typeof modalData === 'object' ? (
+            <AddProductForm
+              closeModallAddProductForm={handleCloseModal}
+              calories={selectedProduct.calories}
+              productTitle={selectedProduct.title}
+              productId={selectedProduct._id}
+              product={modalData}
+              onClick={handleOpenModal}
+            />
+          ) : (
+            <AddProductSuccess
+              calories={modalData}
+              closeModalAddProductSuccess={handleCloseModal}
+            />
+          )}
+        </BasicModalWindow>
+      )}
     </>
   );
 };
