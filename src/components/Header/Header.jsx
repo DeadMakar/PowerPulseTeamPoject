@@ -2,6 +2,7 @@ import MediaQuery from 'react-responsive';
 import { Link } from 'react-router-dom';
 
 import sprite from '../../assets/sprite.svg';
+
 import { Logo } from '../Logo';
 import {
   BurgerBtn,
@@ -27,13 +28,15 @@ const Header = () => {
   };
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
+  const userMetrics = useSelector((state) => state.auth.user.userMetrics);
+
   return (
     <HeaderContainer>
       <Navigation>
         <Link to="/">
           <Logo />
         </Link>
-        {isLoggedIn && (
+        {isLoggedIn && userMetrics && (
           <SecondNavWraper>
             <MediaQuery minWidth={1440}>
               <NavWraper>
