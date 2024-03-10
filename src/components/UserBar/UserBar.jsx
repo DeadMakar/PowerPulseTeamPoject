@@ -1,18 +1,28 @@
+import { useSelector } from 'react-redux';
 import sprite from '../../assets/sprite.svg';
-import { IconSeting, IconUser, UserWraper } from './UserBar.styled';
+import { IconSeting, IconUser, Img, UserWraper } from './UserBar.styled';
 
-export const UserBar = () => {
+const UserBar = () => {
+  const { user } = useSelector((state) => state.auth);
+
   return (
     <>
       <IconSeting>
         <use href={`${sprite}#icon-settings-01`} />
       </IconSeting>
       <UserWraper>
-        <IconUser>
-          <use href={`${sprite}#icon-gridicons_user`} />
-        </IconUser>
+        {user?.avatarURL ? (
+          <>
+            <Img src={user.avatarURL} alt="User Avatar" />
+          </>
+        ) : (
+          <IconUser>
+            <use href={`${sprite}#icon-gridicons_user`} />
+          </IconUser>
+        )}
       </UserWraper>
     </>
   );
 };
+
 export default UserBar;
