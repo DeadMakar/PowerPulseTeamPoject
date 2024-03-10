@@ -52,7 +52,7 @@ const ProductsFilters = ({ categories }) => {
     const formData = {
       title: searchByProductTitle || '',
       category: selectedCategory || null,
-      filter: selectedType || 'all',
+      groupBloodNotAllowed: selectedType || 'all',
     };
     const isTitleValid = searchByProductTitle.length <= 40;
 
@@ -88,7 +88,7 @@ const ProductsFilters = ({ categories }) => {
     const formData = {
       title: '',
       category: selectedCategory || null,
-      filter: selectedType || 'all',
+      groupBloodNotAllowed: selectedType || 'all',
     };
     dispatch(fetchProducts(formData));
   };
@@ -100,7 +100,7 @@ const ProductsFilters = ({ categories }) => {
     const formData = {
       title: searchByProductTitle || '',
       category: value,
-      filter: selectedType || 'all',
+      groupBloodNotAllowed: selectedType || 'all',
     };
     dispatch(fetchProducts(formData));
   };
@@ -112,7 +112,7 @@ const ProductsFilters = ({ categories }) => {
     const formData = {
       title: searchByProductTitle || '',
       category: selectedCategory || null,
-      filter: value,
+      groupBloodNotAllowed: value,
     };
     dispatch(fetchProducts(formData));
   };
