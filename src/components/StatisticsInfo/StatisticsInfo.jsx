@@ -18,14 +18,13 @@ import { selectStatistics } from '../../redux/statistics/statisticsSelectors';
 import { useEffect } from 'react';
 import { getStatistics } from '../../redux/statistics/statisticsOperations';
 
-export const StatisticsInfo = ({ isWelcomePage }) => {
+const StatisticsInfo = ({ isWelcomePage }) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getStatistics());
   }, [dispatch]);
 
   const statisticsData = useSelector(selectStatistics);
-  console.log(statisticsData);
   const totalUsers = statisticsData?.totalUsers || 'Loading...';
 
   const totalBurnedCalories =
@@ -43,7 +42,7 @@ export const StatisticsInfo = ({ isWelcomePage }) => {
         </WrapperSvg>
         <div>
           <VideoNumber>{totalUsers}</VideoNumber>
-          <VideoText>Users</VideoText>
+          <VideoText>Joined users</VideoText>
         </div>
       </VideoWrapper>
       <TextWrapper>
@@ -60,3 +59,5 @@ export const StatisticsInfo = ({ isWelcomePage }) => {
     </DivContainer>
   );
 };
+
+export default StatisticsInfo;

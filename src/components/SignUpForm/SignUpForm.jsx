@@ -21,14 +21,15 @@ import {
 } from './SignUpForm.styled';
 import { useState } from 'react';
 import { StyleSheetManager } from 'styled-components';
-import { StatisticsInfo } from '../StatisticsInfo/StatisticsInfo';
+import { StatisticsInfo } from '../StatisticsInfo';
 import sprite from '../../assets/sprite.svg';
-/* import { Logo } from '../../Logo/Logo'; */
+import { Logo } from '../Logo';
 import { Container } from '../../styles/GlobalStyles';
 import { register } from '../../redux/auth/operations';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsSuccessful } from '../../redux/auth/selectors';
 
-export const SignUpForm = () => {
+const SignUpForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isValidationCompleted, setIsValidationCompleted] = useState(false);
   const shouldForwardProp = (prop) =>
@@ -37,6 +38,8 @@ export const SignUpForm = () => {
     setShowPassword(!showPassword);
     setIsValidationCompleted(false);
   };
+
+  const isRegisterSuccessful = useSelector(selectIsSuccessful);
 
   const dispatch = useDispatch();
 
@@ -57,7 +60,7 @@ export const SignUpForm = () => {
         .required('Password is required'),
     }),
 
-    onSubmit: (values) => {
+    onSubmit: (values, { resetForm }) => {
       dispatch(
         register({
           name: values.name,
@@ -65,6 +68,9 @@ export const SignUpForm = () => {
           password: values.password,
         })
       );
+      if (isRegisterSuccessful) {
+        resetForm();
+      }
     },
   });
 
@@ -73,7 +79,7 @@ export const SignUpForm = () => {
       <Container>
         <FormContainer>
           <FormWrapper>
-            {/* <Logo /> */}
+            <Logo />
             <FormTitle>Sign up</FormTitle>
             <FormDescription>
               Thank you for your interest in our platform. To complete the
