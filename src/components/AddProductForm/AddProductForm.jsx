@@ -17,7 +17,7 @@ import { selectDiaryError } from '../../redux/diary/selectors';
 import { useState } from 'react';
 import { default as changeDate } from '../../helpers/changeDate';
 import { toast } from 'react-toastify';
-import { addDiaryProducts } from '../../redux/Diary/operations';
+import { addDiaryProducts } from '../../redux/diary/operations';
 
 // const productValidation = Yup.object().shape({
 //   // name: Yup.string().required('Required'),
