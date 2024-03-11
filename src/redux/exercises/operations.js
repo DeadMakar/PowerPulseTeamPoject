@@ -2,13 +2,13 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
+axios.defaults.baseURL = 'https://powerpulseback.onrender.com/';
+
 export const fetchExercisesCategories = createAsyncThunk(
   '/exercises/filters',
-  async (getfilter, thunkAPI) => {
+  async (_, thunkAPI) => {
     try {
-      const { filter } = getfilter;
-
-      const response = await axios.get(`/exercises/filters?filter=${filter}`);
+      const response = await axios.get('exercises');
       return response.data;
     } catch (error) {
       console.log(error);
@@ -20,10 +20,9 @@ export const fetchExercisesCategories = createAsyncThunk(
 
 export const fetchExercisesList = createAsyncThunk(
   '/exercises/exercises/fetchExercisesList',
-  async (filters, thunkAPI) => {
+  async (data, thunkAPI) => {
     try {
-      const response = await axios.get(`/exercises/filters`);
-
+      const response = await axios.get('exercises/filters', { data });
       return response.data;
     } catch (error) {
       console.log(error);
@@ -37,8 +36,8 @@ export const addExercises = createAsyncThunk(
   'exercises/addExercises',
   async (exercise, thunkAPI) => {
     try {
-      const responce = await axios.post('/exercises', exercise);
-      return responce.data;
+      const response = await axios.post('exercises', exercise);
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

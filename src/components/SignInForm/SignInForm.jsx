@@ -27,6 +27,7 @@ import { logIn } from '../../redux/auth/operations';
 import { Logo } from '../Logo';
 import { Container } from '../../styles/GlobalStyles';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const SignInForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -72,7 +73,9 @@ const SignInForm = () => {
       <Container>
         <FormContainer>
           <FormWrapper>
-            <Logo />
+            <Link to="/">
+              <Logo />
+            </Link>
             <FormTitle>Sign in</FormTitle>
             <FormDescription>
               Welcome! Please enter your credentials to login to the platform:
