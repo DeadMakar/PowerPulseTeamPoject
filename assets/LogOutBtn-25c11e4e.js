@@ -1,4 +1,4 @@
-import{u as s,a as e,L as a,d as i,j as o,l as r,s as l}from"./index-d9f6c06a.js";const c=s.span`
+import{u as s,a as e,L as a,d as i,j as o,l as r,s as l}from"./index-cacb06d7.js";const c=s.span`
   font-weight: 400;
   font-size: 16px;
   line-height: 150%;
@@ -8,9 +8,9 @@ import{u as s,a as e,L as a,d as i,j as o,l as r,s as l}from"./index-d9f6c06a.js
   stroke: ${t=>t.$colorSvg};
   width: 20px;
   height: 20px;
-  /* @media (min-width: 1440px) {
+  @media (min-width: 1440px) {
     stroke: ${e.colorOrange};
-  } */
+  }
 `,p=s(a)`
   display: flex;
   align-items: center;
