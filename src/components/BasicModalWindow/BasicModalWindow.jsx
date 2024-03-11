@@ -32,10 +32,10 @@ const customStyles = {
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
     backgroundColor: '#10100F',
+    border: '1px solid rgba(239, 237, 232, 0.2)',
+    borderRadius: '12px',
   },
 };
-
-Modal.setAppElement('#root');
 
 const BasicModalWindow = ({ children }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -57,7 +57,6 @@ const BasicModalWindow = ({ children }) => {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         style={customStyles}
-        contentLabel="Example Modal"
       >
         <CloseModalBtn onClick={closeModal}>
           <use href={`${sprite}#icon-x`}></use>
@@ -69,5 +68,7 @@ const BasicModalWindow = ({ children }) => {
     </ModalBackdrop>
   );
 };
+
+Modal.setAppElement('#root');
 
 export default BasicModalWindow;
