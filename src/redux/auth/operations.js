@@ -45,6 +45,10 @@ export const logIn = createAsyncThunk(
       setAuthToken(response.data.token);
       return response.data;
     } catch (error) {
+      toast.error(error.response.data.message, {
+        theme: 'dark',
+      });
+
       return thunkAPI.rejectWithValue(error.message);
     }
   }

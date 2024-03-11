@@ -28,6 +28,7 @@ import { Container } from '../../styles/GlobalStyles';
 import { register } from '../../redux/auth/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsSuccessful } from '../../redux/auth/selectors';
+import { Link } from 'react-router-dom';
 
 const SignUpForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -79,7 +80,9 @@ const SignUpForm = () => {
       <Container>
         <FormContainer>
           <FormWrapper>
-            <Logo />
+            <Link to="/">
+              <Logo />
+            </Link>
             <FormTitle>Sign up</FormTitle>
             <FormDescription>
               Thank you for your interest in our platform. To complete the
