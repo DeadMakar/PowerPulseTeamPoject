@@ -13,7 +13,7 @@ import {
   FieldGramsWrapper,
 } from './AddProductForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectDiaryError } from '../../redux/Diary/selectors';
+import { selectDiaryError } from '../../redux/diary/selectors';
 import { useState } from 'react';
 import { default as changeDate } from '../../helpers/changeDate';
 import { toast } from 'react-toastify';
