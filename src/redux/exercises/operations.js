@@ -3,12 +3,12 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 export const fetchExercisesCategories = createAsyncThunk(
-  '/exercises/filter',
+  '/exercises/filters',
   async (getfilter, thunkAPI) => {
     try {
       const { filter } = getfilter;
 
-      const response = await axios.get(`/exercises/filter?filter=${filter}`);
+      const response = await axios.get(`/exercises/filters?filter=${filter}`);
       return response.data;
     } catch (error) {
       console.log(error);
@@ -21,12 +21,8 @@ export const fetchExercisesCategories = createAsyncThunk(
 export const fetchExercisesList = createAsyncThunk(
   '/exercises/exercises/fetchExercisesList',
   async (filters, thunkAPI) => {
-    const { filterList } = filters;
-
     try {
-      const response = await axios.get(
-        `/exercises/filter/:bodyPart?bodyPart=${filterList.toLowerCase()}`
-      );
+      const response = await axios.get(`/exercises/filters`);
 
       return response.data;
     } catch (error) {
