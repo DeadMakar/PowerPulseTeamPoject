@@ -37,13 +37,9 @@ export const fetchProducts = createAsyncThunk(
       if (groupBloodNotAllowed) {
         params.groupBloodNotAllowed = groupBloodNotAllowed;
       }
-      //
-      console.log(params);
 
       const response = await axios.get('products/filters', { params });
 
-      //
-      console.log(response);
       return response.data;
     } catch (error) {
       toast.error('Sorry, something went wrong, please try again', {
