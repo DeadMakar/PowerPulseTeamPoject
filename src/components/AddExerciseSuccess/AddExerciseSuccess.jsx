@@ -25,7 +25,7 @@ const AddExerciseSuccess = ({ exerciseTime, caloriesBurned }) => {
           Burned calories: <SpanStyled> 150 {caloriesBurned} </SpanStyled>
         </TextStyled>
       </TextWrapper>
-      <LinkBtnStyled href="">Next product</LinkBtnStyled>{' '}
+      <LinkBtnStyled href="">Next exercise</LinkBtnStyled>{' '}
       <LinkStyled href="">
         to the Diary
         <SvgArrow>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import sprite from '../../assets/sprite.svg';
 import {
@@ -7,11 +7,19 @@ import {
   SvgStyled,
 } from './AddExerciseForm.styled';
 
-export const TimerComponent = ({ fullExerciseTime, setTimeOfTimer }) => {
+export const TimerComponent = ({
+  fullExerciseTime,
+  setTimeOfTimer,
+  timeOfTimer,
+  burnedCalories,
+  setReallyBurnedCalories,
+}) => {
+  // в пропсах есть timeOfTimer, а тут нет
   const [isPlaying, setIsPlaying] = useState(false);
 
   const onTimerBtnToogle = (currentTime) => {
     setIsPlaying(!isPlaying);
+
     if (isPlaying) {
       setTimeOfTimer(currentTime);
     }
@@ -24,6 +32,26 @@ export const TimerComponent = ({ fullExerciseTime, setTimeOfTimer }) => {
     const seconds = (time % 60).toString().padStart(2, '0');
     return `${minutes}:${seconds}`;
   };
+
+  useEffect(() => {
+    const timeDifference = timeOfTimer - fullExerciseTime * 60;
+
+    const reallyCalories =
+      (timeOfTimer / (fullExerciseTime * 60)) * burnedCalories;
+
+    setReallyBurnedCalories(reallyCalories.toFixed(0));
+
+    if (timeDifference === 0) {
+      setTimeOfTimer(timeOfTimer);
+      setReallyBurnedCalories(burnedCalories);
+    }
+  }, [
+    burnedCalories,
+    fullExerciseTime,
+    setReallyBurnedCalories,
+    setTimeOfTimer,
+    timeOfTimer,
+  ]);
 
   let currentTime = 0;
 
@@ -50,6 +78,21 @@ export const TimerComponent = ({ fullExerciseTime, setTimeOfTimer }) => {
           let timeOfTimer = fullExerciseTime * 60 - remainingTime;
 
           currentTime = timeOfTimer;
+
+          const timeDifference = currentTime - fullExerciseTime * 60;
+
+          //   if (timeDifference < 0) {
+          //     return timeFormat(timeOfTimer);
+          //   }
+          //   realBurnedCalories = burnedCalories;
+          //   onTimerBtnToogle(currentTime);
+          //   return 'Exercise done!';
+
+          if (timeDifference === 0) {
+            // onTimerBtnToogle(fullExerciseTime * 60);
+            // setReallyBurnedCalories(burnedCalories);
+            return 'Exercise done!';
+          }
 
           return timeFormat(timeOfTimer);
         }}

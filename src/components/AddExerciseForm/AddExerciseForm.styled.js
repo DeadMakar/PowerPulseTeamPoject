@@ -6,7 +6,7 @@ export const WrapperDiv = styled.div`
   padding-top: 48px;
 
   @media screen and (min-width: 768px) {
-    min-width: 694px;
+    width: 694px;
     display: flex;
   }
 `;
@@ -107,8 +107,10 @@ export const ListStyled = styled.ul`
   justify-content: center;
   gap: 8px;
   margin-bottom: 24px;
+  max-width: 302px;
   @media screen and (min-width: 768px) {
     margin-bottom: 254px;
+    max-width: 344px;
   }
 `;
 
@@ -123,11 +125,6 @@ export const ItemStyled = styled.li`
 
   @media screen and (min-width: 768px) {
     width: 168px;
-  }
-
-  @media screen and (min-width: 1740px) {
-    width: 250px;
-    gap: 12px;
   }
 `;
 
