@@ -9,7 +9,7 @@ import {
   LinkWrapper,
 } from './WelcomePage.styled';
 import sprite from '../../assets/sprite.svg';
-import { StatisticsInfo } from '../../components/StatisticsInfo/StatisticsInfo';
+import { StatisticsInfo } from '../../components/StatisticsInfo';
 import { Logo } from '../../components/Logo/';
 import { Container } from '../../styles/GlobalStyles';
 import { StyleSheetManager } from 'styled-components';

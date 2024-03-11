@@ -20,15 +20,15 @@ import {
   WrapperText,
 } from './SignInForm.styled';
 import { useState } from 'react';
-import { StatisticsInfo } from '../StatisticsInfo/StatisticsInfo';
+import { StatisticsInfo } from '../StatisticsInfo';
 import sprite from '../../assets/sprite.svg';
 import { StyleSheetManager } from 'styled-components';
 import { logIn } from '../../redux/auth/operations';
-/* import { Logo } from '../../Logo/Logo'; */
+import { Logo } from '../Logo';
 import { Container } from '../../styles/GlobalStyles';
 import { useDispatch } from 'react-redux';
 
-export const SignInForm = () => {
+const SignInForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isValidationCompleted, setIsValidationCompleted] = useState(false);
 
@@ -72,7 +72,7 @@ export const SignInForm = () => {
       <Container>
         <FormContainer>
           <FormWrapper>
-            {/* <Logo /> */}
+            <Logo />
             <FormTitle>Sign in</FormTitle>
             <FormDescription>
               Welcome! Please enter your credentials to login to the platform:
@@ -187,3 +187,5 @@ export const SignInForm = () => {
     </StyleSheetManager>
   );
 };
+
+export default SignInForm;
