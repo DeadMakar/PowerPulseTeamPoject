@@ -1,4 +1,4 @@
-import{u as t,L as m,a0 as l,h as x,j as e,a,d as u,b as d,a1 as f,a2 as w,a3 as j,r as c,C as b,F as p,s as v,O as k,B as E,a4 as y}from"./index-7da81024.js";import{T as C}from"./TitlePage-707cf7fe.js";const P=t.ul`
+import{u as t,L as m,a7 as l,h as x,j as e,a as o,d as u,b as d,a8 as f,a9 as w,aa as b,r as c,C as j,P as p,s as v,ab as k,O as E,D as y,ac as C}from"./index-2e484b8f.js";import{T as P}from"./TitlePage-f36ae029.js";const L=t.ul`
   display: flex;
   margin-top: 28px;
   gap: 28px;
@@ -36,7 +36,9 @@ import{u as t,L as m,a0 as l,h as x,j as e,a,d as u,b as d,a1 as f,a2 as w,a3 as
   @media (max-width: 374px) {
     font-size: 18px;
   }
-`,L=()=>{const i=["Body parts","Muscles","Equipment"],{filter:o}=l(),r=x(),s=o;return e.jsx(e.Fragment,{children:e.jsx(P,{children:i.map(n=>e.jsx("li",{children:e.jsx($,{to:`/exercises/${n}`,state:{from:r},isactive:n===s?"true":"false",children:n})},n))})})},z="/PowerPulseTeamPoject/assets/trainingGym-1-78b576d3.jpg",B="/PowerPulseTeamPoject/assets/trainingGym-1@2x-7f8d3593.jpg",F=t.div`
+`,z=()=>{const i=["Body parts","Muscles","Equipment"],{filter:a}=l(),r=x(),s=a;return e.jsx(e.Fragment,{children:e.jsx(L,{children:i.map(n=>e.jsx("li",{children:e.jsx($,{to:`/exercises/${n}`,state:{from:r},isactive:n===s?"true":"false",children:n})},n))})})},B="/PowerPulseTeamPoject/assets/trainingGym-1-78b576d3.jpg",F="/PowerPulseTeamPoject/assets/trainingGym-1@2x-7f8d3593.jpg",D=t.div`
+  /* border: 2px solid red;
+  position: relative; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -64,18 +66,19 @@ import{u as t,L as m,a0 as l,h as x,j as e,a,d as u,b as d,a1 as f,a2 as w,a3 as
   @media (min-width: 768px) {
     gap: 32px;
   }
-`;const D=t.div`
+`;const O=t.div`
   position: relative;
   width: 100%;
   height: 100%;
   border: 1px solid transparent;
-`,O=t.a`
+  /* border: 2px solid red; */
+`,T=t.a`
   position: absolute;
   display: flex;
   align-items: center;
   top: 6px;
   gap: 8px;
-  color: ${a.colorInput};
+  color: ${o.colorInput};
   font-size: 10px;
   font-weight: 400;
   line-height: 1.167;
@@ -89,7 +92,7 @@ import{u as t,L as m,a0 as l,h as x,j as e,a,d as u,b as d,a1 as f,a2 as w,a3 as
   }
 
   > svg {
-    stroke: ${a.colorInput};
+    stroke: ${o.colorInput};
     width: 10px;
     height: 10px;
     transition: stroke 0.3s ease;
@@ -100,16 +103,16 @@ import{u as t,L as m,a0 as l,h as x,j as e,a,d as u,b as d,a1 as f,a2 as w,a3 as
   }
 
   &:hover {
-    color: ${a.colorOrange1};
+    color: ${o.colorOrange1};
     cursor: pointer;
 
     > svg {
-      stroke: ${a.colorOrange1};
+      stroke: ${o.colorOrange1};
       width: 16px;
       height: 16px;
     }
   }
-`,T=t.div`
+`,G=t.div`
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -120,7 +123,7 @@ import{u as t,L as m,a0 as l,h as x,j as e,a,d as u,b as d,a1 as f,a2 as w,a3 as
   }
   @media (min-width: 1440px) {
     background-image: linear-gradient(89deg, #040404 0%, rgba(4, 4, 4, 0) 100%),
-      url(${z});
+      url(${B});
     background-repeat: no-repeat;
     background-position: right bottom;
     background-size: contain;
@@ -131,6 +134,6 @@ import{u as t,L as m,a0 as l,h as x,j as e,a,d as u,b as d,a1 as f,a2 as w,a3 as
     screen and (min-resolution: 192dpi) and (min-width: 1440px),
     screen and (min-resolution: 2dppx) and (min-width: 1440px) {
     background-image: linear-gradient(89deg, #040404 0%, rgba(4, 4, 4, 0) 100%),
-      url(${B});
+      url(${F});
   }
-`,M=()=>{const i=u(),o=d(f),r=d(w),{filter:s,filterList:n}=l(),g=j(),h=x();return c.useEffect(()=>{(async()=>{s===void 0?E.info("You have not entered any data",{theme:"dark"}):i(y({filter:s}))})()},[i,s]),e.jsx(T,{children:e.jsx(b,{children:e.jsx(D,{children:o?e.jsx(p,{}):e.jsxs("div",{children:[s!==void 0&&h.pathname.endsWith(s.replace(" ","%20"))?null:e.jsxs(O,{onClick:()=>g(-1),children:[e.jsx("svg",{style:{fill:"none"},children:e.jsx("use",{href:v+"#icon-arrow-left"})}),"Back"," "]}),e.jsxs(F,{children:[e.jsx(C,{title:n?n.split(" ")[0]:"Exercises"}),e.jsx(L,{})]}),o&&!r&&e.jsx(p,{}),e.jsx(e.Fragment,{children:e.jsx(c.Suspense,{children:e.jsx(k,{})})})]})})})})};export{M as default};
+`,W=()=>{const i=u(),a=d(f),r=d(w),{filter:s,filterList:n}=l(),g=b(),h=x();return c.useEffect(()=>{(async()=>{s===void 0?y.info("We are still awating for data",{theme:"dark"}):i(C({filter:s}))})()},[i,s]),e.jsx(G,{children:e.jsx(j,{children:e.jsx(O,{children:a?e.jsx(p,{}):e.jsxs("div",{children:[s!==void 0&&h.pathname.endsWith(s.replace(" ","%20"))?null:e.jsxs(T,{onClick:()=>g(-1),children:[e.jsx("svg",{style:{fill:"none"},children:e.jsx("use",{href:v+"#icon-arrow-left"})}),"Back"," "]}),e.jsxs(D,{children:[e.jsx(P,{title:n?k(n.split(" ")[0]):"Exercises"}),e.jsx(z,{})]}),a&&!r&&e.jsx(p,{}),e.jsx(e.Fragment,{children:e.jsx(c.Suspense,{children:e.jsx(E,{})})})]})})})})};export{W as default};

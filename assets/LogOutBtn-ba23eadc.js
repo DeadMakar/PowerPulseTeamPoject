@@ -1,4 +1,4 @@
-import{u as s,a as e,L as a,d as i,j as o,l as r,s as l}from"./index-7da81024.js";const c=s.span`
+import{u as s,a as e,L as a,d as i,j as o,l as r,s as l}from"./index-2e484b8f.js";const c=s.span`
   font-weight: 400;
   font-size: 16px;
   line-height: 150%;
