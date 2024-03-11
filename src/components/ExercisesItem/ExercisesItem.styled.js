@@ -142,9 +142,9 @@
 //=========================================================
 
 import styled from 'styled-components';
-import { globalColor } from '../../../styles/root';
+import { globalColor } from '../../styles/root';
 import { Field, Form } from 'formik';
-import thumbUp from '../../../assets/exercises/thumbUp.png';
+import thumbUp from '../../assets/images/exercises/thumbUp.png';
 
 export const Input = styled(Field)`
   border: 2px solid gray;

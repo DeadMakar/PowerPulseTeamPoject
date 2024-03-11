@@ -106,7 +106,7 @@
 
 import {
   Forma,
-  Label,
+  // Label,
   SuccesModal,
   ButtonSubmit,
   Input,
@@ -137,11 +137,11 @@ import {
   WrapperTitle,
   WrapperText,
 } from '../ProductsItem/ProductsItem.styled';
-import { addDiaryExercise } from '../../../redux/diary/diaryOperation';
+import { addDiaryExercise } from '../../redux/diary/operations'; //?
 
-import { globalColor } from '../../../styles/root';
+import { globalColor } from '../../styles/root';
 
-import sprite from '../../../assets/sprite.svg';
+import sprite from '../../assets/sprite.svg';
 
 import Modal from 'react-modal';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
@@ -203,7 +203,10 @@ export const ExercisesItem = ({
   const dispatch = useDispatch();
 
   const [select] = useState(180);
-  const [timer, setTimer] = useState(0);
+  const [
+    timer,
+    // setTimer
+  ] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [burnedCaloriesByTime, setBurnedCaloriesByTime] = useState(0);
@@ -464,3 +467,5 @@ export const ExercisesItem = ({
     </>
   );
 };
+
+export default ExercisesItem;

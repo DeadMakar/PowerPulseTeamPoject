@@ -3,11 +3,9 @@ import {
   SubCategoryName,
   CategoryTitle,
 } from './ExercisesSubcategoriesItem.styled';
-import capitalizeFirstLetter from '../../../helpers/capitalizeFirstLetter';
+import { capitalizeFirstLetter } from '../../helpers/capitalizeFirstLetter';
 
-export const ExercisesSubcategoriesItem = ({
-  category: { filter, name, imgURL },
-}) => {
+const ExercisesSubcategoriesItem = ({ category: { filter, name, imgURL } }) => {
   return (
     <Block
       style={{ backgroundImage: `url(${imgURL})`, backgroundSize: 'cover' }}
@@ -17,3 +15,5 @@ export const ExercisesSubcategoriesItem = ({
     </Block>
   );
 };
+
+export default ExercisesSubcategoriesItem;

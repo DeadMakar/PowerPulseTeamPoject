@@ -1,8 +1,6 @@
 import { Block } from './ExercisesCategoryItem.styled';
 
-export const ExercisesCategoryItem = ({
-  category: { filter, name, imgURL },
-}) => {
+const ExercisesCategoryItem = ({ category: { filter, name, imgURL } }) => {
   return (
     <div>
       <Block
@@ -14,3 +12,5 @@ export const ExercisesCategoryItem = ({
     </div>
   );
 };
+
+export default ExercisesCategoryItem;

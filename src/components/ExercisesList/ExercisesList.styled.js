@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { globalColor } from '../../../styles/root';
+import { globalColor } from '../../styles/root';
 
 export const Wrapper = styled.div`
   overflow: auto;

@@ -1,8 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { statusFilters } from '../../../redux/exercises/constants';
-import { getFilter, setFilter } from '../../../redux/exercises/filterSlice';
+import { statusFilters } from '../../redux/exercises/constants';
+import { getFilter, setFilter } from '../../redux/exercises/filterSlice';
 
-export const StatusFilter = () => {
+const StatusFilter = () => {
   const dispatch = useDispatch();
   const filter = useSelector(getFilter);
 
@@ -38,3 +38,5 @@ export const StatusFilter = () => {
     </div>
   );
 };
+
+export default StatusFilter;

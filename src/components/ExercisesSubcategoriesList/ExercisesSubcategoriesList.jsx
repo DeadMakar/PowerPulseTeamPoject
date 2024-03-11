@@ -3,18 +3,18 @@ import {
   getCategories,
   getIsLoading,
   getError,
-} from '../../../redux/exercises/categoriesSlice';
+} from '../../redux/exercises/categoriesSlice';
 import { SubCatItems } from './ExercisesSubcategoriesList.styled';
 import { Link } from 'react-router-dom';
-import { ExercisesSubcategoriesItem } from '../ExercisesSubcategoriesItem/ExercisesSubcategoriesItem';
-import { Loader } from '../../Loader/Loader';
+import { ExercisesSubcategoriesItem } from '../ExercisesSubcategoriesItem';
+import { Loader } from '../Loader';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/grid';
 import 'swiper/css/pagination';
 import { Grid, Pagination } from 'swiper/modules';
 
-export const ExercisesSubcategoriesList = () => {
+const ExercisesSubcategoriesList = () => {
   const categories = useSelector(getCategories);
   const isLoading = useSelector(getIsLoading);
   const error = useSelector(getError);
@@ -87,3 +87,5 @@ export const ExercisesSubcategoriesList = () => {
     </div>
   );
 };
+
+export default ExercisesSubcategoriesList;

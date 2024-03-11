@@ -4,19 +4,19 @@ import {
   getExercises,
   getIsLoading,
   getError,
-} from '../../../redux/exercises/exercisesSlice';
+} from '../../redux/exercises/exercisesSlice';
 import { useParams } from 'react-router-dom';
 import {
   useEffect,
   // useRef
 } from 'react';
-import { fetchExercisesList } from '../../../redux/exercises/operations';
-import { ExercisesItem } from '../ExercisesItem/ExercisesItem';
+import { fetchExercisesList } from '../../redux/exercises/operations';
+import { ExercisesItem } from '../ExercisesItem';
 import { ExercisesListWrapper, Wrapper } from './ExercisesList.styled';
-import { Loader } from '../../Loader/Loader';
-import { ProductsItemStyled } from '../ProductsItem/ProductsItem.styled';
+import { Loader } from '../Loader';
+import { ProductsItemStyled } from '../ProductsItem/ProductsItem.styled'; //?{}
 
-export const ExercisesList = () => {
+const ExercisesList = () => {
   const dispatch = useDispatch();
   const exercises = useSelector(getExercises);
   const isLoading = useSelector(getIsLoading);
@@ -59,3 +59,5 @@ export const ExercisesList = () => {
     </div>
   );
 };
+
+export default ExercisesList;
