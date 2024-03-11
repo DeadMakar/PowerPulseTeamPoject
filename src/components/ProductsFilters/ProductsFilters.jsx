@@ -27,8 +27,8 @@ const ProductsFilters = ({ categories }) => {
   const [error, setError] = useState('');
   const [isError, setIsError] = useState(false);
   const [searchByProductTitle, setSearchByProductTitle] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  const [selectedType, setSelectedType] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedType, setSelectedType] = useState('');
 
   const categoriesArrayFormatted = categories.map(
     (el) => el[0].toUpperCase() + el.slice(1).toLowerCase()
@@ -51,7 +51,7 @@ const ProductsFilters = ({ categories }) => {
 
     const formData = {
       title: searchByProductTitle || '',
-      category: selectedCategory || null,
+      category: selectedCategory || '',
       groupBloodNotAllowed: selectedType || 'all',
     };
     const isTitleValid = searchByProductTitle.length <= 40;
@@ -66,6 +66,7 @@ const ProductsFilters = ({ categories }) => {
       setIsError(false);
 
       try {
+        // console.log(formData);
         dispatch(fetchProducts(formData));
       } catch (error) {
         toast.error('Sorry, something went wrong, please try again', {
@@ -87,7 +88,7 @@ const ProductsFilters = ({ categories }) => {
 
     const formData = {
       title: '',
-      category: selectedCategory || null,
+      category: selectedCategory || '',
       groupBloodNotAllowed: selectedType || 'all',
     };
     dispatch(fetchProducts(formData));
@@ -99,7 +100,7 @@ const ProductsFilters = ({ categories }) => {
 
     const formData = {
       title: searchByProductTitle || '',
-      category: value,
+      category: value || '',
       groupBloodNotAllowed: selectedType || 'all',
     };
     dispatch(fetchProducts(formData));
@@ -111,9 +112,10 @@ const ProductsFilters = ({ categories }) => {
 
     const formData = {
       title: searchByProductTitle || '',
-      category: selectedCategory || null,
-      groupBloodNotAllowed: value,
+      category: selectedCategory || '',
+      groupBloodNotAllowed: value || 'all',
     };
+
     dispatch(fetchProducts(formData));
   };
 

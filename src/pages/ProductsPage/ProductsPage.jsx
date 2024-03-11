@@ -55,7 +55,7 @@ const ProductsPage = () => {
     <Wrapper>
       <Container>
         <TitleAndFilterWrapper>
-          <TitlePage title={'Products Page'} />
+          <TitlePage contentText="Products" />
           <ProductsFilters categories={categoriesArray} />
         </TitleAndFilterWrapper>
 

@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 axios.defaults.baseURL = 'https://powerpulseback.onrender.com/';
 
@@ -17,8 +18,20 @@ export const register = createAsyncThunk(
     try {
       const response = await axios.post('users/register', userData);
       setAuthToken(response.data.verificationToken);
+
+      toast.success(
+        'Registration is successful. Please, check your mail. We have sent a verification letter to your mail-box.',
+        {
+          theme: 'dark',
+        }
+      );
+
       return response.data;
     } catch (error) {
+      toast.error(error.response.data.message, {
+        theme: 'dark',
+      });
+
       return thunkAPI.rejectWithValue(error.message);
     }
   }

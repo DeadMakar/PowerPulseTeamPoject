@@ -3,7 +3,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 export const fetchAllProductsCategories = createAsyncThunk(
-  '/user/products/categories/fetchAllProductsCategory',
+  'products/fetchAllProductsCategory',
   async (_, thunkAPI) => {
     try {
       const response = await axios.get('products/categories');
@@ -18,29 +18,32 @@ export const fetchAllProductsCategories = createAsyncThunk(
 );
 
 export const fetchProducts = createAsyncThunk(
-  'user/products/fetchProducts',
+  'products/fetchProducts',
   async (formData, thunkAPI) => {
-    const { title, category, groupBloodNotAllowed } = formData;
-    const params = {};
-
-    if (title) {
-      params.title = title.trim();
-    }
-
-    if (category !== null) {
-      params.category = category.toLowerCase();
-    } else {
-      params.category = category;
-    }
-
-    if (groupBloodNotAllowed) {
-      params.groupBloodNotAllowed = groupBloodNotAllowed;
-    }
-
     try {
-      const response = await axios.get(`products/filters`, {
-        params,
-      });
+      const { title, category, groupBloodNotAllowed } = formData;
+      const params = {};
+
+      if (title) {
+        params.title = title.trim();
+      }
+
+      if (category !== null) {
+        params.category = category.toLowerCase();
+      } else {
+        params.category = category;
+      }
+
+      if (groupBloodNotAllowed) {
+        params.groupBloodNotAllowed = groupBloodNotAllowed;
+      }
+      //
+      console.log(params);
+
+      const response = await axios.get('products/filters', { params });
+
+      //
+      console.log(response);
       return response.data;
     } catch (error) {
       toast.error('Sorry, something went wrong, please try again', {

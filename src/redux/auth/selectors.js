@@ -7,3 +7,5 @@ export const selectBmr = (state) => state.auth.bmr;
 export const selectIsRefreshing = (state) => state.auth.isRefreshing;
 
 export const selectIsUserParams = (state) => state.auth.isUserParams;
+
+export const selectIsSuccessful = (state) => state.auth.isSuccessful;

@@ -25,7 +25,6 @@ export const StatisticsInfo = ({ isWelcomePage }) => {
   }, [dispatch]);
 
   const statisticsData = useSelector(selectStatistics);
-  console.log(statisticsData);
   const totalUsers = statisticsData?.totalUsers || 'Loading...';
 
   const totalBurnedCalories =

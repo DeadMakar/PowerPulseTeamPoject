@@ -19,7 +19,7 @@ import UserBar from '../UserBar/UserBar';
 import { MobileMenu } from '../MobileMenu';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { selectIsLoggedIn } from '../../redux/auth/selectors';
+import { selectIsLoggedIn, selectUser } from '../../redux/auth/selectors';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -28,7 +28,8 @@ const Header = () => {
   };
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
-  const userMetrics = useSelector((state) => state.auth.user.userMetrics);
+  const user = useSelector(selectUser);
+  const userMetrics = user?.userMetrics;
 
   return (
     <HeaderContainer>
