@@ -41,18 +41,10 @@ export const SubCategoryName = styled.h2`
   font-weight: 400;
   font-size: 20px;
   line-height: 1.2;
-
-  &:first-letter {
-    text-transform: capitalize;
-  }
 `;
 export const CategoryTitle = styled.span`
   color: rgba(239, 237, 232, 0.4);
   font-weight: 400;
   font-size: 12px;
   line-height: 1.5;
-
-  &:first-letter {
-    text-transform: capitalize;
-  }
 `;

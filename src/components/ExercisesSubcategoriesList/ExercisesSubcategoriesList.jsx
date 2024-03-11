@@ -71,6 +71,7 @@ const ExercisesSubcategoriesList = () => {
               '--swiper-pagination-bullet-horizontal-gap': '5px',
             }}
           >
+            {/* Відображення категорій для відповідного значення filter */}
             {categories.map((category) => (
               <SwiperSlide key={category._id}>
                 <div>

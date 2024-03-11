@@ -1,16 +1,20 @@
 import { useDispatch, useSelector } from 'react-redux';
+
 import {
   getExercises,
   getIsLoading,
   getError,
 } from '../../redux/exercises/exercisesSlice';
 import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
+import {
+  useEffect,
+  // useRef
+} from 'react';
 import { fetchExercisesList } from '../../redux/exercises/operations';
 import { ExercisesItem } from '../ExercisesItem';
 import { ExercisesListWrapper, Wrapper } from './ExercisesList.styled';
 import { Loader } from '../Loader';
-import { ProductsItemStyled } from '../ProductsItem/ProductsItem.styled';
+import { ProductsItemStyled } from '../ProductsItem/ProductsItem.styled'; //?{}
 
 const ExercisesList = () => {
   const dispatch = useDispatch();
@@ -35,6 +39,7 @@ const ExercisesList = () => {
     <div>
       <div>
         {isLoading && !error && <Loader />}
+
         {!exercises ? (
           <p>you do not have any exersise category</p>
         ) : isLoading ? (
