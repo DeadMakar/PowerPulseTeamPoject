@@ -21,7 +21,7 @@ import { TimerComponent } from './Timer';
 export const AddExerciseForm = () => {
   const [timeOfTimer, setTimeOfTimer] = useState(0);
   const [reallyBurnedCalories, setReallyBurnedCalories] = useState(0);
-  // const data = dbExercises[1];
+
   const {
     _id,
     name,
@@ -32,12 +32,6 @@ export const AddExerciseForm = () => {
     burnedCalories,
     time: fullExerciseTime,
   } = dbExercises[1];
-
-  // дістати значення з бекенду або з іншох сторінки
-
-  // console.log('data', data);
-  // console.log('time', data.time);
-  // console.log('timeOfTimer', timeOfTimer);
 
   // записую коли на паузу або завершився час
 

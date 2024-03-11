@@ -41,12 +41,11 @@ export const FieldWrapper = styled.div`
   }
 `;
 
-export const Field = styled(FormikField)`
+export const FieldProduct = styled(FormikField)`
   border: 1px solid ${globalColor.colorOrange};
   border-radius: 12px;
   padding: 8px 14px;
-  /* max-width: 287px; */
-  /* min-height: 34px; */
+  /* width: 287px; */
   width: 100%;
   color: ${globalColor.colorWhite};
   background-color: transparent;
@@ -54,6 +53,23 @@ export const Field = styled(FormikField)`
 
   &::placeholder {
     color: rgba(239, 237, 232, 0.4);
+  }
+`;
+
+export const FieldGrams = styled(FormikField)`
+  border: 1px solid ${globalColor.colorOrange};
+  border-radius: 12px;
+  padding: 8px 14px;
+  color: ${globalColor.colorWhite};
+  background-color: transparent;
+  outline: none;
+
+  &::placeholder {
+    color: rgba(239, 237, 232, 0.4);
+  }
+  width: 287px;
+  @media screen and (min-width: 768px) {
+    width: 155px;
   }
 `;
 

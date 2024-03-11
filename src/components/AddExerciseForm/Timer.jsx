@@ -36,25 +36,24 @@ export const TimerComponent = ({
   useEffect(() => {
     const timeDifference = timeOfTimer - fullExerciseTime * 60;
 
-    if (timeDifference === 0) {
-      setTimeOfTimer(timeOfTimer);
-      setReallyBurnedCalories(burnedCalories);
-    }
-  }, [fullExerciseTime, setTimeOfTimer, timeOfTimer]);
-
-  useEffect(() => {
     const reallyCalories =
       (timeOfTimer / (fullExerciseTime * 60)) * burnedCalories;
 
     setReallyBurnedCalories(reallyCalories.toFixed(0));
 
-    // if (timeOfTimer >= fullExerciseTime * 60) {
-    //   setReallyBurnedCalories(burnedCalories);
-    // }
-  }, [burnedCalories, fullExerciseTime, setReallyBurnedCalories, timeOfTimer]);
+    if (timeDifference === 0) {
+      setTimeOfTimer(timeOfTimer);
+      setReallyBurnedCalories(burnedCalories);
+    }
+  }, [
+    burnedCalories,
+    fullExerciseTime,
+    setReallyBurnedCalories,
+    setTimeOfTimer,
+    timeOfTimer,
+  ]);
 
   let currentTime = 0;
-  //   let realBurnedCalories = 0;
 
   return (
     <>
@@ -90,7 +89,7 @@ export const TimerComponent = ({
           //   return 'Exercise done!';
 
           if (timeDifference === 0) {
-            // onTimerBtnToogle(currentTime);
+            // onTimerBtnToogle(fullExerciseTime * 60);
             // setReallyBurnedCalories(burnedCalories);
             return 'Exercise done!';
           }

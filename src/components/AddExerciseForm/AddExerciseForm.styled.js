@@ -107,8 +107,10 @@ export const ListStyled = styled.ul`
   justify-content: center;
   gap: 8px;
   margin-bottom: 24px;
+  max-width: 302px;
   @media screen and (min-width: 768px) {
     margin-bottom: 254px;
+    max-width: 344px;
   }
 `;
 

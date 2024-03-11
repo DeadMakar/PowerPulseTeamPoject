@@ -11,13 +11,13 @@ import {
 import sprite from '../../assets/sprite.svg';
 import avocado from '../../assets/images/products/avocado.png';
 
-const AddProductSuccess = ({ consumedCalories }) => {
+const AddProductSuccess = ({ caloriesСonsumed }) => {
   return (
     <WrapperDiv>
       <ImgStyled src={avocado} />
       <TitleStyled>Well done</TitleStyled>
       <TextStyled>
-        Calories: <SpanStyled>{consumedCalories}</SpanStyled>
+        Calories: <SpanStyled>{caloriesСonsumed}</SpanStyled>
       </TextStyled>
       <LinkBtnStyled href="">Next product</LinkBtnStyled>{' '}
       <LinkStyled href="/PowerPulseTeamPoject/diary">
