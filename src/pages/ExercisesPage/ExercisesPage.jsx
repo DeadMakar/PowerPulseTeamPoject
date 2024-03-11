@@ -11,7 +11,6 @@ import {
   BackButton,
   BackGroundStyle,
   MixContainer,
-
 } from './ExercisesPage.styled';
 
 import { TitlePage } from '../../components/TitlePage';

@@ -3,18 +3,18 @@ import {
   getCategories,
   getIsLoading,
   getError,
-} from '../../redux/exercises/categoriesSlice';
+} from '../../../redux/exercises/categoriesSlice';
 import { SubCatItems } from './ExercisesSubcategoriesList.styled';
 import { Link } from 'react-router-dom';
-import { ExercisesSubcategoriesItem } from '../ExercisesSubcategoriesItem';
-import { Loader } from '../Loader';
+import { ExercisesSubcategoriesItem } from '../ExercisesSubcategoriesItem/ExercisesSubcategoriesItem';
+import { Loader } from '../../Loader/Loader';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/grid';
 import 'swiper/css/pagination';
 import { Grid, Pagination } from 'swiper/modules';
 
-const ExercisesSubcategoriesList = () => {
+export const ExercisesSubcategoriesList = () => {
   const categories = useSelector(getCategories);
   const isLoading = useSelector(getIsLoading);
   const error = useSelector(getError);
@@ -71,6 +71,7 @@ const ExercisesSubcategoriesList = () => {
               '--swiper-pagination-bullet-horizontal-gap': '5px',
             }}
           >
+            {/* Відображення категорій для відповідного значення filter */}
             {categories.map((category) => (
               <SwiperSlide key={category._id}>
                 <div>
@@ -86,5 +87,3 @@ const ExercisesSubcategoriesList = () => {
     </div>
   );
 };
-
-export default ExercisesSubcategoriesList;
