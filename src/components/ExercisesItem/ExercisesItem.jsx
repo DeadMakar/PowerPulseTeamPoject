@@ -150,43 +150,43 @@ import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { Formik, ErrorMessage } from 'formik';
 
-const modalStyles = {
-  overlay: {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    width: '100vw',
-    height: '100vh',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.8)',
-    zIndex: '1200',
-  },
-  content: {
-    padding: '0',
-    borderRadius: '12px',
-    maxWidth: 'calc(100vw - 20px)',
-    maxHeight: 'calc(100vh - 6px)',
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    backgroundColor: 'rgba(3, 3, 3, 0.8)',
-    color: 'white',
-  },
-};
+// const modalStyles = {
+//   overlay: {
+//     position: 'fixed',
+//     top: 0,
+//     left: 0,
+//     width: '100vw',
+//     height: '100vh',
+//     display: 'flex',
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//     backgroundColor: 'rgba(0, 0, 0, 0.8)',
+//     zIndex: '1200',
+//   },
+//   content: {
+//     padding: '0',
+//     borderRadius: '12px',
+//     maxWidth: 'calc(100vw - 20px)',
+//     maxHeight: 'calc(100vh - 6px)',
+//     top: '50%',
+//     left: '50%',
+//     right: 'auto',
+//     bottom: 'auto',
+//     marginRight: '-50%',
+//     transform: 'translate(-50%, -50%)',
+//     backgroundColor: 'rgba(3, 3, 3, 0.8)',
+//     color: 'white',
+//   },
+// };
 
-Modal.setAppElement('#root');
+// Modal.setAppElement('#root');
 
-const renderTime = ({ remainingTime }) => {
-  const minutes = Math.floor(remainingTime / 60);
-  const seconds = remainingTime % 60;
+// const renderTime = ({ remainingTime }) => {
+//   const minutes = Math.floor(remainingTime / 60);
+//   const seconds = remainingTime % 60;
 
-  return `${minutes}:${seconds}`;
-};
+//   return `${minutes}:${seconds}`;
+// };
 const caloriesSchema = Yup.object().shape({
   exerciseId: Yup.string().required(),
   date: Yup.string().required('Invalid date format. Please use dd/mm/YYYY.'),
@@ -213,21 +213,21 @@ export const ExercisesItem = ({
   const [timeSpent, setTimeSpent] = useState(0);
   const [response, setResponse] = useState(null);
 
-  const funkOfBurnedCalories = (timesRemaining) => {
-    const realTime = 180 - timesRemaining;
-    const calories = burnedCalories;
-    const minTime = time * 60;
-    const realCalories = (realTime * calories) / minTime;
-    return realCalories.toFixed(0);
-  };
+  // const funkOfBurnedCalories = (timesRemaining) => {
+  //   const realTime = 180 - timesRemaining;
+  //   const calories = burnedCalories;
+  //   const minTime = time * 60;
+  //   const realCalories = (realTime * calories) / minTime;
+  //   return realCalories.toFixed(0);
+  // };
   const date = new Date();
   const currentDate =
     date.getDate() + '-' + date.getMonth() + 1 + '-' + date.getFullYear();
 
-  const updateObject = (remainingTimeObj) => {
-    setBurnedCaloriesByTime(funkOfBurnedCalories(remainingTimeObj));
-    setTimeSpent(Math.floor((180 - remainingTimeObj) / 60));
-  };
+  // const updateObject = (remainingTimeObj) => {
+  //   setBurnedCaloriesByTime(funkOfBurnedCalories(remainingTimeObj));
+  //   setTimeSpent(Math.floor((180 - remainingTimeObj) / 60));
+  // };
 
   const resetExerciseResult = () => {
     setIsModalOpen(false);
@@ -237,7 +237,7 @@ export const ExercisesItem = ({
   const SetlectReset = () => {
     return (
       <div style={{ display: 'flex', margin: '30px' }}>
-        {isPlaying ? (
+        {/* {isPlaying ? (
           <button
             className="pause"
             onClick={() => {
@@ -271,7 +271,7 @@ export const ExercisesItem = ({
               <use href={sprite + '#play-square'} />
             </svg>
           </button>
-        )}
+        )} */}
       </div>
     );
   };
@@ -340,20 +340,21 @@ export const ExercisesItem = ({
         isOpen={isModalOpen}
         onRequestClose={() => setIsModalOpen(false)}
         contentLabel="Example Modal"
-        style={modalStyles}
+        // style={modalStyles}
       >
-        <CloseButton type="button" onClick={resetExerciseResult}>
+        {/* <CloseButton type="button" onClick={resetExerciseResult}>
           <svg>
             <use href={sprite + '#icon-x'} />
           </svg>
-        </CloseButton>
+        </CloseButton> */}
         {!response ? (
           <ModalContainer>
             <ModalBlockFirst>
               <GifContainer>
                 <img src={gifUrl} alt="gif" />
               </GifContainer>
-              <TimerContainer className="timer-wrapper">
+
+              {/* <TimerContainer className="timer-wrapper">
                 <CountdownCircleTimer
                   size={124}
                   strokeWidth={5}
@@ -380,10 +381,10 @@ export const ExercisesItem = ({
                   Burned calories:{' '}
                   <ModalInfoStyle>{burnedCaloriesByTime}</ModalInfoStyle>
                 </ModalTextStyle>
-              </TimerContainer>
+              </TimerContainer> */}
             </ModalBlockFirst>
             <ModalBlockSecond>
-              <InfoBlock>
+              {/* <InfoBlock>
                 <Details>
                   Name <DetailsSpan>{name}</DetailsSpan>
                 </Details>
@@ -396,7 +397,7 @@ export const ExercisesItem = ({
                 <Details>
                   Target <DetailsSpan>{target}</DetailsSpan>
                 </Details>
-              </InfoBlock>
+              </InfoBlock> */}
 
               <Formik
                 initialValues={{
@@ -442,26 +443,26 @@ export const ExercisesItem = ({
             </ModalBlockSecond>
           </ModalContainer>
         ) : (
-          <SuccesModal>
-            <ThumbUp />
-            <TitleModalSucces>Well done</TitleModalSucces>
-            <ModalTextStyle>
-              Your time <ModalInfoStyle>{timeSpent}</ModalInfoStyle>
-            </ModalTextStyle>
-            <ModalTextStyle>
-              Burned calories{' '}
-              <ModalInfoStyle>{burnedCaloriesByTime}</ModalInfoStyle>
-            </ModalTextStyle>
-            <ButtonNextExercise onClick={resetExerciseResult}>
-              Next exercise
-            </ButtonNextExercise>
-            <StyledLink href="/PowerPulse/diary">
-              To the diary
-              <svg>
-                <use href={sprite + '#icon-arrow'} />
-              </svg>
-            </StyledLink>
-          </SuccesModal>
+          // <SuccesModal>
+          //   <ThumbUp />
+          //   <TitleModalSucces>Well done</TitleModalSucces>
+          //   <ModalTextStyle>
+          //     Your time <ModalInfoStyle>{timeSpent}</ModalInfoStyle>
+          //   </ModalTextStyle>
+          //   <ModalTextStyle>
+          //     Burned calories{' '}
+          //     <ModalInfoStyle>{burnedCaloriesByTime}</ModalInfoStyle>
+          //   </ModalTextStyle>
+          //   <ButtonNextExercise onClick={resetExerciseResult}>
+          //     Next exercise
+          //   </ButtonNextExercise>
+          //   <StyledLink href="/PowerPulse/diary">
+          //     To the diary
+          //     <svg>
+          //       <use href={sprite + '#icon-arrow'} />
+          //     </svg>
+          //   </StyledLink>
+          // </SuccesModal>
         )}
       </Modal>
     </>
