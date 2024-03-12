@@ -73,6 +73,7 @@ const DiaryPage = () => {
             <ProdAndExercise>
               <DayProducts
                 productsArray={addProducts}
+                currentDate={currentDate}
                 date={formattedCurrentDate}
               />
               <DayExercises

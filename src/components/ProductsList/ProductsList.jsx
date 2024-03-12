@@ -40,7 +40,7 @@ const ProductsList = ({ products }) => {
   return (
     <>
       {isLoading && <Loader />}
-      {!isLoading && products.length > 0 && (
+      {!isLoading && products?.length > 0 && (
         <ProductsListStyled>
           {products.map((product) => (
             <ProductsItem
@@ -52,7 +52,7 @@ const ProductsList = ({ products }) => {
           ))}
         </ProductsListStyled>
       )}
-      {!isLoading && products.length <= 0 && (
+      {!isLoading && products?.length <= 0 && (
         <Nothing>
           <Paragraph1>
             <span>Sorry, no results were found</span> for the product filters

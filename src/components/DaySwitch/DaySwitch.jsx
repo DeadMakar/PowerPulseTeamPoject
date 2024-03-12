@@ -23,7 +23,7 @@ const DaySwitch = () => {
   const [isActivePrev, setIsActivePrev] = useState(false);
   const [isActiveNext, setIsActiveNext] = useState(false);
   const { createdAt } = useSelector(selectUser);
-  const userDateRegistration = createdAt;
+  const userDateRegistration = createdAt || new Date();
 
   const openCalendar = () => {
     setCalendarOpen(!isCalendarOpen);
