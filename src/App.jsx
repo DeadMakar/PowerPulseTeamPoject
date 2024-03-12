@@ -33,6 +33,12 @@ function App() {
   const user = useSelector(selectUser);
   const userMetrics = isLoggedIn && user?.userMetrics ? true : false;
 
+  useEffect(() => {
+    if (isLoggedIn) {
+      dispatch(refreshUser());
+    }
+  }, [isLoggedIn]);
+
   return (
     <RouterProvider>
       <Suspense fallback={<Loader />}>

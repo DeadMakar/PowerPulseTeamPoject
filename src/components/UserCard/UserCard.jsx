@@ -24,17 +24,20 @@ import {
   UserRole,
 } from './UserCard.styled';
 import { LogOutBtn } from '../LogOutBtn';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateAvatar } from '../../redux/profile/operations';
 import defaultAvatar from '../../assets/images/profile/gridicons_user.jpg';
 
 import { refreshUser } from '../../redux/auth/operations';
+import { selectUser } from '../../redux/auth/selectors';
 
-const UserCard = ({ user }) => {
+const UserCard = () => {
   const dispatch = useDispatch();
 
+  const user = useSelector(selectUser);
+
   const [selectedImage, setSelectedImage] = useState(null);
-  const [imageUrl, setImageUrl] = useState(user?.avatarURL || defaultAvatar);
+  const [imageUrl, setImageUrl] = useState(user.avatarURL);
 
   const fileReader = new FileReader();
   fileReader.onloadend = () => {
@@ -59,7 +62,7 @@ const UserCard = ({ user }) => {
           id="image-file"
           type="file"
           accept="image/*"
-          src={imageUrl}
+          src={imageUrl || defaultAvatar}
           alt="User avatar image"
           onChange={(e) => setSelectedImage(e.target.files[0])}
         />
@@ -69,11 +72,11 @@ const UserCard = ({ user }) => {
             <use href={`${sprite}#icon-check-mark-1`} />
           </SvgAddAvatar>
         </LabelAvatar>
-        <AvatarImg src={imageUrl} alt="User avatar image" />
+        <AvatarImg src={imageUrl || defaultAvatar} alt="User avatar image" />
       </AvatarBox>
 
       <UserNameRole>
-        <UserName> {user?.userName}</UserName>
+        <UserName> {user.userName}</UserName>
         <UserRole>User</UserRole>
       </UserNameRole>
 
@@ -85,7 +88,7 @@ const UserCard = ({ user }) => {
             </SvgStyled>
             <TitleStyled>Daily calorie intake</TitleStyled>
           </TitleStyledWrapper>
-          <DataValue>{user?.resultBMR || '0'}</DataValue>
+          <DataValue>{user.resultBMR || '0'}</DataValue>
         </ItemListStyled>
         <ItemListStyled>
           <TitleStyledWrapper>
@@ -94,7 +97,7 @@ const UserCard = ({ user }) => {
             </SvgStyled>
             <TitleStyled>Daily physical activity</TitleStyled>
           </TitleStyledWrapper>
-          <DataValue>{user?.trainingTime || '110'} min</DataValue>
+          <DataValue>{user.trainingTime || '110'} min</DataValue>
         </ItemListStyled>
       </ListStyled>
       <div>
