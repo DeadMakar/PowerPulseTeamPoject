@@ -443,9 +443,9 @@ export const ExercisesItem = ({
             </ModalBlockSecond>
           </ModalContainer>
         ) : (
-          // <SuccesModal>
-          //   <ThumbUp />
-          //   <TitleModalSucces>Well done</TitleModalSucces>
+          <SuccesModal>
+            <ThumbUp />
+            {/* //   <TitleModalSucces>Well done</TitleModalSucces>
           //   <ModalTextStyle>
           //     Your time <ModalInfoStyle>{timeSpent}</ModalInfoStyle>
           //   </ModalTextStyle>
@@ -461,8 +461,8 @@ export const ExercisesItem = ({
           //     <svg>
           //       <use href={sprite + '#icon-arrow'} />
           //     </svg>
-          //   </StyledLink>
-          // </SuccesModal>
+          //   </StyledLink> */}
+          </SuccesModal>
         )}
       </Modal>
     </>
