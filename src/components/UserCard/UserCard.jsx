@@ -51,7 +51,7 @@ const UserCard = () => {
 
       dispatch(updateAvatar(selectedImage));
 
-      dispatch(refreshUser());
+      setTimeout(() => dispatch(refreshUser()), 2000);
     }
   }, [selectedImage]);
 
@@ -62,7 +62,7 @@ const UserCard = () => {
           id="image-file"
           type="file"
           accept="image/*"
-          src={imageUrl || defaultAvatar}
+          src={imageUrl || user.avatarURL || defaultAvatar}
           alt="User avatar image"
           onChange={(e) => setSelectedImage(e.target.files[0])}
         />
@@ -72,7 +72,10 @@ const UserCard = () => {
             <use href={`${sprite}#icon-check-mark-1`} />
           </SvgAddAvatar>
         </LabelAvatar>
-        <AvatarImg src={imageUrl || defaultAvatar} alt="User avatar image" />
+        <AvatarImg
+          src={imageUrl || user.avatarURL || defaultAvatar}
+          alt="User avatar image"
+        />
       </AvatarBox>
 
       <UserNameRole>

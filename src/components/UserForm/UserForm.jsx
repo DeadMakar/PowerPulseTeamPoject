@@ -26,17 +26,6 @@ export const UserForm = () => {
 
   const user = useSelector(selectUser);
 
-  const initialValueForCheck = {
-    name: user?.userName,
-    email: user?.email,
-    height: user?.height,
-    currentWeight: user?.currentWeight,
-    desiredWeight: user?.desiredWeight,
-    blood: user?.blood && user?.blood.toString(),
-    sex: user?.sex,
-    levelActivity: user?.levelActivity && user?.levelActivity.toString(),
-  };
-
   //  STATE
 
   const [birthdayNew, setBirthdayDate] = useState(
@@ -80,7 +69,7 @@ export const UserForm = () => {
 
   const ifUserInfoChanged = (values) => {
     const isInfoChanged = Object.keys(values).some(
-      (key) => values[key] !== initialValueForCheck[key]
+      (key) => values[key] !== user[key]
     );
     setIsInfoChanged(!isInfoChanged);
   };
@@ -130,16 +119,7 @@ export const UserForm = () => {
   return (
     <UserFormContainer>
       <Formik
-        initialValues={{
-          name: user.userName,
-          email: user.email,
-          height: user.height,
-          currentWeight: user.currentWeight,
-          desiredWeight: user.desiredWeight,
-          blood: String(user.blood),
-          sex: user.sex,
-          levelActivity: String(user.levelActivity),
-        }}
+        initialValues={user}
         validationSchema={UserFormSchema}
         onSubmit={(values) => {
           handleUpdateUserInfo(values);
