@@ -104,8 +104,8 @@ const BasicModalWindow = ({
       {/* <Container> */}
       {/* <ModalWindow> */}
       <Modal
-        // isOpen={isOpen}
-        isOpen={modalIsOpen}
+        isOpen={isOpen}
+        // isOpen={modalIsOpen}
         onRequestClose={onModalClose}
         style={customStyles}
         // shouldCloseOnOverlayClick={true}
