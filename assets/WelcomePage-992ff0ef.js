@@ -1,4 +1,4 @@
-import{u as e,a as n,N as t,j as i,i as p,C as o,s as d}from"./index-f0618be5.js";import{S as x}from"./StatisticsInfo-ed604790.js";import{L as a}from"./Logo-15af6b2b.js";import"./bgMobile@2x-c00288ab.js";const r=e.div`
+import{u as e,a as n,N as t,j as i,i as p,C as o,s as d}from"./index-1255f9bb.js";import{S as x}from"./StatisticsInfo-1d5065ab.js";import{L as a}from"./Logo-65b3f2cf.js";import"./bgMobile@2x-c00288ab.js";const r=e.div`
   @media screen and (min-width: 320px) {
     position: relative;
   }
