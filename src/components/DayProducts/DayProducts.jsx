@@ -33,28 +33,42 @@ import {
   getAllDiaryInformation,
 } from '../../redux/diary/operations';
 import { toast } from 'react-toastify';
-import { selectDiaryError } from '../../redux/diary/selectors';
+import {
+  selectDiaryError,
+  selectDiaryInformation,
+} from '../../redux/diary/selectors';
 import { selectUser } from '../../redux/auth/selectors';
+import { nanoid } from 'nanoid';
 
-const DayProducts = ({ productsArray, date }) => {
+const DayProducts = ({ currentDate }) => {
+  const productArr = useSelector(selectDiaryInformation);
+
   const dispatch = useDispatch();
   const currentUser = useSelector(selectUser);
-  const userBloodType = currentUser.blood;
+  const userBloodType = currentUser?.blood;
 
   const error = useSelector(selectDiaryError);
 
   const isMobile = useMediaQuery('(max-width:768px)');
 
-  const formattedTitle = (productTitle) => {
-    return productTitle[0].toUpperCase() + productTitle.slice(1).toLowerCase();
-  };
-
   let FoodRecommended;
+
+  const formatDate = (date) => {
+    const addLeadingZero = (number) => (number < 10 ? `0${number}` : number);
+
+    const day = addLeadingZero(date.getDate());
+    const month = addLeadingZero(date.getMonth() + 1);
+    const year = date.getFullYear();
+
+    const formattedDate = `${day}-${month}-${year}`;
+    return formattedDate;
+  };
+  const formatedDate = formatDate(currentDate);
 
   const handleDelete = async (id) => {
     try {
-      await dispatch(deleteDiaryProducts(id));
-      await dispatch(getAllDiaryInformation(date));
+      await dispatch(deleteDiaryProducts(id, currentDate));
+      await dispatch(getAllDiaryInformation(formatedDate(currentDate)));
     } catch (error) {
       toast.error('Sorry, something went wrong, please try again', {
         theme: 'dark',
@@ -85,30 +99,32 @@ const DayProducts = ({ productsArray, date }) => {
           </NavLink>
         </NavBlock>
       </TitleNav>
-      {productsArray && productsArray.length > 0 && !error ? (
+      {productArr && productArr.length > 0 && !error ? (
         isMobile ? (
           <Table>
             <WrapperForItemsArray>
-              {productsArray.map((product) => {
-                const type = product.productId.groupBloodNotAllowed[
-                  userBloodType
-                ]
-                  ? (FoodRecommended = 'Yes')
-                  : (FoodRecommended = 'No');
+              {productArr.map(({ productArr }) => {
+                const productTitle = productArr[0]?.productId.title;
+                const calories = productArr[0]?.calories;
+                const amount = productArr[0]?.amount;
+                const productId = productArr[0]?._id;
+                const bloodType = productArr[0]?.productId.groupBloodNotAllowed;
+                const productCategory = productArr[0]?.productId.category;
+                const type = bloodType[userBloodType] ? 'Yes' : 'No';
 
                 return (
-                  <ProductListArray key={product._id}>
+                  <ProductListArray key={nanoid()}>
                     <ProductListArrayItemMobile>
                       Title
                     </ProductListArrayItemMobile>
                     <ProductListArrayItemMobile>
-                      {formattedTitle(product.productId.title)}
+                      {productTitle}
                     </ProductListArrayItemMobile>
                     <ProductListArrayItemMobile>
                       Category
                     </ProductListArrayItemMobile>
                     <ProductListArrayItemMobile>
-                      {formattedTitle(product.productId.category)}
+                      {productCategory}
                     </ProductListArrayItemMobile>
                     <ListMobileArray>
                       <MobileItemsHolder1
@@ -121,7 +137,7 @@ const DayProducts = ({ productsArray, date }) => {
                           Calories
                         </ProductListArrayItemMobile>
                         <ProductListArrayItemMobile>
-                          {product.calories}
+                          {calories}
                         </ProductListArrayItemMobile>
                       </MobileItemsHolder1>
                       <MobileItemsHolder2
@@ -134,7 +150,7 @@ const DayProducts = ({ productsArray, date }) => {
                           Weight
                         </ProductListArrayItemMobile>
                         <ProductListArrayItemMobile>
-                          {product.amount}
+                          {amount}
                         </ProductListArrayItemMobile>
                       </MobileItemsHolder2>
                       <MobileItemsHolder3
@@ -197,7 +213,7 @@ const DayProducts = ({ productsArray, date }) => {
                         <ProductListArrayItemMobile>
                           <TableDeleteButton
                             type="button"
-                            onClick={() => handleDelete(product._id)}
+                            onClick={() => handleDelete(productId)}
                           >
                             <SvgTableStyled>
                               <use href={sprite + '#icon-trash-03'}></use>
@@ -223,26 +239,22 @@ const DayProducts = ({ productsArray, date }) => {
             </HeaderArray>
 
             <WrapperForItemsArray>
-              {productsArray.map((product) => {
-                const type = product.productId.groupBloodNotAllowed[
-                  userBloodType
-                ]
-                  ? (FoodRecommended = 'Yes')
-                  : (FoodRecommended = 'No');
+              {productArr.map(({ productArr }) => {
+                const productTitle = productArr[0]?.productId.title;
+                const calories = productArr[0]?.calories;
+                const amount = productArr[0]?.amount;
+                const productId = productArr[0]?._id;
+                const bloodType = productArr[0]?.productId.groupBloodNotAllowed;
+                const productCategory = productArr[0]?.productId.category;
+                const type = bloodType[userBloodType] ? 'Yes' : 'No';
                 return (
-                  <ProductListArray key={product._id}>
+                  <ProductListArray key={nanoid()}>
+                    <ProductListArrayItem>{productTitle}</ProductListArrayItem>
                     <ProductListArrayItem>
-                      {formattedTitle(product.productId.title)}
+                      {productCategory}
                     </ProductListArrayItem>
-                    <ProductListArrayItem>
-                      {formattedTitle(product.productId.category)}
-                    </ProductListArrayItem>
-                    <ProductListArrayItem>
-                      {product.calories}
-                    </ProductListArrayItem>
-                    <ProductListArrayItem>
-                      {product.amount}
-                    </ProductListArrayItem>
+                    <ProductListArrayItem>{calories}</ProductListArrayItem>
+                    <ProductListArrayItem>{amount}</ProductListArrayItem>
                     <ProductListArrayItem>
                       <div
                         style={{
@@ -282,7 +294,7 @@ const DayProducts = ({ productsArray, date }) => {
                     <ProductListArrayItem>
                       <TableDeleteButton
                         type="button"
-                        onClick={() => handleDelete(product._id)}
+                        onClick={() => handleDelete(productId)}
                       >
                         <SvgTableStyled>
                           <use href={sprite + '#icon-trash-03'}></use>

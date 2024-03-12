@@ -25,10 +25,10 @@ const StatisticsInfo = ({ isWelcomePage }) => {
   }, [dispatch]);
 
   const statisticsData = useSelector(selectStatistics);
-  const totalUsers = statisticsData?.totalUsers || 'Loading...';
+  const totalUsers = statisticsData?.totalUsers ?? 'Loading...';
 
   const totalBurnedCalories =
-    statisticsData?.totalBurnedCalories || 'Loading...';
+    statisticsData?.totalBurnedCalories ?? 'Loading...';
 
   return (
     <DivContainer isWelcomePage={isWelcomePage}>
