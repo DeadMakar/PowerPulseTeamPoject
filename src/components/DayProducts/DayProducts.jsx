@@ -27,7 +27,6 @@ import {
 } from './DayProducts.styled';
 import { globalColor } from '../../styles/root';
 import { useDispatch, useSelector } from 'react-redux';
-
 import {
   deleteDiaryProducts,
   getAllDiaryInformation,
@@ -42,7 +41,8 @@ import { nanoid } from 'nanoid';
 
 const DayProducts = ({ currentDate }) => {
   const productArr = useSelector(selectDiaryInformation);
-
+  console.log(productArr[0]?.productArr);
+  const products = productArr[0]?.productArr;
   const dispatch = useDispatch();
   const currentUser = useSelector(selectUser);
   const userBloodType = currentUser?.blood;
@@ -103,14 +103,15 @@ const DayProducts = ({ currentDate }) => {
         isMobile ? (
           <Table>
             <WrapperForItemsArray>
-              {productArr.map(({ productArr }) => {
-                const productTitle = productArr[0]?.productId.title;
-                const calories = productArr[0]?.calories;
-                const amount = productArr[0]?.amount;
-                const productId = productArr[0]?._id;
-                const bloodType = productArr[0]?.productId.groupBloodNotAllowed;
-                const productCategory = productArr[0]?.productId.category;
-                const type = bloodType[userBloodType] ? 'Yes' : 'No';
+              {products.map(({ product }) => {
+                const productTitle = product?.productId.title;
+                const calories = product?.calories;
+                const amount = product?.amount;
+                const productId = product?._id;
+                const bloodType = product?.productId.groupBloodNotAllowed;
+                const productCategory = product?.productId.category;
+                const type =
+                  bloodType && bloodType[userBloodType] ? 'Yes' : 'No';
 
                 return (
                   <ProductListArray key={nanoid()}>
@@ -239,14 +240,15 @@ const DayProducts = ({ currentDate }) => {
             </HeaderArray>
 
             <WrapperForItemsArray>
-              {productArr.map(({ productArr }) => {
-                const productTitle = productArr[0]?.productId.title;
-                const calories = productArr[0]?.calories;
-                const amount = productArr[0]?.amount;
-                const productId = productArr[0]?._id;
-                const bloodType = productArr[0]?.productId.groupBloodNotAllowed;
-                const productCategory = productArr[0]?.productId.category;
-                const type = bloodType[userBloodType] ? 'Yes' : 'No';
+              {products?.map(({ product }) => {
+                const productTitle = product?.productId.title;
+                const calories = product?.calories;
+                const amount = product?.amount;
+                const productId = product?._id;
+                const bloodType = product?.productId.groupBloodNotAllowed;
+                const productCategory = product?.productId.category;
+                const type =
+                  bloodType && bloodType[userBloodType] ? 'Yes' : 'No';
                 return (
                   <ProductListArray key={nanoid()}>
                     <ProductListArrayItem>{productTitle}</ProductListArrayItem>

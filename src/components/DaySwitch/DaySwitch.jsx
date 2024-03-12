@@ -23,23 +23,24 @@ const DaySwitch = () => {
   const [isActivePrev, setIsActivePrev] = useState(false);
   const [isActiveNext, setIsActiveNext] = useState(false);
   const { createdAt } = useSelector(selectUser);
-  const userDateRegistration = createdAt || new Date();
+  const userDateRegistration = createdAt;
 
   const openCalendar = () => {
     setCalendarOpen(!isCalendarOpen);
   };
+  const dateRegistration = new Date(userDateRegistration);
 
   const goToPreviousDay = () => {
     setIsActivePrev(true);
     const previousDay = new Date(currentDate);
-    if (previousDay > userDateRegistration) {
+    if (previousDay > dateRegistration) {
       previousDay.setDate(previousDay.getDate() - 1);
       setCurrentDate(previousDay);
       setSelectedDate(previousDay);
       setIsActivePrev(false);
     } else {
       toast.error(
-        `SORRY!!! Selected date cannot be earlier than the registration date: ${userDateRegistration.toLocaleDateString()}.`,
+        `SORRY!!! Selected date cannot be earlier than the registration date: ${dateRegistration.toLocaleDateString()}.`,
         {
           theme: 'dark',
         }
@@ -100,8 +101,8 @@ const DaySwitch = () => {
         isOpen={isCalendarOpen}
         onClose={closeCalendar}
         setCurrentDate={setCurrentDate}
-        userDateRegistration={userDateRegistration}
-        minDate={userDateRegistration}
+        userDateRegistration={dateRegistration}
+        minDate={dateRegistration}
       />
     </ContainerWrap>
   );

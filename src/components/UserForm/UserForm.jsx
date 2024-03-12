@@ -12,37 +12,24 @@ import {
   LabelSection,
   UserFormContainer,
 } from './UserForm.styled';
-import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateSettings } from '../../redux/profile/operations';
 
 import { refreshUser } from '../../redux/auth/operations';
 
 import { toast } from 'react-toastify';
+import { selectUser } from '../../redux/auth/selectors';
 
-export const UserForm = ({ user }) => {
+export const UserForm = () => {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(refreshUser());
-  }, [dispatch]);
-  // Users initial info
-
-  const initialValueForForm = {
-    name: user?.userName,
-    email: user?.email,
-    height: user?.height,
-    currentWeight: user?.currentWeight,
-    desiredWeight: user?.desiredWeight,
-    blood: user?.blood && user?.blood.toString(),
-    sex: user?.sex,
-    levelActivity: user?.levelActivity && user?.levelActivity.toString(),
-  };
+  const user = useSelector(selectUser);
 
   //  STATE
 
   const [birthdayNew, setBirthdayDate] = useState(
-    user?.birthday || '00.00.0000'
+    user.birthday || '00.00.0000'
   );
 
   const [isInfoChanged, setIsInfoChanged] = useState(true);
@@ -82,7 +69,7 @@ export const UserForm = ({ user }) => {
 
   const ifUserInfoChanged = (values) => {
     const isInfoChanged = Object.keys(values).some(
-      (key) => values[key] !== initialValueForForm[key]
+      (key) => values[key] !== user[key]
     );
     setIsInfoChanged(!isInfoChanged);
   };
@@ -132,7 +119,7 @@ export const UserForm = ({ user }) => {
   return (
     <UserFormContainer>
       <Formik
-        initialValues={initialValueForForm}
+        initialValues={user}
         validationSchema={UserFormSchema}
         onSubmit={(values) => {
           handleUpdateUserInfo(values);
