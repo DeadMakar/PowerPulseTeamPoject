@@ -2,11 +2,8 @@ import { NavLink } from 'react-router-dom';
 import { useMediaQuery } from '@mui/material';
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
-
 import sprite from '../../assets/sprite.svg';
-
 import { globalColor } from '../../styles/root';
-
 import {
   TableWrapper,
   TitleNav,
@@ -24,7 +21,6 @@ import {
   SvgTableStyled,
   ListMobileArray,
 } from '../DayProducts/DayProducts.styled';
-
 import {
   HeaderArray,
   ExerciseListArray,
@@ -32,9 +28,7 @@ import {
   HeaderItem,
   ExerciseListArrayItem,
 } from './DayExercises.styled';
-
 import { selectDiaryError } from '../../redux/diary/selectors';
-
 import {
   deleteDiaryExercise,
   getAllDiaryInformation,
