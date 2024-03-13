@@ -1,17 +1,23 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { format } from 'date-fns';
 
 export const getAllDiaryInformation = createAsyncThunk(
   '/diary/getAllDiaryInformation',
-  async (date, thunkAPI) => {
+  async (selectedDate, thunkAPI) => {
     try {
-      const response = await axios.get(`diary`);
+      const formattedDate = format(selectedDate, 'dd-MM-yyyy');
+      console.log(formattedDate);
+
+      const response = await axios.get(`diary?date=${formattedDate}`);
+
       return response.data;
     } catch (error) {
       toast.error(`${error.response.data.message}`, {
         theme: 'dark',
       });
+
       return thunkAPI.rejectWithValue(error.message);
     }
   }

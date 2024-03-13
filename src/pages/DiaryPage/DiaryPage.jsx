@@ -25,7 +25,6 @@ import {
   selectUser,
 } from '../../redux/auth/selectors';
 import { changeDate } from '../../helpers';
-import { refreshUser } from '../../redux/auth/operations';
 
 const DiaryPage = () => {
   const dispatch = useDispatch();
@@ -40,18 +39,19 @@ const DiaryPage = () => {
   const formattedCurrentDate = changeDate(currentDate);
   const formattedUserDateRegistration = changeDate(userDataRegistration);
 
+  console.log(formattedCurrentDate);
+
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchData = async (date) => {
       try {
-        await dispatch(refreshUser());
-        await dispatch(getAllDiaryInformation(formattedCurrentDate));
+        await dispatch(getAllDiaryInformation(date));
       } catch (error) {
         toast.error('Sorry, something went wrong, please try again', {
           theme: 'dark',
         });
       }
     };
-    fetchData();
+    fetchData(currentDate);
   }, [dispatch, formattedCurrentDate, currentDate]);
 
   return (
