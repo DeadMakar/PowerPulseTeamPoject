@@ -73,7 +73,7 @@ function App() {
             <Route
               path="/diary"
               element={
-                user.userMetrics ? (
+                user?.userMetrics ? (
                   <DiaryPage />
                 ) : (
                   <Navigate to="/profile" replace />
@@ -83,7 +83,7 @@ function App() {
             <Route
               path="/products"
               element={
-                user.userMetrics ? (
+                user?.userMetrics ? (
                   <ProductsPage />
                 ) : (
                   <Navigate to="/profile" replace />
@@ -93,7 +93,7 @@ function App() {
             <Route
               path="/exercises"
               element={
-                user.userMetrics ? (
+                user?.userMetrics ? (
                   <ExercisesPage />
                 ) : (
                   <Navigate to="/profile" replace />
