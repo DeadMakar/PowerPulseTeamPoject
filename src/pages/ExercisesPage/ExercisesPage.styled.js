@@ -87,8 +87,7 @@ export const BackGroundStyle = styled.div`
     gap: 32px;
   }
   @media (min-width: 1440px) {
-    background-image: linear-gradient(89deg, #040404 0%, rgba(4, 4, 4, 0) 100%),
-      url(${bgDesktop1});
+    background-image: linear-gradient(89deg, #040404 0%, rgba(4, 4, 4, 0) 100%);
     background-repeat: no-repeat;
     background-position: right bottom;
     background-size: contain;
