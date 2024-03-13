@@ -8,7 +8,9 @@ import { capitalizeFirstLetter } from '../../helpers/capitalizeFirstLetter';
 const ExercisesSubcategoriesItem = ({ category: { filter, name, imgURL } }) => {
   return (
     <Block
-      style={{ backgroundImage: `url(${imgURL})`, backgroundSize: 'cover' }}
+      style={{
+        backgroundImage: `linear-gradient(rgba(4, 4, 4, 0.5), rgba(4, 4, 4, 0.5)), url(${imgURL})`,
+      }}
     >
       <SubCategoryName>{capitalizeFirstLetter(name)}</SubCategoryName>
       <CategoryTitle>{filter}</CategoryTitle>

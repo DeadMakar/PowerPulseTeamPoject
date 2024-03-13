@@ -124,6 +124,7 @@ export const UserForm = () => {
         onSubmit={(values) => {
           handleUpdateUserInfo(values);
         }}
+        enableReinitialize={true}
       >
         {({ errors, touched }) => (
           <Form onChange={(values) => ifUserInfoChanged(values)}>

@@ -66,7 +66,6 @@ const ProductsFilters = ({ categories }) => {
       setIsError(false);
 
       try {
-        // console.log(formData);
         dispatch(fetchProducts(formData));
       } catch (error) {
         toast.error('Sorry, something went wrong, please try again', {
