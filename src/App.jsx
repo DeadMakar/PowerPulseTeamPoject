@@ -46,7 +46,13 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route
               index
-              element={isLoggedIn ? <DiaryPage /> : <WelcomePage />}
+              element={
+                isLoggedIn && user?.userMetrics ? (
+                  <DiaryPage />
+                ) : (
+                  <WelcomePage />
+                )
+              }
             />
             <Route path="/welcome" element={<WelcomePage />} />
             <Route
@@ -73,31 +79,31 @@ function App() {
             <Route
               path="/diary"
               element={
-                user?.userMetrics ? (
-                  <DiaryPage />
-                ) : (
-                  <Navigate to="/profile" replace />
-                )
+                // user?.userMetrics ? (
+                <DiaryPage />
+                // ) : (
+                // <Navigate to="/profile" replace />
+                // )
               }
             />
             <Route
               path="/products"
               element={
-                user?.userMetrics ? (
-                  <ProductsPage />
-                ) : (
-                  <Navigate to="/profile" replace />
-                )
+                // user?.userMetrics ? (
+                <ProductsPage />
+                // ) : (
+                // <Navigate to="/profile" replace />
+                // )
               }
             />
             <Route
               path="/exercises"
               element={
-                user?.userMetrics ? (
-                  <ExercisesPage />
-                ) : (
-                  <Navigate to="/profile" replace />
-                )
+                // user?.userMetrics ? (
+                <ExercisesPage />
+                // ) : (
+                // <Navigate to="/profile" replace />
+                // )
               }
             >
               <Route
@@ -112,9 +118,8 @@ function App() {
                 path="/exercises/:filter/:filterList"
                 element={<ExercisesList />}
               />
-
-              <Route path="*" element={<ErrorPage />} />
             </Route>
+            <Route path="*" element={<ErrorPage />} />
           </Route>
         </Routes>
       </Suspense>

@@ -65,14 +65,15 @@ const DayProducts = ({ selectedDate }) => {
   };
   const formatedDate = formatDate(selectedDate);
 
-  const handleDelete = async (id) => {
+  const handleDelete = async (id, selectedDate) => {
     try {
       await dispatch(deleteDiaryProducts(id, selectedDate));
-      await dispatch(getAllDiaryInformation(formatedDate(selectedDate)));
+      // await dispatch(getAllDiaryInformation(formatedDate(selectedDate)));
     } catch (error) {
       toast.error('Sorry, something went wrong, please try again', {
         theme: 'dark',
       });
+      console.log(123);
     }
   };
 
@@ -212,7 +213,12 @@ const DayProducts = ({ selectedDate }) => {
                         <ProductListArrayItemMobile>
                           <TableDeleteButton
                             type="button"
-                            onClick={() => handleDelete(productId)}
+                            onClick={() =>
+                              // handleDelete(productId, selectedDate)
+                              dispatch(
+                                deleteDiaryProducts(productId, selectedDate)
+                              )
+                            }
                           >
                             <SvgTableStyled>
                               <use href={sprite + '#icon-trash-03'}></use>
@@ -296,7 +302,7 @@ const DayProducts = ({ selectedDate }) => {
                     <ProductListArrayItem>
                       <TableDeleteButton
                         type="button"
-                        onClick={() => handleDelete(productId)}
+                        onClick={() => handleDelete(productId, selectedDate)}
                       >
                         <SvgTableStyled>
                           <use href={sprite + '#icon-trash-03'}></use>

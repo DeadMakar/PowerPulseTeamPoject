@@ -15,6 +15,7 @@ const handlePending = (state) => {
 };
 
 const handleRejected = (state, action) => {
+  state.productsArray = [];
   state.isLoadingProductsCategories = false;
   state.isLoadingProducts = false;
   state.error = action.payload;
