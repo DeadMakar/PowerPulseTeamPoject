@@ -3,26 +3,21 @@ import { globalColor } from '../../styles/root';
 import bgDesktop1 from '../../assets/images/exercises/trainingGym-1.jpg';
 import bgDesktop2 from '../../assets/images/exercises/trainingGym-1@2x.jpg';
 
-export const ContainerExPage = styled.div`
-  /* border: 2px solid red;
-  position: relative; */
+export const NavigationExercises = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
-  margin-top: 20px;
+  margin-top: 40px;
   margin-bottom: 40px;
 
   @media (min-width: 768px) {
     flex-direction: row;
-
     margin-top: 78px;
     margin-bottom: 70px;
   }
-
-  @media (max-width: 374px) {
-  }
 `;
+
 export const Block = styled.div`
   text-align: center;
 `;
@@ -50,30 +45,24 @@ export const BackButton = styled.a`
   position: absolute;
   display: flex;
   align-items: center;
-  top: 6px;
+  top: 10px;
   gap: 8px;
   color: ${globalColor.colorInput};
-  font-size: 10px;
-  font-weight: 400;
-  line-height: 1.167;
+  font-size: 14px;
+  line-height: 1.29;
   transition: color 0.3s ease;
 
   @media (min-width: 768px) {
-    top: 32px;
+    top: 30px;
     font-size: 16px;
-    font-weight: 400;
-    line-height: 1.167;
+    line-height: 1.5;
   }
 
   > svg {
     stroke: ${globalColor.colorInput};
-    width: 10px;
-    height: 10px;
+    width: 16px;
+    height: 16px;
     transition: stroke 0.3s ease;
-    @media (min-width: 768px) {
-      width: 16px;
-      height: 16px;
-    }
   }
 
   &:hover {

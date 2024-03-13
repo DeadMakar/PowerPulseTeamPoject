@@ -84,6 +84,12 @@ export const Title = styled.h2`
   white-space: nowrap;
   overflow: auto;
 
+  text-overflow: ellipsis;
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
+
   @media (min-width: 768px) {
     font-size: 24px;
     line-height: 1.33;

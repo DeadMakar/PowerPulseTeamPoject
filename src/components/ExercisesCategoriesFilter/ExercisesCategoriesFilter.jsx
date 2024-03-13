@@ -13,7 +13,6 @@ const StatusFilter = () => {
       dispatch(setFilter(''));
     }
   };
-  console.log(filter);
 
   return (
     <div>

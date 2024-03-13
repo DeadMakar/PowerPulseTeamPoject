@@ -4,6 +4,18 @@ import { globalColor } from '../../styles/root';
 export const Wrapper = styled.div`
   overflow: auto;
   margin-top: 32px;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    background: rgba(239, 237, 232, 0.1);
+    border-radius: 12px;
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${globalColor.colorOrange1};
+    border-radius: 12px;
+  }
 
   @media (min-width: 768px) {
     width: 704px;
@@ -13,15 +25,6 @@ export const Wrapper = styled.div`
   @media (min-width: 1440px) {
     width: 850px;
     margin-top: 28px;
-  }
-
-  &::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: ${globalColor.colorOrange1};
-    border-radius: 12px;
   }
 `;
 

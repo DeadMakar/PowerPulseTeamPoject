@@ -19,8 +19,6 @@ const ExercisesSubcategoriesList = () => {
   const isLoading = useSelector(getIsLoading);
   const error = useSelector(getError);
 
-  console.log(categories);
-
   return (
     <div>
       {isLoading && !error && <Loader />}
@@ -70,7 +68,7 @@ const ExercisesSubcategoriesList = () => {
                 ' rgba(239, 237, 232, 1)',
               '--swiper-pagination-color': 'rgba(230, 83, 60, 1)',
               '--swiper-pagination-bullet-size': '12px',
-              '--swiper-pagination-bullet-horizontal-gap': '5px',
+              '--swiper-pagination-bullet-horizontal-gap': '8px',
             }}
           >
             {/* Відображення категорій для відповідного значення filter */}
