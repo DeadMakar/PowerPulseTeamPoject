@@ -39,8 +39,6 @@ const DiaryPage = () => {
   const formattedCurrentDate = changeDate(currentDate);
   const formattedUserDateRegistration = changeDate(userDataRegistration);
 
-  console.log(formattedCurrentDate);
-
   useEffect(() => {
     const fetchData = async (date) => {
       try {

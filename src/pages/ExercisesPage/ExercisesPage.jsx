@@ -19,6 +19,7 @@ import {
 import { TitlePage } from '../../components/TitlePage';
 import { Loader } from '../../components/Loader';
 import { toast } from 'react-toastify';
+import { Header } from '../../components/Header';
 
 const ExercisesPage = () => {
   const dispatch = useDispatch();

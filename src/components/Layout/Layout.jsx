@@ -10,8 +10,8 @@ const Layout = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
   const showHeader =
-    ['/diary', '/profile', '/exercises', '/products'].includes(
-      location.pathname
+    ['/diary', '/profile', '/products', '/exercises'].some((path) =>
+      location.pathname.startsWith(path)
     ) ||
     (location.pathname === '/' && isLoggedIn);
 

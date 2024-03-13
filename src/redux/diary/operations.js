@@ -8,7 +8,6 @@ export const getAllDiaryInformation = createAsyncThunk(
   async (selectedDate, thunkAPI) => {
     try {
       const formattedDate = format(selectedDate, 'dd-MM-yyyy');
-      console.log(formattedDate);
 
       const response = await axios.get(`diary?date=${formattedDate}`);
 
@@ -40,9 +39,15 @@ export const addDiaryProducts = createAsyncThunk(
 
 export const deleteDiaryProducts = createAsyncThunk(
   '/diary/products/deleteDiaryProducts',
-  async (productId, thunkAPI) => {
+  async ({ productId, selectedDate }, thunkAPI) => {
+    const formattedDate = format(selectedDate, 'dd-MM-yyyy');
+    console.log(formattedDate);
     try {
-      const response = await axios.delete(`diary/products/${productId}`);
+      // const formattedDate = format(selectedDate, 'dd-MM-yyyy');
+      // console.log(formattedDate);
+      const response = await axios.delete(
+        `diary/products/${productId}?date=${formattedDate}`
+      );
       return response.data;
     } catch (error) {
       toast.error('Sorry, something went wrong, please try again', {
@@ -70,9 +75,13 @@ export const addDiaryExercise = createAsyncThunk(
 
 export const deleteDiaryExercise = createAsyncThunk(
   '/diary/exercises/deleteDiaryExercise',
-  async (exerciseId, thunkAPI) => {
+  async ({ exerciseId, selectedDate }, thunkAPI) => {
     try {
-      const response = await axios.delete(`diary/exercises/${exerciseId}`);
+      const formattedDate = format(selectedDate, 'dd-MM-yyyy');
+
+      const response = await axios.delete(
+        `diary/exercises/${exerciseId}?date=${formattedDate}`
+      );
       return response.data;
     } catch (error) {
       toast.error('Sorry, something went wrong, please try again', {
