@@ -51,7 +51,7 @@ const UserCard = () => {
 
       dispatch(updateAvatar(selectedImage));
 
-      setTimeout(() => dispatch(refreshUser()), 2000);
+      setTimeout(() => dispatch(refreshUser()), 4000);
     }
   }, [selectedImage]);
 

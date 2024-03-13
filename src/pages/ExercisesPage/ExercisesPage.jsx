@@ -37,11 +37,12 @@ const ExercisesPage = () => {
           });
         }
       } else {
-        dispatch(fetchExercisesCategories({ filter: filter }));
+        dispatch(fetchExercisesCategories(filter));
       }
     };
     gettingExercisesFilters();
   }, [dispatch, filter]);
+
   return (
     <BackGroundStyle>
       <Container>
@@ -61,7 +62,7 @@ const ExercisesPage = () => {
               )}
               <ContainerExPage>
                 <TitlePage
-                  title={
+                  contentText={
                     filterList
                       ? capitalizeFirstLetter(filterList.split(' ')[0])
                       : 'Exercises'

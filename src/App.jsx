@@ -31,7 +31,7 @@ function App() {
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const user = useSelector(selectUser);
-  const userMetrics = isLoggedIn && user?.userMetrics ? true : false;
+  // const userMetrics = isLoggedIn && user?.userMetrics ? true : false;
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -73,13 +73,17 @@ function App() {
             <Route
               path="/diary"
               element={
-                userMetrics ? <DiaryPage /> : <Navigate to="/profile" replace />
+                user.userMetrics ? (
+                  <DiaryPage />
+                ) : (
+                  <Navigate to="/profile" replace />
+                )
               }
             />
             <Route
               path="/products"
               element={
-                userMetrics ? (
+                user.userMetrics ? (
                   <ProductsPage />
                 ) : (
                   <Navigate to="/profile" replace />
@@ -89,26 +93,28 @@ function App() {
             <Route
               path="/exercises"
               element={
-                userMetrics ? (
+                user.userMetrics ? (
                   <ExercisesPage />
                 ) : (
                   <Navigate to="/profile" replace />
                 )
               }
-            />
-            <Route
-              index
-              element={<Navigate to="/exercises/Body parts" replace />}
-            />
-            <Route
-              path="/exercises/:filter"
-              element={<ExercisesSubcategoriesList />}
-            />
-            <Route
-              path="/exercises/:filter/:filterList"
-              element={<ExercisesList />}
-            />
-            <Route path="*" element={<ErrorPage />} />
+            >
+              <Route
+                index
+                element={<Navigate to="/exercises/Body parts" replace />}
+              />
+              <Route
+                path="/exercises/:filter"
+                element={<ExercisesSubcategoriesList />}
+              />
+              <Route
+                path="/exercises/:filter/:filterList"
+                element={<ExercisesList />}
+              />
+
+              <Route path="*" element={<ErrorPage />} />
+            </Route>
           </Route>
         </Routes>
       </Suspense>

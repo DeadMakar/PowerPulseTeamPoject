@@ -21,18 +21,15 @@ const ExercisesList = () => {
   const exercises = useSelector(getExercises);
   const isLoading = useSelector(getIsLoading);
   const error = useSelector(getError);
-  const { filterList } = useParams();
+  const { filter, filterList } = useParams();
 
   useEffect(() => {
-    const gettingExercisesList = async () => {
-      if (!filterList) {
-        console.error('Invalid filterList');
-        return;
-      } else {
-        dispatch(fetchExercisesList({ filterList: filterList }));
+    const getExercisesList = async () => {
+      if (filter === 'Body parts') {
+        dispatch(fetchExercisesList(filterList));
       }
     };
-    gettingExercisesList();
+    getExercisesList();
   }, [dispatch, filterList]);
 
   return (

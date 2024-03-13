@@ -19,6 +19,8 @@ const ExercisesSubcategoriesList = () => {
   const isLoading = useSelector(getIsLoading);
   const error = useSelector(getError);
 
+  console.log(categories);
+
   return (
     <div>
       {isLoading && !error && <Loader />}
