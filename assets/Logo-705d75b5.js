@@ -1,0 +1,1 @@
+import{j as s,s as e}from"./index-ecb71782.js";import{L as o,I as n,S as t}from"./Logo.styled-b5e006e0.js";const x=({fill:r})=>s.jsxs(o,{children:[s.jsx(n,{style:{fill:r},children:s.jsx("use",{href:`${e}#icon-Vector`})}),s.jsx(t,{style:{fill:r},children:s.jsx("use",{href:`${e}#icon-PowerPulse`})})]});export{x as L};

@@ -1,6 +1,6 @@
-import{u as e,a as n,N as o,j as i}from"./index-c5859d1c.js";import{L as t}from"./Logo-116efed8.js";import{b as d,a as r,c as a,d as s,e as p,f as l}from"./bgMobile@2x-c00288ab.js";const c=e.div`
+import{f as i,h as n,N as o,j as e}from"./index-ecb71782.js";import{L as t}from"./Logo-705d75b5.js";import{b as d,a as r,c as a,d as s,e as p,f as l}from"./bgMobile@2x-c00288ab.js";import"./Logo.styled-b5e006e0.js";const c=i.div`
   display: flex;
-`,x=e.div`
+`,h=i.div`
   height: 100vh;
   width: 36%;
   background-image: url(${d});
@@ -35,11 +35,11 @@ import{u as e,a as n,N as o,j as i}from"./index-c5859d1c.js";import{L as t}from"
       background-image: url(${l});
     }
   }
-`,h=e.div`
+`,x=i.div`
   background-color: ${n.colorOrange};
   height: 100vh;
   flex: 1;
-`,m=e.div`
+`,m=i.div`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -70,11 +70,11 @@ import{u as e,a as n,N as o,j as i}from"./index-c5859d1c.js";import{L as t}from"
     padding: 32px 96px;
     /* width: 669px; */
   }
-`,g=e.div`
+`,g=i.div`
   display: flex;
   flex-direction: column;
   transform: translateY(20vh);
-`,u=e.h2`
+`,u=i.h2`
   color: ${n.colorWhite};
   margin-bottom: 14px;
   font-size: 66px;
@@ -88,7 +88,7 @@ import{u as e,a as n,N as o,j as i}from"./index-c5859d1c.js";import{L as t}from"
     line-height: 0.9375;
     letter-spacing: 1.6px;
   }
-`,b=e.p`
+`,b=i.p`
   color: ${n.colorWhite};
   font-size: 14px;
   line-height: 1.28571;
@@ -98,7 +98,7 @@ import{u as e,a as n,N as o,j as i}from"./index-c5859d1c.js";import{L as t}from"
     font-size: 16px;
     line-height: 1.5;
   }
-`,w=e(o)`
+`,w=i(o)`
   display: inline-flex;
   padding: 12px 38px;
   justify-content: center;
@@ -128,8 +128,8 @@ import{u as e,a as n,N as o,j as i}from"./index-c5859d1c.js";import{L as t}from"
 
   @media screen and (min-width: 1440px) {
   }
-`;e(e.svg)`
+`;i(i.svg)`
   width: 14px;
   height: 14px;
   fill: ${n.colorWhite};
-`;const $=()=>i.jsxs(c,{children:[i.jsx(h,{children:i.jsxs(m,{children:[i.jsx(t,{fill:"#EFEDE8"}),i.jsxs(g,{children:[i.jsx(u,{children:"404"}),i.jsx(b,{children:"Sorry, you have reached a page that we could not find. It seems that you are lost among the numbers and letters of our virtual space. Perhaps this page went on vacation or decided to disappear into another dimension. We apologize for this inconvenience."}),i.jsx(w,{to:"/welcome",children:"Go Home"})]})]})}),i.jsx(x,{})]});export{$ as default};
+`;const j=()=>e.jsxs(c,{children:[e.jsx(x,{children:e.jsxs(m,{children:[e.jsx(t,{fill:"#EFEDE8"}),e.jsxs(g,{children:[e.jsx(u,{children:"404"}),e.jsx(b,{children:"Sorry, you have reached a page that we could not find. It seems that you are lost among the numbers and letters of our virtual space. Perhaps this page went on vacation or decided to disappear into another dimension. We apologize for this inconvenience."}),e.jsx(w,{to:"/welcome",children:"Go Home"})]})]})}),e.jsx(h,{})]});export{j as default};

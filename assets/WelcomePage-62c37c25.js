@@ -1,4 +1,4 @@
-import{u as e,a as n,N as t,j as i,i as p,C as o,s as d}from"./index-c5859d1c.js";import{S as x}from"./StatisticsInfo-a6004dce.js";import{L as a}from"./Logo-116efed8.js";import"./bgMobile@2x-c00288ab.js";const r=e.div`
+import{f as e,h as n,N as t,j as i,i as p,C as o,s as d}from"./index-ecb71782.js";import{S as x}from"./StatisticsInfo-71e33d97.js";import{L as a}from"./Logo-705d75b5.js";import"./bgMobile@2x-c00288ab.js";import"./Logo.styled-b5e006e0.js";const r=e.div`
   @media screen and (min-width: 320px) {
     position: relative;
   }
@@ -56,7 +56,7 @@ import{u as e,a as n,N as t,j as i,i as p,C as o,s as d}from"./index-c5859d1c.js
     width: 598px;
     margin-top: 151px;
   }
-`,l=e.svg`
+`,m=e.svg`
   position: absolute;
 
   @media screen and (min-width: 320px) {
@@ -86,7 +86,7 @@ import{u as e,a as n,N as t,j as i,i as p,C as o,s as d}from"./index-c5859d1c.js
     top: 284px;
     left: -17px;
   }
-`,m=e.div`
+`,l=e.div`
   display: flex;
   gap: 14px;
   width: 335px;
@@ -180,4 +180,4 @@ import{u as e,a as n,N as t,j as i,i as p,C as o,s as d}from"./index-c5859d1c.js
   @media screen and (min-width: 768px) {
     width: 45%;
   }
-`,y=()=>i.jsx(p,{children:i.jsx(o,{children:i.jsxs(r,{children:[i.jsxs(s,{children:[i.jsx(a,{}),i.jsx(h,{children:"Transforming your body shape with Power Pulse"}),i.jsx(l,{children:i.jsx("use",{href:`${d}#icon-line`})}),i.jsxs(m,{children:[i.jsx(c,{to:"/signup",children:"Sign Up"}),i.jsx(g,{to:"/signin",children:"Sign In"})]})]}),i.jsx(w,{children:i.jsx(x,{})})]})})});export{y as default};
+`,v=()=>i.jsx(p,{children:i.jsx(o,{children:i.jsxs(r,{children:[i.jsxs(s,{children:[i.jsx(a,{}),i.jsx(h,{children:"Transforming your body shape with Power Pulse"}),i.jsx(m,{children:i.jsx("use",{href:`${d}#icon-line`})}),i.jsxs(l,{children:[i.jsx(c,{to:"/signup",children:"Sign Up"}),i.jsx(g,{to:"/signin",children:"Sign In"})]})]}),i.jsx(w,{children:i.jsx(x,{})})]})})});export{v as default};
