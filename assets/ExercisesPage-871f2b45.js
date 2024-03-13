@@ -1,15 +1,14 @@
-import{u as t,L as m,a7 as l,h as x,j as e,a as o,d as u,b as d,a8 as f,a9 as w,aa as b,r as c,C as j,P as p,s as v,ab as k,O as E,D as y,ac as C}from"./index-932768f7.js";import{T as P}from"./TitlePage-2c08270b.js";const L=t.ul`
+import{u as t,L as h,a7 as l,h as p,j as e,a,d as m,b as c,a8 as u,a9 as f,aa as b,r as d,C as j,s as v,ab as w,P as k,O as E,D as y,ac as C}from"./index-016f7ef7.js";import{T as P}from"./TitlePage-62743ea9.js";const L=t.ul`
   display: flex;
-  margin-top: 28px;
+  margin-top: 20px;
   gap: 28px;
 
   @media (min-width: 768px) {
     gap: 32px;
   }
-`,$=t(m)`
+`,$=t(h)`
   color: rgba(239, 237, 232, 0.4);
   font-size: 14px;
-  font-weight: 400;
   line-height: 1.29;
   word-wrap: break-word;
 
@@ -18,11 +17,11 @@ import{u as t,L as m,a7 as l,h as x,j as e,a as o,d as u,b as d,a8 as f,a9 as w,
 
   &:after {
     position: absolute;
-    bottom: -4px;
+    bottom: -6px;
     left: 0;
     width: 100%;
     height: ${i=>i.isactive==="true"?"4px":"0"};
-    background-color: #e6533c;
+    background-color: #ef8964;
     border-radius: 2px;
     content: '';
     transition: height 0.3s;
@@ -32,28 +31,18 @@ import{u as t,L as m,a7 as l,h as x,j as e,a as o,d as u,b as d,a8 as f,a9 as w,
     font-size: 16px;
     line-height: 1.5;
   }
-
-  @media (max-width: 374px) {
-    font-size: 18px;
-  }
-`,z=()=>{const i=["Body parts","Muscles","Equipment"],{filter:a}=l(),r=x(),s=a;return e.jsx(e.Fragment,{children:e.jsx(L,{children:i.map(n=>e.jsx("li",{children:e.jsx($,{to:`/exercises/${n}`,state:{from:r},isactive:n===s?"true":"false",children:n})},n))})})},B="/PowerPulseTeamPoject/assets/trainingGym-1-78b576d3.jpg",F="/PowerPulseTeamPoject/assets/trainingGym-1@2x-7f8d3593.jpg",D=t.div`
-  /* border: 2px solid red;
-  position: relative; */
+`,z=()=>{const i=["Body parts","Muscles","Equipment"],{filter:o}=l(),r=p(),s=o;return e.jsx(e.Fragment,{children:e.jsx(L,{children:i.map(n=>e.jsx("li",{children:e.jsx($,{to:`/exercises/${n}`,state:{from:r},isactive:n===s?"true":"false",children:n})},n))})})},B="/PowerPulseTeamPoject/assets/trainingGym-1-78b576d3.jpg",F="/PowerPulseTeamPoject/assets/trainingGym-1@2x-7f8d3593.jpg",D=t.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
-  margin-top: 20px;
+  margin-top: 40px;
   margin-bottom: 40px;
 
   @media (min-width: 768px) {
     flex-direction: row;
-
     margin-top: 78px;
     margin-bottom: 70px;
-  }
-
-  @media (max-width: 374px) {
   }
 `;t.div`
   text-align: center;
@@ -76,38 +65,32 @@ import{u as t,L as m,a7 as l,h as x,j as e,a as o,d as u,b as d,a8 as f,a9 as w,
   position: absolute;
   display: flex;
   align-items: center;
-  top: 6px;
+  top: 10px;
   gap: 8px;
-  color: ${o.colorInput};
-  font-size: 10px;
-  font-weight: 400;
-  line-height: 1.167;
+  color: ${a.colorInput};
+  font-size: 14px;
+  line-height: 1.29;
   transition: color 0.3s ease;
 
   @media (min-width: 768px) {
-    top: 32px;
+    top: 30px;
     font-size: 16px;
-    font-weight: 400;
-    line-height: 1.167;
+    line-height: 1.5;
   }
 
   > svg {
-    stroke: ${o.colorInput};
-    width: 10px;
-    height: 10px;
+    stroke: ${a.colorInput};
+    width: 16px;
+    height: 16px;
     transition: stroke 0.3s ease;
-    @media (min-width: 768px) {
-      width: 16px;
-      height: 16px;
-    }
   }
 
   &:hover {
-    color: ${o.colorOrange1};
+    color: ${a.colorOrange1};
     cursor: pointer;
 
     > svg {
-      stroke: ${o.colorOrange1};
+      stroke: ${a.colorOrange1};
       width: 16px;
       height: 16px;
     }
@@ -136,4 +119,4 @@ import{u as t,L as m,a7 as l,h as x,j as e,a as o,d as u,b as d,a8 as f,a9 as w,
     background-image: linear-gradient(89deg, #040404 0%, rgba(4, 4, 4, 0) 100%),
       url(${F});
   }
-`,W=()=>{const i=u(),a=d(f),r=d(w),{filter:s,filterList:n}=l(),g=b(),h=x();return c.useEffect(()=>{(async()=>{s===void 0?y.info("We are still awating for data",{theme:"dark"}):i(C(s))})()},[i,s]),e.jsx(G,{children:e.jsx(j,{children:e.jsx(T,{children:a?e.jsx(p,{}):e.jsxs("div",{children:[s!==void 0&&h.pathname.endsWith(s.replace(" ","%20"))?null:e.jsxs(O,{onClick:()=>g(-1),children:[e.jsx("svg",{style:{fill:"none"},children:e.jsx("use",{href:v+"#icon-arrow-left"})}),"Back"," "]}),e.jsxs(D,{children:[e.jsx(P,{contentText:n?k(n.split(" ")[0]):"Exercises"}),e.jsx(z,{})]}),a&&!r&&e.jsx(p,{}),e.jsx(e.Fragment,{children:e.jsx(c.Suspense,{children:e.jsx(E,{})})})]})})})})};export{W as default};
+`,N=()=>{const i=m(),o=c(u),r=c(f),{filter:s,filterList:n}=l(),x=b(),g=p();return d.useEffect(()=>{(async()=>{s===void 0?y.info("We are still awating for data",{theme:"dark"}):i(C(s))})()},[i,s]),e.jsx(G,{children:e.jsx(j,{children:e.jsx(T,{children:e.jsxs("div",{children:[s!==void 0&&g.pathname.endsWith(s.replace(" ","%20"))?null:e.jsxs(O,{onClick:()=>x(-1),children:[e.jsx("svg",{style:{fill:"none"},children:e.jsx("use",{href:v+"#icon-arrow-left"})}),"Back"," "]}),e.jsxs(D,{children:[e.jsx(P,{contentText:n?w(n.split(" ")[0]):"Exercises"}),e.jsx(z,{})]}),o&&!r?e.jsx(k,{}):e.jsx(e.Fragment,{children:e.jsx(d.Suspense,{children:e.jsx(E,{})})})]})})})})};export{N as default};
