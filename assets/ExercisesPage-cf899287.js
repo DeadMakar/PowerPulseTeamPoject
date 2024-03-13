@@ -1,4 +1,4 @@
-import{u as t,L as h,au as l,h as p,j as e,a,d as m,b as c,av as u,aw as f,ax as v,r as d,C as w,s as b,ay as j,S as k,O as E,E as y,az as C}from"./index-89f37fa7.js";import{T as L}from"./TitlePage-cbb94e12.js";const $=t.ul`
+import{u as t,L as h,av as l,h as p,j as e,a,d as m,b as c,aw as u,ax as f,ay as v,r as d,C as w,s as b,I as j,T as k,O as E,E as y,az as C}from"./index-c5859d1c.js";import{T as L}from"./TitlePage-5016a009.js";const $=t.ul`
   display: flex;
   margin-top: 20px;
   gap: 28px;
@@ -55,13 +55,13 @@ import{u as t,L as h,au as l,h as p,j as e,a,d as m,b as c,av as u,aw as f,ax as
   @media (min-width: 768px) {
     gap: 32px;
   }
-`;const O=t.div`
+`;const T=t.div`
   position: relative;
   width: 100%;
   height: 100%;
   border: 1px solid transparent;
   /* border: 2px solid red; */
-`,S=t.a`
+`,I=t.a`
   position: absolute;
   display: flex;
   align-items: center;
@@ -95,7 +95,7 @@ import{u as t,L as h,au as l,h as p,j as e,a,d as m,b as c,av as u,aw as f,ax as
       height: 16px;
     }
   }
-`,T=t.div`
+`,O=t.div`
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -118,4 +118,4 @@ import{u as t,L as h,au as l,h as p,j as e,a,d as m,b as c,av as u,aw as f,ax as
     background-image: linear-gradient(89deg, #040404 0%, rgba(4, 4, 4, 0) 100%),
       url(${F});
   }
-`,M=()=>{const i=m(),o=c(u),r=c(f),{filter:s,filterList:n}=l(),x=v(),g=p();return d.useEffect(()=>{(async()=>{s===void 0?y.info("We are still awating for data",{theme:"dark"}):i(C(s))})()},[i,s]),e.jsx(T,{children:e.jsx(w,{children:e.jsx(O,{children:e.jsxs("div",{children:[s!==void 0&&g.pathname.endsWith(s.replace(" ","%20"))?null:e.jsxs(S,{onClick:()=>x(-1),children:[e.jsx("svg",{style:{fill:"none"},children:e.jsx("use",{href:b+"#icon-arrow-left"})}),"Back"," "]}),e.jsxs(P,{children:[e.jsx(L,{contentText:n?j(n.split(" ")[0]):"Exercises"}),e.jsx(B,{})]}),o&&!r?e.jsx(k,{}):e.jsx(e.Fragment,{children:e.jsx(d.Suspense,{children:e.jsx(E,{})})})]})})})})};export{M as default};
+`,M=()=>{const i=m(),o=c(u),r=c(f),{filter:s,filterList:n}=l(),x=v(),g=p();return d.useEffect(()=>{(async()=>{s===void 0?y.info("We are still awating for data",{theme:"dark"}):i(C(s))})()},[i,s]),e.jsx(O,{children:e.jsx(w,{children:e.jsx(T,{children:e.jsxs("div",{children:[s!==void 0&&g.pathname.endsWith(s.replace(" ","%20"))?null:e.jsxs(I,{onClick:()=>x(-1),children:[e.jsx("svg",{style:{fill:"none"},children:e.jsx("use",{href:b+"#icon-arrow-left"})}),"Back"," "]}),e.jsxs(P,{children:[e.jsx(L,{contentText:n?j(n.split(" ")[0]):"Exercises"}),e.jsx(B,{})]}),o&&!r?e.jsx(k,{}):e.jsx(e.Fragment,{children:e.jsx(d.Suspense,{children:e.jsx(E,{})})})]})})})})};export{M as default};
