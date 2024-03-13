@@ -5,10 +5,11 @@ import { toast } from 'react-toastify';
 axios.defaults.baseURL = 'https://powerpulseback.onrender.com/';
 
 export const fetchExercisesCategories = createAsyncThunk(
-  '/exercises/filters',
-  async (_, thunkAPI) => {
+  'exercises/fetchExercisesCategories',
+  async (filter, thunkAPI) => {
     try {
-      const response = await axios.get('exercises');
+      console.log(filter);
+      const response = await axios.get(`exercises/filters?filter=${filter}`);
       return response.data;
     } catch (error) {
       console.log(error);
@@ -18,11 +19,31 @@ export const fetchExercisesCategories = createAsyncThunk(
   }
 );
 
+// export const fetchExercisesList = createAsyncThunk(
+//   'exercises/fetchExercisesList',
+//   async ({ filter = '', filterList = '', target = '' }, thunkAPI) => {
+//     console.log(filter, filterList, target);
+//     try {
+//       const response = await axios.get(
+//         `/exercises?bodyPart=${filter}&equipment=${filterList}&target=${target}`
+//       );
+
+//       console.log(response.data);
+//       return response.data;
+//     } catch (e) {
+//       console.log(e.message);
+//       toast.error(`Oops! Something was wrong.... ${e.message}`);
+//       return thunkAPI.rejectWithValue(e.message);
+//     }
+//   }
+// );
+
 export const fetchExercisesList = createAsyncThunk(
   '/exercises/exercises/fetchExercisesList',
-  async (data, thunkAPI) => {
+  async (filters, thunkAPI) => {
     try {
-      const response = await axios.get('exercises/filters', { data });
+      const response = await axios.get(`exercises?bodyPart=${filters}`);
+
       return response.data;
     } catch (error) {
       console.log(error);
@@ -44,18 +65,20 @@ export const addExercises = createAsyncThunk(
   }
 );
 
-export const getExercisesFilter = createAsyncThunk(
-  'exercises/getExercisesFilter',
-  async (paramsExe, thunkAPI) => {
-    try {
-      const response = await axios.get(
-        `/exercises?filter=${paramsExe.filter}&name=${paramsExe.name}`
-      );
-      return response.data;
-    } catch (e) {
-      console.log(e.message);
-      toast.error(`Oops! Something was wrong.... ${e.message}`);
-      return thunkAPI.rejectWithValue(e.message);
-    }
-  }
-);
+// export const getExerciseByItem = createAsyncThunk(
+//   'exercises/getExerciseByItem',
+//   async ({ bodyPart, equipment, target }, thunkAPI) => {
+//     try {
+//       const response = await axios.get(
+//         `/exercises?bodyPart=${bodyPart}&equipment=${equipment}&tartget=${target}`
+//       );
+
+//       console.log(response.data);
+//       return response.data;
+//     } catch (e) {
+//       console.log(e.message);
+//       toast.error(`Oops! Something was wrong.... ${e.message}`);
+//       return thunkAPI.rejectWithValue(e.message);
+//     }
+//   }
+// );
