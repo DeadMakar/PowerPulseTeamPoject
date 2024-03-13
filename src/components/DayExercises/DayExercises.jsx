@@ -28,27 +28,28 @@ import {
   HeaderItem,
   ExerciseListArrayItem,
 } from './DayExercises.styled';
-import { selectDiaryError } from '../../redux/diary/selectors';
+import {
+  selectDiaryError,
+  selectDiaryInformation,
+} from '../../redux/diary/selectors';
 import {
   deleteDiaryExercise,
   getAllDiaryInformation,
 } from '../../redux/diary/operations';
 
-const DayExercises = ({ exercisesArray, date }) => {
+const DayExercises = ({ selectedDate }) => {
+  const exerciseArr = useSelector(selectDiaryInformation);
+
+  const exercises = exerciseArr[1]?.exerciseArr;
+
   const isMobile = useMediaQuery('(max-width:768px)');
   const error = useSelector(selectDiaryError);
   const dispatch = useDispatch();
 
-  const formattedTitle = (exerciseTitle) => {
-    return (
-      exerciseTitle[0].toUpperCase() + exerciseTitle.slice(1).toLowerCase()
-    );
-  };
-
   const handleDelete = async (id) => {
     try {
-      await dispatch(deleteDiaryExercise(id));
-      await dispatch(getAllDiaryInformation(date));
+      await dispatch(deleteDiaryExercise(id, selectedDate));
+      await dispatch(getAllDiaryInformation(selectedDate));
     } catch (error) {
       console.log(error);
       toast.error('Sorry, something went wrong, please try again', {
@@ -81,30 +82,30 @@ const DayExercises = ({ exercisesArray, date }) => {
         </NavBlock>
       </TitleNav>
 
-      {exercisesArray && exercisesArray.length > 0 && !error ? (
+      {exercises && exercises.length > 0 && !error ? (
         isMobile ? (
           <Table>
             <WrapperForItemsArray>
-              {exercisesArray.map((exercise) => (
+              {exercises?.map((exercise) => (
                 <ExerciseListArray key={exercise._id}>
                   <ExerciseListArrayItemMobile>
                     Body Part
                   </ExerciseListArrayItemMobile>
                   <ExerciseListArrayItemMobile>
-                    {formattedTitle(exercise.exerciseId.bodyPart)}
+                    {exercise.exerciseId.bodyPart}
                   </ExerciseListArrayItemMobile>
 
                   <ExerciseListArrayItemMobile>
                     Equipment
                   </ExerciseListArrayItemMobile>
                   <ExerciseListArrayItemMobile>
-                    {formattedTitle(exercise.exerciseId.equipment)}
+                    {exercise.exerciseId.equipment}
                   </ExerciseListArrayItemMobile>
                   <ExerciseListArrayItemMobile>
                     Name
                   </ExerciseListArrayItemMobile>
                   <ExerciseListArrayItemMobile>
-                    {formattedTitle(exercise.exerciseId.name)}
+                    {exercise.exerciseId.name}
                   </ExerciseListArrayItemMobile>
                   <ListMobileArray>
                     <MobileItemsHolder1
@@ -117,7 +118,7 @@ const DayExercises = ({ exercisesArray, date }) => {
                         Target
                       </ExerciseListArrayItemMobile>
                       <ExerciseListArrayItemMobile>
-                        {formattedTitle(exercise.exerciseId.target)}
+                        {exercise.exerciseId.target}
                       </ExerciseListArrayItemMobile>
                     </MobileItemsHolder1>
                     <MobileItemsHolder2
@@ -184,19 +185,19 @@ const DayExercises = ({ exercisesArray, date }) => {
             </HeaderArray>
 
             <WrapperForItemsArray>
-              {exercisesArray.map((exercise) => (
+              {exercises.map((exercise) => (
                 <ExerciseListArray key={exercise._id}>
                   <ExerciseListArrayItem>
-                    {formattedTitle(exercise.exerciseId.bodyPart)}
+                    {exercise.exerciseId.bodyPart}
                   </ExerciseListArrayItem>
                   <ExerciseListArrayItem>
-                    {formattedTitle(exercise.exerciseId.equipment)}
+                    {exercise.exerciseId.equipment}
                   </ExerciseListArrayItem>
                   <ExerciseListArrayItem>
-                    {formattedTitle(exercise.exerciseId.name)}
+                    {exercise.exerciseId.name}
                   </ExerciseListArrayItem>
                   <ExerciseListArrayItem>
-                    {formattedTitle(exercise.exerciseId.target)}
+                    {exercise.exerciseId.target}
                   </ExerciseListArrayItem>
                   <ExerciseListArrayItem>
                     {exercise.calories}

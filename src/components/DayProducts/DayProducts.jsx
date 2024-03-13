@@ -37,12 +37,12 @@ import {
   selectDiaryInformation,
 } from '../../redux/diary/selectors';
 import { selectUser } from '../../redux/auth/selectors';
-import { nanoid } from 'nanoid';
 
-const DayProducts = ({ currentDate }) => {
+const DayProducts = ({ selectedDate }) => {
   const productArr = useSelector(selectDiaryInformation);
-  console.log(productArr[0]?.productArr);
+
   const products = productArr[0]?.productArr;
+
   const dispatch = useDispatch();
   const currentUser = useSelector(selectUser);
   const userBloodType = currentUser?.blood;
@@ -54,6 +54,7 @@ const DayProducts = ({ currentDate }) => {
   let FoodRecommended;
 
   const formatDate = (date) => {
+    if (date === undefined) return '';
     const addLeadingZero = (number) => (number < 10 ? `0${number}` : number);
 
     const day = addLeadingZero(date.getDate());
@@ -63,12 +64,12 @@ const DayProducts = ({ currentDate }) => {
     const formattedDate = `${day}-${month}-${year}`;
     return formattedDate;
   };
-  const formatedDate = formatDate(currentDate);
+  const formatedDate = formatDate(selectedDate);
 
   const handleDelete = async (id) => {
     try {
-      await dispatch(deleteDiaryProducts(id, currentDate));
-      await dispatch(getAllDiaryInformation(formatedDate(currentDate)));
+      await dispatch(deleteDiaryProducts(id, selectedDate));
+      await dispatch(getAllDiaryInformation(formatedDate(selectedDate)));
     } catch (error) {
       toast.error('Sorry, something went wrong, please try again', {
         theme: 'dark',
@@ -103,18 +104,18 @@ const DayProducts = ({ currentDate }) => {
         isMobile ? (
           <Table>
             <WrapperForItemsArray>
-              {products.map(({ product }) => {
-                const productTitle = product?.productId.title;
+              {products?.map((product) => {
+                const productTitle = product?.productId?.title;
                 const calories = product?.calories;
                 const amount = product?.amount;
                 const productId = product?._id;
-                const bloodType = product?.productId.groupBloodNotAllowed;
-                const productCategory = product?.productId.category;
+                const bloodType = product?.productId?.groupBloodNotAllowed;
+                const productCategory = product?.productId?.category;
                 const type =
                   bloodType && bloodType[userBloodType] ? 'Yes' : 'No';
 
                 return (
-                  <ProductListArray key={nanoid()}>
+                  <ProductListArray key={productId}>
                     <ProductListArrayItemMobile>
                       Title
                     </ProductListArrayItemMobile>
@@ -196,9 +197,7 @@ const DayProducts = ({ currentDate }) => {
                                 />
                               )}
                             </svg>
-                            <TypeRecommendSpan>
-                              {FoodRecommended}
-                            </TypeRecommendSpan>
+                            <TypeRecommendSpan>{type}</TypeRecommendSpan>
                           </div>
                         </ProductListArrayItemMobile>
                       </MobileItemsHolder3>
@@ -240,7 +239,7 @@ const DayProducts = ({ currentDate }) => {
             </HeaderArray>
 
             <WrapperForItemsArray>
-              {products?.map(({ product }) => {
+              {products?.map((product) => {
                 const productTitle = product?.productId.title;
                 const calories = product?.calories;
                 const amount = product?.amount;
@@ -250,7 +249,7 @@ const DayProducts = ({ currentDate }) => {
                 const type =
                   bloodType && bloodType[userBloodType] ? 'Yes' : 'No';
                 return (
-                  <ProductListArray key={nanoid()}>
+                  <ProductListArray key={productId}>
                     <ProductListArrayItem>{productTitle}</ProductListArrayItem>
                     <ProductListArrayItem>
                       {productCategory}
@@ -290,7 +289,7 @@ const DayProducts = ({ currentDate }) => {
                             />
                           )}
                         </svg>
-                        <TypeRecommendSpan>{FoodRecommended}</TypeRecommendSpan>
+                        <TypeRecommendSpan>{type}</TypeRecommendSpan>
                       </div>
                     </ProductListArrayItem>
                     <ProductListArrayItem>

@@ -1,46 +1,42 @@
 import { useState } from 'react';
+import { format } from 'date-fns';
+import { changeDate } from '../../helpers';
 import sprite from '../../assets/sprite.svg';
 import {
   BtnNext,
   BtnPrev,
   CalendarBtn,
   CalendarIconSvg,
+  DateLabel,
   SvgPrev,
   SvgNext,
   ContainerWrap,
-  DateLabel,
 } from './DaySwitch.styled';
 import { Datepicker } from '../Datepicker';
 import { toast } from 'react-toastify';
-import { format } from 'date-fns';
-import { useSelector } from 'react-redux';
-import { selectUser } from '../../redux/auth/selectors';
 
-const DaySwitch = () => {
-  const [currentDate, setCurrentDate] = useState(new Date());
+const DaySwitch = ({ currentDate, setCurrentDate, userDateRegistration }) => {
   const [selectedDate, setSelectedDate] = useState(currentDate);
   const [isCalendarOpen, setCalendarOpen] = useState(false);
   const [isActivePrev, setIsActivePrev] = useState(false);
   const [isActiveNext, setIsActiveNext] = useState(false);
-  const { createdAt } = useSelector(selectUser);
-  const userDateRegistration = createdAt;
 
   const openCalendar = () => {
     setCalendarOpen(!isCalendarOpen);
   };
-  const dateRegistration = new Date(userDateRegistration);
 
   const goToPreviousDay = () => {
     setIsActivePrev(true);
     const previousDay = new Date(currentDate);
-    if (previousDay > dateRegistration) {
+    const formattedPreviousDay = changeDate(previousDay);
+    if (formattedPreviousDay > userDateRegistration) {
       previousDay.setDate(previousDay.getDate() - 1);
       setCurrentDate(previousDay);
       setSelectedDate(previousDay);
       setIsActivePrev(false);
     } else {
       toast.error(
-        `SORRY!!! Selected date cannot be earlier than the registration date: ${dateRegistration.toLocaleDateString()}.`,
+        `However, we don't have any data to show you. Selected date cannot be earlier than the registration date: ${userDateRegistration}.`,
         {
           theme: 'dark',
         }
@@ -51,21 +47,21 @@ const DaySwitch = () => {
 
   const goToNextDay = () => {
     setIsActiveNext(true);
-    const today = new Date();
+    const today = changeDate(new Date());
     const nextDay = new Date(selectedDate);
     nextDay.setDate(selectedDate.getDate() + 1);
-    if (nextDay <= today) {
-      setCurrentDate(nextDay);
-      setSelectedDate(nextDay);
-      setIsActiveNext(false);
-    } else {
+    if (nextDay > new Date()) {
       toast.error(
-        `SORRY!!! Selected date cannot be later than today's date: ${today.toLocaleDateString()}.`,
+        `However, we don't have any data to show you. Selected date cannot be later than today's date: ${today}.`,
         {
           theme: 'dark',
         }
       );
       setIsActiveNext(true);
+    } else {
+      setCurrentDate(nextDay);
+      setSelectedDate(nextDay);
+      setIsActiveNext(false);
     }
   };
 
@@ -75,10 +71,8 @@ const DaySwitch = () => {
 
   return (
     <ContainerWrap>
-      <DateLabel onClick={openCalendar}>
-        {format(selectedDate, 'dd/MM/yyyy')}
-      </DateLabel>
       <CalendarBtn onClick={openCalendar}>
+        <DateLabel>{format(selectedDate, 'dd/MM/yyyy')}</DateLabel>
         <CalendarIconSvg>
           <use href={sprite + '#icon-calendar'} />
         </CalendarIconSvg>
@@ -96,13 +90,11 @@ const DaySwitch = () => {
 
       <Datepicker
         selectedDate={selectedDate}
-        dateFormat="dd/MM/yyyy"
         setSelectedDate={setSelectedDate}
         isOpen={isCalendarOpen}
         onClose={closeCalendar}
         setCurrentDate={setCurrentDate}
-        userDateRegistration={dateRegistration}
-        minDate={dateRegistration}
+        userDateRegistration={userDateRegistration}
       />
     </ContainerWrap>
   );
