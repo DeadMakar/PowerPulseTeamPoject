@@ -34,7 +34,7 @@ const Header = () => {
   return (
     <HeaderContainer>
       <Navigation>
-        <Link to="/diary">
+        <Link to="/">
           <Logo />
         </Link>
         {isLoggedIn && userMetrics && (

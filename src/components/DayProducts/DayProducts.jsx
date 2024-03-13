@@ -37,6 +37,7 @@ import {
   selectDiaryInformation,
 } from '../../redux/diary/selectors';
 import { selectUser } from '../../redux/auth/selectors';
+import { capitalizeFirstLetter } from '../../helpers/capitalizeFirstLetter';
 
 const DayProducts = ({ selectedDate }) => {
   const productArr = useSelector(selectDiaryInformation);
@@ -50,8 +51,6 @@ const DayProducts = ({ selectedDate }) => {
   const error = useSelector(selectDiaryError);
 
   const isMobile = useMediaQuery('(max-width:768px)');
-
-  let FoodRecommended;
 
   const formatDate = (date) => {
     if (date === undefined) return '';
@@ -120,13 +119,13 @@ const DayProducts = ({ selectedDate }) => {
                       Title
                     </ProductListArrayItemMobile>
                     <ProductListArrayItemMobile>
-                      {productTitle}
+                      {capitalizeFirstLetter(productTitle)}
                     </ProductListArrayItemMobile>
                     <ProductListArrayItemMobile>
                       Category
                     </ProductListArrayItemMobile>
                     <ProductListArrayItemMobile>
-                      {productCategory}
+                      {capitalizeFirstLetter(productCategory)}
                     </ProductListArrayItemMobile>
                     <ListMobileArray>
                       <MobileItemsHolder1
@@ -250,9 +249,11 @@ const DayProducts = ({ selectedDate }) => {
                   bloodType && bloodType[userBloodType] ? 'Yes' : 'No';
                 return (
                   <ProductListArray key={productId}>
-                    <ProductListArrayItem>{productTitle}</ProductListArrayItem>
                     <ProductListArrayItem>
-                      {productCategory}
+                      {capitalizeFirstLetter(productTitle)}
+                    </ProductListArrayItem>
+                    <ProductListArrayItem>
+                      {capitalizeFirstLetter(productCategory)}
                     </ProductListArrayItem>
                     <ProductListArrayItem>{calories}</ProductListArrayItem>
                     <ProductListArrayItem>{amount}</ProductListArrayItem>
