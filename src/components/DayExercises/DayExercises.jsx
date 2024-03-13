@@ -36,6 +36,7 @@ import {
   deleteDiaryExercise,
   getAllDiaryInformation,
 } from '../../redux/diary/operations';
+import { capitalizeFirstLetter } from '../../helpers/capitalizeFirstLetter';
 
 const DayExercises = ({ selectedDate }) => {
   const exerciseArr = useSelector(selectDiaryInformation);
@@ -92,20 +93,20 @@ const DayExercises = ({ selectedDate }) => {
                     Body Part
                   </ExerciseListArrayItemMobile>
                   <ExerciseListArrayItemMobile>
-                    {exercise.exerciseId.bodyPart}
+                    {capitalizeFirstLetter(exercise.exerciseId.bodyPart)}
                   </ExerciseListArrayItemMobile>
 
                   <ExerciseListArrayItemMobile>
                     Equipment
                   </ExerciseListArrayItemMobile>
                   <ExerciseListArrayItemMobile>
-                    {exercise.exerciseId.equipment}
+                    {capitalizeFirstLetter(exercise.exerciseId.equipment)}
                   </ExerciseListArrayItemMobile>
                   <ExerciseListArrayItemMobile>
                     Name
                   </ExerciseListArrayItemMobile>
                   <ExerciseListArrayItemMobile>
-                    {exercise.exerciseId.name}
+                    {capitalizeFirstLetter(exercise.exerciseId.name)}
                   </ExerciseListArrayItemMobile>
                   <ListMobileArray>
                     <MobileItemsHolder1
@@ -118,7 +119,7 @@ const DayExercises = ({ selectedDate }) => {
                         Target
                       </ExerciseListArrayItemMobile>
                       <ExerciseListArrayItemMobile>
-                        {exercise.exerciseId.target}
+                        {capitalizeFirstLetter(exercise.exerciseId.target)}
                       </ExerciseListArrayItemMobile>
                     </MobileItemsHolder1>
                     <MobileItemsHolder2
@@ -188,16 +189,16 @@ const DayExercises = ({ selectedDate }) => {
               {exercises.map((exercise) => (
                 <ExerciseListArray key={exercise._id}>
                   <ExerciseListArrayItem>
-                    {exercise.exerciseId.bodyPart}
+                    {capitalizeFirstLetter(exercise.exerciseId.bodyPart)}
                   </ExerciseListArrayItem>
                   <ExerciseListArrayItem>
-                    {exercise.exerciseId.equipment}
+                    {capitalizeFirstLetter(exercise.exerciseId.equipment)}
                   </ExerciseListArrayItem>
                   <ExerciseListArrayItem>
-                    {exercise.exerciseId.name}
+                    {capitalizeFirstLetter(exercise.exerciseId.name)}
                   </ExerciseListArrayItem>
                   <ExerciseListArrayItem>
-                    {exercise.exerciseId.target}
+                    {capitalizeFirstLetter(exercise.exerciseId.target)}
                   </ExerciseListArrayItem>
                   <ExerciseListArrayItem>
                     {exercise.calories}
