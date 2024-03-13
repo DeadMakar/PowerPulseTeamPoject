@@ -40,9 +40,9 @@ export const fetchExercisesCategories = createAsyncThunk(
 
 export const fetchExercisesList = createAsyncThunk(
   '/exercises/exercises/fetchExercisesList',
-  async (filters, thunkAPI) => {
+  async (target, thunkAPI) => {
     try {
-      const response = await axios.get(`exercises?bodyPart=${filters}`);
+      const response = await axios.get(`exercises/query?exercise=${target}`);
 
       return response.data;
     } catch (error) {

@@ -21,11 +21,11 @@ const ExercisesList = () => {
   const exercises = useSelector(getExercises);
   const isLoading = useSelector(getIsLoading);
   const error = useSelector(getError);
-  const { filter, filterList } = useParams();
+  const { filterList } = useParams();
 
   useEffect(() => {
     const getExercisesList = async () => {
-      if (filter === 'Body parts') {
+      if (filterList) {
         dispatch(fetchExercisesList(filterList));
       }
     };
