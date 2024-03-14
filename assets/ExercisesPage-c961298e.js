@@ -1,4 +1,4 @@
-import{u as t,L as h,av as l,h as p,j as e,a,d as m,b as c,aw as u,ax as f,ay as b,r as d,C as v,s as w,I as j,T as k,O as E,E as y,az as C}from"./index-7c738369.js";import{T as L}from"./TitlePage-5a25ea55.js";const P=t.ul`
+import{u as t,L as h,ap as p,h as l,j as e,a as o,d as m,b as c,aq as u,ar as f,as as b,r as d,C as j,s as v,A as w,I as k,O as E,at as y}from"./index-d728a368.js";import{T as C}from"./TitlePage-2b04a3fe.js";const L=t.ul`
   display: flex;
   margin-top: 20px;
   gap: 28px;
@@ -6,7 +6,7 @@ import{u as t,L as h,av as l,h as p,j as e,a,d as m,b as c,aw as u,ax as f,ay as
   @media (min-width: 768px) {
     gap: 32px;
   }
-`,$=t(h)`
+`,P=t(h)`
   color: rgba(239, 237, 232, 0.4);
   font-size: 14px;
   line-height: 1.29;
@@ -31,7 +31,7 @@ import{u as t,L as h,av as l,h as p,j as e,a,d as m,b as c,aw as u,ax as f,ay as
     font-size: 16px;
     line-height: 1.5;
   }
-`,z=()=>{const i=["Body parts","Muscles","Equipment"],{filter:o}=l(),r=p(),s=o;return e.jsx(e.Fragment,{children:e.jsx(P,{children:i.map(n=>e.jsx("li",{children:e.jsx($,{to:`/exercises/${n}`,state:{from:r},isactive:n===s?"true":"false",children:n})},n))})})},B="/PowerPulseTeamPoject/assets/trainingGym-1-78b576d3.jpg",F="/PowerPulseTeamPoject/assets/trainingGym-1@2x-7f8d3593.jpg",T=t.div`
+`,$=()=>{const i=["Body parts","Muscles","Equipment"],{filter:a}=p(),r=l(),s=a;return e.jsx(e.Fragment,{children:e.jsx(L,{children:i.map(n=>e.jsx("li",{children:e.jsx(P,{to:`/exercises/${n}`,state:{from:r},isactive:n===s?"true":"false",children:n})},n))})})},z="/PowerPulseTeamPoject/assets/trainingGym-1-78b576d3.jpg",F="/PowerPulseTeamPoject/assets/trainingGym-1@2x-7f8d3593.jpg",B=t.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -55,19 +55,19 @@ import{u as t,L as h,av as l,h as p,j as e,a,d as m,b as c,aw as u,ax as f,ay as
   @media (min-width: 768px) {
     gap: 32px;
   }
-`;const D=t.div`
+`;const T=t.div`
   position: relative;
   width: 100%;
   height: 100%;
   border: 1px solid transparent;
   /* border: 2px solid red; */
-`,I=t.a`
+`,D=t.a`
   position: absolute;
   display: flex;
   align-items: center;
   top: 10px;
   gap: 8px;
-  color: ${a.colorInput};
+  color: ${o.colorInput};
   font-size: 14px;
   line-height: 1.29;
   transition: color 0.3s ease;
@@ -79,23 +79,23 @@ import{u as t,L as h,av as l,h as p,j as e,a,d as m,b as c,aw as u,ax as f,ay as
   }
 
   > svg {
-    stroke: ${a.colorInput};
+    stroke: ${o.colorInput};
     width: 16px;
     height: 16px;
     transition: stroke 0.3s ease;
   }
 
   &:hover {
-    color: ${a.colorOrange1};
+    color: ${o.colorOrange1};
     cursor: pointer;
 
     > svg {
-      stroke: ${a.colorOrange1};
+      stroke: ${o.colorOrange1};
       width: 16px;
       height: 16px;
     }
   }
-`,O=t.div`
+`,I=t.div`
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -106,7 +106,7 @@ import{u as t,L as h,av as l,h as p,j as e,a,d as m,b as c,aw as u,ax as f,ay as
   }
   @media (min-width: 1440px) {
     background-image: linear-gradient(89deg, #040404 0%, rgba(4, 4, 4, 0) 100%),
-      url(${B});
+      url(${z});
     background-repeat: no-repeat;
     background-position: right bottom;
     background-size: contain;
@@ -119,4 +119,4 @@ import{u as t,L as h,av as l,h as p,j as e,a,d as m,b as c,aw as u,ax as f,ay as
     background-image: linear-gradient(89deg, #040404 0%, rgba(4, 4, 4, 0) 100%),
       url(${F});
   }
-`,N=()=>{const i=m(),o=c(u),r=c(f),{filter:s,filterList:n}=l(),x=b(),g=p();return d.useEffect(()=>{(async()=>{s===void 0?y.info("We are still awating for data",{theme:"dark"}):i(C(s))})()},[i,s]),e.jsx(O,{children:e.jsx(v,{children:e.jsx(D,{children:e.jsxs("div",{children:[s!==void 0&&g.pathname.endsWith(s.replace(" ","%20"))?null:e.jsxs(I,{onClick:()=>x(-1),children:[e.jsx("svg",{style:{fill:"none"},children:e.jsx("use",{href:w+"#icon-arrow-left"})}),"Back"," "]}),e.jsxs(T,{children:[e.jsx(L,{contentText:n?j(n.split(" ")[0]):"Exercises"}),e.jsx(z,{})]}),o&&!r?e.jsx(k,{}):e.jsx(e.Fragment,{children:e.jsx(d.Suspense,{children:e.jsx(E,{})})})]})})})})};export{N as default};
+`,q=()=>{const i=m(),a=c(u),r=c(f),{filter:s,filterList:n}=p(),x=b(),g=l();return d.useEffect(()=>{(async()=>{s&&i(y(s))})()},[i,s]),e.jsx(I,{children:e.jsx(j,{children:e.jsx(T,{children:e.jsxs("div",{children:[s!==void 0&&g.pathname.endsWith(s.replace(" ","%20"))?null:e.jsxs(D,{onClick:()=>x(-1),children:[e.jsx("svg",{style:{fill:"none"},children:e.jsx("use",{href:v+"#icon-arrow-left"})}),"Back"," "]}),e.jsxs(B,{children:[e.jsx(C,{contentText:n?w(n.split(" ")[0]):"Exercises"}),e.jsx($,{})]}),a&&!r?e.jsx(k,{}):e.jsx(e.Fragment,{children:e.jsx(d.Suspense,{children:e.jsx(E,{})})})]})})})})};export{q as default};
