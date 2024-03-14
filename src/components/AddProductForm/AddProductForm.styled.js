@@ -6,6 +6,8 @@ import { Form as FormikForm, Field as FormikField } from 'formik';
 export const Form = styled(FormikForm)`
   display: flex;
   flex-direction: column;
+  /* position: relative; */
+
   /* min-width: 335px;
   min-height: 280px; */
 
@@ -117,14 +119,6 @@ export const BtnOrange = styled.button`
   background-color: ${globalColor.colorOrange};
 `;
 
-export const BtnCancel = styled(BtnOrange)`
-  color: ${globalColor.colorWhite};
-  /* background-color: ${globalColor.colorBlack}; */
-  background-color: transparent;
-  border-radius: 12px;
-  border: 1px solid rgba(239, 237, 232, 0.3);
-`;
-
 // export const Btn = styled.button`
 //   font-weight: 500;
 //   font-size: 16px;
@@ -139,6 +133,14 @@ export const BtnCancel = styled(BtnOrange)`
 // border: 0;
 // background - color: ${ globalColor.colorOrange };
 // `;
+
+export const BtnCancel = styled(BtnOrange)`
+  color: ${globalColor.colorWhite};
+  /* background-color: ${globalColor.colorBlack}; */
+  background-color: transparent;
+  border-radius: 12px;
+  border: 1px solid rgba(239, 237, 232, 0.3);
+`;
 
 // const Btn = ({color, text, border}) => {
 //   return <button $color={color} $border={border}>{ text}</button>
