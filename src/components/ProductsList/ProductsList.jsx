@@ -26,12 +26,14 @@ const ProductsList = ({ products }) => {
     setIsOpen(true);
     setSelectedProduct(product);
     setModalData(product);
+    document.body.style.overflow = 'hidden';
   };
 
   const handleCloseModal = () => {
     if (modalIsOpen) setIsOpen(false);
     setSelectedProduct(null);
     setModalData(null);
+    document.body.style.overflow = 'visible';
   };
 
   const currentUser = useSelector(selectUser);
