@@ -32,25 +32,21 @@ export const ExercisesItem = ({
     equipment,
   },
 }) => {
-  const dispatch = useDispatch();
-
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const [exesiceWasAdded, setTxesiceWasAdded] = useState(false);
+  const [exesiceWasAdded, setExersiceWasAdded] = useState(false);
 
   const [reallyBurnedCalories, setReallyBurnedCalories] = useState(0);
   const [timeOfTimer, setTimeOfTimer] = useState(0);
 
   const handleOpenModal = () => {
-    setIsModalOpen(false);
+    setIsModalOpen(true);
     document.body.style.overflow = 'hidden';
   };
 
   const handleCloseModal = () => {
-    if (isModalOpen) {
-      setIsModalOpen(false);
-      document.body.style.overflow = 'visible';
-    }
+    setIsModalOpen(false);
+    document.body.style.overflow = 'visible';
   };
 
   return (
@@ -72,7 +68,7 @@ export const ExercisesItem = ({
               alignItems: 'center',
             }}
           ></div>
-          <Button onClick={handleOpenModal}>
+          <Button onClick={() => handleOpenModal()}>
             Start
             <SvgWrapper
               style={{
@@ -113,33 +109,38 @@ export const ExercisesItem = ({
           </Text>
         </WrapperText>
       </>
-      <BasicModalWindow isOpen={isModalOpen} onRequestClose={handleCloseModal}>
-        {!exesiceWasAdded ? (
-          <AddExerciseForm
-            setReallyBurnedCalories={setReallyBurnedCalories}
-            closeModalAddExersiceForm={handleCloseModal}
-            name={name}
-            target={target}
-            bodyPart={bodyPart}
-            equipment={equipment}
-            id={_id}
-            gifUrl={gifUrl}
-            fullExerciseTime={time}
-            burnedCalories={burnedCalories}
-            reallyBurnedCalories={reallyBurnedCalories}
-            setTimeOfTimer={setTimeOfTimer}
-            timeOfTimer={timeOfTimer}
-            onClick={handleOpenModal}
-            setTxesiceWasAdded={setTxesiceWasAdded}
-          />
-        ) : (
-          <AddExerciseSuccess
-            timeOfTimer={timeOfTimer}
-            reallyBurnedCalories={reallyBurnedCalories}
-            closeModalAddProductSuccess={handleCloseModal}
-          />
-        )}
-      </BasicModalWindow>
+      {isModalOpen && (
+        <BasicModalWindow
+          isOpen={isModalOpen}
+          onRequestClose={handleCloseModal}
+        >
+          {!exesiceWasAdded ? (
+            <AddExerciseForm
+              setReallyBurnedCalories={setReallyBurnedCalories}
+              closeModalAddExersiceForm={handleCloseModal}
+              name={name}
+              target={target}
+              bodyPart={bodyPart}
+              equipment={equipment}
+              id={_id}
+              gifUrl={gifUrl}
+              fullExerciseTime={time}
+              burnedCalories={burnedCalories}
+              reallyBurnedCalories={reallyBurnedCalories}
+              setTimeOfTimer={setTimeOfTimer}
+              timeOfTimer={timeOfTimer}
+              onClick={handleOpenModal}
+              setExersiceWasAdded={setExersiceWasAdded}
+            />
+          ) : (
+            <AddExerciseSuccess
+              timeOfTimer={timeOfTimer}
+              reallyBurnedCalories={reallyBurnedCalories}
+              closeModalAddProductSuccess={handleCloseModal}
+            />
+          )}
+        </BasicModalWindow>
+      )}
     </>
   );
 };
