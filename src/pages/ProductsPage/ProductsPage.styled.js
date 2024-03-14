@@ -63,6 +63,8 @@ export const ProductsListWrapper = styled.div`
   }
 
   &::-webkit-scrollbar {
+    background: rgba(239, 237, 232, 0.1);
+    border-radius: 12px;
     width: 8px;
   }
 

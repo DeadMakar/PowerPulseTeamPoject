@@ -37,8 +37,9 @@ import {
   getAllDiaryInformation,
 } from '../../redux/diary/operations';
 import { capitalizeFirstLetter } from '../../helpers/capitalizeFirstLetter';
+import { formatDateForDiary } from '../../helpers/formatDateForDiary';
 
-const DayExercises = ({ selectedDate }) => {
+const DayExercises = ({ currentDate }) => {
   const exerciseArr = useSelector(selectDiaryInformation);
 
   const exercises = exerciseArr[1]?.exerciseArr;
@@ -48,9 +49,13 @@ const DayExercises = ({ selectedDate }) => {
   const dispatch = useDispatch();
 
   const handleDelete = async (id) => {
+    const formatedDate = formatDateForDiary(currentDate);
+
     try {
-      await dispatch(deleteDiaryExercise(id, selectedDate));
-      await dispatch(getAllDiaryInformation(selectedDate));
+      await dispatch(
+        deleteDiaryExercise({ exerciseId: id, selectedDate: formatedDate })
+      );
+      await dispatch(getAllDiaryInformation(formatedDate));
     } catch (error) {
       console.log(error);
       toast.error('Sorry, something went wrong, please try again', {

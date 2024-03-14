@@ -14,26 +14,36 @@ import {
   ItemTextStyled,
 } from './AddExerciseForm.styled';
 
-import dbExercises from '../../../DB/exercises.json';
-import { useEffect, useState } from 'react';
 import { TimerComponent } from './Timer';
+import { changeDate } from '../../helpers';
 
-export const AddExerciseForm = () => {
-  const [timeOfTimer, setTimeOfTimer] = useState(0);
-  const [reallyBurnedCalories, setReallyBurnedCalories] = useState(0);
+export const AddExerciseForm = ({
+  setReallyBurnedCalories,
+  closeModalAddExersiceForm: closeModalForm,
+  onClick: openModal,
+  name,
+  target,
+  bodyPart,
+  equipment,
+  id,
+  gifUrl,
+  fullExerciseTime,
+  burnedCalories,
+  reallyBurnedCalories,
+  timeOfTimer,
+  setTimeOfTimer,
+  setTxesiceWasAdded,
+}) => {
+  const currentDate = new Date();
+  const date = changeDate(currentDate);
+  const parts = date.split('/');
+  const formattedCurrentDate = `${parts[0]}-${parts[1]}-${parts[2]}`;
 
-  const {
-    _id,
-    name,
-    target,
-    bodyPart,
-    equipment,
-    gifUrl,
-    burnedCalories,
-    time: fullExerciseTime,
-  } = dbExercises[1];
-
-  // записую коли на паузу або завершився час
+  const addNewExercise = () => {
+    console.log('added exercise');
+    setTxesiceWasAdded(true);
+    return;
+  };
 
   return (
     <WrapperDiv>
@@ -71,7 +81,9 @@ export const AddExerciseForm = () => {
             <SpanItemsStyled>{equipment}</SpanItemsStyled>
           </ItemStyled>
         </ListStyled>
-        <BtnOrange type="submit">Add to diary</BtnOrange>
+        <BtnOrange type="submit" onClick={() => addNewExercise()}>
+          Add to diary
+        </BtnOrange>
       </WrapperPart2>
     </WrapperDiv>
   );

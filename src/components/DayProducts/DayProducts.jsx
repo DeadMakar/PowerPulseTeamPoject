@@ -27,7 +27,10 @@ import {
 } from './DayProducts.styled';
 import { globalColor } from '../../styles/root';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteDiaryProducts } from '../../redux/diary/operations';
+import {
+  deleteDiaryProducts,
+  getAllDiaryInformation,
+} from '../../redux/diary/operations';
 import { toast } from 'react-toastify';
 import {
   selectDiaryError,
@@ -35,6 +38,7 @@ import {
 } from '../../redux/diary/selectors';
 import { selectUser } from '../../redux/auth/selectors';
 import { capitalizeFirstLetter } from '../../helpers/capitalizeFirstLetter';
+import { formatDateForDiary } from '../../helpers/formatDateForDiary';
 
 const DayProducts = ({ currentDate }) => {
   const productArr = useSelector(selectDiaryInformation);
@@ -49,26 +53,13 @@ const DayProducts = ({ currentDate }) => {
 
   const isMobile = useMediaQuery('(max-width:768px)');
 
-  const formatDate = (date) => {
-    if (!(date instanceof Date)) {
-      return null;
-    }
-    const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const year = date.getFullYear();
-
-    const formattedDate = `${day}-${month}-${year}`;
-
-    return formattedDate;
-  };
-
   const handleDelete = async (id) => {
-    const formatedDate = formatDate(currentDate);
+    const formatedDate = formatDateForDiary(currentDate);
     try {
       await dispatch(
         deleteDiaryProducts({ productId: id, selectedDate: formatedDate })
       );
-      // await dispatch(getAllDiaryInformation(formatedDate));
+      await dispatch(getAllDiaryInformation(formatedDate));
     } catch (error) {
       toast.error('Sorry, something went wrong, please try again', {
         theme: 'dark',
