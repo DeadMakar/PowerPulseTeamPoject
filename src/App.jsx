@@ -31,13 +31,12 @@ function App() {
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const user = useSelector(selectUser);
-  // const userMetrics = isLoggedIn && user?.userMetrics ? true : false;
 
   useEffect(() => {
     if (isLoggedIn) {
       dispatch(refreshUser());
     }
-  }, [isLoggedIn]);
+  }, [dispatch, isLoggedIn]);
 
   return (
     <RouterProvider>
@@ -89,21 +88,21 @@ function App() {
             <Route
               path="/products"
               element={
-                // user?.userMetrics ? (
-                <ProductsPage />
-                // ) : (
-                // <Navigate to="/profile" replace />
-                // )
+                user?.userMetrics ? (
+                  <ProductsPage />
+                ) : (
+                  <Navigate to="/profile" replace />
+                )
               }
             />
             <Route
               path="/exercises"
               element={
-                // user?.userMetrics ? (
-                <ExercisesPage />
-                // ) : (
-                // <Navigate to="/profile" replace />
-                // )
+                user?.userMetrics ? (
+                  <ExercisesPage />
+                ) : (
+                  <Navigate to="/profile" replace />
+                )
               }
             >
               <Route

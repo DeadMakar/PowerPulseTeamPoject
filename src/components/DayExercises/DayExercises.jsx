@@ -32,10 +32,7 @@ import {
   selectDiaryError,
   selectDiaryInformation,
 } from '../../redux/diary/selectors';
-import {
-  deleteDiaryExercise,
-  getAllDiaryInformation,
-} from '../../redux/diary/operations';
+import { deleteDiaryExercise } from '../../redux/diary/operations';
 import { capitalizeFirstLetter } from '../../helpers/capitalizeFirstLetter';
 import { formatDateForDiary } from '../../helpers/formatDateForDiary';
 
@@ -55,7 +52,6 @@ const DayExercises = ({ currentDate }) => {
       await dispatch(
         deleteDiaryExercise({ exerciseId: id, selectedDate: formatedDate })
       );
-      await dispatch(getAllDiaryInformation(formatedDate));
     } catch (error) {
       console.log(error);
       toast.error('Sorry, something went wrong, please try again', {

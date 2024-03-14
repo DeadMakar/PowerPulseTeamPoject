@@ -19,12 +19,9 @@ export const register = createAsyncThunk(
       const response = await axios.post('users/register', userData);
       setAuthToken(response.data.verificationToken);
 
-      toast.success(
-        'Registration is successful. Please, check your mail. We have sent a verification letter to your mail-box.',
-        {
-          theme: 'dark',
-        }
-      );
+      toast.success('Registration is successful. Welcome!!!', {
+        theme: 'dark',
+      });
 
       return response.data;
     } catch (error) {
