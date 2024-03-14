@@ -1,0 +1,1 @@
+import{a as r,j as o,l as a,s as e}from"./index-b663f444.js";import{a as c,S as n,L as i}from"./LogOutBtn.styled-e46ec8df.js";const g=({colorSvg:s="rgba(239, 237, 232, 1)"})=>{const t=r();return o.jsxs(c,{to:"/welcome",onClick:()=>t(a()),children:[o.jsx(n,{children:"Logout"}),o.jsx(i,{$colorSvg:s,children:o.jsx("use",{href:`${e}#icon-log-out-01`})})]})};export{g as L};
