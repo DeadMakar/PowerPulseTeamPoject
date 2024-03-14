@@ -1,8 +1,9 @@
 import thumbUp from '../../assets/images/exercises/thumbUp.png';
 import {
   ImgStyled,
-  LinkBtnStyled,
+  // LinkBtnStyled,
   LinkStyled,
+  OrangeBtnStyled,
   SpanStyled,
   SvgArrow,
   TextStyled,
@@ -12,21 +13,32 @@ import {
 } from './AddExerciseSuccess.styled';
 import sprite from '../../assets/sprite.svg';
 
-const AddExerciseSuccess = ({ exerciseTime, caloriesBurned }) => {
+const AddExerciseSuccess = ({
+  timeOfTimer: exerciseTime,
+  reallyBurnedCalories: caloriesBurned,
+  closeModalAddProductSuccess: closeModalForm,
+}) => {
+  const exerciseFormattedTime = ` ${Math.round(
+    exerciseTime / 60
+  )} min ${Math.round(exerciseTime % 60)} sec`;
+
   return (
     <WrapperDiv>
       <ImgStyled src={thumbUp} />
       <TitleStyled>Well done</TitleStyled>
       <TextWrapper>
         <TextStyled>
-          Your time: <SpanStyled>3 {exerciseTime} minutes</SpanStyled>
+          Your time:
+          <SpanStyled>{exerciseFormattedTime}</SpanStyled>
         </TextStyled>
         <TextStyled>
-          Burned calories: <SpanStyled> 150 {caloriesBurned} </SpanStyled>
+          Burned calories: <SpanStyled> {caloriesBurned} </SpanStyled>
         </TextStyled>
       </TextWrapper>
-      <LinkBtnStyled href="">Next exercise</LinkBtnStyled>{' '}
-      <LinkStyled href="">
+      <OrangeBtnStyled type="button" onClick={() => closeModalForm()}>
+        Next exercise
+      </OrangeBtnStyled>
+      <LinkStyled href="/PowerPulseTeamPoject/diary">
         to the Diary
         <SvgArrow>
           <use href={`${sprite}#icon-arrow`}></use>

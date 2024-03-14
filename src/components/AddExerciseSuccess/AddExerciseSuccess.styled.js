@@ -53,19 +53,18 @@ export const SpanStyled = styled.span`
   color: #e6533c;
 `;
 
-export const LinkBtnStyled = styled.a`
+export const OrangeBtnStyled = styled.button`
   display: block;
-  margin: auto;
-  text-align: center;
 
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
+  color: ${globalColor.colorWhite};
 
   border-radius: 12px;
   padding: 12px 32px;
   min-width: 157px;
-  /* height: 42px; */
+  height: 42px;
   color: ${globalColor.colorWhite};
   background-color: ${globalColor.colorOrange};
   margin-bottom: 16px;
