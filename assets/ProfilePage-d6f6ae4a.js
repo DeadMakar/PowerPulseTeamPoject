@@ -1,4 +1,4 @@
-import{f as r,h as a,a as Z,u as ee,d as te,r as y,w as ce,x as ie,j as t,s as b,o as de,p as T,y as k,F as re,c as _,g as le,z as pe,A as xe,B as he,D as ge,E as O,G as me,C as ue}from"./index-6b19034e.js";import{T as fe}from"./TitlePage-149d9abb.js";import{L as be}from"./LogOutBtn-ff1f3d79.js";import{g as U,i as ye,a as ve}from"./index-e17f41ad.js";import"./LogOutBtn.styled-8ec66b77.js";import"./floating-ui.dom-9d61e2db.js";const je=r.div`
+import{u as r,a,d as Z,b as ee,f as te,r as y,w as ce,x as ie,j as t,s as b,o as de,p as T,y as k,F as re,c as _,g as le,z as pe,A as xe,B as he,D as ge,E as O,G as me,C as ue}from"./index-7c738369.js";import{T as fe}from"./TitlePage-5a25ea55.js";import{b as be}from"./LogOutBtn-29e0ce48.js";import{g as U,i as ye,a as ve}from"./index-e9f50554.js";import"./floating-ui.dom-9d61e2db.js";const je=r.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -697,4 +697,4 @@ import{f as r,h as a,a as Z,u as ee,d as te,r as y,w as ce,x as ie,j as t,s as b
   @media screen and (min-width: 768px) {
     margin-top: 70px;
   }
-`,Hi=()=>t.jsx(ue,{children:t.jsxs(Li,{children:[t.jsx(fe,{contentText:"Profile Settings"}),t.jsxs(Ei,{children:[t.jsx(De,{}),t.jsx(Ri,{})]})]})});export{Hi as default};
+`,qi=()=>t.jsx(ue,{children:t.jsxs(Li,{children:[t.jsx(fe,{contentText:"Profile Settings"}),t.jsxs(Ei,{children:[t.jsx(De,{}),t.jsx(Ri,{})]})]})});export{qi as default};
