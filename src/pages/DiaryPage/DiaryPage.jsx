@@ -32,7 +32,6 @@ const DiaryPage = () => {
   const isLoading = useSelector(selectDiaryIsLoading);
   const isRefreshing = useSelector(selectIsRefreshing);
   const bmr = useSelector(selectBmr);
-  const { addProducts, addExercises } = userData;
   const [currentDate, setCurrentDate] = useState(new Date());
   const user = useSelector(selectUser);
   const userDataRegistration = user ? user.createdAt : null;
@@ -69,14 +68,8 @@ const DiaryPage = () => {
           <InfoContainer>
             <DayDashboard userDiaryInformation={userData} bmr={bmr} />
             <ProdAndExercise>
-              <DayProducts
-                currentDate={currentDate}
-                date={formattedCurrentDate}
-              />
-              <DayExercises
-                exercisesArray={addExercises}
-                date={formattedCurrentDate}
-              />
+              <DayProducts currentDate={currentDate} />
+              <DayExercises currentDate={currentDate} />
             </ProdAndExercise>
           </InfoContainer>
         </DiaryConteiner>

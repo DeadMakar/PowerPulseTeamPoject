@@ -18,7 +18,6 @@ import {
 
 import { TitlePage } from '../../components/TitlePage';
 import { Loader } from '../../components/Loader';
-import { toast } from 'react-toastify';
 
 const ExercisesPage = () => {
   const dispatch = useDispatch();
@@ -30,13 +29,7 @@ const ExercisesPage = () => {
 
   useEffect(() => {
     const gettingExercisesFilters = async () => {
-      if (filter === undefined) {
-        {
-          toast.info('We are still awating for data', {
-            theme: 'dark',
-          });
-        }
-      } else {
+      if (filter) {
         dispatch(fetchExercisesCategories(filter));
       }
     };

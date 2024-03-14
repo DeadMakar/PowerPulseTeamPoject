@@ -74,10 +74,8 @@ export const deleteDiaryExercise = createAsyncThunk(
   '/diary/exercises/deleteDiaryExercise',
   async ({ exerciseId, selectedDate }, thunkAPI) => {
     try {
-      const formattedDate = format(selectedDate, 'dd-MM-yyyy');
-
       const response = await axios.delete(
-        `diary/exercises/${exerciseId}?date=${formattedDate}`
+        `diary/exercises/${exerciseId}?date=${selectedDate}`
       );
       return response.data;
     } catch (error) {
