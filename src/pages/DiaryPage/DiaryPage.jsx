@@ -70,7 +70,6 @@ const DiaryPage = () => {
             <DayDashboard userDiaryInformation={userData} bmr={bmr} />
             <ProdAndExercise>
               <DayProducts
-                productsArray={addProducts}
                 currentDate={currentDate}
                 date={formattedCurrentDate}
               />
