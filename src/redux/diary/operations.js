@@ -40,16 +40,13 @@ export const addDiaryProducts = createAsyncThunk(
 export const deleteDiaryProducts = createAsyncThunk(
   '/diary/products/deleteDiaryProducts',
   async ({ productId, selectedDate }, thunkAPI) => {
-    const formattedDate = format(selectedDate, 'dd-MM-yyyy');
-    console.log(formattedDate);
     try {
-      // const formattedDate = format(selectedDate, 'dd-MM-yyyy');
-      // console.log(formattedDate);
       const response = await axios.delete(
-        `diary/products/${productId}?date=${formattedDate}`
+        `diary/products/${productId}?date=${selectedDate}`
       );
       return response.data;
     } catch (error) {
+      console.log(error.message);
       toast.error('Sorry, something went wrong, please try again', {
         theme: 'dark',
       });

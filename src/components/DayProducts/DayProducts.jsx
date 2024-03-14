@@ -27,10 +27,7 @@ import {
 } from './DayProducts.styled';
 import { globalColor } from '../../styles/root';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  deleteDiaryProducts,
-  getAllDiaryInformation,
-} from '../../redux/diary/operations';
+import { deleteDiaryProducts } from '../../redux/diary/operations';
 import { toast } from 'react-toastify';
 import {
   selectDiaryError,
@@ -39,7 +36,7 @@ import {
 import { selectUser } from '../../redux/auth/selectors';
 import { capitalizeFirstLetter } from '../../helpers/capitalizeFirstLetter';
 
-const DayProducts = ({ selectedDate }) => {
+const DayProducts = ({ currentDate }) => {
   const productArr = useSelector(selectDiaryInformation);
 
   const products = productArr[0]?.productArr;
@@ -53,27 +50,29 @@ const DayProducts = ({ selectedDate }) => {
   const isMobile = useMediaQuery('(max-width:768px)');
 
   const formatDate = (date) => {
-    if (date === undefined) return '';
-    const addLeadingZero = (number) => (number < 10 ? `0${number}` : number);
-
-    const day = addLeadingZero(date.getDate());
-    const month = addLeadingZero(date.getMonth() + 1);
+    if (!(date instanceof Date)) {
+      return null;
+    }
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
     const year = date.getFullYear();
 
     const formattedDate = `${day}-${month}-${year}`;
+
     return formattedDate;
   };
-  const formatedDate = formatDate(selectedDate);
 
-  const handleDelete = async (id, selectedDate) => {
+  const handleDelete = async (id) => {
+    const formatedDate = formatDate(currentDate);
     try {
-      await dispatch(deleteDiaryProducts(id, selectedDate));
-      // await dispatch(getAllDiaryInformation(formatedDate(selectedDate)));
+      await dispatch(
+        deleteDiaryProducts({ productId: id, selectedDate: formatedDate })
+      );
+      // await dispatch(getAllDiaryInformation(formatedDate));
     } catch (error) {
       toast.error('Sorry, something went wrong, please try again', {
         theme: 'dark',
       });
-      console.log(123);
     }
   };
 
@@ -213,12 +212,7 @@ const DayProducts = ({ selectedDate }) => {
                         <ProductListArrayItemMobile>
                           <TableDeleteButton
                             type="button"
-                            onClick={() =>
-                              // handleDelete(productId, selectedDate)
-                              dispatch(
-                                deleteDiaryProducts(productId, selectedDate)
-                              )
-                            }
+                            onClick={() => handleDelete(productId)}
                           >
                             <SvgTableStyled>
                               <use href={sprite + '#icon-trash-03'}></use>
@@ -302,7 +296,7 @@ const DayProducts = ({ selectedDate }) => {
                     <ProductListArrayItem>
                       <TableDeleteButton
                         type="button"
-                        onClick={() => handleDelete(productId, selectedDate)}
+                        onClick={() => handleDelete(productId)}
                       >
                         <SvgTableStyled>
                           <use href={sprite + '#icon-trash-03'}></use>
