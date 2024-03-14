@@ -1,4 +1,4 @@
-import{f as e,h as n,N as t,j as i,i as p,C as o,s as d}from"./index-b663f444.js";import{S as x}from"./StatisticsInfo-f430dd94.js";import{L as a}from"./Logo-53341029.js";import"./bgMobile@2x-c00288ab.js";import"./Logo.styled-e8ff009e.js";const r=e.div`
+import{f as e,h as n,N as t,j as i,i as p,C as o,s as d}from"./index-6b19034e.js";import{S as x}from"./StatisticsInfo-891766d7.js";import{L as a}from"./Logo-870178be.js";import"./bgMobile@2x-c00288ab.js";import"./Logo.styled-d2ce3740.js";const r=e.div`
   @media screen and (min-width: 320px) {
     position: relative;
   }
