@@ -79,11 +79,11 @@ function App() {
             <Route
               path="/diary"
               element={
-                // user?.userMetrics ? (
-                <DiaryPage />
-                // ) : (
-                // <Navigate to="/profile" replace />
-                // )
+                user?.userMetrics ? (
+                  <DiaryPage />
+                ) : (
+                  <Navigate to="/profile" replace />
+                )
               }
             />
             <Route
