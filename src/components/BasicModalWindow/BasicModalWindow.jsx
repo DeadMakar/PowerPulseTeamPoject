@@ -51,7 +51,7 @@ const BasicModalWindow = ({
         onRequestClose={onModalClose}
         style={customStyles}
       >
-        <CloseModalBtn onClick={onModalClose}>
+        <CloseModalBtn onClick={() => onModalClose()}>
           <use href={`${sprite}#icon-x`}></use>
         </CloseModalBtn>
         {children}
