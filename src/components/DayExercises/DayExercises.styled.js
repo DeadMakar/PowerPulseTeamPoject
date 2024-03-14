@@ -11,7 +11,7 @@ export const HeaderArray = styled.ul`
   @media screen and (min-width: 768px) {
     flex-wrap: nowrap;
     margin-bottom: 8px;
-    justify-content: start;
+    /* justify-content: start; */
   }
 `;
 
