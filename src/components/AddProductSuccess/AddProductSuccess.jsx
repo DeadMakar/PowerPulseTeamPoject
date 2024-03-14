@@ -1,6 +1,6 @@
 import {
   ImgStyled,
-  LinkBtnStyled,
+  OrangeBtnStyled,
   LinkStyled,
   SpanStyled,
   SvgArrow,
@@ -11,7 +11,10 @@ import {
 import sprite from '../../assets/sprite.svg';
 import avocado from '../../assets/images/products/avocado.png';
 
-const AddProductSuccess = ({ calories }) => {
+const AddProductSuccess = ({
+  calories,
+  closeModalAddProductSuccess: closeModal,
+}) => {
   return (
     <WrapperDiv>
       <ImgStyled src={avocado} />
@@ -19,7 +22,9 @@ const AddProductSuccess = ({ calories }) => {
       <TextStyled>
         Calories: <SpanStyled>{calories}</SpanStyled>
       </TextStyled>
-      <LinkBtnStyled href="">Next product</LinkBtnStyled>{' '}
+      <OrangeBtnStyled type="button" onClick={() => closeModal()}>
+        Next product
+      </OrangeBtnStyled>
       <LinkStyled href="/PowerPulseTeamPoject/diary">
         to the Diary
         <SvgArrow>

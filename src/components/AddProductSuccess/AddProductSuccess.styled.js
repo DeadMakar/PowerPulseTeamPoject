@@ -46,7 +46,7 @@ export const SpanStyled = styled.span`
   color: #e6533c;
 `;
 
-export const LinkBtnStyled = styled.a`
+export const OrangeBtnStyled = styled.button`
   display: block;
 
   font-weight: 500;

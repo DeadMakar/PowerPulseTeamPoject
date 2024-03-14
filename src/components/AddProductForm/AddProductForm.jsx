@@ -15,26 +15,26 @@ import {
 } from './AddProductForm.styled';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { selectDiaryError } from '../../redux/diary/selectors';
+// import { selectDiaryError } from '../../redux/diary/selectors';
 import { useState } from 'react';
 import { default as changeDate } from '../../helpers/changeDate';
 import { toast } from 'react-toastify';
 import { addDiaryProducts } from '../../redux/diary/operations';
 
-const productValidation = Yup.object().shape({
-  mass: Yup.number().required('Required'),
-});
+// const productValidation = Yup.object().shape({
+//   mass: Yup.number().required('Required'),
+// });
 
 export const AddProductForm = ({
   productTitle,
   calories,
   productId,
   onClick: openModal,
-  closeModallAddProductForm: closeModal,
+  closeModallAddProductForm: closeModalForm,
 }) => {
   const dispatch = useDispatch();
 
-  const errorAdding = useSelector(selectDiaryError);
+  // const errorAdding = useSelector(selectDiaryError);
 
   const [productToAdd, setProductToAdd] = useState({
     product: '',
@@ -43,8 +43,7 @@ export const AddProductForm = ({
     calories: '',
   });
 
-  const [caloriesСonsumed, setСaloriesСonsumed] = useState('');
-  // const [consumedCalories, setConsumedCalories] = useState(0);
+  const [caloriesСonsumed, setСaloriesСonsumed] = useState(0);
 
   const [error, setError] = useState('');
   const [isError, setIsError] = useState(false);
@@ -59,25 +58,8 @@ export const AddProductForm = ({
     productTitle[0].toUpperCase() + productTitle.slice(1).toLowerCase();
 
   const applyAddProduct = async () => {
-    // e.preventDefault();
-    // if (
-    //   (0 >= productToAdd.amount || 3000 <= productToAdd.amount) &&
-    //   productToAdd.amount
-    // ) {
-    //   setError('Entering value must be at range 1g to 3000g');
-    //   setIsError(true);
-    //   setСaloriesСonsumed(calories);
-    // } else if (
-    //   Object.keys(productToAdd).length < 0 ||
-    //   productToAdd.amount === ''
-    // ) {
-    //   setError('Enter amount*');
-    //   setIsError(true);
-    // } else if (!errorAdding) {
-    //   setError('');
-    //   setIsError(false);
     try {
-      closeModal();
+      closeModalForm();
       openModal(productToAdd.calories);
       dispatch(addDiaryProducts(productToAdd));
       // console.log(productToAdd);
@@ -86,13 +68,7 @@ export const AddProductForm = ({
         theme: 'dark',
       });
     }
-    // } else {
-    //   toast.error('Sorry, something went wrong, please try again', {
-    //     theme: 'dark',
-    //   });
-    //   return;
   };
-  // };
 
   const handleInputChange = (e) => {
     const gramsEat = parseFloat(e.target.value);
@@ -125,16 +101,6 @@ export const AddProductForm = ({
       });
     }
   };
-
-  // const [isModalOpen, setIsModalOpen] = useState(false);
-
-  // const openModal = () => {
-  //   setIsModalOpen(true);
-  // };
-
-  // const closeModal = () => {
-  //   setIsModalOpen(false);
-  // };
 
   return (
     <>
@@ -170,7 +136,7 @@ export const AddProductForm = ({
           </TextStyled>
           <BtnWrapper>
             <BtnOrange type="submit">Add to diary</BtnOrange>
-            <BtnCancel type="button" onClick={() => closeModal()}>
+            <BtnCancel type="button" onClick={() => closeModalForm()}>
               Cancel
             </BtnCancel>
           </BtnWrapper>

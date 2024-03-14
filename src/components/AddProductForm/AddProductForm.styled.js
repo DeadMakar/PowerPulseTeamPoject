@@ -3,20 +3,9 @@ import { globalColor } from '../../styles/root';
 
 import { Form as FormikForm, Field as FormikField } from 'formik';
 
-// export const CloseSvgBtn = styled.svg`
-//   position: absolute;
-//   top: 10;
-//   right: 10;
-//   width: 14px;
-//   height: 14px;
-//   stroke: ${globalColor.colorWhite};
-// `;
-
 export const Form = styled(FormikForm)`
   display: flex;
   flex-direction: column;
-  /* position: relative; */
-
   /* min-width: 335px;
   min-height: 280px; */
 
@@ -33,8 +22,8 @@ export const FieldWrapper = styled.div`
   gap: 16px;
   margin-bottom: 16px;
   position: relative;
-  /* justify-content: center;
-  align-items: сenter; */
+  justify-content: center;
+  align-items: сenter;
 
   @media screen and (min-width: 768px) {
     flex-direction: row;
@@ -46,7 +35,11 @@ export const FieldProduct = styled(FormikField)`
   border-radius: 12px;
   padding: 8px 14px;
   /* width: 287px; */
-  width: 100%;
+  /* width: 100%; */
+  width: 287px;
+  @media screen and (min-width: 768px) {
+    width: 155px;
+  }
   color: ${globalColor.colorWhite};
   background-color: transparent;
   outline: none;
@@ -124,6 +117,14 @@ export const BtnOrange = styled.button`
   background-color: ${globalColor.colorOrange};
 `;
 
+export const BtnCancel = styled(BtnOrange)`
+  color: ${globalColor.colorWhite};
+  /* background-color: ${globalColor.colorBlack}; */
+  background-color: transparent;
+  border-radius: 12px;
+  border: 1px solid rgba(239, 237, 232, 0.3);
+`;
+
 // export const Btn = styled.button`
 //   font-weight: 500;
 //   font-size: 16px;
@@ -138,14 +139,6 @@ export const BtnOrange = styled.button`
 // border: 0;
 // background - color: ${ globalColor.colorOrange };
 // `;
-
-export const BtnCancel = styled(BtnOrange)`
-  color: ${globalColor.colorWhite};
-  /* background-color: ${globalColor.colorBlack}; */
-  background-color: transparent;
-  border-radius: 12px;
-  border: 1px solid rgba(239, 237, 232, 0.3);
-`;
 
 // const Btn = ({color, text, border}) => {
 //   return <button $color={color} $border={border}>{ text}</button>
