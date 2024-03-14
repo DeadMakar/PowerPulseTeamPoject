@@ -1,4 +1,4 @@
-import{u as r,a as t,y as L,j as e,z as we,B as P,r as w,w as ge,s as x,R as ye,b as v,d as Y,f as Q,N as ee,A as b,D as ue,E as F,F as je,G as be,H as ve,C as $e,I as De}from"./index-c4091b79.js";import{i as Se}from"./index-843a9c75.js";import{T as ke}from"./TitlePage-0bafcd86.js";import{T as Ie,_}from"./emotion-element-c39617d8.browser.esm-45af7cf8.js";import"./floating-ui.dom-9d61e2db.js";const ze=r.div`
+import{u as r,a as t,y as L,j as e,z as we,B as P,r as w,w as ge,s as x,R as ye,b as v,d as Y,f as Q,N as ee,A as b,D as ue,E as F,F as je,G as be,H as ve,C as $e,I as De}from"./index-b512d28d.js";import{i as Se}from"./index-ba5aa2bc.js";import{T as ke}from"./TitlePage-a5118a58.js";import{T as Ie,_}from"./emotion-element-c39617d8.browser.esm-c60167a4.js";import"./floating-ui.dom-9d61e2db.js";const ze=r.div`
   position: relative;
   display: flex;
   align-items: center;
@@ -631,7 +631,7 @@ import{u as r,a as t,y as L,j as e,z as we,B as P,r as w,w as ge,s as x,R as ye,
   @media screen and (min-width: 768px) {
     flex-wrap: nowrap;
     margin-bottom: 8px;
-    justify-content: start;
+    /* justify-content: start; */
   }
 `,k=r.li`
   color: ${t.colorOrange1};
