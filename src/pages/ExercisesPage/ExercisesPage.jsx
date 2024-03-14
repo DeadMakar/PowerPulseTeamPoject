@@ -4,7 +4,7 @@ import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
 import sprite from '../../assets/sprite.svg';
 import { getError, getIsLoading } from '../../redux/exercises/categoriesSlice';
 
-import { capitalizeFirstLetter } from '../../helpers/capitalizeFirstLetter'; //=?
+import { capitalizeFirstLetter } from '../../helpers/capitalizeFirstLetter';
 import { ExerciseCategories } from '../../components/ExercisesCategories';
 import { fetchExercisesCategories } from '../../redux/exercises/operations';
 
@@ -19,7 +19,6 @@ import {
 import { TitlePage } from '../../components/TitlePage';
 import { Loader } from '../../components/Loader';
 import { toast } from 'react-toastify';
-import { Header } from '../../components/Header';
 
 const ExercisesPage = () => {
   const dispatch = useDispatch();

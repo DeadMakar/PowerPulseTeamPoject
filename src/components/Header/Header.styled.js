@@ -26,7 +26,7 @@ export const Navigation = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1440px;
+  width: 1250px;
   margin: 0 auto;
 `;
 
