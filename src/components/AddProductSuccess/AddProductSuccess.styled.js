@@ -15,6 +15,8 @@ export const WrapperDiv = styled.div`
 
 export const ImgStyled = styled.img`
   width: 123px;
+  height: 84px;
+
   margin-bottom: 16px;
 
   @media screen and (min-width: 768px) {
@@ -47,24 +49,27 @@ export const SpanStyled = styled.span`
 `;
 
 export const OrangeBtnStyled = styled.button`
-  display: block;
+  /* display: block; */
 
   font-weight: 500;
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.12;
   color: ${globalColor.colorWhite};
 
+  border-color: transparent;
   border-radius: 12px;
-  padding: 12px 32px;
-  min-width: 157px;
-  /* height: 42px; */
+  /* padding: 12px 32px; */
+  width: 157px;
+  height: 42px;
+
   color: ${globalColor.colorWhite};
   background-color: ${globalColor.colorOrange};
   margin-bottom: 16px;
 
   @media screen and (min-width: 768px) {
-    padding: 14px 32px;
+    /* padding: 14px 32px; */
     height: 52px;
+    line-height: 1.5;
   }
 `;
 

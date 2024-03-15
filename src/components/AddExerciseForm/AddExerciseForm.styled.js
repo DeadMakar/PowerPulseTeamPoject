@@ -2,12 +2,13 @@ import styled from 'styled-components';
 import { globalColor } from '../../styles/root';
 
 export const WrapperDiv = styled.div`
-  min-width: 335px;
-  padding-top: 48px;
+  /* width: 335px; */
+  padding: 48px 18px;
 
   @media screen and (min-width: 768px) {
-    width: 694px;
+    /* width: 694px; */
     display: flex;
+    padding: 48px 32px;
   }
 `;
 
@@ -18,8 +19,7 @@ export const WrapperPart1 = styled.div`
   margin-bottom: 40px;
 
   @media screen and (min-width: 768px) {
-    margin-bottom: 48px;
-    padding-left: 32px;
+    margin-bottom: 0;
   }
 `;
 
@@ -31,8 +31,8 @@ export const WrapperPart2 = styled.div`
   @media screen and (min-width: 768px) {
     align-items: end;
     padding-left: 16px;
-    padding-right: 32px;
-    margin-bottom: 48px;
+    /* padding-right: 32px;
+    margin-bottom: 48px; */
   }
 `;
 
@@ -47,17 +47,10 @@ export const ImgStyled = styled.img`
 export const TimeTextStyled = styled.p`
   font-weight: 400;
   font-size: 10px;
-  line-height: 140%;
+  line-height: 1.4;
   color: rgba(239, 237, 232, 0.4);
   margin-bottom: 4px;
 `;
-
-// export const TimerBlock = styled(CountdownCircleTimer)`
-//   /* width: 125px;
-//   height: 124px; */
-//   /* outline: 2px solid ${globalColor.colorOrange}; */
-//   margin-bottom: 14px;
-// `;
 
 // export const TimerBlock = styled.div`
 //   width: 125px;
@@ -107,10 +100,10 @@ export const ListStyled = styled.ul`
   justify-content: center;
   gap: 8px;
   margin-bottom: 24px;
-  max-width: 302px;
+  width: 302px;
   @media screen and (min-width: 768px) {
     margin-bottom: 254px;
-    max-width: 344px;
+    width: 344px;
   }
 `;
 
@@ -156,6 +149,10 @@ export const BtnOrange = styled.button`
   border-radius: 12px;
   padding: 12px 32px;
   width: 151px;
-  height: 52px;
+  height: 42px;
   background-color: ${globalColor.colorOrange};
+  @media screen and (min-width: 768px) {
+    height: 52px;
+    line-height: 1.5;
+  }
 `;
