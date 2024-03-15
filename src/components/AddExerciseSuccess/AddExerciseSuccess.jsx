@@ -16,9 +16,9 @@ import sprite from '../../assets/sprite.svg';
 const AddExerciseSuccess = ({
   timeOfTimer: exerciseTime,
   reallyBurnedCalories: caloriesBurned,
-  closeModalAddProductSuccess: closeModalForm,
+  closeModalAddExerciseSuccess: closeModalForm,
 }) => {
-  const exerciseFormattedTime = ` ${Math.round(
+  const exerciseFormattedTime = ` ${Math.floor(
     exerciseTime / 60
   )} min ${Math.round(exerciseTime % 60)} sec`;
 

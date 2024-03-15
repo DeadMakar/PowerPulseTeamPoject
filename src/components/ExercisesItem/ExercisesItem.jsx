@@ -136,7 +136,7 @@ export const ExercisesItem = ({
             <AddExerciseSuccess
               timeOfTimer={timeOfTimer}
               reallyBurnedCalories={reallyBurnedCalories}
-              closeModalAddProductSuccess={handleCloseModal}
+              closeModalAddExerciseSuccess={handleCloseModal}
             />
           )}
         </BasicModalWindow>

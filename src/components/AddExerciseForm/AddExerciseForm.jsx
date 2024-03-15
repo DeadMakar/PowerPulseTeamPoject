@@ -21,8 +21,8 @@ import { addDiaryExercise } from '../../redux/diary/operations';
 
 export const AddExerciseForm = ({
   setReallyBurnedCalories,
-  closeModalAddExersiceForm: closeModalForm,
-  onClick: openModal,
+  // closeModalAddExersiceForm: closeModalForm,
+  // onClick: openModal,
   name,
   target,
   bodyPart,

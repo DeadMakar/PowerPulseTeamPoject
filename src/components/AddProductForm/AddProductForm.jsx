@@ -1,6 +1,7 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import {
+  WrapperDiv,
   Form,
   FieldWrapper,
   SpanStyled,
@@ -9,7 +10,6 @@ import {
   BtnOrange,
   BtnCancel,
   GramTxt,
-  FieldGramsWrapper,
   FieldProduct,
   FieldGrams,
 } from './AddProductForm.styled';
@@ -103,7 +103,7 @@ export const AddProductForm = ({
   };
 
   return (
-    <>
+    <WrapperDiv>
       <Formik
         initialValues={{ name: '', mass: '' }}
         // validationSchema={productValidation}
@@ -117,19 +117,17 @@ export const AddProductForm = ({
               value={formattedTitle}
               disabled
             />
-            <FieldGramsWrapper>
-              <FieldGrams
-                type="number"
-                name="calories"
-                autoComplete="off"
-                required
-                step="1"
-                min="1"
-                max="1000"
-                onChange={handleInputChange}
-              />
-              <GramTxt>grams</GramTxt>
-            </FieldGramsWrapper>
+            <FieldGrams
+              type="number"
+              name="calories"
+              autoComplete="off"
+              required
+              step="1"
+              min="1"
+              max="1000"
+              onChange={handleInputChange}
+            />
+            <GramTxt>grams</GramTxt>
           </FieldWrapper>
           <TextStyled>
             Calories: <SpanStyled>{caloriesСonsumed}</SpanStyled>
@@ -142,7 +140,7 @@ export const AddProductForm = ({
           </BtnWrapper>
         </Form>
       </Formik>
-    </>
+    </WrapperDiv>
   );
 };
 export default AddProductForm;
