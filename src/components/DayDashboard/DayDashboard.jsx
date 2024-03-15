@@ -96,7 +96,7 @@ const DayDashboard = (userDiaryInformation) => {
             </SvgStyled>
             <TitleStyled>The rest of the calories</TitleStyled>
           </TitleStyledWrapper>
-          <DataValue>{remaining || '0'}</DataValue>
+          <DataValue>{remaining || resultBMR}</DataValue>
         </ItemListStyled>
         <ItemListStyled className={isTimeOver ? 'greenBg' : ''}>
           <TitleStyledWrapper>

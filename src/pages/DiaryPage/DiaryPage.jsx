@@ -18,7 +18,7 @@ import {
   TitleAndSwitch,
 } from './DiaryPage.styled';
 import { Container } from '../../styles/GlobalStyles';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 import {
   selectBmr,
   selectIsRefreshing,
@@ -43,9 +43,12 @@ const DiaryPage = () => {
       try {
         await dispatch(getAllDiaryInformation(date));
       } catch (error) {
-        toast.error('Sorry, something went wrong, please try again', {
-          theme: 'dark',
-        });
+        // toast.info(
+        //   'Sorry, you have no data. Please add some product or exercise',
+        //   {
+        //     theme: 'dark',
+        //   }
+        // );
       }
     };
     fetchData(currentDate);
