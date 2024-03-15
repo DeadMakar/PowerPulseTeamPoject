@@ -10,6 +10,16 @@ current statistical data from day one!
 
 ![Presentation](./public/presentation/Desktop.png)
 
+We are excited to introduce Power Pulse to you - it's more than just an app,
+it's your trusted companion on your journey to health and fitness. Power Pulse
+is an innovative and useful tool that will help you achieve your goals.
+
+Welcome: Start with the first page of Power Pulse, where our app greets you.
+Here you can create a new account or log in to an existing one. Begin exploring
+your current statistical data from day one!
+
+![Presentation](./public//presentation/Desktop.png)
+
 - Sign Up (/signup): Create your account by providing your name, email, and a
   secure password.
 
@@ -30,15 +40,23 @@ current statistical data from day one!
 - Diary (/diary): Track your nutrition and workouts on the diary page. The
   information panel will help you tracking your progress.
 
+  ![Presentation](./public/presentation/Diary_0.5.gif.gif)
+
 - Products (/products): Select items for your diary. Utilize filters to find the
   perfect options for you.
 
   ![Presentation](./public/presentation/Products.gif)
+  ![Presentation](./public/presentation/Products_11.gif)
 
   - Exercises (/exercises): Browse the exercises section. Select exercises by
     categories and equipment type.
 
     ![Presentation](./public/presentation/Exercises.gif)
+
+    ## Live page
+
+The live page can be accessed through the following link:
+https://deadmakar.github.io/PowerPulseTeamPoject
 
     # Our development team :
 
@@ -57,6 +75,8 @@ current statistical data from day one!
 - [DMYTRO ZINCHUK](https://github.com/DimaStout) **Front End Developer**,
 - [MAKSYM KOREIKO](https://github.com/makswelll) **Front End Developer**,
 - [VLADYSLAV HELICH](https://github.com/Vlad3039) **Front End Developer**.
+
+# Our development team :
 
 # Technologies used:
 
@@ -78,7 +98,8 @@ Backend:
 - Mongoose,
 - Mongo DB,
 - Render,
-- [Swagger Documentation](https://powerpulserver.onrender.com/api-docs/#/)
+
+- [Swagger Documentation](https://powerpulseback.onrender.com/api-docs/#/)
 
 Utils:
 
