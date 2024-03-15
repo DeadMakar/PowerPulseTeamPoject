@@ -38,6 +38,8 @@ current statistical data from day one!
   - Exercises (/exercises): Browse the exercises section. Select exercises by
     categories and equipment type.
 
+    ![Presentation](./public/presentation/Exercises.gif)
+
     # Our development team :
 
 - [OLEKSANDR MAKAROV ](https://github.com/DeadMakar) **Front end Team Lead**,
