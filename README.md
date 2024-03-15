@@ -49,7 +49,7 @@ perfect options for you.
 Exercises (/exercises): Browse the exercises section. Select exercises by
 categories and equipment type.
 
-    ![Presentation](./public/presentation/Exercises.gif)
+    ![Presentation](./public/presentation/Exersises.gif)
 
     With our App, you will be able to improve your health and well-being. Use it for your health!!!
 
@@ -154,7 +154,7 @@ Products (/products): Оберіть продукти для вашого жур
 Exercises (/exercises): Відкрийте розділ з вправами. Вибирайте вправи за
 категоріями та типом обладнання.
 
-    ![Presentation](./public/presentation/Exercises.gif)
+    ![Presentation](./public/presentation/Exersises.gif)
 
     З нашим додатком ви зможете покращити своє здоров'я та самопочуття. Користуйтеся на здоров'я!!!
 
@@ -207,6 +207,6 @@ die Filter, um die perfekten Optionen für Sie zu finden.
 Exercises (/exercises): Durchsuchen Sie den Bereich Übungen. Wählen Sie die
 Übungen nach Kategorien und Gerätetypen
 
-    ![Presentation](./public/presentation/Exercises.gif)
+    ![Presentation](./public/presentation/Exersises.gif)
 
     Mit unserer App können Sie Ihre Gesundheit und Ihr Wohlbefinden verbessern. Verwenden Sie sie für Ihre Gesundheit!!!
