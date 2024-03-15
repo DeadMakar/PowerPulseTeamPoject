@@ -6,7 +6,6 @@ export const WrapperDiv = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* margin: 0 auto; */
   padding: 48px 89px;
 
   @media screen and (min-width: 768px) {
@@ -16,6 +15,7 @@ export const WrapperDiv = styled.div`
 
 export const ImgStyled = styled.img`
   width: 118px;
+  height: 73px;
   margin-bottom: 27px;
 
   @media screen and (min-width: 768px) {
@@ -53,26 +53,28 @@ export const SpanStyled = styled.span`
   color: #e6533c;
 `;
 
-export const LinkBtnStyled = styled.a`
+export const OrangeBtnStyled = styled.button`
   display: block;
-  margin: auto;
-  text-align: center;
 
   font-weight: 500;
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.12;
+  color: ${globalColor.colorWhite};
 
   border-radius: 12px;
-  padding: 12px 32px;
-  min-width: 157px;
-  /* height: 42px; */
+  /* padding: 12px 32px; */
+  width: 157px;
+  height: 42px;
   color: ${globalColor.colorWhite};
   background-color: ${globalColor.colorOrange};
+  border-color: transparent;
   margin-bottom: 16px;
 
   @media screen and (min-width: 768px) {
-    padding: 14px 32px;
+    /* padding: 14px 32px; */
+    width: 162px;
     height: 52px;
+    line-height: 1.5;
   }
 `;
 

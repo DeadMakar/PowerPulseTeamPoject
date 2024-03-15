@@ -26,8 +26,11 @@ export const Navigation = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 1250px;
+  max-width: 1440px;
   margin: 0 auto;
+  @media (min-width: 1440px) {
+    width: 1250px;
+  }
 `;
 
 export const SecondNavWraper = styled.div`

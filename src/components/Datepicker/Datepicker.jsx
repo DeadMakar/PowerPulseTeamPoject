@@ -23,12 +23,20 @@ const Datepicker = ({
       onClose();
     } else {
       toast.error(
-        `However, we don't have any data to show you. You can review the information from the day of your registration: ${userDateRegistration} up to today: ${today}. `,
+        `SORRY!!! You can review the information from the day of your registration: ${userDateRegistration} up to today: ${today}. `,
         {
           theme: 'dark',
         }
       );
     }
+  };
+
+  const isDateDisabled = (date) => {
+    return date < userDateRegistration && date > today;
+  };
+
+  const dayClassName = (date) => {
+    return isDateDisabled(date) ? 'disabled-day' : null;
   };
 
   return (
@@ -43,6 +51,7 @@ const Datepicker = ({
         onChange={handleDateChange}
         minDate={new Date(userDateRegistration)}
         maxDate={new Date(today)}
+        dayClassName={dayClassName}
       />
       <CalendarGlobalStyles />
     </Wrapper>

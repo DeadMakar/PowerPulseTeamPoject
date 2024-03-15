@@ -20,6 +20,7 @@ const customStyles = {
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'rgba(0, 0, 0, 0.8)',
+    // backgroundColor: 'orange',
     zIndex: 1200,
   },
 
@@ -33,6 +34,7 @@ const customStyles = {
     backgroundColor: '#10100F',
     border: '1px solid rgba(239, 237, 232, 0.2)',
     borderRadius: '12px',
+    padding: 0,
   },
 };
 
@@ -51,7 +53,7 @@ const BasicModalWindow = ({
         onRequestClose={onModalClose}
         style={customStyles}
       >
-        <CloseModalBtn onClick={onModalClose}>
+        <CloseModalBtn onClick={() => onModalClose()}>
           <use href={`${sprite}#icon-x`}></use>
         </CloseModalBtn>
         {children}

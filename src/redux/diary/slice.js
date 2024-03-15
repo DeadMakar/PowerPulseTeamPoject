@@ -39,20 +39,22 @@ const handleAddDiaryProductsFulfilled = (state, action) => {
 const handleDeleteDiaryProductsFulfilled = (state, action) => {
   state.isLoading = false;
   state.error = null;
-
-  state.allDiaryInformation = action.payload;
+  state.allDiaryInformation[0] = action.payload;
 };
 
 const handleAddDiaryExerciseFulfilled = (state, action) => {
   state.isLoading = false;
   state.error = null;
-  state.completedExercisesArray.push(action.payload);
+  state.completedExercisesArray = [
+    ...state.completedExercisesArray,
+    action.payload,
+  ];
 };
 
 const handleDeleteDiaryExerciseFulfilled = (state, action) => {
   state.isLoading = false;
   state.error = null;
-  state.allDiaryInformation.exerciseArr = action.payload;
+  state.allDiaryInformation[1] = action.payload;
 };
 
 const diarySlice = createSlice({

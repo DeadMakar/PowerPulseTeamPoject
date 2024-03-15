@@ -16,11 +16,13 @@ import {
 
 import { TimerComponent } from './Timer';
 import { changeDate } from '../../helpers';
+import { useDispatch } from 'react-redux';
+import { addDiaryExercise } from '../../redux/diary/operations';
 
 export const AddExerciseForm = ({
   setReallyBurnedCalories,
-  closeModalAddExersiceForm: closeModalForm,
-  onClick: openModal,
+  // closeModalAddExersiceForm: closeModalForm,
+  // onClick: openModal,
   name,
   target,
   bodyPart,
@@ -32,17 +34,18 @@ export const AddExerciseForm = ({
   reallyBurnedCalories,
   timeOfTimer,
   setTimeOfTimer,
-  setTxesiceWasAdded,
+  setExersiceWasAdded,
 }) => {
+  const dispatch = useDispatch();
+
   const currentDate = new Date();
   const date = changeDate(currentDate);
   const parts = date.split('/');
   const formattedCurrentDate = `${parts[0]}-${parts[1]}-${parts[2]}`;
 
-  const addNewExercise = () => {
-    console.log('added exercise');
-    setTxesiceWasAdded(true);
-    return;
+  const addNewExercise = (data) => {
+    setExersiceWasAdded(true);
+    dispatch(addDiaryExercise(data));
   };
 
   return (
@@ -81,7 +84,17 @@ export const AddExerciseForm = ({
             <SpanItemsStyled>{equipment}</SpanItemsStyled>
           </ItemStyled>
         </ListStyled>
-        <BtnOrange type="submit" onClick={() => addNewExercise()}>
+        <BtnOrange
+          type="submit"
+          onClick={() =>
+            addNewExercise({
+              exerciseId: id,
+              date: formattedCurrentDate,
+              calories: reallyBurnedCalories,
+              time: timeOfTimer,
+            })
+          }
+        >
           Add to diary
         </BtnOrange>
       </WrapperPart2>
