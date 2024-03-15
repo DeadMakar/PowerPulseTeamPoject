@@ -5,13 +5,14 @@ export const HeaderArray = styled.ul`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   gap: 8px;
 
   @media screen and (min-width: 768px) {
     flex-wrap: nowrap;
     margin-bottom: 8px;
     /* justify-content: start; */
+    margin-left: 10px;
   }
 `;
 
@@ -105,6 +106,10 @@ export const ExerciseListArrayItemMobile = styled.li`
   @media screen and (max-width: 375px) {
     width: 100%;
     margin-bottom: 8px;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
 
     &:first-of-type {
       color: ${globalColor.colorOrange1};
@@ -255,6 +260,10 @@ export const ExerciseListArrayItem = styled.li`
 
     font-size: 16px;
     line-height: 1.5;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
 
     &:first-of-type {
       width: 90px;

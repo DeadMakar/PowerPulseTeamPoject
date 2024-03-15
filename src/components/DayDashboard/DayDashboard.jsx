@@ -39,7 +39,7 @@ const DayDashboard = (userDiaryInformation) => {
   }, []);
 
   const remaining = resultBMR - consumedCalories;
-  const restTime = 110 - totalExerciseTime;
+  const restTime = Math.round((110 * 60 - totalExerciseTime) / 60);
 
   useEffect(() => {
     if (remaining < 0) {

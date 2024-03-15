@@ -207,6 +207,10 @@ export const ProductListArrayItemMobile = styled.li`
       margin-bottom: 8px;
     }
 
+    &::first-letter {
+      text-transform: uppercase;
+    }
+
     &:nth-of-type(2) {
       color: ${globalColor.colorWhite};
       border-radius: 12px;
@@ -306,6 +310,10 @@ export const ProductListArrayItem = styled.li`
 
     font-size: 16px;
     line-height: 1.5;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
 
     &:first-of-type {
       width: 204px;

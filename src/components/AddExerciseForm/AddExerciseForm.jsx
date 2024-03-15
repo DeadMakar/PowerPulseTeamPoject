@@ -92,6 +92,10 @@ export const AddExerciseForm = ({
               date: formattedCurrentDate,
               calories: reallyBurnedCalories,
               time: timeOfTimer,
+              bodyPart: bodyPart,
+              equipment: equipment,
+              name: name,
+              target: target,
             })
           }
         >

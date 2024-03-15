@@ -78,6 +78,7 @@ const ProductsList = ({ products }) => {
               productId={selectedProduct._id}
               product={modalData}
               onClick={handleOpenModal}
+              productCategory={selectedProduct.category}
             />
           ) : (
             <AddProductSuccess

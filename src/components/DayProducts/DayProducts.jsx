@@ -27,17 +27,13 @@ import {
 } from './DayProducts.styled';
 import { globalColor } from '../../styles/root';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  deleteDiaryProducts,
-  getAllDiaryInformation,
-} from '../../redux/diary/operations';
+import { deleteDiaryProducts } from '../../redux/diary/operations';
 import { toast } from 'react-toastify';
 import {
   selectDiaryError,
   selectDiaryInformation,
 } from '../../redux/diary/selectors';
 import { selectUser } from '../../redux/auth/selectors';
-import { capitalizeFirstLetter } from '../../helpers/capitalizeFirstLetter';
 import { formatDateForDiary } from '../../helpers/formatDateForDiary';
 
 const DayProducts = ({ currentDate }) => {
@@ -59,7 +55,6 @@ const DayProducts = ({ currentDate }) => {
       await dispatch(
         deleteDiaryProducts({ productId: id, selectedDate: formatedDate })
       );
-      await dispatch(getAllDiaryInformation(formatedDate));
     } catch (error) {
       toast.error('Sorry, something went wrong, please try again', {
         theme: 'dark',
@@ -90,17 +85,17 @@ const DayProducts = ({ currentDate }) => {
           </NavLink>
         </NavBlock>
       </TitleNav>
-      {productArr && productArr.length > 0 && !error ? (
+      {products && products.length > 0 && !error ? (
         isMobile ? (
           <Table>
             <WrapperForItemsArray>
               {products?.map((product) => {
-                const productTitle = product?.productId?.title;
+                const productTitle = product?.title;
                 const calories = product?.calories;
                 const amount = product?.amount;
                 const productId = product?._id;
                 const bloodType = product?.productId?.groupBloodNotAllowed;
-                const productCategory = product?.productId?.category;
+                const productCategory = product?.category;
                 const type =
                   bloodType && bloodType[userBloodType] ? 'Yes' : 'No';
 
@@ -110,13 +105,13 @@ const DayProducts = ({ currentDate }) => {
                       Title
                     </ProductListArrayItemMobile>
                     <ProductListArrayItemMobile>
-                      {capitalizeFirstLetter(productTitle)}
+                      {productTitle}
                     </ProductListArrayItemMobile>
                     <ProductListArrayItemMobile>
                       Category
                     </ProductListArrayItemMobile>
                     <ProductListArrayItemMobile>
-                      {capitalizeFirstLetter(productCategory)}
+                      {productCategory}
                     </ProductListArrayItemMobile>
                     <ListMobileArray>
                       <MobileItemsHolder1
@@ -230,21 +225,19 @@ const DayProducts = ({ currentDate }) => {
 
             <WrapperForItemsArray>
               {products?.map((product) => {
-                const productTitle = product?.productId.title;
+                const productTitle = product?.title;
                 const calories = product?.calories;
                 const amount = product?.amount;
                 const productId = product?._id;
                 const bloodType = product?.productId.groupBloodNotAllowed;
-                const productCategory = product?.productId.category;
+                const productCategory = product?.category;
                 const type =
                   bloodType && bloodType[userBloodType] ? 'Yes' : 'No';
                 return (
                   <ProductListArray key={productId}>
+                    <ProductListArrayItem>{productTitle}</ProductListArrayItem>
                     <ProductListArrayItem>
-                      {capitalizeFirstLetter(productTitle)}
-                    </ProductListArrayItem>
-                    <ProductListArrayItem>
-                      {capitalizeFirstLetter(productCategory)}
+                      {productCategory}
                     </ProductListArrayItem>
                     <ProductListArrayItem>{calories}</ProductListArrayItem>
                     <ProductListArrayItem>{amount}</ProductListArrayItem>
