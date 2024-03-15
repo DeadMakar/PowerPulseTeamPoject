@@ -13,9 +13,12 @@ export const getAllDiaryInformation = createAsyncThunk(
 
       return response.data;
     } catch (error) {
-      toast.error(`${error.response.data.message}`, {
-        theme: 'dark',
-      });
+      toast.info(
+        'Sorry, you have no data. Please add some product or exercise',
+        {
+          theme: 'dark',
+        }
+      );
 
       return thunkAPI.rejectWithValue(error.message);
     }
