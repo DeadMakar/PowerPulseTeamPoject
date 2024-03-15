@@ -33,7 +33,6 @@ import {
   selectDiaryInformation,
 } from '../../redux/diary/selectors';
 import { deleteDiaryExercise } from '../../redux/diary/operations';
-import { capitalizeFirstLetter } from '../../helpers/capitalizeFirstLetter';
 import { formatDateForDiary } from '../../helpers/formatDateForDiary';
 
 const DayExercises = ({ currentDate }) => {
@@ -53,11 +52,18 @@ const DayExercises = ({ currentDate }) => {
         deleteDiaryExercise({ exerciseId: id, selectedDate: formatedDate })
       );
     } catch (error) {
-      console.log(error);
       toast.error('Sorry, something went wrong, please try again', {
         theme: 'dark',
       });
     }
+  };
+
+  const timeFormat = (time) => {
+    const minutes = Math.floor(time / 60)
+      .toString()
+      .padStart(2, '0');
+    const seconds = (time % 60).toString().padStart(2, '0');
+    return `${minutes}:${seconds}`;
   };
 
   return (
@@ -94,20 +100,20 @@ const DayExercises = ({ currentDate }) => {
                     Body Part
                   </ExerciseListArrayItemMobile>
                   <ExerciseListArrayItemMobile>
-                    {capitalizeFirstLetter(exercise.exerciseId.bodyPart)}
+                    {exercise.bodyPart}
                   </ExerciseListArrayItemMobile>
 
                   <ExerciseListArrayItemMobile>
                     Equipment
                   </ExerciseListArrayItemMobile>
                   <ExerciseListArrayItemMobile>
-                    {capitalizeFirstLetter(exercise.exerciseId.equipment)}
+                    {exercise.equipment}
                   </ExerciseListArrayItemMobile>
                   <ExerciseListArrayItemMobile>
                     Name
                   </ExerciseListArrayItemMobile>
                   <ExerciseListArrayItemMobile>
-                    {capitalizeFirstLetter(exercise.exerciseId.name)}
+                    {exercise.name}
                   </ExerciseListArrayItemMobile>
                   <ListMobileArray>
                     <MobileItemsHolder1
@@ -120,7 +126,7 @@ const DayExercises = ({ currentDate }) => {
                         Target
                       </ExerciseListArrayItemMobile>
                       <ExerciseListArrayItemMobile>
-                        {capitalizeFirstLetter(exercise.exerciseId.target)}
+                        {exercise.target}
                       </ExerciseListArrayItemMobile>
                     </MobileItemsHolder1>
                     <MobileItemsHolder2
@@ -146,7 +152,7 @@ const DayExercises = ({ currentDate }) => {
                         Time
                       </ExerciseListArrayItemMobile>
                       <ExerciseListArrayItemMobile>
-                        {exercise.time}
+                        {timeFormat(exercise.time)}
                       </ExerciseListArrayItemMobile>
                     </MobileItemsHolder3>
                     <MobileItemsHolder4
@@ -190,21 +196,21 @@ const DayExercises = ({ currentDate }) => {
               {exercises.map((exercise) => (
                 <ExerciseListArray key={exercise._id}>
                   <ExerciseListArrayItem>
-                    {capitalizeFirstLetter(exercise.exerciseId.bodyPart)}
+                    {exercise.bodyPart}
                   </ExerciseListArrayItem>
                   <ExerciseListArrayItem>
-                    {capitalizeFirstLetter(exercise.exerciseId.equipment)}
+                    {exercise.equipment}
                   </ExerciseListArrayItem>
+                  <ExerciseListArrayItem>{exercise.name}</ExerciseListArrayItem>
                   <ExerciseListArrayItem>
-                    {capitalizeFirstLetter(exercise.exerciseId.name)}
-                  </ExerciseListArrayItem>
-                  <ExerciseListArrayItem>
-                    {capitalizeFirstLetter(exercise.exerciseId.target)}
+                    {exercise.target}
                   </ExerciseListArrayItem>
                   <ExerciseListArrayItem>
                     {exercise.calories}
                   </ExerciseListArrayItem>
-                  <ExerciseListArrayItem>{exercise.time}</ExerciseListArrayItem>
+                  <ExerciseListArrayItem>
+                    {timeFormat(exercise.time)}
+                  </ExerciseListArrayItem>
                   <ExerciseListArrayItem>
                     <TableDeleteButton
                       type="button"

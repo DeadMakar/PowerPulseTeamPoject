@@ -8,14 +8,9 @@ import {
   WrapperTitle,
   WrapperText,
 } from '../ProductsItem/ProductsItem.styled';
-
 import { globalColor } from '../../styles/root';
-
 import sprite from '../../assets/sprite.svg';
-
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-
 import { AddExerciseSuccess } from '../AddExerciseSuccess';
 import { BasicModalWindow } from '../BasicModalWindow';
 import { AddExerciseForm } from '../AddExerciseForm';

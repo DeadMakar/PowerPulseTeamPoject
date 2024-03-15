@@ -15,17 +15,13 @@ import {
 } from './AddProductForm.styled';
 
 import { useDispatch, useSelector } from 'react-redux';
-// import { selectDiaryError } from '../../redux/diary/selectors';
 import { useState } from 'react';
 import { default as changeDate } from '../../helpers/changeDate';
 import { toast } from 'react-toastify';
 import { addDiaryProducts } from '../../redux/diary/operations';
 
-// const productValidation = Yup.object().shape({
-//   mass: Yup.number().required('Required'),
-// });
-
 export const AddProductForm = ({
+  productCategory,
   productTitle,
   calories,
   productId,
@@ -37,10 +33,12 @@ export const AddProductForm = ({
   // const errorAdding = useSelector(selectDiaryError);
 
   const [productToAdd, setProductToAdd] = useState({
-    product: '',
+    productId: '',
     date: '',
     amount: '',
     calories: '',
+    title: '',
+    category: '',
   });
 
   const [caloriesСonsumed, setСaloriesСonsumed] = useState(0);
@@ -62,7 +60,6 @@ export const AddProductForm = ({
       closeModalForm();
       openModal(productToAdd.calories);
       dispatch(addDiaryProducts(productToAdd));
-      // console.log(productToAdd);
     } catch (error) {
       toast.error('Sorry, something went wrong, please try again', {
         theme: 'dark',
@@ -88,6 +85,8 @@ export const AddProductForm = ({
         date: formattedCurrentDate,
         amount: gramsEat,
         calories: currentCalories,
+        title: productTitle,
+        category: productCategory,
       });
       setError('');
       setIsError(false);
@@ -98,6 +97,8 @@ export const AddProductForm = ({
         date: '',
         amount: '',
         calories: '',
+        title: '',
+        category: '',
       });
     }
   };

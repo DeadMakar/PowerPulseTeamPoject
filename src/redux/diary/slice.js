@@ -39,7 +39,7 @@ const handleAddDiaryProductsFulfilled = (state, action) => {
 const handleDeleteDiaryProductsFulfilled = (state, action) => {
   state.isLoading = false;
   state.error = null;
-  state.allDiaryInformation[0] = action.payload;
+  state.allDiaryInformation[0] = action.payload[0];
 };
 
 const handleAddDiaryExerciseFulfilled = (state, action) => {
@@ -54,7 +54,7 @@ const handleAddDiaryExerciseFulfilled = (state, action) => {
 const handleDeleteDiaryExerciseFulfilled = (state, action) => {
   state.isLoading = false;
   state.error = null;
-  state.allDiaryInformation[1] = action.payload;
+  state.allDiaryInformation[1] = action.payload[0];
 };
 
 const diarySlice = createSlice({

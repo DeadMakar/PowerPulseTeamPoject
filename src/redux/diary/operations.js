@@ -46,7 +46,6 @@ export const deleteDiaryProducts = createAsyncThunk(
       );
       return response.data;
     } catch (error) {
-      console.log(error.message);
       toast.error('Sorry, something went wrong, please try again', {
         theme: 'dark',
       });
