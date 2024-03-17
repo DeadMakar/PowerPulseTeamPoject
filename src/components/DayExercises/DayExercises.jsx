@@ -31,12 +31,16 @@ import {
 import {
   selectDiaryError,
   selectDiaryInformation,
+  selectIsLoadingExercise,
 } from '../../redux/diary/selectors';
 import { deleteDiaryExercise } from '../../redux/diary/operations';
 import { formatDateForDiary } from '../../helpers/formatDateForDiary';
+import { Loader } from '../Loader';
 
 const DayExercises = ({ currentDate }) => {
   const exerciseArr = useSelector(selectDiaryInformation);
+
+  const isLoadingExercise = useSelector(selectIsLoadingExercise);
 
   const exercises = exerciseArr[1]?.exerciseArr;
 
@@ -96,134 +100,150 @@ const DayExercises = ({ currentDate }) => {
             <WrapperForItemsArray>
               {exercises?.map((exercise) => (
                 <ExerciseListArray key={exercise._id}>
-                  <ExerciseListArrayItemMobile>
-                    Body Part
-                  </ExerciseListArrayItemMobile>
-                  <ExerciseListArrayItemMobile>
-                    {exercise.bodyPart}
-                  </ExerciseListArrayItemMobile>
+                  {isLoadingExercise ? (
+                    <Loader />
+                  ) : (
+                    <>
+                      <ExerciseListArrayItemMobile>
+                        Body Part
+                      </ExerciseListArrayItemMobile>
+                      <ExerciseListArrayItemMobile>
+                        {exercise.bodyPart}
+                      </ExerciseListArrayItemMobile>
 
-                  <ExerciseListArrayItemMobile>
-                    Equipment
-                  </ExerciseListArrayItemMobile>
-                  <ExerciseListArrayItemMobile>
-                    {exercise.equipment}
-                  </ExerciseListArrayItemMobile>
-                  <ExerciseListArrayItemMobile>
-                    Name
-                  </ExerciseListArrayItemMobile>
-                  <ExerciseListArrayItemMobile>
-                    {exercise.name}
-                  </ExerciseListArrayItemMobile>
-                  <ListMobileArray>
-                    <MobileItemsHolder1
-                      style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                      }}
-                    >
                       <ExerciseListArrayItemMobile>
-                        Target
+                        Equipment
                       </ExerciseListArrayItemMobile>
                       <ExerciseListArrayItemMobile>
-                        {exercise.target}
+                        {exercise.equipment}
                       </ExerciseListArrayItemMobile>
-                    </MobileItemsHolder1>
-                    <MobileItemsHolder2
-                      style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                      }}
-                    >
+
                       <ExerciseListArrayItemMobile>
-                        Burned Calories
+                        Name
                       </ExerciseListArrayItemMobile>
                       <ExerciseListArrayItemMobile>
-                        {exercise.calories}
+                        {exercise.name}
                       </ExerciseListArrayItemMobile>
-                    </MobileItemsHolder2>
-                    <MobileItemsHolder3
-                      style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                      }}
-                    >
-                      <ExerciseListArrayItemMobile>
-                        Time
-                      </ExerciseListArrayItemMobile>
-                      <ExerciseListArrayItemMobile>
-                        {timeFormat(exercise.time)}
-                      </ExerciseListArrayItemMobile>
-                    </MobileItemsHolder3>
-                    <MobileItemsHolder4
-                      style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                      }}
-                    >
-                      <ExerciseListArrayItemMobile>
-                        {''}
-                      </ExerciseListArrayItemMobile>
-                      <ExerciseListArrayItemMobile>
-                        <TableDeleteButton
-                          type="button"
-                          onClick={() => handleDelete(exercise._id)}
+
+                      <ListMobileArray>
+                        <MobileItemsHolder1
+                          style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                          }}
                         >
-                          <SvgTableStyled>
-                            <use href={sprite + '#icon-trash-03'}></use>
-                          </SvgTableStyled>
-                        </TableDeleteButton>
-                      </ExerciseListArrayItemMobile>
-                    </MobileItemsHolder4>
-                  </ListMobileArray>
+                          <ExerciseListArrayItemMobile>
+                            Target
+                          </ExerciseListArrayItemMobile>
+                          <ExerciseListArrayItemMobile>
+                            {exercise.target}
+                          </ExerciseListArrayItemMobile>
+                        </MobileItemsHolder1>
+                        <MobileItemsHolder2
+                          style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                          }}
+                        >
+                          <ExerciseListArrayItemMobile>
+                            Burned Calories
+                          </ExerciseListArrayItemMobile>
+                          <ExerciseListArrayItemMobile>
+                            {exercise.calories}
+                          </ExerciseListArrayItemMobile>
+                        </MobileItemsHolder2>
+                        <MobileItemsHolder3
+                          style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                          }}
+                        >
+                          <ExerciseListArrayItemMobile>
+                            Time
+                          </ExerciseListArrayItemMobile>
+                          <ExerciseListArrayItemMobile>
+                            {timeFormat(exercise.time)}
+                          </ExerciseListArrayItemMobile>
+                        </MobileItemsHolder3>
+                        <MobileItemsHolder4
+                          style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                          }}
+                        >
+                          <ExerciseListArrayItemMobile></ExerciseListArrayItemMobile>
+                          <ExerciseListArrayItemMobile>
+                            <TableDeleteButton
+                              type="button"
+                              onClick={() => handleDelete(exercise._id)}
+                            >
+                              <SvgTableStyled>
+                                <use href={sprite + '#icon-trash-03'}></use>
+                              </SvgTableStyled>
+                            </TableDeleteButton>
+                          </ExerciseListArrayItemMobile>
+                        </MobileItemsHolder4>
+                      </ListMobileArray>
+                    </>
+                  )}
                 </ExerciseListArray>
               ))}
             </WrapperForItemsArray>
           </Table>
         ) : (
           <Table>
-            <HeaderArray>
-              <HeaderItem>Body Part</HeaderItem>
-              <HeaderItem>Equipment</HeaderItem>
-              <HeaderItem>Name</HeaderItem>
-              <HeaderItem>Target</HeaderItem>
-              <HeaderItem>Burned Calories</HeaderItem>
-              <HeaderItem>Time</HeaderItem>
-              <HeaderItem>{''}</HeaderItem>
-            </HeaderArray>
+            <>
+              <HeaderArray>
+                <HeaderItem>Body Part</HeaderItem>
+                <HeaderItem>Equipment</HeaderItem>
+                <HeaderItem>Name</HeaderItem>
+                <HeaderItem>Target</HeaderItem>
+                <HeaderItem>Burned Calories</HeaderItem>
+                <HeaderItem>Time</HeaderItem>
+                <HeaderItem>{''}</HeaderItem>
+              </HeaderArray>
 
-            <WrapperForItemsArray>
-              {exercises.map((exercise) => (
-                <ExerciseListArray key={exercise._id}>
-                  <ExerciseListArrayItem>
-                    {exercise.bodyPart}
-                  </ExerciseListArrayItem>
-                  <ExerciseListArrayItem>
-                    {exercise.equipment}
-                  </ExerciseListArrayItem>
-                  <ExerciseListArrayItem>{exercise.name}</ExerciseListArrayItem>
-                  <ExerciseListArrayItem>
-                    {exercise.target}
-                  </ExerciseListArrayItem>
-                  <ExerciseListArrayItem>
-                    {exercise.calories}
-                  </ExerciseListArrayItem>
-                  <ExerciseListArrayItem>
-                    {timeFormat(exercise.time)}
-                  </ExerciseListArrayItem>
-                  <ExerciseListArrayItem>
-                    <TableDeleteButton
-                      type="button"
-                      onClick={() => handleDelete(exercise._id)}
-                    >
-                      <SvgTableStyled>
-                        <use href={sprite + '#icon-trash-03'}></use>
-                      </SvgTableStyled>
-                    </TableDeleteButton>
-                  </ExerciseListArrayItem>
-                </ExerciseListArray>
-              ))}
-            </WrapperForItemsArray>
+              <WrapperForItemsArray>
+                {exercises.map((exercise) => (
+                  <ExerciseListArray key={exercise._id}>
+                    {isLoadingExercise ? (
+                      <Loader />
+                    ) : (
+                      <>
+                        <ExerciseListArrayItem>
+                          {exercise.bodyPart}
+                        </ExerciseListArrayItem>
+                        <ExerciseListArrayItem>
+                          {exercise.equipment}
+                        </ExerciseListArrayItem>
+                        <ExerciseListArrayItem>
+                          {exercise.name}
+                        </ExerciseListArrayItem>
+                        <ExerciseListArrayItem>
+                          {exercise.target}
+                        </ExerciseListArrayItem>
+                        <ExerciseListArrayItem>
+                          {exercise.calories}
+                        </ExerciseListArrayItem>
+                        <ExerciseListArrayItem>
+                          {timeFormat(exercise.time)}
+                        </ExerciseListArrayItem>
+                        <ExerciseListArrayItem>
+                          <TableDeleteButton
+                            type="button"
+                            onClick={() => handleDelete(exercise._id)}
+                          >
+                            <SvgTableStyled>
+                              <use href={sprite + '#icon-trash-03'}></use>
+                            </SvgTableStyled>
+                          </TableDeleteButton>
+                        </ExerciseListArrayItem>
+                      </>
+                    )}
+                  </ExerciseListArray>
+                ))}
+              </WrapperForItemsArray>
+            </>
           </Table>
         )
       ) : (

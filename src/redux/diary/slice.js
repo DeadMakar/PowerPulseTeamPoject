@@ -11,6 +11,8 @@ const initialState = {
   consumedProductsArray: [],
   completedExercisesArray: [],
   isLoading: false,
+  isLoadingProducts: false,
+  isLoadingExercise: false,
   error: null,
   allDiaryInformation: {},
 };
@@ -71,21 +73,31 @@ const diarySlice = createSlice({
       .addCase(addDiaryProducts.pending, handlePending)
       .addCase(addDiaryProducts.fulfilled, handleAddDiaryProductsFulfilled)
       .addCase(addDiaryProducts.rejected, handleRejected)
-      .addCase(deleteDiaryProducts.pending, handlePending)
+      .addCase(deleteDiaryProducts.pending, (state) => {
+        state.isLoadingProducts = false;
+      })
       .addCase(
         deleteDiaryProducts.fulfilled,
         handleDeleteDiaryProductsFulfilled
       )
-      .addCase(deleteDiaryProducts.rejected, handleRejected)
+      .addCase(deleteDiaryProducts.rejected, (state, action) => {
+        state.isLoadingProducts = false;
+        state.error = action.payload;
+      })
       .addCase(addDiaryExercise.pending, handlePending)
       .addCase(addDiaryExercise.fulfilled, handleAddDiaryExerciseFulfilled)
       .addCase(addDiaryExercise.rejected, handleRejected)
-      .addCase(deleteDiaryExercise.pending, handlePending)
+      .addCase(deleteDiaryExercise.pending, (state) => {
+        state.isLoadingExercise = false;
+      })
       .addCase(
         deleteDiaryExercise.fulfilled,
         handleDeleteDiaryExerciseFulfilled
       )
-      .addCase(deleteDiaryExercise.rejected, handleRejected),
+      .addCase(deleteDiaryExercise.rejected, (state, action) => {
+        state.isLoadingExercise = false;
+        state.error = action.payload;
+      }),
 });
 
 export const diaryReducer = diarySlice.reducer;
