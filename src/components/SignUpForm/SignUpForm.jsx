@@ -46,12 +46,12 @@ const SignUpForm = () => {
 
   const formik = useFormik({
     initialValues: {
-      name: '',
+      userName: '',
       email: '',
       password: '',
     },
     validationSchema: Yup.object().shape({
-      name: Yup.string().required('Name is required'),
+      userName: Yup.string().required('Name is required'),
       email: Yup.string()
         .matches(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/, 'Example: test@gmail.com')
         .email('Invalid email')
@@ -64,7 +64,7 @@ const SignUpForm = () => {
     onSubmit: (values, { resetForm }) => {
       dispatch(
         register({
-          name: values.name,
+          userName: values.userName,
           email: values.email,
           password: values.password,
         })
@@ -94,32 +94,32 @@ const SignUpForm = () => {
                 <FormLabel>
                   <FormInput
                     id="name"
-                    name="name"
+                    name="userName"
                     type="text"
                     placeholder="Name"
                     onChange={formik.handleChange}
-                    value={formik.values.name}
+                    value={formik.values.userName}
                     haserror={
                       !isValidationCompleted &&
-                      formik.touched.name &&
-                      formik.errors.name
+                      formik.touched.userName &&
+                      formik.errors.userName
                     }
                     isValidationCompleted={
-                      !formik.errors.name && formik.touched.name
+                      !formik.errors.userName && formik.touched.userName
                     }
                   />
-                  {formik.touched.name && (
+                  {formik.touched.userName && (
                     <ErrorSpan
                       style={{
-                        color: formik.errors.name ? '#D80027' : '#3CBF61',
+                        color: formik.errors.userName ? '#D80027' : '#3CBF61',
                       }}
                     >
-                      {formik.errors.name ? (
+                      {formik.errors.userName ? (
                         <>
                           <SvgError>
                             <use href={`${sprite}#icon-red`}></use>
                           </SvgError>
-                          {`Error name, ${formik.errors.name}`}
+                          {`Error name, ${formik.errors.userName}`}
                         </>
                       ) : (
                         <>

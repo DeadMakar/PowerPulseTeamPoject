@@ -10,3 +10,7 @@ export const selectCompletedExercisesArray = (state) =>
 export const selectDiaryIsLoading = (state) => state.diary.isLoading;
 
 export const selectDiaryError = (state) => state.diary.error;
+
+export const selectIsLoadingProducts = (state) => state.diary.isLoadingProducts;
+
+export const selectIsLoadingExercise = (state) => state.diary.isLoadingExercise;
