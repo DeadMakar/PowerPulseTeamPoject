@@ -35,7 +35,7 @@ import {
 } from '../../redux/diary/selectors';
 import { deleteDiaryExercise } from '../../redux/diary/operations';
 import { formatDateForDiary } from '../../helpers/formatDateForDiary';
-import { Loader } from '../Loader';
+import { PulseEffect } from '../PulseEffect/PulseEffect';
 
 const DayExercises = ({ currentDate }) => {
   const exerciseArr = useSelector(selectDiaryInformation);
@@ -97,13 +97,13 @@ const DayExercises = ({ currentDate }) => {
       {exercises && exercises.length > 0 && !error ? (
         isMobile ? (
           <Table>
-            <WrapperForItemsArray>
-              {exercises?.map((exercise) => (
-                <ExerciseListArray key={exercise._id}>
-                  {isLoadingExercise ? (
-                    <Loader />
-                  ) : (
-                    <>
+            {isLoadingExercise ? (
+              <PulseEffect />
+            ) : (
+              <>
+                <WrapperForItemsArray>
+                  {exercises?.map((exercise) => (
+                    <ExerciseListArray key={exercise._id}>
                       <ExerciseListArrayItemMobile>
                         Body Part
                       </ExerciseListArrayItemMobile>
@@ -184,66 +184,64 @@ const DayExercises = ({ currentDate }) => {
                           </ExerciseListArrayItemMobile>
                         </MobileItemsHolder4>
                       </ListMobileArray>
-                    </>
-                  )}
-                </ExerciseListArray>
-              ))}
-            </WrapperForItemsArray>
+                    </ExerciseListArray>
+                  ))}
+                </WrapperForItemsArray>
+              </>
+            )}
           </Table>
         ) : (
           <Table>
-            <>
-              <HeaderArray>
-                <HeaderItem>Body Part</HeaderItem>
-                <HeaderItem>Equipment</HeaderItem>
-                <HeaderItem>Name</HeaderItem>
-                <HeaderItem>Target</HeaderItem>
-                <HeaderItem>Burned Calories</HeaderItem>
-                <HeaderItem>Time</HeaderItem>
-                <HeaderItem>{''}</HeaderItem>
-              </HeaderArray>
+            {isLoadingExercise ? (
+              <PulseEffect />
+            ) : (
+              <>
+                <HeaderArray>
+                  <HeaderItem>Body Part</HeaderItem>
+                  <HeaderItem>Equipment</HeaderItem>
+                  <HeaderItem>Name</HeaderItem>
+                  <HeaderItem>Target</HeaderItem>
+                  <HeaderItem>Burned Calories</HeaderItem>
+                  <HeaderItem>Time</HeaderItem>
+                  <HeaderItem>{''}</HeaderItem>
+                </HeaderArray>
 
-              <WrapperForItemsArray>
-                {exercises.map((exercise) => (
-                  <ExerciseListArray key={exercise._id}>
-                    {isLoadingExercise ? (
-                      <Loader />
-                    ) : (
-                      <>
-                        <ExerciseListArrayItem>
-                          {exercise.bodyPart}
-                        </ExerciseListArrayItem>
-                        <ExerciseListArrayItem>
-                          {exercise.equipment}
-                        </ExerciseListArrayItem>
-                        <ExerciseListArrayItem>
-                          {exercise.name}
-                        </ExerciseListArrayItem>
-                        <ExerciseListArrayItem>
-                          {exercise.target}
-                        </ExerciseListArrayItem>
-                        <ExerciseListArrayItem>
-                          {exercise.calories}
-                        </ExerciseListArrayItem>
-                        <ExerciseListArrayItem>
-                          {timeFormat(exercise.time)}
-                        </ExerciseListArrayItem>
-                        <ExerciseListArrayItem>
-                          <TableDeleteButton
-                            type="button"
-                            onClick={() => handleDelete(exercise._id)}
-                          >
-                            <SvgTableStyled>
-                              <use href={sprite + '#icon-trash-03'}></use>
-                            </SvgTableStyled>
-                          </TableDeleteButton>
-                        </ExerciseListArrayItem>
-                      </>
-                    )}
-                  </ExerciseListArray>
-                ))}
-              </WrapperForItemsArray>
-            </>
+                <WrapperForItemsArray>
+                  {exercises.map((exercise) => (
+                    <ExerciseListArray key={exercise._id}>
+                      <ExerciseListArrayItem>
+                        {exercise.bodyPart}
+                      </ExerciseListArrayItem>
+                      <ExerciseListArrayItem>
+                        {exercise.equipment}
+                      </ExerciseListArrayItem>
+                      <ExerciseListArrayItem>
+                        {exercise.name}
+                      </ExerciseListArrayItem>
+                      <ExerciseListArrayItem>
+                        {exercise.target}
+                      </ExerciseListArrayItem>
+                      <ExerciseListArrayItem>
+                        {exercise.calories}
+                      </ExerciseListArrayItem>
+                      <ExerciseListArrayItem>
+                        {timeFormat(exercise.time)}
+                      </ExerciseListArrayItem>
+                      <ExerciseListArrayItem>
+                        <TableDeleteButton
+                          type="button"
+                          onClick={() => handleDelete(exercise._id)}
+                        >
+                          <SvgTableStyled>
+                            <use href={sprite + '#icon-trash-03'}></use>
+                          </SvgTableStyled>
+                        </TableDeleteButton>
+                      </ExerciseListArrayItem>
+                    </ExerciseListArray>
+                  ))}
+                </WrapperForItemsArray>
+              </>
+            )}
           </Table>
         )
       ) : (
