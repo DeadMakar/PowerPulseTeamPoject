@@ -2,7 +2,12 @@ import { createSlice } from '@reduxjs/toolkit';
 import { register, logIn, logOut, refreshUser } from './operations';
 
 const initialState = {
-  user: { userMetrics: false },
+  user: {
+    userMetrics: false,
+    blood: 0,
+    levelActivity: 0,
+    sex: 0,
+  },
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
@@ -38,7 +43,7 @@ const authSlice = createSlice({
       })
       .addCase(refreshUser.fulfilled, (state, action) => {
         state.user = action.payload;
-        state.user.name = action.payload.userName || action.payload.name;
+        state.user.name = action.payload.userName;
         state.user.blood = String(action.payload.blood);
         state.user.levelActivity = String(action.payload.levelActivity);
 
