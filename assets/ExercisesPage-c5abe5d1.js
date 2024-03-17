@@ -1,4 +1,4 @@
-import{u as t,L as h,ao as p,h as l,j as e,a as o,d as m,b as c,ap as u,aq as f,ar as b,r as d,C as j,s as v,as as w,D as k,O as E,at as y}from"./index-f7e7f8d9.js";import{T as C}from"./TitlePage-7cf4e4ee.js";const L=t.ul`
+import{u as t,L as h,ap as p,h as l,j as e,a as o,d as m,b as c,aq as u,ar as f,as as b,r as d,C as j,s as v,at as w,I as k,O as E,au as y}from"./index-1de5738e.js";import{T as C}from"./TitlePage-72e5d7a7.js";const L=t.ul`
   display: flex;
   margin-top: 20px;
   gap: 28px;
@@ -55,13 +55,13 @@ import{u as t,L as h,ao as p,h as l,j as e,a as o,d as m,b as c,ap as u,aq as f,
   @media (min-width: 768px) {
     gap: 32px;
   }
-`;const D=t.div`
+`;const T=t.div`
   position: relative;
   width: 100%;
   height: 100%;
   border: 1px solid transparent;
   /* border: 2px solid red; */
-`,T=t.a`
+`,D=t.a`
   position: absolute;
   display: flex;
   align-items: center;
@@ -95,7 +95,7 @@ import{u as t,L as h,ao as p,h as l,j as e,a as o,d as m,b as c,ap as u,aq as f,
       height: 16px;
     }
   }
-`,O=t.div`
+`,I=t.div`
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -119,4 +119,4 @@ import{u as t,L as h,ao as p,h as l,j as e,a as o,d as m,b as c,ap as u,aq as f,
     background-image: linear-gradient(89deg, #040404 0%, rgba(4, 4, 4, 0) 100%),
       url(${F});
   }
-`,q=()=>{const i=m(),a=c(u),r=c(f),{filter:s,filterList:n}=p(),x=b(),g=l();return d.useEffect(()=>{(async()=>{s&&i(y(s))})()},[i,s]),e.jsx(O,{children:e.jsx(j,{children:e.jsx(D,{children:e.jsxs("div",{children:[s!==void 0&&g.pathname.endsWith(s.replace(" ","%20"))?null:e.jsxs(T,{onClick:()=>x(-1),children:[e.jsx("svg",{style:{fill:"none"},children:e.jsx("use",{href:v+"#icon-arrow-left"})}),"Back"," "]}),e.jsxs(B,{children:[e.jsx(C,{contentText:n?w(n.split(" ")[0]):"Exercises"}),e.jsx($,{})]}),a&&!r?e.jsx(k,{}):e.jsx(e.Fragment,{children:e.jsx(d.Suspense,{children:e.jsx(E,{})})})]})})})})};export{q as default};
+`,q=()=>{const i=m(),a=c(u),r=c(f),{filter:s,filterList:n}=p(),x=b(),g=l();return d.useEffect(()=>{(async()=>{s&&i(y(s))})()},[i,s]),e.jsx(I,{children:e.jsx(j,{children:e.jsx(T,{children:e.jsxs("div",{children:[s!==void 0&&g.pathname.endsWith(s.replace(" ","%20"))?null:e.jsxs(D,{onClick:()=>x(-1),children:[e.jsx("svg",{style:{fill:"none"},children:e.jsx("use",{href:v+"#icon-arrow-left"})}),"Back"," "]}),e.jsxs(B,{children:[e.jsx(C,{contentText:n?w(n.split(" ")[0]):"Exercises"}),e.jsx($,{})]}),a&&!r?e.jsx(k,{}):e.jsx(e.Fragment,{children:e.jsx(d.Suspense,{children:e.jsx(E,{})})})]})})})})};export{q as default};
