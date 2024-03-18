@@ -39,13 +39,13 @@ const handleAddDiaryProductsFulfilled = (state, action) => {
 };
 
 const handleDeleteDiaryProductsFulfilled = (state, action) => {
-  state.isLoading = false;
+  state.isLoadingProducts = false;
   state.error = null;
   state.allDiaryInformation[0] = action.payload[0];
 };
 
 const handleAddDiaryExerciseFulfilled = (state, action) => {
-  state.isLoading = false;
+  state.isLoading = true;
   state.error = null;
   state.completedExercisesArray = [
     ...state.completedExercisesArray,
@@ -54,7 +54,7 @@ const handleAddDiaryExerciseFulfilled = (state, action) => {
 };
 
 const handleDeleteDiaryExerciseFulfilled = (state, action) => {
-  state.isLoading = false;
+  state.isLoadingExercise = false;
   state.error = null;
   state.allDiaryInformation[1] = action.payload[0];
 };
@@ -74,7 +74,7 @@ const diarySlice = createSlice({
       .addCase(addDiaryProducts.fulfilled, handleAddDiaryProductsFulfilled)
       .addCase(addDiaryProducts.rejected, handleRejected)
       .addCase(deleteDiaryProducts.pending, (state) => {
-        state.isLoadingProducts = false;
+        state.isLoadingProducts = true;
       })
       .addCase(
         deleteDiaryProducts.fulfilled,
@@ -88,7 +88,7 @@ const diarySlice = createSlice({
       .addCase(addDiaryExercise.fulfilled, handleAddDiaryExerciseFulfilled)
       .addCase(addDiaryExercise.rejected, handleRejected)
       .addCase(deleteDiaryExercise.pending, (state) => {
-        state.isLoadingExercise = false;
+        state.isLoadingExercise = true;
       })
       .addCase(
         deleteDiaryExercise.fulfilled,

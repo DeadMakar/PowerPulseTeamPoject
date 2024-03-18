@@ -32,6 +32,8 @@ function App() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const user = useSelector(selectUser);
 
+  const redirectLink = user.userMetrics ? '/diary' : '/profile';
+
   useEffect(() => {
     if (isLoggedIn) {
       dispatch(refreshUser());
@@ -46,11 +48,10 @@ function App() {
             <Route
               index
               element={
-                isLoggedIn && user?.userMetrics ? (
-                  <DiaryPage />
-                ) : (
-                  <WelcomePage />
-                )
+                <RestrictedRoute
+                  redirectTo={redirectLink}
+                  component={<WelcomePage />}
+                />
               }
             />
             <Route path="/welcome" element={<WelcomePage />} />
@@ -58,7 +59,7 @@ function App() {
               path="/signup"
               element={
                 <RestrictedRoute
-                  redirectTo="/signin"
+                  redirectTo="/profile"
                   component={<SignUpPage />}
                 />
               }
@@ -66,7 +67,10 @@ function App() {
             <Route
               path="/signin"
               element={
-                !isLoggedIn ? <SignInPage /> : <Navigate to="/diary" replace />
+                <RestrictedRoute
+                  redirectTo={redirectLink}
+                  component={<SignInPage />}
+                />
               }
             />
             <Route
@@ -78,31 +82,19 @@ function App() {
             <Route
               path="/diary"
               element={
-                user?.userMetrics ? (
-                  <DiaryPage />
-                ) : (
-                  <Navigate to="/profile" replace />
-                )
+                <PrivateRoute redirectTo="/" component={<DiaryPage />} />
               }
             />
             <Route
               path="/products"
               element={
-                user?.userMetrics ? (
-                  <ProductsPage />
-                ) : (
-                  <Navigate to="/profile" replace />
-                )
+                <PrivateRoute redirectTo="/" component={<ProductsPage />} />
               }
             />
             <Route
               path="/exercises"
               element={
-                user?.userMetrics ? (
-                  <ExercisesPage />
-                ) : (
-                  <Navigate to="/profile" replace />
-                )
+                <PrivateRoute redirectTo="/" component={<ExercisesPage />} />
               }
             >
               <Route
@@ -129,3 +121,81 @@ function App() {
 }
 
 export default App;
+
+//  <RouterProvider>
+//    <Suspense fallback={<Loader />}>
+//      <Routes>
+//        <Route path="/" element={<Layout />}>
+//          <Route
+//            index
+//            element={
+//              isLoggedIn && user?.userMetrics ? <DiaryPage /> : <WelcomePage />
+//            }
+//          />
+//          <Route path="/welcome" element={<WelcomePage />} />
+//          <Route
+//            path="/signup"
+//            element={
+//              <RestrictedRoute redirectTo="/signin" component={<SignUpPage />} />
+//            }
+//          />
+//          <Route
+//            path="/signin"
+//            element={
+//              !isLoggedIn ? <SignInPage /> : <Navigate to="/diary" replace />
+//            }
+//          />
+//          <Route
+//            path="/profile"
+//            element={<PrivateRoute redirectTo="/" component={<ProfilePage />} />}
+//          />
+//          <Route
+//            path="/diary"
+//            element={
+//              user?.userMetrics ? (
+//                <DiaryPage />
+//              ) : (
+//                <Navigate to="/profile" replace />
+//              )
+//            }
+//          />
+//          <Route
+//            path="/products"
+//            element={
+//              user?.userMetrics ? (
+//                <ProductsPage />
+//              ) : (
+//                <Navigate to="/profile" replace />
+//              )
+//            }
+//          />
+//          <Route
+//            path="/exercises"
+//            element={
+//              user?.userMetrics ? (
+//                <ExercisesPage />
+//              ) : (
+//                <Navigate to="/profile" replace />
+//              )
+//            }
+//          >
+//            <Route
+//              index
+//              element={<Navigate to="/exercises/Body parts" replace />}
+//            />
+//            <Route
+//              path="/exercises/:filter"
+//              element={<ExercisesSubcategoriesList />}
+//            />
+//            <Route
+//              path="/exercises/:filter/:filterList"
+//              element={<ExercisesList />}
+//            />
+//          </Route>
+//          <Route path="*" element={<ErrorPage />} />
+//        </Route>
+//      </Routes>
+//    </Suspense>
+//    <GlobalStyles />
+//    <CalendarGlobalStyles />
+//  </RouterProvider>;
