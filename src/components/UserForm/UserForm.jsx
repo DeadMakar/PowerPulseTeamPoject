@@ -57,6 +57,7 @@ export const UserForm = () => {
     const formatedDate = formatDate(date);
     setBirthdayDate(formatedDate);
     const fullYear = mathFullYear(formatedDate);
+    setIsInfoChanged(false);
 
     if (fullYear < 18) {
       // notification
@@ -97,7 +98,6 @@ export const UserForm = () => {
       return;
     }
 
-    // try {
     dispatch(
       updateSettings({
         userName: name,
@@ -112,7 +112,6 @@ export const UserForm = () => {
     );
 
     setIsInfoChanged(true);
-
     dispatch(refreshUser());
   };
 
