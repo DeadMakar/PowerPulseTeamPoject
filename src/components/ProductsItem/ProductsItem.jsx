@@ -88,7 +88,7 @@ const ProductsItem = ({ product, type, handleOpenModal }) => {
       </div>
       <WrapperTitle>
         <svg style={{ flexShrink: 0, width: '24px', height: '24px' }}>
-          <use href={sprite + '#icon-running-stick-figure-svgrepo-com-1'} />
+          <use href={sprite + '#icon-food-svgrepo-com'} fill="#e6533c" />
         </svg>
         <Title>{formattedTitle}</Title>
       </WrapperTitle>

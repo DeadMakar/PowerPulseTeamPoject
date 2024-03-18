@@ -19,6 +19,7 @@ const BirthdayCalendar = ({ onDateChange, savedBirthday }) => {
   const [startDate, setStartDate] = useState(
     savedBirthday === '00.00.0000' ? new Date() : new Date(savedBirthday)
   );
+
   const years = range(1950, getYear(new Date()) + 1, 1);
   const months = [
     'January',
