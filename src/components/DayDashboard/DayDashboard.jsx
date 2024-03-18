@@ -31,12 +31,12 @@ const DayDashboard = (userDiaryInformation) => {
   const [isTimeOver, setTimeOver] = useState(false);
   const error = useSelector(selectDiaryError);
 
-  useEffect(() => {
-    const shlapa = async () => {
-      await getAllDiaryInformation();
-    };
-    shlapa();
-  }, []);
+  // useEffect(() => {
+  //   const shlapa = async () => {
+  //     await getAllDiaryInformation();
+  //   };
+  //   shlapa();
+  // }, []);
 
   const remaining = resultBMR - consumedCalories;
   const restTime = Math.round((110 * 60 - totalExerciseTime) / 60);
