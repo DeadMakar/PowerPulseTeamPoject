@@ -199,3 +199,34 @@ export const BgWrapper = styled.div`
     width: 45%;
   }
 `;
+
+export const GoogleLink = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 12px;
+  border: 1px solid rgba(239, 237, 232, 0.3);
+  color: #efede8;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  font-size: 20px;
+  line-height: 24px;
+  width: 190px;
+  height: 56px;
+
+  &:hover,
+  &:focus {
+    border: 1px solid ${globalColor.colorOrange};
+  }
+
+  svg {
+    width: 32px;
+    height: 32px;
+    margin-right: 8px;
+  }
+`;
