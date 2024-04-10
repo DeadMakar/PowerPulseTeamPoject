@@ -134,6 +134,8 @@ export const HeroSignUpLink = styled(NavLink)`
   @media screen and (min-width: 375px) {
     width: 136px;
     height: 42px;
+    padding: 12px 12px;
+    font-size: 16px;
   }
 
   @media screen and (min-width: 768px) {
@@ -166,6 +168,13 @@ export const HeroSignInLink = styled(NavLink)`
   font-style: normal;
   font-weight: 500;
   line-height: 18px;
+
+  @media screen and (min-width: 375px) {
+    width: 136px;
+    height: 42px;
+    padding: 12px 12px;
+    font-size: 16px;
+  }
 
   @media screen and (min-width: 768px) {
     padding: 16px 60px;
@@ -202,22 +211,33 @@ export const BgWrapper = styled.div`
 
 export const GoogleLink = styled.a`
   display: flex;
-  align-items: center;
   justify-content: center;
-  text-decoration: none;
-  padding: 8px 16px;
-  cursor: pointer;
+  align-items: center;
+  gap: 10px;
+  width: 136px;
+  height: 42px;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.3);
-  color: #efede8;
+  color: ${globalColor.colorWhite};
   font-family: Roboto;
+  font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: 18px;
-  font-size: 20px;
-  line-height: 24px;
-  width: 190px;
-  height: 56px;
+
+  @media screen and (min-width: 375px) {
+    width: 136px;
+    height: 42px;
+    font-size: 16px;
+    margin-right: 0;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+    line-height: 24px;
+    width: 190px;
+    height: 56px;
+  }
 
   &:hover,
   &:focus {
@@ -228,5 +248,11 @@ export const GoogleLink = styled.a`
     width: 32px;
     height: 32px;
     margin-right: 8px;
+
+    @media screen and (min-width: 375px) {
+      width: 26px;
+      height: 26px;
+      margin-right: 0;
+    }
   }
 `;

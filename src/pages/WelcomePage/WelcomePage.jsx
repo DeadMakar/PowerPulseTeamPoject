@@ -16,11 +16,11 @@ import { Container } from '../../styles/GlobalStyles';
 import { StyleSheetManager } from 'styled-components';
 
 const WelcomePage = () => {
-  const handleGoogleLogin = (e) => {
-    e.preventDefault();
-    // Додайте код для автентифікації через Google тут
-    console.log('Sign in with Google clicked!');
-  };
+  // const handleGoogleLogin = (e) => {
+  //   e.preventDefault();
+  //   // Додайте код для автентифікації через Google тут
+  //   console.log('Sign in with Google clicked!');
+  // };
 
   return (
     <StyleSheetManager>
@@ -35,7 +35,10 @@ const WelcomePage = () => {
             <LinkWrapper>
               <HeroSignUpLink to={'/signup'}>Sign Up</HeroSignUpLink>
               <HeroSignInLink to={'/signin'}>Sign In</HeroSignInLink>
-              <GoogleLink href="#" onClick={handleGoogleLogin}>
+              <GoogleLink
+                href="https://powerpulseback.onrender.com/auth/google"
+                // onClick={handleGoogleLogin}
+              >
                 <svg>
                   <use href={`${sprite}#icon-google`}></use>
                 </svg>
