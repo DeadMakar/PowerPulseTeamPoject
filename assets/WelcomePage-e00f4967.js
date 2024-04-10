@@ -1,4 +1,4 @@
-import{u as e,a as n,N as o,j as i,i as x,C as r,s as t}from"./index-98086b56.js";import{S as a}from"./StatisticsInfo-c891d99b.js";import{L as s}from"./Logo-cac04420.js";import"./bgMobile@2x-c00288ab.js";const h=e.div`
+import{u as e,a as n,N as p,j as i,i as o,C as d,s as t}from"./index-486639af.js";import{S as x}from"./StatisticsInfo-af5c4836.js";import{L as a}from"./Logo-49e10bc2.js";import"./bgMobile@2x-c00288ab.js";const r=e.div`
   @media screen and (min-width: 320px) {
     position: relative;
   }
@@ -12,7 +12,7 @@ import{u as e,a as n,N as o,j as i,i as x,C as r,s as t}from"./index-98086b56.js
   @media screen and (min-width: 1440px) {
     display: flex;
   }
-`,l=e.div`
+`,s=e.div`
   position: relative;
   padding: 24px 0;
 
@@ -23,7 +23,7 @@ import{u as e,a as n,N as o,j as i,i as x,C as r,s as t}from"./index-98086b56.js
   @media screen and (min-width: 1440px) {
     width: 56%;
   }
-`,c=e.h1`
+`,h=e.h1`
   width: 300px;
   z-index: 1;
   margin-top: 90px;
@@ -56,7 +56,7 @@ import{u as e,a as n,N as o,j as i,i as x,C as r,s as t}from"./index-98086b56.js
     width: 598px;
     margin-top: 151px;
   }
-`,g=e.svg`
+`,l=e.svg`
   position: absolute;
 
   @media screen and (min-width: 320px) {
@@ -86,7 +86,7 @@ import{u as e,a as n,N as o,j as i,i as x,C as r,s as t}from"./index-98086b56.js
     top: 284px;
     left: -17px;
   }
-`,m=e.div`
+`,g=e.div`
   display: flex;
   gap: 14px;
   width: 335px;
@@ -102,7 +102,7 @@ import{u as e,a as n,N as o,j as i,i as x,C as r,s as t}from"./index-98086b56.js
     width: 768px;
     gap: 20px;
   }
-`,f=e(o)`
+`,m=e(p)`
   display: flex;
   padding: 12px 34px;
   justify-content: center;
@@ -120,6 +120,8 @@ import{u as e,a as n,N as o,j as i,i as x,C as r,s as t}from"./index-98086b56.js
   @media screen and (min-width: 375px) {
     width: 136px;
     height: 42px;
+    padding: 12px 12px;
+    font-size: 16px;
   }
 
   @media screen and (min-width: 768px) {
@@ -134,7 +136,7 @@ import{u as e,a as n,N as o,j as i,i as x,C as r,s as t}from"./index-98086b56.js
   &:focus {
     background-color: ${n.colorOrange1};
   }
-`,w=e(o)`
+`,c=e(p)`
   display: flex;
   padding: 12px 40px;
   justify-content: center;
@@ -151,6 +153,13 @@ import{u as e,a as n,N as o,j as i,i as x,C as r,s as t}from"./index-98086b56.js
   font-weight: 500;
   line-height: 18px;
 
+  @media screen and (min-width: 375px) {
+    width: 136px;
+    height: 42px;
+    padding: 12px 12px;
+    font-size: 16px;
+  }
+
   @media screen and (min-width: 768px) {
     padding: 16px 60px;
     font-size: 20px;
@@ -163,7 +172,7 @@ import{u as e,a as n,N as o,j as i,i as x,C as r,s as t}from"./index-98086b56.js
   &:focus {
     border: 1px solid ${n.colorOrange};
   }
-`,u=e.div`
+`,w=e.div`
   @media screen and (min-width: 320px) and (max-width: 767px) {
     position: absolute;
     top: 98.2%;
@@ -180,24 +189,35 @@ import{u as e,a as n,N as o,j as i,i as x,C as r,s as t}from"./index-98086b56.js
   @media screen and (min-width: 768px) {
     width: 45%;
   }
-`,b=e.a`
+`,f=e.a`
   display: flex;
-  align-items: center;
   justify-content: center;
-  text-decoration: none;
-  padding: 8px 16px;
-  cursor: pointer;
+  align-items: center;
+  gap: 10px;
+  width: 136px;
+  height: 42px;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.3);
-  color: #efede8;
+  color: ${n.colorWhite};
   font-family: Roboto;
+  font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: 18px;
-  font-size: 20px;
-  line-height: 24px;
-  width: 190px;
-  height: 56px;
+
+  @media screen and (min-width: 375px) {
+    width: 136px;
+    height: 42px;
+    font-size: 16px;
+    margin-right: 0;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+    line-height: 24px;
+    width: 190px;
+    height: 56px;
+  }
 
   &:hover,
   &:focus {
@@ -208,5 +228,11 @@ import{u as e,a as n,N as o,j as i,i as x,C as r,s as t}from"./index-98086b56.js
     width: 32px;
     height: 32px;
     margin-right: 8px;
+
+    @media screen and (min-width: 375px) {
+      width: 26px;
+      height: 26px;
+      margin-right: 0;
+    }
   }
-`,k=()=>{const p=d=>{d.preventDefault(),console.log("Sign in with Google clicked!")};return i.jsx(x,{children:i.jsx(r,{children:i.jsxs(h,{children:[i.jsxs(l,{children:[i.jsx(s,{}),i.jsx(c,{children:"Transforming your body shape with Power Pulse"}),i.jsx(g,{children:i.jsx("use",{href:`${t}#icon-line`})}),i.jsxs(m,{children:[i.jsx(f,{to:"/signup",children:"Sign Up"}),i.jsx(w,{to:"/signin",children:"Sign In"}),i.jsxs(b,{href:"#",onClick:p,children:[i.jsx("svg",{children:i.jsx("use",{href:`${t}#icon-google`})}),"Sign In"]})]})]}),i.jsx(u,{children:i.jsx(a,{})})]})})})};export{k as default};
+`,v=()=>i.jsx(o,{children:i.jsx(d,{children:i.jsxs(r,{children:[i.jsxs(s,{children:[i.jsx(a,{}),i.jsx(h,{children:"Transforming your body shape with Power Pulse"}),i.jsx(l,{children:i.jsx("use",{href:`${t}#icon-line`})}),i.jsxs(g,{children:[i.jsx(m,{to:"/signup",children:"Sign Up"}),i.jsx(c,{to:"/signin",children:"Sign In"}),i.jsxs(f,{href:"https://powerpulseback.onrender.com/auth/google",children:[i.jsx("svg",{children:i.jsx("use",{href:`${t}#icon-google`})}),"Sign In"]})]})]}),i.jsx(w,{children:i.jsx(x,{})})]})})});export{v as default};
