@@ -40,7 +40,25 @@ export const logIn = createAsyncThunk(
     try {
       const response = await axios.post('users/login', userData);
       setAuthToken(response.data.token);
+
       return response.data;
+    } catch (error) {
+      toast.error(error.response.data.message, {
+        theme: 'dark',
+      });
+
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const logInGoogle = createAsyncThunk(
+  'auth/logInGoogle',
+  async (userData, thunkAPI) => {
+    try {
+      // const response = await axios.post('users/login', userData);
+      setAuthToken(userData.token);
+      return userData;
     } catch (error) {
       toast.error(error.response.data.message, {
         theme: 'dark',
