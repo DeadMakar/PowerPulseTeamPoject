@@ -1,4 +1,4 @@
-import{u as e,a as n,N as p,j as i,i as o,C as d,s as t}from"./index-486639af.js";import{S as x}from"./StatisticsInfo-af5c4836.js";import{L as a}from"./Logo-49e10bc2.js";import"./bgMobile@2x-c00288ab.js";const r=e.div`
+import{u as e,a as n,N as s,i as r,r as o,d as h,k as l,j as i,m as c,C as m,s as x}from"./index-865ff0dd.js";import{S as g}from"./StatisticsInfo-e2964921.js";import{L as w}from"./Logo-13d0c03e.js";import"./bgMobile@2x-c00288ab.js";const f=e.div`
   @media screen and (min-width: 320px) {
     position: relative;
   }
@@ -12,7 +12,7 @@ import{u as e,a as n,N as p,j as i,i as o,C as d,s as t}from"./index-486639af.js
   @media screen and (min-width: 1440px) {
     display: flex;
   }
-`,s=e.div`
+`,u=e.div`
   position: relative;
   padding: 24px 0;
 
@@ -23,7 +23,7 @@ import{u as e,a as n,N as p,j as i,i as o,C as d,s as t}from"./index-486639af.js
   @media screen and (min-width: 1440px) {
     width: 56%;
   }
-`,h=e.h1`
+`,b=e.h1`
   width: 300px;
   z-index: 1;
   margin-top: 90px;
@@ -56,7 +56,7 @@ import{u as e,a as n,N as p,j as i,i as o,C as d,s as t}from"./index-486639af.js
     width: 598px;
     margin-top: 151px;
   }
-`,l=e.svg`
+`,j=e.svg`
   position: absolute;
 
   @media screen and (min-width: 320px) {
@@ -86,7 +86,7 @@ import{u as e,a as n,N as p,j as i,i as o,C as d,s as t}from"./index-486639af.js
     top: 284px;
     left: -17px;
   }
-`,g=e.div`
+`,y=e.div`
   display: flex;
   gap: 14px;
   width: 335px;
@@ -102,7 +102,7 @@ import{u as e,a as n,N as p,j as i,i as o,C as d,s as t}from"./index-486639af.js
     width: 768px;
     gap: 20px;
   }
-`,m=e(p)`
+`,v=e(s)`
   display: flex;
   padding: 12px 34px;
   justify-content: center;
@@ -136,7 +136,7 @@ import{u as e,a as n,N as p,j as i,i as o,C as d,s as t}from"./index-486639af.js
   &:focus {
     background-color: ${n.colorOrange1};
   }
-`,c=e(p)`
+`,z=e(s)`
   display: flex;
   padding: 12px 40px;
   justify-content: center;
@@ -172,7 +172,7 @@ import{u as e,a as n,N as p,j as i,i as o,C as d,s as t}from"./index-486639af.js
   &:focus {
     border: 1px solid ${n.colorOrange};
   }
-`,w=e.div`
+`,k=e.div`
   @media screen and (min-width: 320px) and (max-width: 767px) {
     position: absolute;
     top: 98.2%;
@@ -189,7 +189,7 @@ import{u as e,a as n,N as p,j as i,i as o,C as d,s as t}from"./index-486639af.js
   @media screen and (min-width: 768px) {
     width: 45%;
   }
-`,f=e.a`
+`,S=e.a`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -235,4 +235,4 @@ import{u as e,a as n,N as p,j as i,i as o,C as d,s as t}from"./index-486639af.js
       margin-right: 0;
     }
   }
-`,v=()=>i.jsx(o,{children:i.jsx(d,{children:i.jsxs(r,{children:[i.jsxs(s,{children:[i.jsx(a,{}),i.jsx(h,{children:"Transforming your body shape with Power Pulse"}),i.jsx(l,{children:i.jsx("use",{href:`${t}#icon-line`})}),i.jsxs(g,{children:[i.jsx(m,{to:"/signup",children:"Sign Up"}),i.jsx(c,{to:"/signin",children:"Sign In"}),i.jsxs(f,{href:"https://powerpulseback.onrender.com/auth/google",children:[i.jsx("svg",{children:i.jsx("use",{href:`${t}#icon-google`})}),"Sign In"]})]})]}),i.jsx(w,{children:i.jsx(x,{})})]})})});export{v as default};
+`,C=()=>{const[d]=r(),[t,$]=o.useState(d.get("email")??""),[p,L]=o.useState(d.get("accessToken")??""),a=h();return o.useEffect(()=>{p!==""&&t!==""&&a(l({token:p,email:t}))},[a,p,t]),i.jsx(c,{children:i.jsx(m,{children:i.jsxs(f,{children:[i.jsxs(u,{children:[i.jsx(w,{}),i.jsx(b,{children:"Transforming your body shape with Power Pulse"}),i.jsx(j,{children:i.jsx("use",{href:`${x}#icon-line`})}),i.jsxs(y,{children:[i.jsx(v,{to:"/signup",children:"Sign Up"}),i.jsx(z,{to:"/signin",children:"Sign In"}),i.jsxs(S,{href:"https://powerpulseback.onrender.com/auth/google",children:[i.jsx("svg",{children:i.jsx("use",{href:`${x}#icon-google`})}),"Sign In"]})]})]}),i.jsx(k,{children:i.jsx(g,{})})]})})})};export{C as default};
